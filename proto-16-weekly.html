@@ -1,0 +1,1273 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<script src="assets/i18n.js"></script>
+<title data-en="Seongsan-dong Catholic Church">천주교 성산동성당</title>
+<meta name="description" content="한국 103위 순교성인을 주보로 모신 천주교 성산동성당입니다. 이번 주 미사와 주보, 정기 전례, 공동체 소식, 예비신자 입교 안내, 오시는 길을 확인하세요." data-en-content="Seongsan-dong Catholic Church in Seoul, under the patronage of the 103 Korean Martyr Saints. This week’s Masses and bulletin, monthly liturgies, parish news, how to become Catholic, and directions.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR" data-en-content="en_US">
+<meta property="og:title" content="천주교 성산동성당" data-en-content="Seongsan-dong Catholic Church">
+<meta property="og:description" content="빨리 가려면 혼자 가고, 멀리 가려면 함께 가라. 성산동성당에 오신 모든 분을 환영합니다." data-en-content="If you want to go fast, go alone; if you want to go far, go together. Everyone is welcome at Seongsan-dong Catholic Church.">
+<meta property="og:image" content="media/hero-loop-poster.jpg">
+<meta name="theme-color" content="#FBFAF7">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="media/brand/symbol-light.svg" type="image/svg+xml">
+<link rel="stylesheet" href="media/fonts/fonts.css">
+<style>
+/* 주간 소식지: 홈페이지를 이번 주에 펴낸 본당 소식지 한 호처럼. 종이 흰색과 먹색, 강조는 군청색 하나. */
+:root {
+  --paper: #FBFAF7;
+  --paper-2: #F2F0EA;
+  --ink: #141414;
+  --ink-2: #5E5E59;
+  --line: #E2E0D9;
+  --accent: #2A3E8C;
+  --accent-tint: #ECEEF6;
+  --logo-bg: #2A3E8C;
+  --logo-fg: #FFFFFF;
+
+  --serif: "Noto Serif KR", "AppleMyungjo", "Batang", serif;
+  --sans: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --italic: "Cormorant Garamond", "Times New Roman", serif;
+
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --wrap: 84rem;
+  --bar: 3.75rem;
+  --section: clamp(6rem, 4rem + 6vw, 10rem);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--bar) + 1.5rem); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.28em; }
+h1, h2, h3, p, figure, blockquote, dl, dd, ol, ul { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0.01em; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.skip { position: absolute; left: 1rem; top: -5rem; z-index: 400; padding: 0.75rem 1.25rem; background: var(--ink); color: var(--paper); text-decoration: none; }
+.skip:focus { top: 1rem; }
+.wrap { width: min(100% - var(--gutter) * 2, var(--wrap)); margin-inline: auto; }
+
+.label {
+  display: flex; align-items: center; gap: 0.9rem;
+  color: var(--ink-2); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; line-height: 1.4;
+}
+.label::before { content: ""; flex: none; width: 2.25rem; height: 1px; background: currentColor; }
+.note { color: var(--ink-2); font-size: 0.9375rem; line-height: 1.8; }
+.fig { flex: none; color: var(--ink); font-family: var(--italic); font-size: 1rem; font-style: italic; line-height: 1.4; }
+.c-no { font-family: var(--italic); font-size: 1rem; font-style: italic; color: var(--accent); font-variant-numeric: lining-nums; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.9rem;
+  min-height: 3.25rem; padding: 0 1.6rem; border: 1px solid var(--ink); border-radius: 2px;
+  background: transparent; color: var(--ink); font: inherit; font-size: 0.9375rem; font-weight: 500;
+  text-decoration: none; cursor: pointer; transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn-accent { border-color: var(--accent); background: var(--accent); color: #FFFFFF; }
+.btn-accent:hover { border-color: var(--ink); background: var(--ink); color: #FFFFFF; }
+.btn .arrow { font-weight: 300; transition: transform 0.3s; }
+.btn:hover .arrow { transform: translateX(3px); }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.text-link { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 2.75rem; font-size: 0.9375rem; font-weight: 500; }
+
+/* 로고 묶음: 심볼 149:155, 로고타입 2038.58:322.07 */
+.brand { display: flex; align-items: center; gap: 0.85rem; color: var(--ink); text-decoration: none; }
+.brand .sym { --h: 2.25rem; flex: none; width: calc(var(--h) * 0.9613); height: var(--h); }
+.brand .wm { --h: 1.15rem; display: block; width: calc(var(--h) * 6.3296); height: var(--h); }
+.brand-sub { display: block; margin-top: 0.4rem; color: var(--ink-2); font-size: 0.625rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1; white-space: nowrap; }
+.brand-lg { gap: clamp(0.9rem, 1.6vw, 1.5rem); }
+.brand-lg .sym { --h: clamp(2.6rem, 1.4rem + 3vw, 4.6rem); }
+.brand-lg .wm { --h: clamp(1.3rem, 0.7rem + 1.6vw, 2.45rem); }
+.brand-lg .brand-sub { margin-top: clamp(0.45rem, 0.8vw, 0.75rem); font-size: clamp(0.625rem, 0.55rem + 0.25vw, 0.75rem); }
+.brand-sm .sym { --h: 2.1rem; }
+.brand-sm .wm { --h: 1.05rem; }
+/* 영문 로고: 한글 로고타입 대신 명조로 짠 이름. 좁으면 두 덩이 사이에서만 줄을 바꾼다 */
+.wm-en { display: block; color: var(--ink); font-family: var(--serif); font-size: 1.125rem; font-weight: 400; line-height: 1.12; letter-spacing: -0.015em; }
+.wm-en > span { display: inline-block; }
+.brand-lg .wm-en { font-size: clamp(1.25rem, 0.7rem + 1.6vw, 2.3rem); }
+.brand-sm .wm-en { font-size: 1rem; }
+
+.menu-btn {
+  display: none; align-items: center; gap: 0.6rem; min-height: 2.75rem; padding: 0 0.25rem;
+  border: 0; background: none; color: inherit; font: inherit; font-size: 0.9375rem; cursor: pointer;
+}
+.menu-lines { position: relative; width: 1.25rem; height: 0.5rem; }
+.menu-lines::before, .menu-lines::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: currentColor; }
+.menu-lines::before { top: 0; }
+.menu-lines::after { top: 100%; }
+
+/* 제호(마스트헤드): 호수 줄, 큰 로고, 두 줄 괘선, 차례 */
+.masthead { padding-top: 0.75rem; }
+.mh-top { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem 2rem; min-height: 2.75rem; }
+.mh-issue { display: flex; flex-wrap: wrap; gap: 0 0.6rem; color: var(--ink-2); font-size: 0.8125rem; font-variant-numeric: tabular-nums; }
+.mh-issue b { color: var(--ink); font-weight: 600; }
+.mh-name { display: flex; justify-content: center; align-items: center; padding: clamp(1.75rem, 1rem + 2.5vw, 3.25rem) 0 clamp(1.5rem, 1rem + 2vw, 2.75rem); }
+.mh-rule { position: relative; height: 5px; }
+.mh-rule::before, .mh-rule::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: var(--ink); transform-origin: left; }
+.mh-rule::before { top: 0; }
+.mh-rule::after { bottom: 0; }
+.contents ol { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--line); }
+.contents a { display: inline-flex; align-items: baseline; gap: 0.55rem; min-height: 3.25rem; padding: 0.95rem 0; font-size: 0.9375rem; text-decoration: none; }
+.contents a span:last-child { background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat; transition: background-size 0.4s var(--ease); }
+.contents a:hover span:last-child { background-size: 100% 1px; }
+
+/* 스크롤하면 나타나는 얇은 머리띠 */
+.slimbar {
+  position: fixed; inset: 0 0 auto 0; z-index: 120;
+  background: rgb(251 250 247 / 0.94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+  transform: translateY(-100%); visibility: hidden; transition: transform 0.55s var(--ease), visibility 0s linear 0.55s;
+}
+.slimbar.is-on { transform: none; visibility: visible; transition: transform 0.55s var(--ease); }
+.sb-row { display: flex; align-items: center; gap: 1.5rem; min-height: var(--bar); }
+.sb-now { display: flex; align-items: baseline; gap: 0.6rem; margin-left: auto; font-size: 0.875rem; font-weight: 500; }
+.sb-now:empty { display: none; }
+.sb-issue { color: var(--ink-2); font-size: 0.8125rem; font-variant-numeric: tabular-nums; }
+
+/* 언어 전환: 지금 언어는 먹색으로 굵게, 다른 언어는 눌러서 연다 */
+.mh-right { display: flex; align-items: center; gap: 0.5rem 1.25rem; }
+.lang { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 2.75rem; color: var(--ink-2); font-size: 0.8125rem; text-decoration: none; white-space: nowrap; }
+.lang-sep { color: #B9B7AF; }
+html.lang-ko .lang span[lang="ko"], html.lang-en .lang span[lang="en"] { color: var(--ink); font-weight: 600; }
+html.lang-ko .lang:hover span[lang="en"], html.lang-en .lang:hover span[lang="ko"] { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.28em; }
+.mh-right .lang { position: relative; padding-left: 1.25rem; }
+.mh-right .lang::before { content: ""; position: absolute; left: 0; top: 50%; height: 0.9rem; border-left: 1px solid var(--line); translate: 0 -50%; }
+.sheet-end { display: flex; flex-direction: column; gap: 0.75rem; }
+.sheet-end .lang { align-self: flex-start; font-size: 0.9375rem; }
+
+/* 모바일 메뉴: 전체 화면 시트 */
+.sheet { position: fixed; inset: 0; z-index: 300; display: flex; flex-direction: column; background: var(--paper); overflow-y: auto; }
+.sheet[hidden] { display: none; }
+.sheet-top { display: flex; justify-content: space-between; align-items: center; min-height: var(--bar); border-bottom: 1px solid var(--line); }
+.sheet-close { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 2.75rem; padding: 0 0.25rem; border: 0; background: none; color: var(--ink); font: inherit; font-size: 0.9375rem; cursor: pointer; }
+.sheet-close span[aria-hidden] { font-size: 1.4rem; font-weight: 200; line-height: 1; }
+.sheet nav { display: flex; flex: 1; flex-direction: column; justify-content: space-between; gap: 2.5rem; padding-top: 1.5rem; padding-bottom: calc(2rem + env(safe-area-inset-bottom)); }
+.sheet-list li { border-bottom: 1px solid var(--line); }
+.sheet-list a { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr) auto; align-items: baseline; gap: 0.5rem; min-height: 3.75rem; padding: 0.75rem 0; font-family: var(--serif); font-size: 1.5rem; font-weight: 300; letter-spacing: -0.02em; text-decoration: none; }
+.sheet-list small { color: var(--ink-2); font-family: var(--sans); font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; }
+.sheet-list a[aria-current="true"] { color: var(--accent); }
+.sheet-foot { color: var(--ink-2); font-size: 0.9375rem; }
+
+@media (max-width: 63.99rem) {
+  .menu-btn { display: inline-flex; }
+  .masthead .wrap { display: flex; flex-direction: column; }
+  .mh-name { order: -1; justify-content: space-between; padding: 0.25rem 0 0.9rem; }
+  .mh-label { display: none; }
+  .mh-top { min-height: 0; padding-bottom: 0.75rem; }
+  .contents { display: none; }
+  .sb-issue { display: none; }
+  .mh-right { flex: 1; justify-content: space-between; }
+}
+@media (max-width: 40rem) { .sb-now { display: none; } .sb-row .menu-btn { margin-left: auto; } .sb-row .lang { display: none; } }
+
+/* 영어: 단어 단위로 줄을 바꾸고, 영문에 맞게 자간과 크기를 고른다 */
+html[lang="en"] body { word-break: normal; }
+html[lang="en"] .label { letter-spacing: 0.2em; }
+html[lang="en"] .mh-issue { gap: 0 0.5rem; }
+html[lang="en"] :is(h1, h2, h3, .cover-line) { text-wrap: balance; }
+.nw { white-space: nowrap; }
+
+/* 표지 */
+.cover { padding-top: clamp(2.5rem, 1.5rem + 3.5vw, 5.5rem); }
+.cover-head { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 1.25rem 2rem; align-items: start; }
+.cover-head .label { padding-top: 1.1rem; }
+.cover-line { font-family: var(--serif); font-size: clamp(1.9rem, 0.8rem + 4.6vw, 5.4rem); font-weight: 300; line-height: 1.16; letter-spacing: -0.04em; }
+.rise { display: block; overflow: hidden; padding: 0.06em 0 0.12em; margin: -0.06em 0 -0.12em; }
+.rise > span { display: block; }
+.cover-grid { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: 3rem clamp(2rem, 4vw, 4.5rem); align-items: start; margin-top: clamp(2.25rem, 1.5rem + 2.4vw, 4rem); }
+.cover-media { position: relative; aspect-ratio: 3 / 2; overflow: hidden; background: var(--paper-2) url("media/hero-loop-poster.jpg") center / cover no-repeat; }
+.cover-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.fig-cap { display: flex; align-items: baseline; gap: 0.75rem; margin-top: 0.9rem; color: var(--ink-2); font-size: 0.8125rem; line-height: 1.6; }
+
+.media-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
+  min-width: 2.75rem; min-height: 2.75rem; padding: 0 0.9rem; border: 1px solid rgb(255 255 255 / 0.6); border-radius: 2px;
+  background: rgb(20 20 20 / 0.36); color: #FFFFFF; font: inherit; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.04em; cursor: pointer;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); transition: background-color 0.3s;
+}
+.media-btn:hover { background: rgb(20 20 20 / 0.58); }
+.media-btn svg { width: 0.9rem; height: 0.9rem; }
+.media-btn .i-play, .media-btn[data-state="paused"] .i-pause { display: none; }
+.media-btn[data-state="paused"] .i-play { display: block; }
+.media-btn:focus-visible { outline-color: #FFFFFF; }
+.cover-media .media-btn { position: absolute; right: 1rem; bottom: 1rem; }
+
+/* 이번 주: 표지 옆 단 */
+.week { padding-top: 1.1rem; border-top: 1px solid var(--ink); }
+.wk-block { padding: 1.35rem 0; border-bottom: 1px solid var(--line); }
+.wk-block:last-child { border-bottom: 0; }
+.wk-k { display: flex; justify-content: space-between; gap: 1rem; color: var(--ink-2); font-size: 0.8125rem; font-weight: 500; }
+.wk-k i { color: var(--accent); font-family: var(--italic); font-size: 0.9375rem; }
+.wk-time { margin-top: 0.4rem; color: var(--accent); font-family: var(--serif); font-size: clamp(3.25rem, 2.2rem + 2.4vw, 4.75rem); font-weight: 300; line-height: 1; letter-spacing: -0.045em; font-variant-numeric: tabular-nums; }
+.wk-name { margin-top: 0.75rem; font-size: 1.0625rem; font-weight: 500; }
+.wk-left { margin-top: 0.15rem; color: var(--ink-2); font-size: 0.875rem; }
+.wk-title { margin-top: 0.45rem; font-family: var(--serif); font-size: 1.3125rem; font-weight: 400; line-height: 1.45; letter-spacing: -0.02em; }
+.wk-title a { text-decoration: none; background: linear-gradient(currentColor, currentColor) left 92% / 0 1px no-repeat; transition: background-size 0.45s var(--ease); }
+.wk-title a:hover { background-size: 100% 1px; }
+.wk-meta { margin-top: 0.3rem; color: var(--ink-2); font-size: 0.875rem; }
+.wk-rites { margin-top: 0.5rem; }
+.wk-rites a { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 0.75rem; align-items: baseline; min-height: 2.75rem; padding: 0.45rem 0; font-size: 0.9375rem; text-decoration: none; }
+.wk-rites time { font-variant-numeric: tabular-nums; }
+.wk-rites a:hover span { text-decoration: underline; }
+.wk-rites .today { color: var(--accent); font-size: 0.75rem; font-weight: 600; }
+.wk-office { display: flex; align-items: center; gap: 0.55rem; margin-top: 0.45rem; font-size: 1.0625rem; font-weight: 500; }
+.wk-office::before { content: ""; width: 0.45rem; height: 0.45rem; border: 1px solid var(--ink-2); border-radius: 50%; }
+.wk-office.is-open::before { border-color: var(--accent); background: var(--accent); }
+
+@media (max-width: 63.99rem) {
+  .cover-head { grid-template-columns: 1fr; }
+  .cover-head .label { padding-top: 0; }
+  .cover-grid { grid-template-columns: 1fr; }
+  .week { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; }
+  .week > .label { grid-column: 1 / -1; padding-bottom: 0.25rem; }
+  .wk-block:nth-last-child(2) { border-bottom: 0; }
+}
+@media (max-width: 40rem) {
+  .cover-media { aspect-ratio: 4 / 5; }
+  .week { display: block; }
+  .wk-block:nth-last-child(2) { border-bottom: 1px solid var(--line); }
+}
+
+/* 본문: 왼쪽에 이번 호 차례가 따라온다 */
+.issue { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 0 clamp(2.5rem, 4vw, 5rem); }
+.toc { position: sticky; top: calc(var(--bar) + 2.5rem); align-self: start; margin-top: clamp(4.5rem, 3rem + 4vw, 7.5rem); }
+.toc .label { margin-bottom: 1.25rem; }
+.toc li { border-top: 1px solid var(--line); }
+.toc li:last-child { border-bottom: 1px solid var(--line); }
+.toc a { position: relative; display: flex; align-items: baseline; gap: 0.7rem; min-height: 2.75rem; padding: 0.55rem 0; color: var(--ink-2); font-size: 0.9375rem; text-decoration: none; transition: color 0.35s, padding-left 0.45s var(--ease); }
+.toc a::before { content: ""; position: absolute; left: 0; top: 50%; width: 0; height: 1px; background: var(--accent); transition: width 0.45s var(--ease); }
+.toc a:hover { color: var(--ink); }
+.toc a[aria-current="true"] { padding-left: 1.4rem; color: var(--ink); font-weight: 500; }
+.toc a[aria-current="true"]::before { width: 0.9rem; }
+.toc-issue { margin-top: 1.25rem; color: var(--ink-2); font-size: 0.8125rem; line-height: 1.6; }
+@media (max-width: 63.99rem) { .issue { display: block; } .toc { display: none; } }
+
+/* 특집 머리 */
+.feature { padding-top: var(--section); }
+.feature:first-child { padding-top: clamp(4.5rem, 3rem + 4vw, 7.5rem); }
+.f-head { position: relative; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: end; gap: 1.5rem 3rem; margin-bottom: clamp(2.75rem, 2rem + 2.4vw, 4.5rem); padding-top: 1.1rem; }
+.f-head::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--ink); transform-origin: left; }
+.f-meta { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.f-meta .label::before { display: none; }
+.f-no { color: var(--accent); font-family: var(--italic); font-size: 1.1875rem; font-style: italic; }
+.f-head h2 { font-family: var(--serif); font-size: clamp(2.4rem, 1.4rem + 3.6vw, 4.75rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.04em; }
+.dek { color: var(--ink-2); font-size: 1.0625rem; line-height: 1.85; }
+@media (max-width: 52rem) { .f-head { grid-template-columns: 1fr; gap: 1.1rem; } }
+
+/* 시차 액자: 사진은 액자보다 12% 크고, 스크롤에 따라 ±6% 안에서 천천히 움직인다 */
+.plx { position: relative; overflow: hidden; background: var(--paper-2); }
+.plx img { position: absolute; left: 0; top: -6%; width: 100%; height: 112%; max-width: none; object-fit: cover; object-position: var(--focus, 50% 45%); transform: translate3d(0, var(--py, 0px), 0); }
+
+/* No.01 미사: 조판한 시간표 */
+.mass { width: 100%; border-collapse: collapse; border-top: 1px solid var(--ink); }
+.mass tr { border-bottom: 1px solid var(--line); }
+.mass th, .mass td { padding: 1.35rem 0.75rem; vertical-align: top; text-align: left; }
+.mass th { width: 11rem; padding-top: 1.6rem; }
+.d-ko { display: block; font-size: 1.0625rem; font-weight: 500; }
+.d-la { display: block; margin-top: 0.15rem; color: var(--ink-2); font-family: var(--italic); font-size: 0.9375rem; font-style: italic; font-weight: 400; }
+.today-tag { display: inline-block; margin-top: 0.4rem; color: var(--accent); font-size: 0.75rem; font-style: normal; font-weight: 600; letter-spacing: 0.04em; }
+.mass tr.is-today { background: var(--paper-2); }
+.slots { display: flex; flex-wrap: wrap; gap: 1.75rem 3.25rem; }
+.slot time { display: block; font-family: var(--serif); font-size: clamp(1.75rem, 1.2rem + 1.2vw, 2.4rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.slot > span { display: block; margin-top: 0.25rem; color: var(--ink-2); font-size: 0.875rem; }
+.slot.is-past { opacity: 0.36; }
+.slot.is-next time { color: var(--accent); font-weight: 400; }
+.slot { position: relative; }
+.next-tag { position: absolute; left: 0; bottom: 100%; margin-bottom: 0.2rem; color: var(--accent); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.16em; white-space: nowrap; }
+.mass-notes { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 1.25rem 3rem; margin-top: 2rem; }
+.notice { display: flex; gap: 0.9rem; }
+.notice::before { content: ""; flex: none; width: 0.4rem; height: 0.4rem; margin-top: 0.7rem; border-radius: 50%; background: var(--accent); }
+.notice strong { font-weight: 600; }
+@media (max-width: 52rem) {
+  .mass tr { display: grid; grid-template-columns: 4.75rem minmax(0, 1fr); }
+  .mass th, .mass td { padding: 1.6rem 0.5rem 1.1rem; }
+  .mass th { width: auto; padding-top: 1.75rem; }
+  .slots { gap: 1.6rem 1.75rem; }
+  .slot time { font-size: 1.625rem; }
+  .slot > span { margin-top: 0.1rem; font-size: 0.8125rem; }
+  .mass-notes { grid-template-columns: 1fr; }
+}
+
+/* No.02 초대말씀: 인용 펼침면 */
+.spread { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 3rem clamp(2.5rem, 5vw, 5.5rem); align-items: center; }
+.pull-q { font-family: var(--serif); font-size: clamp(1.625rem, 1.05rem + 1.9vw, 2.75rem); font-weight: 300; line-height: 1.55; letter-spacing: -0.03em; }
+.pull-q::before { content: "\201C"; display: block; margin-bottom: 0.4rem; color: var(--accent); font-family: var(--italic); font-size: 4.5rem; line-height: 0.75; }
+.pull-body { margin-top: 2.25rem; padding-top: 1.5rem; border-top: 1px solid var(--line); columns: 2 15rem; column-gap: 2.5rem; color: var(--ink-2); }
+.pull-body p { break-inside: avoid; margin-bottom: 1rem; }
+.pull-body cite { display: block; color: var(--ink); font-size: 0.9375rem; font-style: normal; font-weight: 500; }
+.spread-fig .plx { aspect-ratio: 4 / 5; }
+@media (max-width: 52rem) { .spread { grid-template-columns: 1fr; } .spread-fig .plx { aspect-ratio: 4 / 3; } }
+
+/* No.03 공동체: 사진 에세이. 사진마다 칸을 정하지 않고, 순서에 따른 반복 규칙으로 배치한다 */
+.essay { counter-reset: plate; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(1rem, 2.2vw, 2rem); row-gap: clamp(3rem, 2rem + 3.5vw, 5.5rem); }
+.g-item { counter-increment: plate; grid-column: 1 / -1; min-width: 0; }
+.g-frame { aspect-ratio: var(--ar, 3 / 2); }
+.g-item figcaption { display: flex; align-items: baseline; gap: 0.75rem; min-height: calc(2 * 1.6em + 0.9rem); padding-top: 0.9rem; color: var(--ink-2); font-size: 0.8125rem; line-height: 1.6; }
+.g-item figcaption::before { content: "Pl. " counter(plate, decimal-leading-zero); flex: none; color: var(--ink); font-family: var(--italic); font-size: 1rem; font-style: italic; line-height: 1.4; }
+.cap { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+@media (min-width: 40rem) {
+  /* 다섯 장마다 반복: 큰 가로판 → 둘씩 짝지은 두 줄 */
+  .g-item:nth-child(5n + 1) { grid-column: 1 / -1; --ar: 16 / 9; }
+  .g-item:nth-child(5n + 2) { grid-column: 1 / 8; --ar: 3 / 2; }
+  .g-item:nth-child(5n + 3) { grid-column: 9 / 13; --ar: 1 / 1; align-self: end; }
+  .g-item:nth-child(5n + 4) { grid-column: 2 / 6; --ar: 1 / 1; }
+  .g-item:nth-child(5n + 5) { grid-column: 7 / 13; --ar: 4 / 3; margin-top: clamp(2.5rem, 6vw, 6.5rem); }
+  /* 짝이 없이 끝나는 사진은 가운데 판으로 */
+  .g-item:nth-child(5n + 2):last-child, .g-item:nth-child(5n + 4):last-child { grid-column: 3 / 11; --ar: 3 / 2; align-self: auto; margin-top: 0; }
+}
+@media (max-width: 39.99rem) {
+  /* 세 장마다 반복: 넓은 한 장 → 정사각 두 장 */
+  .essay { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 0.75rem; row-gap: 2.25rem; }
+  .g-item { grid-column: auto; --ar: 1 / 1; }
+  .g-item:nth-child(3n + 1), .g-item:nth-child(3n + 2):last-child { grid-column: 1 / -1; --ar: 3 / 2; }
+  .g-item:nth-child(3n + 3) { margin-top: 2rem; }
+  .g-item figcaption { gap: 0.5rem; font-size: 0.75rem; }
+  .g-item figcaption::before { font-size: 0.875rem; }
+}
+
+/* Film: 사진 흐름과 따로 놓인 영상 꼭지 */
+.film { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(1rem, 2.2vw, 2rem); row-gap: 2rem; align-items: center; margin-top: clamp(4.5rem, 3rem + 5vw, 8rem); padding-top: clamp(2.5rem, 2rem + 2vw, 4rem); border-top: 1px solid var(--line); }
+.film-frame { grid-column: 1 / 5; position: relative; aspect-ratio: 9 / 16; overflow: hidden; background: #24252B; }
+.film-frame video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; cursor: pointer; }
+.film-frame .media-btn { position: absolute; left: 0.9rem; bottom: 0.9rem; }
+.film-len { font-variant-numeric: tabular-nums; opacity: 0.9; }
+.film-text { grid-column: 6 / 12; }
+.film-text h3 { margin-top: 1.5rem; font-family: var(--serif); font-size: clamp(1.75rem, 1.2rem + 1.6vw, 2.75rem); font-weight: 300; line-height: 1.3; letter-spacing: -0.035em; }
+.film-text .note { margin-top: 1.25rem; max-width: 26rem; }
+.essay-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem 2rem; margin-top: clamp(3rem, 2rem + 3vw, 5rem); padding-top: 1.1rem; border-top: 1px solid var(--line); }
+.links-row { display: flex; flex-wrap: wrap; gap: 0 2rem; }
+@media (max-width: 52rem) {
+  .film-frame { grid-column: 1 / 8; }
+  .film-text { grid-column: 1 / -1; }
+}
+@media (max-width: 40rem) { .film-frame { grid-column: 3 / 11; } }
+
+/* No.04 성사와 전례: 날짜는 규칙으로 계산 */
+.rites { border-top: 1px solid var(--ink); }
+.rite { display: grid; grid-template-columns: 12rem minmax(0, 1fr) 12rem; gap: 0.5rem 2.5rem; align-items: baseline; padding: 1.6rem 0; border-bottom: 1px solid var(--line); }
+.r-date { font-family: var(--serif); font-size: clamp(1.5rem, 1.1rem + 1vw, 2rem); font-weight: 300; line-height: 1.2; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.r-date .r-fallback { font-family: var(--sans); font-size: 0.9375rem; font-weight: 500; letter-spacing: 0; }
+.rite.is-soon .r-date { color: var(--accent); }
+.r-tag { display: inline-block; margin-left: 0.6rem; color: var(--accent); font-family: var(--sans); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em; vertical-align: 0.35em; }
+.r-rule { margin-top: 0.3rem; color: var(--ink-2); font-size: 0.9375rem; line-height: 1.7; }
+.r-when { color: var(--ink-2); font-size: 0.9375rem; text-align: right; }
+.rites-foot { margin-top: 1.75rem; }
+@media (max-width: 52rem) {
+  .rite { grid-template-columns: minmax(0, 1fr) auto; }
+  .r-body { grid-column: 1 / -1; grid-row: 2; }
+  .r-when { font-size: 0.875rem; }
+}
+
+/* No.05 소식 */
+.news-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3.5rem clamp(2.5rem, 5vw, 5.5rem); align-items: start; }
+.sub-title { padding-bottom: 1rem; border-bottom: 1px solid var(--ink); font-size: 0.9375rem; font-weight: 600; }
+.bulletin-kind { margin-top: 1.4rem; color: var(--ink-2); font-size: 0.9375rem; }
+.bulletin h3 { margin-top: 0.5rem; font-family: var(--serif); font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem); font-weight: 300; line-height: 1.3; letter-spacing: -0.035em; }
+.bulletin .note { margin-top: 0.5rem; }
+.bulletin .btn { margin-top: 1.75rem; }
+.past { margin-top: 2.75rem; }
+.rows li { border-bottom: 1px solid var(--line); }
+.rows a { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1.5rem; min-height: 3.5rem; padding: 0.9rem 0; text-decoration: none; }
+.rows a:hover .row-title { text-decoration: underline; }
+.rows time, .rows .row-date { color: var(--ink-2); font-size: 0.875rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.feed a { grid-template-columns: 5.5rem minmax(0, 1fr) auto; }
+.feed-cat { color: var(--accent); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; }
+.row-title { font-weight: 450; }
+.past-all { margin-top: 0.75rem; }
+@media (max-width: 52rem) {
+  .news-grid { grid-template-columns: 1fr; }
+  .feed a { grid-template-columns: minmax(0, 1fr) auto; gap: 0.15rem 1.25rem; }
+  .feed-cat { grid-column: 1 / -1; }
+}
+
+.interlude { margin-top: var(--section); }
+.interlude .plx { aspect-ratio: 21 / 9; }
+@media (max-width: 52rem) { .interlude .plx { aspect-ratio: 4 / 3; } }
+
+/* No.06 처음 오신 분 */
+.steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3rem clamp(1.5rem, 3vw, 3rem); counter-reset: step; }
+.steps li { padding-top: 1.25rem; border-top: 1px solid var(--ink); }
+.steps li::before { counter-increment: step; content: counter(step, decimal-leading-zero); display: block; margin-bottom: 1.5rem; color: var(--accent); font-family: var(--italic); font-size: clamp(2.5rem, 2rem + 1.4vw, 3.25rem); font-style: italic; line-height: 1; }
+.steps p { margin-top: 0.4rem; color: var(--ink-2); font-size: 0.9375rem; }
+.welcome-more { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3.5rem clamp(2.5rem, 5vw, 5.5rem); margin-top: clamp(3.5rem, 2.5rem + 3vw, 6rem); }
+.welcome-more h3 { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; letter-spacing: -0.02em; }
+.intake dl { margin-top: 1.5rem; border-top: 1px solid var(--line); }
+.intake dl div { display: grid; grid-template-columns: 3.5rem minmax(0, 1fr); gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+.intake dt { font-weight: 600; }
+.intake .note { margin-top: 1rem; }
+.alt-ways ul { margin-top: 1.5rem; border-top: 1px solid var(--line); }
+.alt-ways li { padding: 1rem 0; border-bottom: 1px solid var(--line); color: var(--ink-2); font-size: 0.9375rem; }
+.alt-ways li b { display: block; color: var(--ink); font-size: 1.0625rem; font-weight: 600; }
+.alt-ways a { color: var(--accent); }
+.alt-ways .note { margin-top: 1rem; }
+/* 전화 안내: 누르는 버튼이 아니라 읽는 안내 */
+.tel-info { display: flex; flex-direction: column; gap: 0.2rem; margin-top: 1.75rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.tel-info span { color: var(--ink-2); font-size: 0.8125rem; letter-spacing: 0.04em; }
+.tel-info b { font-family: var(--serif); font-size: 1.625rem; font-weight: 300; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+@media (max-width: 63.99rem) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 52rem) { .welcome-more { grid-template-columns: 1fr; } }
+@media (max-width: 40rem) { .steps { grid-template-columns: 1fr; gap: 2.25rem; } .steps li::before { margin-bottom: 0.9rem; } }
+
+/* No.07 묻고 답하기 */
+.qa-grid { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: 2.5rem clamp(2.5rem, 5vw, 5.5rem); align-items: start; }
+.qa details { border-bottom: 1px solid var(--line); }
+.qa details:first-child { border-top: 1px solid var(--ink); }
+.qa summary { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr) auto; align-items: baseline; gap: 0.5rem; min-height: 3.75rem; padding: 1.05rem 0; font-weight: 500; cursor: pointer; list-style: none; }
+.qa summary::-webkit-details-marker { display: none; }
+.qa summary::after { content: ""; align-self: center; width: 0.85rem; height: 0.85rem; background: linear-gradient(currentColor, currentColor) center / 100% 1px no-repeat, linear-gradient(currentColor, currentColor) center / 1px 100% no-repeat; transition: transform 0.35s var(--ease); }
+.qa details[open] summary::after { transform: rotate(45deg); }
+.qa .q, .qa .a { color: var(--accent); font-family: var(--italic); font-size: 1.125rem; font-style: italic; }
+.qa .answer { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr); gap: 0.5rem; padding: 0 2rem 1.4rem 0; color: var(--ink-2); }
+.qa-side .tel-info { margin-top: 0; }
+@media (max-width: 52rem) { .qa-grid { grid-template-columns: 1fr; } }
+
+/* No.08 오시는 길: 안내 면 */
+.visit-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 3.5rem clamp(2.5rem, 5vw, 5.5rem); align-items: start; }
+.addr { font-family: var(--serif); font-size: clamp(1.875rem, 1.2rem + 2.2vw, 3.25rem); font-weight: 300; line-height: 1.3; letter-spacing: -0.035em; }
+.visit-grid .note { margin-top: 0.75rem; }
+.visit-grid .actions { margin-top: 2.25rem; }
+.info-list { margin-top: 2.5rem; border-top: 1px solid var(--line); }
+.info-list div { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--line); font-size: 0.9375rem; }
+.info-list dt { color: var(--ink-2); }
+.info-list dd { font-variant-numeric: tabular-nums; }
+.info-list dd span { white-space: nowrap; }
+.hours { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.hours th, .hours td { padding: 0.8rem 0.6rem; border-bottom: 1px solid var(--line); text-align: left; font-size: 0.9375rem; }
+.hours th { font-weight: 500; }
+.hours td { text-align: right; }
+.hours tr.is-today { background: var(--paper-2); }
+.hours tr.is-today th::after { content: "오늘"; margin-left: 0.6rem; color: var(--accent); font-size: 0.75rem; font-weight: 600; }
+.closed { color: var(--ink-2); }
+@media (max-width: 52rem) { .visit-grid { grid-template-columns: 1fr; } }
+
+/* 판권면(푸터) */
+.colophon { margin-top: var(--section); padding: 0 0 2.5rem; }
+.colophon .mh-rule { margin-bottom: clamp(2.5rem, 4vw, 4rem); }
+.col-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 3fr); gap: 2.5rem 4rem; }
+.colophon .brand .sym { --h: 3.25rem; }
+.colophon .brand .wm { --h: 1.5rem; }
+.colophon .brand .wm-en { font-size: 1.5rem; }
+.foot-info { color: var(--ink-2); font-size: 0.9375rem; line-height: 1.9; }
+.foot-links li a { display: inline-flex; align-items: center; min-height: 2.75rem; font-size: 0.9375rem; }
+.foot-nav { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
+.copy { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 0.8125rem; }
+@media (max-width: 52rem) { .col-grid { grid-template-columns: 1fr; } }
+
+/* 움직임: 제호 괘선이 그어지고 표지 문장이 가림막 아래에서 올라온다. 나머지는 천천히 드러나기 */
+@media (prefers-reduced-motion: no-preference) {
+  .js .masthead .mh-rule::before, .js .masthead .mh-rule::after { transform: scaleX(0); transition: transform 1.6s var(--ease) 0.15s; }
+  .js .masthead .mh-rule::after { transition-delay: 0.35s; }
+  .js.is-loaded .masthead .mh-rule::before, .js.is-loaded .masthead .mh-rule::after { transform: none; }
+  .js .rise > span { transform: translateY(108%); transition: transform 1.4s var(--ease) var(--d, 0.3s); }
+  .js.is-loaded .rise > span { transform: none; }
+  .js .cover-reveal { opacity: 0; transform: translateY(14px); transition: opacity 1.4s ease 0.75s, transform 1.4s var(--ease) 0.75s; }
+  .js.is-loaded .cover-reveal { opacity: 1; transform: none; }
+
+  .js .reveal { opacity: 0; transform: translateY(16px); transition: opacity 1.2s ease, transform 1.2s var(--ease); }
+  .js .reveal.is-in { opacity: 1; transform: none; }
+  .js .f-head.reveal::before { transform: scaleX(0); transition: transform 1.5s var(--ease) 0.1s; }
+  .js .f-head.reveal.is-in::before { transform: none; }
+  .js .g-item.reveal img { scale: 1.06; transition: scale 1.8s var(--ease); }
+  .js .g-item.reveal.is-in img { scale: 1; }
+  .js .g-item.reveal figcaption { opacity: 0; transform: translateX(-10px); transition: opacity 1s ease 0.45s, transform 1s var(--ease) 0.45s; }
+  .js .g-item.reveal.is-in figcaption { opacity: 1; transform: none; }
+  .sheet:not([hidden]) { animation: sheet-in 0.5s var(--ease); }
+  @keyframes sheet-in { from { opacity: 0; transform: translateY(-10px); } }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cover-media .media-btn { display: none; }
+}
+@media (orientation: landscape) and (max-height: 30rem) {
+  .slimbar { display: none; }
+}
+
+/* 영어 판: 긴 영문이 칸을 넘지 않게 */
+.slot time small, .wk-time small { margin-left: 0.18em; font-size: 0.42em; font-weight: 400; letter-spacing: 0.02em; }
+html[lang="en"] .cover-line { font-size: clamp(1.75rem, 0.75rem + 3.1vw, 3.75rem); line-height: 1.18; letter-spacing: -0.03em; }
+html[lang="en"] .f-head h2 { letter-spacing: -0.035em; }
+html[lang="en"] .wk-rites a { grid-template-columns: 4.5rem minmax(0, 1fr); }
+html[lang="en"] .mass th { width: 9rem; }
+html[lang="en"] .slots { gap: 1.75rem 2.75rem; }
+html[lang="en"] .rite { grid-template-columns: 13rem minmax(0, 1fr) 11rem; }
+html[lang="en"] .r-date { font-size: clamp(1.375rem, 1rem + 0.9vw, 1.75rem); }
+html[lang="en"] .feed a { grid-template-columns: 7.5rem minmax(0, 1fr) auto; }
+html[lang="en"] .intake dl div { grid-template-columns: 4.75rem minmax(0, 1fr); }
+html[lang="en"] .info-list div { grid-template-columns: 7rem minmax(0, 1fr); }
+html[lang="en"] .hours tr.is-today th::after { content: "Today"; }
+html[lang="en"] .addr { font-size: clamp(1.625rem, 1.1rem + 1.7vw, 2.75rem); }
+.from-abroad { display: block; color: var(--ink-2); font-size: 0.875rem; }
+@media (max-width: 40rem) { html[lang="en"] .cover-line .ln { display: block; } }
+@media (max-width: 52rem) {
+  html[lang="en"] .mass tr { grid-template-columns: 6.25rem minmax(0, 1fr); }
+  html[lang="en"] .rite { grid-template-columns: minmax(0, 1fr) auto; }
+  html[lang="en"] .feed a { grid-template-columns: minmax(0, 1fr) auto; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="logo-symbol" viewBox="0 0 149 155"><rect width="149" height="155" style="fill:var(--logo-bg,#732939)"/><path style="fill:var(--logo-fg,#fff)" d="M9 5h4v4h-4zM21.7 5h4v4h-4zM34.4 5h4v4h-4zM47.1 5h4v4h-4zM59.8 5h4v4h-4zM72.5 5h4v4h-4zM85.2 5h4v4h-4zM97.9 5h4v4h-4zM110.6 5h4v4h-4zM123.3 5h4v4h-4zM136 5h4v4h-4zM9 11h4v4h-4zM21.7 11h4v4h-4zM34.4 11h4v4h-4zM47.1 11h4v4h-4zM59.8 11h4v4h-4zM85.2 11h4v4h-4zM97.9 11h4v4h-4zM110.6 11h4v4h-4zM123.3 11h4v4h-4zM136 11h4v4h-4zM9 17h4v4h-4zM21.7 17h4v4h-4zM34.4 17h4v4h-4zM47.1 17h4v4h-4zM97.9 17h4v4h-4zM110.6 17h4v4h-4zM123.3 17h4v4h-4zM136 17h4v4h-4zM9 24h4v4h-4zM21.7 24h4v4h-4zM34.4 24h4v4h-4zM47.1 24h4v4h-4zM97.9 24h4v4h-4zM110.6 24h4v4h-4zM123.3 24h4v4h-4zM136 24h4v4h-4zM9 33h4v4h-4zM21.7 33h4v4h-4zM34.4 33h4v4h-4zM47.1 33h4v4h-4zM97.9 33h4v4h-4zM110.6 33h4v4h-4zM123.3 33h4v4h-4zM136 33h4v4h-4zM9 42h4v4h-4zM21.7 42h4v4h-4zM34.4 42h4v4h-4zM47.1 42h4v4h-4zM97.9 42h4v4h-4zM110.6 42h4v4h-4zM123.3 42h4v4h-4zM136 42h4v4h-4zM9 53h4v4h-4zM21.7 53h4v4h-4zM34.4 53h4v4h-4zM110.6 53h4v4h-4zM123.3 53h4v4h-4zM136 53h4v4h-4zM9 66h4v4h-4zM21.7 66h4v4h-4zM34.4 66h4v4h-4zM110.6 66h4v4h-4zM123.3 66h4v4h-4zM136 66h4v4h-4zM9 82h4v4h-4zM21.7 82h4v4h-4zM34.4 82h4v4h-4zM110.6 82h4v4h-4zM123.3 82h4v4h-4zM136 82h4v4h-4zM9 100h4v4h-4zM21.7 100h4v4h-4zM123.3 100h4v4h-4zM136 100h4v4h-4zM9 121h4v4h-4zM21.7 121h4v4h-4zM123.3 121h4v4h-4zM136 121h4v4h-4zM69.5 11h10v44h-10zM57 20h35v9h-35zM56.5 46L63 55H50zM92.5 46L99 55H86zM51.75 57h9.5v39h-9.5zM87.75 57h9.5v39h-9.5zM61.25 61.6h26.5v8.4h-26.5zM74.5 72L80.5 81H68.5zM69.5 83h10v13h-10zM45.5 88.5L52 97H39zM103.5 88.5L110 97H97zM40.75 98h9.5v57h-9.5zM98.75 98h9.5v57h-9.5zM60.5 105h10v50h-10zM78.5 105h10v50h-10z"/></symbol>
+  <symbol id="logo-wordmark" viewBox="0 0 2038.577824 322.069312"><g transform="translate(-29.309204,336.920201) scale(1.000000,-1.000000)"><path d="M40 335 c-5 -2 -6 -6 -4 -15 1 -5 1 -11 1 -26 1 -32 -1 -30 39 -30 34 0 35 -1 34 -9 0 -4 -3 -7 -18 -21 -63 -58 -65 -61 -62 -69 2 -4 7 -8 11 -8 4 0 8 3 23 17 34 29 33 28 39 28 5 0 6 0 30 -24 19 -18 24 -22 27 -23 7 -1 14 5 13 14 -1 5 -1 6 -24 27 -30 30 -30 28 -6 53 16 17 19 24 15 34 -3 7 -3 7 -47 7 -44 1 -42 0 -47 7 -3 3 -3 14 -2 25 1 3 1 7 1 8 -2 6 -15 9 -23 5z M907 290 c-2 -1 -7 -8 -12 -15 -4 -7 -13 -19 -18 -26 -39 -54 -45 -63 -46 -67 -1 -12 11 -19 19 -11 2 2 13 16 24 31 29 39 32 41 40 34 3 -2 27 -33 41 -51 11 -14 15 -18 21 -18 8 0 13 11 8 20 -2 5 -17 24 -45 60 -12 14 -13 16 -13 28 0 8 0 10 -1 12 -5 6 -13 8 -18 3z M1652 291 c-2 -1 -7 -7 -11 -13 -5 -7 -19 -28 -33 -46 -34 -48 -32 -45 -33 -50 -1 -11 9 -18 17 -13 1 1 13 16 26 33 24 32 28 37 33 37 5 0 9 -3 21 -19 37 -48 38 -49 44 -52 10 -4 18 9 12 20 -3 4 -19 25 -39 50 -18 23 -18 23 -19 36 0 7 0 10 -1 13 -4 6 -12 8 -17 4z M191 290 c-11 -2 -14 -19 -4 -24 3 -2 5 -2 15 -3 14 0 17 -1 20 -8 3 -7 3 -167 -1 -172 -5 -7 0 -6 -77 -6 -79 0 -76 0 -80 8 -2 4 -2 18 -1 34 2 12 -1 16 -12 16 -10 0 -15 -5 -14 -14 1 -3 1 -18 2 -33 1 -32 1 -32 8 -35 7 -3 188 -3 194 0 8 4 7 -5 7 118 0 122 0 114 -7 117 -4 2 -42 3 -50 2z M299 290 c-13 -2 -15 -20 -3 -25 4 -2 6 -2 55 -2 53 1 56 0 58 -4 1 -4 -5 -9 -21 -17 -55 -27 -96 -48 -100 -52 -8 -8 -2 -22 10 -22 3 0 53 23 88 42 8 4 14 5 20 3 4 -1 31 -18 62 -38 16 -11 20 -12 27 -8 8 5 8 17 -2 23 -2 1 -11 7 -19 12 -9 5 -19 12 -24 14 -21 12 -20 18 4 31 18 10 29 16 33 21 7 7 4 20 -4 22 -5 0 -180 1 -184 0z M545 290 c-9 -3 -12 -16 -6 -23 4 -4 6 -4 90 -4 91 0 85 1 89 -7 1 -3 2 -9 2 -83 0 -86 0 -88 -5 -93 l-3 -2 -37 0 c-46 0 -46 0 -43 10 2 7 3 102 2 108 -2 6 -13 9 -21 6 -5 -2 -6 -5 -6 -11 1 -3 1 -26 2 -51 1 -42 1 -47 3 -52 3 -9 -2 -11 -24 -11 -20 1 -23 3 -19 13 1 2 2 17 2 51 1 26 1 49 1 52 1 7 -3 10 -12 10 -13 0 -16 -4 -14 -18 1 -5 1 -24 1 -48 0 -34 0 -39 2 -46 2 -10 2 -11 -8 -13 -13 -4 -17 -20 -6 -25 5 -3 202 -3 207 -1 9 4 11 11 6 24 l-3 8 -1 98 c-1 105 0 100 -5 105 -3 2 -4 3 -21 3 -47 0 -170 0 -173 0z M990 290 c-10 -2 -15 -17 -6 -23 4 -3 8 -4 21 -4 12 1 16 -1 19 -7 2 -3 3 -5 3 -48 0 -41 0 -45 1 -48 5 -8 17 -8 22 0 1 3 2 6 2 62 0 75 3 68 -35 68 -13 0 -25 0 -27 0z M1155 288 c-2 -2 -7 -7 -10 -11 -3 -5 -13 -19 -22 -31 -10 -13 -21 -29 -26 -35 -4 -6 -10 -14 -12 -17 -10 -12 -12 -21 -4 -28 7 -6 13 -3 22 9 4 5 13 18 21 28 7 10 15 20 17 22 8 12 15 12 25 -1 3 -4 12 -15 19 -24 7 -10 16 -21 20 -26 9 -12 13 -14 20 -10 6 4 9 12 5 19 -1 2 -5 8 -10 14 -25 32 -36 46 -43 56 -4 4 -4 7 -3 24 1 12 -11 18 -19 11z M1290 290 c-13 -1 -16 -2 -19 -7 -1 -3 -2 -10 -2 -100 -1 -109 0 -100 -8 -104 -4 -3 -137 -3 -141 0 -8 4 -10 17 -6 36 2 12 1 16 -6 19 -3 2 -5 2 -9 1 -11 -1 -14 -6 -12 -18 1 -4 1 -18 1 -31 0 -27 1 -30 7 -33 6 -3 187 -2 191 1 6 5 6 -2 6 103 1 114 -1 104 16 107 12 2 17 6 16 15 -2 10 -10 12 -34 11z M1352 290 c-11 -3 -11 -6 -12 -41 0 -45 -3 -42 46 -42 38 0 39 0 43 -7 2 -4 1 -9 -2 -12 -4 -5 -5 -5 -44 -5 -40 0 -43 0 -48 -5 -6 -6 -3 -18 6 -20 2 -1 42 -1 103 -1 96 0 99 0 103 2 9 4 9 16 0 22 -2 1 -6 2 -42 2 -42 0 -43 0 -47 5 -3 3 -4 9 -2 12 4 7 4 6 45 7 40 1 40 0 44 6 2 3 2 12 -1 15 -4 6 0 6 -88 6 -91 0 -85 -1 -90 6 -2 5 -2 14 0 17 4 7 0 6 90 6 81 1 82 1 85 3 8 6 8 18 -1 22 -3 2 -183 3 -188 2z M1735 290 c-13 -2 -17 -19 -6 -25 3 -1 6 -1 17 -2 15 0 18 -1 22 -6 1 -3 2 -7 2 -49 1 -49 0 -48 6 -52 7 -4 15 -1 17 6 2 4 2 11 2 62 -1 73 3 66 -34 66 -13 0 -24 0 -26 0z M1834 290 c-10 -2 -10 -2 -10 -63 0 -49 0 -52 2 -55 4 -7 -3 -6 101 -7 97 0 100 0 104 5 5 4 5 7 5 46 0 46 0 45 15 47 13 2 18 7 17 16 -2 9 -6 11 -28 11 -28 0 -27 2 -28 -50 0 -44 0 -44 -7 -47 -5 -3 -144 -3 -149 0 -7 3 -7 5 -7 35 0 38 -5 35 53 35 44 0 48 0 53 4 8 6 4 21 -6 23 -4 0 -110 1 -115 0z M974 150 c-15 -3 -33 -18 -41 -34 -14 -30 -9 -64 13 -86 11 -12 18 -14 33 -14 16 0 20 1 32 14 18 18 25 43 19 70 -5 28 -34 54 -56 50z m14 -29 c18 -9 26 -39 15 -60 -15 -31 -45 -24 -53 13 -5 27 18 56 38 47z M1717 150 c-29 -6 -53 -46 -48 -78 5 -25 18 -45 36 -53 10 -5 27 -5 36 0 27 14 41 48 32 84 -6 27 -34 51 -56 47z m14 -29 c7 -3 16 -16 19 -28 7 -24 -8 -51 -27 -51 -19 0 -34 27 -29 50 6 23 22 36 37 29z M1952 148 c-18 -8 -32 -24 -38 -44 -3 -10 -3 -33 -1 -43 9 -32 35 -51 62 -45 14 3 32 22 38 39 4 10 4 44 0 53 -8 24 -30 42 -49 42 -4 0 -8 -1 -12 -2z m21 -27 c22 -11 27 -50 8 -71 -21 -24 -52 6 -45 42 5 23 22 36 37 29z M1435 143 c-21 -4 -39 -23 -44 -46 -7 -34 7 -67 33 -79 9 -4 30 -4 39 1 15 7 26 22 32 44 4 16 2 33 -8 52 -8 19 -32 32 -52 28z m17 -28 c19 -9 26 -35 14 -57 -11 -23 -37 -22 -49 3 -13 28 11 65 35 54z M290 137 c-9 -3 -13 -17 -6 -24 4 -4 9 -4 48 -4 40 0 41 0 45 -6 3 -4 4 -24 2 -38 -2 -16 2 -22 13 -22 12 0 15 5 13 20 -2 18 -1 37 2 41 3 5 5 5 48 5 35 0 39 1 42 2 8 5 8 19 -1 24 -3 2 -5 3 -103 3 -55 0 -101 -1 -103 -1z"/></g></symbol>
+</svg>
+<a class="skip" href="#main" data-en="Skip to main content">본문 바로가기</a>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <div class="mh-top">
+      <p class="label mh-label" data-en="Weekly">Weekly · 주간 소식</p>
+      <div class="mh-right">
+        <p class="mh-issue"><b id="issue-week">이번 주 소식</b><span aria-hidden="true">·</span><time id="today-date">이번 주</time></p>
+        <a class="lang" data-lang-switch href="?lang=en" aria-label="English" data-en-aria-label="한국어"><span lang="ko">한국어</span><span class="lang-sep" aria-hidden="true">/</span><span lang="en">English</span></a>
+      </div>
+    </div>
+    <div class="mh-name">
+      <a class="brand brand-lg" href="#top" aria-label="천주교 성산동성당 처음으로" data-en-aria-label="Seongsan-dong Catholic Church, home">
+        <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
+        <span>
+          <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
+          <span class="wm-en" data-only="en"><span>Seongsan-dong</span> <span>Catholic Church</span></span>
+          <span class="brand-sub">103 Martyr Saints of Korea</span>
+        </span>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sheet"><span data-en="Menu">메뉴</span><span class="menu-lines" aria-hidden="true"></span></button>
+    </div>
+    <div class="mh-rule" aria-hidden="true"></div>
+    <nav class="contents" aria-label="주 메뉴" data-en-aria-label="Main menu">
+      <ol>
+        <li><a href="#mass"><span class="c-no">01</span><span data-en="Mass">미사</span></a></li>
+        <li><a href="#word"><span class="c-no">02</span><span data-en="Welcome">초대말씀</span></a></li>
+        <li><a href="#community"><span class="c-no">03</span><span data-en="Community">공동체</span></a></li>
+        <li><a href="#rites"><span class="c-no">04</span><span data-en="Sacraments">성사와 전례</span></a></li>
+        <li><a href="#news"><span class="c-no">05</span><span data-en="News">소식</span></a></li>
+        <li><a href="#welcome"><span class="c-no">06</span><span data-en="New Here?">처음 오신 분</span></a></li>
+        <li><a href="#faq"><span class="c-no">07</span><span data-en="FAQ">묻고 답하기</span></a></li>
+        <li><a href="#visit"><span class="c-no">08</span><span data-en="Visit">오시는 길</span></a></li>
+      </ol>
+    </nav>
+  </div>
+</header>
+
+<div class="slimbar" id="slimbar">
+  <div class="wrap sb-row">
+    <a class="brand brand-sm" href="#top" aria-label="천주교 성산동성당 처음으로" data-en-aria-label="Seongsan-dong Catholic Church, home">
+      <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
+      <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
+      <span class="wm-en" data-only="en"><span>Seongsan-dong</span> <span>Catholic Church</span></span>
+    </a>
+    <p class="sb-now" id="sb-now"></p>
+    <p class="sb-issue" id="sb-issue">이번 주 소식</p>
+    <a class="lang" data-lang-switch href="?lang=en" aria-label="English" data-en-aria-label="한국어"><span lang="ko">한국어</span><span class="lang-sep" aria-hidden="true">/</span><span lang="en">English</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sheet"><span data-en="Menu">메뉴</span><span class="menu-lines" aria-hidden="true"></span></button>
+  </div>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="메뉴" data-en-aria-label="Menu" hidden>
+  <div class="wrap sheet-top">
+    <span class="brand brand-sm">
+      <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
+      <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
+      <span class="wm-en" data-only="en"><span>Seongsan-dong</span> <span>Catholic Church</span></span>
+    </span>
+    <button class="sheet-close" type="button"><span data-en="Close">닫기</span><span aria-hidden="true">×</span></button>
+  </div>
+  <nav class="wrap" aria-label="모바일 메뉴" data-en-aria-label="Mobile menu">
+    <ol class="sheet-list">
+      <li><a href="#mass" data-en='<span class="c-no">01</span>Mass Times'><span class="c-no">01</span>미사<small>Mass</small></a></li>
+      <li><a href="#word" data-en='<span class="c-no">02</span>A Word of Welcome'><span class="c-no">02</span>초대말씀<small>Welcome</small></a></li>
+      <li><a href="#community" data-en='<span class="c-no">03</span>Community'><span class="c-no">03</span>공동체<small>Community</small></a></li>
+      <li><a href="#rites" data-en='<span class="c-no">04</span>Sacraments &amp; Liturgy'><span class="c-no">04</span>성사와 전례<small>Sacraments</small></a></li>
+      <li><a href="#news" data-en='<span class="c-no">05</span>News'><span class="c-no">05</span>소식<small>News</small></a></li>
+      <li><a href="#welcome" data-en='<span class="c-no">06</span>New Here?'><span class="c-no">06</span>처음 오신 분<small>New Here?</small></a></li>
+      <li><a href="#faq" data-en='<span class="c-no">07</span>FAQ'><span class="c-no">07</span>묻고 답하기<small>FAQ</small></a></li>
+      <li><a href="#visit" data-en='<span class="c-no">08</span>Visit Us'><span class="c-no">08</span>오시는 길<small>Visit</small></a></li>
+    </ol>
+    <div class="sheet-end">
+      <a class="lang" data-lang-switch href="?lang=en" aria-label="English" data-en-aria-label="한국어"><span lang="ko">한국어</span><span class="lang-sep" aria-hidden="true">/</span><span lang="en">English</span></a>
+      <p class="sheet-foot" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul<br>Parish Office 02-6387-1784">서울 마포구 성미산로2길 15<br>사무실 02-6387-1784</p>
+    </div>
+  </nav>
+</div>
+
+<main id="main">
+  <section class="cover" id="top" aria-labelledby="cover-title">
+    <div class="wrap">
+      <div class="cover-head">
+        <p class="label" data-en="Cover">Cover · 표지</p>
+        <h1 class="cover-line" id="cover-title">
+          <span class="rise"><span data-en='<span class="ln">If you want to go fast,</span> <span class="ln">go alone;</span>'>빨리 가려면 혼자 가고,</span></span>
+          <span class="rise"><span style="--d: 0.45s" data-en='<span class="ln">if you want to go far,</span> <span class="ln">go together.</span>'>멀리 가려면 함께 가라</span></span>
+        </h1>
+      </div>
+      <div class="cover-grid">
+        <figure class="cover-reveal">
+          <div class="cover-media">
+            <video id="hero-video" muted playsinline loop preload="metadata" poster="media/hero-loop-poster.jpg" aria-hidden="true">
+              <source src="media/hero-loop.mp4" type="video/mp4">
+            </video>
+            <button class="media-btn" id="hero-toggle" type="button" aria-label="영상 재생" data-en-aria-label="Play background video" data-state="paused">
+              <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h3.2v16H7zM13.8 4H17v16h-3.2z" fill="currentColor"/></svg>
+              <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg>
+            </button>
+          </div>
+          <figcaption class="fig-cap"><span class="fig">Fig. 1</span><span data-en="The main church. Welcome, everyone, to Seongsan-dong Catholic Church.">대성전. 천주교 성산동성당에 오신 모든 분을 환영합니다.</span></figcaption>
+        </figure>
+
+        <aside class="week cover-reveal" aria-labelledby="week-title">
+          <h2 class="label" id="week-title" data-en="This Week">This Week · 이번 주</h2>
+          <div class="wk-block" aria-live="polite">
+            <p class="wk-k"><span data-en="Next Mass">다음 미사</span> <i data-only="ko">Next Mass</i></p>
+            <p class="wk-time" id="next-time">10:30</p>
+            <p class="wk-name" id="next-name">주일 교중미사</p>
+            <p class="wk-left" id="next-left">고해성사는 매 미사 전에 드릴 수 있습니다.</p>
+          </div>
+          <div class="wk-block">
+            <p class="wk-k"><span data-en="This Week’s Bulletin">이번 주 주보</span> <i data-only="ko">Bulletin</i></p>
+            <p class="wk-title"><a href="proto-16-bulletin-view.html?date=2026-10-25" data-en="Thirtieth Sunday in Ordinary Time">연중 제30주일</a></p>
+            <p class="wk-meta" data-en="Bulletin for October 25 · Posted October 24.">10월 25일 주보 · 10월 24일에 올렸습니다.</p>
+          </div>
+          <div class="wk-block">
+            <p class="wk-k"><span data-en="Upcoming Liturgies">다가오는 전례</span> <i data-only="ko">Rites</i></p>
+            <ul class="wk-rites" id="wk-rites">
+              <li><a href="#rites"><span>매달 정해진 전례 일정 보기</span></a></li>
+            </ul>
+          </div>
+          <div class="wk-block">
+            <p class="wk-k"><span data-en="Office">사무실</span> <i data-only="ko">Office</i></p>
+            <p class="wk-office" id="office-state">사무실 시간</p>
+            <p class="wk-meta"><span id="office-more">월요일은 쉽니다.</span> 02-6387-1784</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap issue">
+    <nav class="toc" aria-label="이번 호 차례" data-en-aria-label="In this issue">
+      <p class="label">In this issue</p>
+      <ol>
+        <li><a href="#mass" data-en='<span class="c-no">01</span>Mass Times'><span class="c-no">01</span>미사</a></li>
+        <li><a href="#word" data-en='<span class="c-no">02</span>A Word of Welcome'><span class="c-no">02</span>초대말씀</a></li>
+        <li><a href="#community" data-en='<span class="c-no">03</span>Community'><span class="c-no">03</span>공동체</a></li>
+        <li><a href="#rites" data-en='<span class="c-no">04</span>Sacraments &amp; Liturgy'><span class="c-no">04</span>성사와 전례</a></li>
+        <li><a href="#news" data-en='<span class="c-no">05</span>News'><span class="c-no">05</span>소식</a></li>
+        <li><a href="#welcome" data-en='<span class="c-no">06</span>New Here?'><span class="c-no">06</span>처음 오신 분</a></li>
+        <li><a href="#faq" data-en='<span class="c-no">07</span>FAQ'><span class="c-no">07</span>묻고 답하기</a></li>
+        <li><a href="#visit" data-en='<span class="c-no">08</span>Visit Us'><span class="c-no">08</span>오시는 길</a></li>
+      </ol>
+      <p class="toc-issue" id="toc-issue">천주교 성산동성당 이번 주 소식</p>
+    </nav>
+
+    <div class="features">
+      <section class="feature" id="mass" aria-labelledby="mass-title">
+        <header class="f-head reveal">
+          <p class="f-meta"><span class="f-no">No. 01</span><span class="label">Mass</span></p>
+          <h2 id="mass-title" data-en="Mass Times">미사</h2>
+          <p class="dek" data-en="The Saturday 6 p.m. Mass is the Sunday Vigil Mass. Confession is available before every Mass.">토요일 저녁 6시 미사는 주일미사입니다. 고해성사는 매 미사 전에 드릴 수 있습니다.</p>
+        </header>
+        <table class="mass reveal">
+          <caption class="sr-only" data-en="Mass times by day">요일별 미사 시간</caption>
+          <tbody>
+            <tr data-day="0"><th scope="row"><span class="d-ko" data-en="Sunday">주일</span><span class="d-la" data-only="ko">Sunday</span></th><td><ul class="slots">
+              <li class="slot" data-time="08:30" data-name="아침미사"><time data-en="8:30<small>a.m.</small>">08:30</time><span data-en="Morning Mass">아침미사</span></li>
+              <li class="slot" data-time="10:30" data-name="교중미사"><time data-en="10:30<small>a.m.</small>">10:30</time><span data-en="Parish Mass">교중미사</span></li>
+              <li class="slot" data-time="15:00" data-name="가정미사"><time data-en="3:00<small>p.m.</small>">15:00</time><span data-en="Family Mass">가정미사</span></li>
+              <li class="slot" data-time="18:00" data-name="청년미사"><time data-en="6:00<small>p.m.</small>">18:00</time><span data-en="Young Adult Mass">청년미사</span></li>
+            </ul></td></tr>
+            <tr data-day="1"><th scope="row"><span class="d-ko" data-en="Monday">월요일</span><span class="d-la" data-only="ko">Monday</span></th><td><ul class="slots">
+              <li class="slot" data-time="06:00" data-name="평일미사"><time data-en="6:00<small>a.m.</small>">06:00</time><span data-en="Weekday Mass">평일미사</span></li>
+            </ul></td></tr>
+            <tr data-day="2"><th scope="row"><span class="d-ko" data-en="Tuesday">화요일</span><span class="d-la" data-only="ko">Tuesday</span></th><td><ul class="slots">
+              <li class="slot" data-time="10:00" data-name="평일미사"><time data-en="10:00<small>a.m.</small>">10:00</time><span data-en="Weekday Mass">평일미사</span></li>
+              <li class="slot" data-time="19:30" data-name="평일미사"><time data-en="7:30<small>p.m.</small>">19:30</time><span data-en="Weekday Mass">평일미사</span></li>
+            </ul></td></tr>
+            <tr data-day="3"><th scope="row"><span class="d-ko" data-en="Wednesday">수요일</span><span class="d-la" data-only="ko">Wednesday</span></th><td><ul class="slots">
+              <li class="slot" data-time="06:00" data-name="평일미사"><time data-en="6:00<small>a.m.</small>">06:00</time><span data-en="Weekday Mass">평일미사</span></li>
+              <li class="slot" data-time="10:00" data-name="평일미사"><time data-en="10:00<small>a.m.</small>">10:00</time><span data-en="Weekday Mass">평일미사</span></li>
+            </ul></td></tr>
+            <tr data-day="4"><th scope="row"><span class="d-ko" data-en="Thursday">목요일</span><span class="d-la" data-only="ko">Thursday</span></th><td><ul class="slots">
+              <li class="slot" data-time="10:00" data-name="평일미사"><time data-en="10:00<small>a.m.</small>">10:00</time><span data-en="Weekday Mass">평일미사</span></li>
+              <li class="slot" data-time="19:30" data-name="평일미사"><time data-en="7:30<small>p.m.</small>">19:30</time><span data-en="Weekday Mass">평일미사</span></li>
+            </ul></td></tr>
+            <tr data-day="5"><th scope="row"><span class="d-ko" data-en="Friday">금요일</span><span class="d-la" data-only="ko">Friday</span></th><td><ul class="slots">
+              <li class="slot" data-time="06:00" data-name="평일미사"><time data-en="6:00<small>a.m.</small>">06:00</time><span data-en="Weekday Mass">평일미사</span></li>
+              <li class="slot" data-time="10:00" data-name="평일미사"><time data-en="10:00<small>a.m.</small>">10:00</time><span data-en="Weekday Mass">평일미사</span></li>
+            </ul></td></tr>
+            <tr data-day="6"><th scope="row"><span class="d-ko" data-en="Saturday">토요일</span><span class="d-la" data-only="ko">Saturday</span></th><td><ul class="slots">
+              <li class="slot" data-time="10:00" data-name="평일미사"><time data-en="10:00<small>a.m.</small>">10:00</time><span data-en="Weekday Mass">평일미사</span></li>
+              <li class="slot" data-time="18:00" data-name="주일미사"><time data-en="6:00<small>p.m.</small>">18:00</time><span data-en="Sunday Vigil Mass">주일미사</span></li>
+            </ul></td></tr>
+          </tbody>
+        </table>
+        <div class="mass-notes reveal">
+          <p class="notice"><span data-en="<strong>Sunday Mass times changed on August 1.</strong> The Saturday 3 p.m. Children’s Mass has moved to Sunday at 3 p.m. as the Family Mass, and the Sunday 10:30 a.m. Mass is now the Parish Mass."><strong>8월 1일부터 주일 미사 시간이 바뀌었습니다.</strong> 토요일 오후 3시 어린이미사는 주일 오후 3시 가정미사로 옮겼고, 주일 10시 30분 미사는 교중미사로 드립니다.</span></p>
+          <p class="note" data-en="Please arrive 10 minutes before Mass to quiet your heart, and switch off your phone.">미사 시작 10분 전에 도착해 마음을 가다듬고, 휴대전화는 꺼 두세요.</p>
+        </div>
+      </section>
+
+      <section class="feature" id="word" aria-labelledby="word-title">
+        <header class="f-head reveal">
+          <p class="f-meta"><span class="f-no">No. 02</span><span class="label">Welcome</span></p>
+          <h2 id="word-title" data-en="A Word of Welcome">초대말씀</h2>
+        </header>
+        <div class="spread">
+          <blockquote class="reveal">
+            <p class="pull-q" data-en="The way may not be fast, but it is a way that goes far, a way that leads all the way to eternity.">그 길은 빠르지 않을지 모르지만 멀리 갈 수 있는 길이고 영원에까지 이르는 길입니다.</p>
+            <div class="pull-body">
+              <p data-en="Everyone who visits this place has already taken the first step. After that, the Lord will walk with you.">이곳을 방문하신 모든 분들은 그 첫 걸음을 시작하신 분들입니다. 하면 그 다음은 주님께서 여러분과 함께 하실 겁니다.</p>
+              <p data-en="And so I hope today’s step will be the beginning of walking together into eternity.">해서 오늘의 발걸음이 영원을 함께 하는 시작이었으면 합니다.</p>
+              <cite data-en="From “A Word of Welcome”">초대말씀 중에서</cite>
+            </div>
+          </blockquote>
+          <figure class="spread-fig reveal">
+            <div class="plx"><img src="media/photos/candles.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="성당 안 계단식 초 봉헌대에 작은 초들이 줄지어 놓인 모습" data-en-alt="Rows of small candles on a tiered votive stand inside the church" style="--focus: 50% 50%"></div>
+            <figcaption class="fig-cap"><span class="fig">Fig. 2</span><span data-en="Votive candles">초 봉헌대</span></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="feature" id="community" aria-labelledby="community-title">
+        <header class="f-head reveal">
+          <p class="f-meta"><span class="f-no">No. 03</span><span class="label">Community</span></p>
+          <h2 id="community-title" data-en="Community">공동체</h2>
+          <p class="dek" data-en="From Christmas and Lent to Baptisms and pilgrimages: the year our parish community shared.">성탄과 사순, 세례식과 순례까지. 본당 공동체가 함께 보낸 한 해입니다.</p>
+        </header>
+
+        <div class="essay" data-gallery>
+          <figure class="g-item reveal" data-gallery-item>
+            <div class="g-frame plx"><img src="media/photos/nave-wide.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="높은 곳에서 내려다본 성당 안. 붉은 벽돌 벽과 아치 창 아래 신자들이 기도하고 있다" data-en-alt="The church interior seen from above, with the faithful praying beneath red brick walls and arched windows"></div>
+            <figcaption><span class="cap" data-en="The main church: red brick and arched windows">대성전, 붉은 벽돌과 아치 창</span></figcaption>
+          </figure>
+          <figure class="g-item reveal" data-gallery-item>
+            <div class="g-frame plx"><img src="media/photos/way-of-cross.jpg" width="1600" height="1066" loading="lazy" decoding="async" alt="보라색 영대를 한 사제가 성당 안에서 십자가의 길 기도를 이끄는 모습" data-en-alt="A priest wearing a purple stole leads the Stations of the Cross inside the church"></div>
+            <figcaption><span class="cap" data-en="2026 Stations of the Cross">2026년 십자가의 길</span></figcaption>
+          </figure>
+          <figure class="g-item reveal" data-gallery-item>
+            <div class="g-frame plx"><img src="media/photos/chandelier.jpg" width="1068" height="1600" loading="lazy" decoding="async" alt="붉은 벽돌 벽에 걸린 유리 장식 등이 불을 밝힌 모습" data-en-alt="Glass lamps glowing against a red brick wall" style="--focus: 50% 35%"></div>
+            <figcaption><span class="cap" data-en="Lamps in the church">성당 안의 등</span></figcaption>
+          </figure>
+          <figure class="g-item reveal" data-gallery-item>
+            <div class="g-frame plx"><img src="media/photos/baptism-ewer.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="세례식에 쓰는 금빛 물병과 대야가 흰 천 위에 놓인 모습" data-en-alt="A gold ewer and basin used for Baptism, set on a white cloth" style="--focus: 40% 50%"></div>
+            <figcaption><span class="cap" data-en="Ewer and basin for Baptism">세례식에 쓰는 물병과 대야</span></figcaption>
+          </figure>
+          <figure class="g-item reveal" data-gallery-item>
+            <div class="g-frame plx"><img src="media/photos/pilgrimage.jpg" width="1400" height="1050" loading="lazy" decoding="async" alt="예비신자들이 성지 순례 현수막을 들고 야외에서 찍은 단체 사진" data-en-alt="Catechumens holding a pilgrimage banner in an outdoor group photo"></div>
+            <figcaption><span class="cap" data-en="2026 Catechumens’ Shrine Pilgrimage">2026년 예비자 성지 순례</span></figcaption>
+          </figure>
+          <figure class="g-item reveal" data-gallery-item>
+            <div class="g-frame plx"><img src="media/photos/youth-camp.jpg" width="1405" height="1056" loading="lazy" decoding="async" alt="청년들이 청년 여름 캠프 현수막 앞에 모여 찍은 단체 사진" data-en-alt="Young adults gathered for a group photo in front of the summer camp banner" style="--focus: 50% 60%"></div>
+            <figcaption><span class="cap" data-en="2026 Young Adult Summer Camp">2026년 청년 여름 캠프</span></figcaption>
+          </figure>
+          <figure class="g-item reveal" data-gallery-item>
+            <div class="g-frame plx"><img src="media/photos/kids-family.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="성당 마당 성모상 앞에 어린이와 가족들이 모인 모습" data-en-alt="Children and families gathered before the statue of Mary in the church courtyard"></div>
+            <figcaption><span class="cap" data-en="Children and families before the statue of Mary">성모상 앞, 어린이와 가족</span></figcaption>
+          </figure>
+        </div>
+
+        <div class="film reveal">
+          <div class="film-frame">
+            <video id="shorts" src="media/shorts-year.mp4" poster="media/shorts-year-poster.jpg" muted playsinline loop preload="metadata" aria-describedby="shorts-desc"></video>
+            <button class="media-btn" id="shorts-toggle" type="button" aria-label="영상 재생" data-en-aria-label="Play video" data-state="paused">
+              <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h3.2v16H7zM13.8 4H17v16h-3.2z" fill="currentColor"/></svg>
+              <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg>
+              <span class="film-len" id="shorts-len">0:23</span>
+            </button>
+          </div>
+          <div class="film-text">
+            <p class="label" data-en="Video">Film · 영상</p>
+            <h3 data-en="A Year at Seongsan-dong<br>Catholic Church">영상으로 보는<br>성산동성당의 한 해</h3>
+            <p class="note" data-en="23 seconds, no sound. Christmas, Baptisms, the Stations of the Cross, a shrine pilgrimage, and the young adult camp.">23초, 소리 없음. 성탄과 세례식, 십자가의 길, 성지 순례, 청년 캠프를 담았습니다.</p>
+            <div class="sr-only" id="shorts-desc" data-en="A 23-second video of a year at Seongsan-dong Catholic Church. Captions by scene:<ol><li>A year at Seongsan-dong Catholic Church</li><li>At Christmas, we welcomed the Infant Jesus</li><li>We celebrated Christmas Mass during the Night with the children</li><li>New Catholics were baptized</li><li>In Lent, we walked the Stations of the Cross together</li><li>We made a shrine pilgrimage with our catechumens</li><li>Our young adults spent the summer together</li><li>See you at church this Sunday</li></ol>">
+              성산동성당의 한 해를 담은 23초 영상입니다. 장면별 자막:
+              <ol>
+                <li>성산동성당의 한 해</li>
+                <li>성탄, 아기 예수님을 맞이하고</li>
+                <li>아이들과 함께 성탄 밤미사를 드리고</li>
+                <li>새 신자가 세례를 받았습니다</li>
+                <li>사순 시기에는 십자가의 길을 함께 걷고</li>
+                <li>예비신자들과 성지를 순례했습니다</li>
+                <li>청년들은 여름을 함께 보냈습니다</li>
+                <li>이번 주일, 성당에서 만나요</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="essay-foot">
+          <ul class="links-row">
+            <li><a class="text-link" href="proto-16-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+            <li><a class="text-link" href="proto-16-committees.html" data-en="Committees">분과 소개</a></li>
+            <li><a class="text-link" href="proto-16-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
+          </ul>
+          <a class="text-link" href="https://www.103.or.kr/board/index.html?id=board13" data-en='All event photos (in Korean) <span aria-hidden="true">→</span>'>행사 앨범 전체 보기 <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="feature" id="rites" aria-labelledby="rites-title">
+        <header class="f-head reveal">
+          <p class="f-meta"><span class="f-no">No. 04</span><span class="label">Sacraments</span></p>
+          <h2 id="rites-title" data-en="Sacraments &amp; Liturgy">성사와 전례</h2>
+          <p class="dek" data-en="Liturgies held at set times each month, listed from the nearest date.">매달 정해진 때에 드리는 전례입니다. 오늘부터 가까운 날짜 순으로 적었습니다.</p>
+        </header>
+        <ol class="rites reveal" id="rites-list">
+          <li class="rite" data-which="last" data-dow="0" data-time="14:00" data-skip="8,12">
+            <p class="r-date"><span class="r-fallback" data-en="Last Sunday of the month">매월 마지막 주일</span></p>
+            <div class="r-body"><h3 data-en="Infant Baptism">유아 세례식</h3><p class="r-rule" data-en="Last Sunday of each month. Not held in August or December.">매월 마지막 주일에 있습니다. 8월과 12월에는 없습니다.</p></div>
+            <p class="r-when" data-en="Sunday, 2:00 p.m.">주일 오후 2시</p>
+          </li>
+          <li class="rite" data-which="last" data-dow="3" data-time="10:45">
+            <p class="r-date"><span class="r-fallback" data-en="Last Wednesday of the month">매월 마지막 수요일</span></p>
+            <div class="r-body"><h3 data-en="Communion for the Sick and Homebound">병자 영성체</h3><p class="r-rule" data-en="Last Wednesday of each month. We set out from the church to visit homes.">매월 마지막 수요일, 성당에서 출발해 가정을 찾아갑니다.</p></div>
+            <p class="r-when" data-en="Wednesday, 10:45 a.m.">수요일 오전 10시 45분</p>
+          </li>
+          <li class="rite" data-which="last" data-dow="6" data-time="10:45" data-skip="8,12">
+            <p class="r-date"><span class="r-fallback" data-en="Last Saturday of the month">매월 마지막 토요일</span></p>
+            <div class="r-body"><h3 data-en="Marriage Preparation Interview">혼인 면담</h3><p class="r-rule" data-en="Last Saturday of the month. Not held in August or December.">마지막 주 토요일에 합니다. 8월과 12월에는 없습니다.</p></div>
+            <p class="r-when" data-en="Saturday, 10:45 a.m.">토요일 오전 10시 45분</p>
+          </li>
+          <li class="rite" data-which="first" data-dow="0" data-time="18:00">
+            <p class="r-date"><span class="r-fallback" data-en="First Sunday of the month">매월 첫 주일</span></p>
+            <div class="r-body"><h3 data-en="Blessing of Holy Water">성수 축복식</h3><p class="r-rule" data-en="Holy water is blessed at the 6 p.m. Mass on the first Sunday of each month.">매월 첫 주일 저녁 6시 미사에서 성수를 축복합니다.</p></div>
+            <p class="r-when" data-en="Sunday, 6:00 p.m.">주일 저녁 6시</p>
+          </li>
+          <li class="rite" data-which="first" data-dow="4" data-time="19:30">
+            <p class="r-date"><span class="r-fallback" data-en="First Thursday of the month">매월 첫 목요일</span></p>
+            <div class="r-body"><h3 data-en="Benediction of the Blessed Sacrament">성체 강복</h3><p class="r-rule" data-en="After the evening Mass on the first Thursday of each month.">매월 첫 목요일 저녁 미사가 끝난 뒤에 있습니다.</p></div>
+            <p class="r-when" data-en="Thursday, 7:30 p.m.">목요일 저녁 7시 30분</p>
+          </li>
+          <li class="rite" data-which="first" data-dow="6" data-time="10:00">
+            <p class="r-date"><span class="r-fallback" data-en="First Saturday of the month">매월 첫 토요일</span></p>
+            <div class="r-body"><h3 data-en="First Saturday Marian Mass">성모신심미사</h3><p class="r-rule" data-en="Celebrated at the 10 a.m. Mass on the first Saturday of each month during Ordinary Time.">매월 첫 토요일 오전 10시 미사로 드립니다. 연중 시기에 해당합니다.</p></div>
+            <p class="r-when" data-en="Saturday, 10:00 a.m.">토요일 오전 10시</p>
+          </li>
+        </ol>
+        <p class="note rites-foot" data-en="To sign up, please call the parish office (02-6387-1784; from abroad +82-2-6387-1784).">신청 방법은 사무실(02-6387-1784)에 문의해 주세요.</p>
+      </section>
+
+      <section class="feature" id="news" aria-labelledby="news-title">
+        <header class="f-head reveal">
+          <p class="f-meta"><span class="f-no">No. 05</span><span class="label">News</span></p>
+          <h2 id="news-title" data-en="News">소식</h2>
+          <p class="dek" data-en="This week’s bulletin and the latest parish news.">이번 주 주보와 본당의 새 소식입니다.</p>
+        </header>
+        <div class="news-grid">
+          <div class="reveal">
+            <article class="bulletin" aria-labelledby="bulletin-title">
+              <p class="sub-title" data-en="This Week’s Bulletin">이번 주 주보</p>
+              <p class="bulletin-kind" data-en="Bulletin for October 25">10월 25일 주보</p>
+              <h3 id="bulletin-title" data-en="Thirtieth Sunday in Ordinary Time">연중 제30주일</h3>
+              <p class="note" data-en="Posted October 24.">10월 24일에 올렸습니다.</p>
+              <a class="btn btn-accent" href="proto-16-bulletin-view.html?date=2026-10-25" data-en='View Bulletin <span class="arrow" aria-hidden="true">→</span>'>주보 보기 <span class="arrow" aria-hidden="true">→</span></a>
+            </article>
+            <div class="past">
+              <h3 class="sub-title" data-en="Past Bulletins">지난 주보</h3>
+              <ul class="rows">
+                <li><a href="proto-16-bulletin-view.html?date=2026-10-18"><span class="row-title" data-en="Mass for the Evangelization of Peoples (World Mission Sunday)">민족들의 복음화를 위한 미사</span><span class="row-date" data-en="October 18">10월 18일</span></a></li>
+                <li><a href="proto-16-bulletin-view.html?date=2026-10-11"><span class="row-title" data-en="Twenty-eighth Sunday in Ordinary Time">연중 제28주일</span><span class="row-date" data-en="October 11">10월 11일</span></a></li>
+                <li><a href="proto-16-bulletin-view.html?date=2026-10-04"><span class="row-title" data-en="Twenty-seventh Sunday in Ordinary Time">연중 제27주일</span><span class="row-date" data-en="October 4">10월 4일</span></a></li>
+              </ul>
+              <a class="text-link past-all" href="proto-16-bulletin.html" data-en='All past bulletins <span aria-hidden="true">→</span>'>지난 주보 모두 보기 <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="reveal">
+            <h3 class="sub-title" data-en="Latest News">새 소식</h3>
+            <ul class="rows feed">
+              <li><a href="proto-16-news-view.html?id=notice-1"><span class="feed-cat" data-en="Announcement">공지</span><span class="row-title" data-en="Mass Schedule Change (Effective August 1)">미사 시간 변경 안내 (8월 1일부터)</span><time datetime="2026-07-06" data-en="July 6">7월 6일</time></a></li>
+              <li><a href="proto-16-news-view.html?id=board17-21"><span class="feed-cat" data-en="Community">공동체</span><span class="row-title" data-en="2026 Deanery 2 Elementary Community Mass and Writing Contest">2026년 2지구 초등부 공동체 미사 및 백일장</span><time datetime="2026-10-27" data-en="October 27">10월 27일</time></a></li>
+              <li><a href="proto-16-news-view.html?id=board17-20"><span class="feed-cat" data-en="Community">공동체</span><span class="row-title" data-en="Funeral Ministry Monthly Meeting">연령회 월례 회합</span><time datetime="2026-10-26" data-en="October 26">10월 26일</time></a></li>
+              <li><a href="proto-16-news-view.html?id=board17-19"><span class="feed-cat" data-en="Community">공동체</span><span class="row-title" data-en="October 2026 Sansarang Trail Walk">2026년 10월 산사랑 둘레길</span><time datetime="2026-10-25" data-en="October 25">10월 25일</time></a></li>
+              <li><a href="proto-16-news-view.html?id=board17-14"><span class="feed-cat" data-en="Community">공동체</span><span class="row-title" data-en="2026 Parish Day: Eoullim Madang Community Festival #1">2026년 본당의 날 (어울림 마당) #1</span><time datetime="2026-10-23" data-en="October 23">10월 23일</time></a></li>
+              <li><a href="proto-16-news-view.html?id=news-91"><span class="feed-cat" data-en="Video">영상</span><span class="row-title" data-en="2026 Parish Day: Eoullim Madang Community Festival (Photo Video)">2026년도 본당의 날 (어울림 마당) 사진 영상</span><time datetime="2026-10-22" data-en="October 22">10월 22일</time></a></li>
+            </ul>
+            <a class="text-link past-all" href="proto-16-news.html" data-en='All news <span aria-hidden="true">→</span>'>새 소식 모두 보기 <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+
+        <figure class="interlude reveal">
+          <div class="plx"><img src="media/photos/sanctuary-christmas.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="붉은 벽돌 아치 사이, 십자가가 걸린 회색 부조 벽 앞의 제대" data-en-alt="The altar before a gray relief wall with a cross, framed by red brick arches" style="--focus: 50% 40%"></div>
+          <figcaption class="fig-cap"><span class="fig">Fig. 3</span><span data-en="The altar and cross of the main church">대성전 제대와 십자가</span></figcaption>
+        </figure>
+      </section>
+
+      <section class="feature" id="welcome" aria-labelledby="welcome-title">
+        <header class="f-head reveal">
+          <p class="f-meta"><span class="f-no">No. 06</span><span class="label">New Here?</span></p>
+          <h2 id="welcome-title" data-en="New Here?">처음 오신 분께</h2>
+          <p class="dek" data-en="To become Catholic, you first learn the faith and the life of the Church before Baptism. This is the catechumenate (OCIA, the Order of Christian Initiation of Adults), which meets once a week for two hours over six months or more.">천주교 신자가 되려면 세례를 받기 전에 교리와 교회 생활을 배웁니다. 이 과정을 예비신자 교리라고 하며, 6개월 이상 매주 한 번 2시간씩 함께합니다.</p>
+        </header>
+        <ol class="steps">
+          <li class="reveal"><h3 data-en="Apply">입교 신청</h3><p data-en="Submit an application form at the parish office.">본당 사무실에 입교 신청서를 냅니다.</p></li>
+          <li class="reveal"><h3 data-en="Meet a Priest">사목자 면담</h3><p data-en="After meeting with a priest, you will be placed in an OCIA class.">신부님과 면담한 뒤 예비신자 교리반이 정해집니다.</p></li>
+          <li class="reveal"><h3 data-en="Catechesis">예비신자 교리</h3><p data-en="For six months or more, learn the faith and the life of the Church once a week for two hours.">6개월 이상, 매주 한 번 2시간씩 교리와 교회 생활을 배웁니다.</p></li>
+          <li class="reveal"><h3 data-en="Baptism">세례</h3><p data-en="In Baptism you are born anew as a child of God and walk on together with the faithful.">세례식에서 하느님의 자녀로 새로 태어나 신자들과 함께 걸어갑니다.</p></li>
+        </ol>
+        <div class="welcome-more">
+          <div class="intake reveal">
+            <h3 data-en="OCIA Begins Twice a Year">입교는 1년에 두 번입니다</h3>
+            <dl>
+              <div><dt data-en="Group 1">1기</dt><dd data-en="Begins on the fourth Sunday of January; Baptism on August 15.">1월 넷째 주일에 입교하고, 8월 15일에 세례를 받습니다.</dd></div>
+              <div><dt data-en="Group 2">2기</dt><dd data-en="Begins on the fourth Sunday of August; Baptism on the Saturday of the first week of April.">8월 넷째 주일에 입교하고, 4월 첫째 주 토요일에 세례를 받습니다.</dd></div>
+            </dl>
+            <p class="note" data-en="Dates may change. Any change will be announced in the bulletin and on this website.">일정은 사정에 따라 바뀔 수 있으며, 바뀌면 주보와 홈페이지로 알려 드립니다.</p>
+            <p class="tel-info"><span data-en="OCIA inquiries · Parish Office">입교 문의 · 사무실</span><b>02-6387-1784</b></p>
+          </div>
+          <div class="alt-ways reveal">
+            <h3 data-en="If You Can’t Attend Classes">교리반에 나오기 어렵다면</h3>
+            <ul>
+              <li data-en="<b>Home-Visit Catechesis</b>For those who find it hard to come to class, such as the sick or the elderly, a catechist will visit you. You may apply at any time."><b>가정방문 교리</b>환자나 어르신처럼 교리반에 나오기 어려운 분께 교리교사가 찾아갑니다. 언제든 신청할 수 있습니다.</li>
+              <li data-en='<b>Online Catechesis</b>If the class times don’t work for you, you can study online. <a href="https://school.catholic.or.kr/cte/roompass.asp">Apply for online catechesis (in Korean)</a>'><b>인터넷 교리</b>시간을 맞추기 어려운 분은 온라인으로 공부할 수 있습니다. <a href="https://school.catholic.or.kr/cte/roompass.asp">인터넷 교리 신청</a></li>
+              <li data-en='<b>Correspondence Catechesis</b>If you live far from the church or cannot attend class (for example, workers, soldiers, or seafarers), you can study by mail. <a href="https://www.cdcc.co.kr/">About correspondence catechesis (in Korean)</a>'><b>통신 교리</b>성당이 멀거나 교리반에 나오기 어려운 분(노동자, 군인, 선원 등)은 우편으로 공부합니다. <a href="https://www.cdcc.co.kr/">통신 교리 안내</a></li>
+            </ul>
+            <p class="note" data-en="After completing online or correspondence catechesis, please submit your certificate of completion and be sure to attend the parish’s comprehensive catechesis session.">인터넷 교리나 통신 교리를 마친 뒤에는 수료증을 내고 본당 종합교리를 꼭 들으셔야 합니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature" id="faq" aria-labelledby="faq-title">
+        <header class="f-head reveal">
+          <p class="f-meta"><span class="f-no">No. 07</span><span class="label">FAQ</span></p>
+          <h2 id="faq-title" data-en="Frequently Asked Questions">묻고 답하기</h2>
+          <p class="dek" data-en="If you can’t find your answer, please call the parish office. The office is closed on Mondays.">자주 묻는 질문입니다. 찾는 답이 없으면 사무실로 전화해 주세요. 월요일은 쉽니다.</p>
+        </header>
+        <div class="qa-grid">
+          <div class="qa reveal">
+            <details><summary><span class="q">Q.</span><span data-en="I’m not Catholic. May I come to Mass?">신자가 아닌데 미사에 가 봐도 되나요?</span></summary><p class="answer"><span class="a">A.</span><span data-en="Everyone is welcome at Mass. Please arrive 10 minutes early and switch off your phone. Only baptized Catholics may receive Holy Communion.">누구나 미사에 함께할 수 있습니다. 미사 시작 10분 전에 도착해 휴대전화를 꺼 두세요. 영성체는 세례를 받은 신자만 모실 수 있습니다.</span></p></details>
+            <details><summary><span class="q">Q.</span><span data-en="When can my child be baptized?">아이 유아세례는 언제 받을 수 있나요?</span></summary><p class="answer"><span class="a">A.</span><span data-en="Infant Baptism is celebrated on the last Sunday of each month at 2 p.m., except in August and December. For the documents you will need and how to apply, please contact the parish office.">매월 마지막 주일 오후 2시에 있습니다. 8월과 12월에는 없습니다. 준비할 서류와 신청 방법은 사무실에 문의해 주세요.</span></p></details>
+            <details><summary><span class="q">Q.</span><span data-en="Where can I get a baptismal certificate or parish registration records?">세례증명서나 교적 서류는 어디서 받나요?</span></summary><p class="answer"><span class="a">A.</span><span data-en="The parish office can help. Please check the office hours below and give us a call.">본당 사무실에서 안내해 드립니다. 아래 사무실 시간을 확인하고 전화해 주세요.</span></p></details>
+            <details><summary><span class="q">Q.</span><span data-en="When are marriage preparation interviews held?">혼인 면담은 언제 하나요?</span></summary><p class="answer"><span class="a">A.</span><span data-en="On the last Saturday of the month at 10:45 a.m., except in August and December.">마지막 주 토요일 오전 10시 45분에 합니다. 8월과 12월에는 없습니다.</span></p></details>
+            <details><summary><span class="q">Q.</span><span data-en="A homebound family member would like to receive Holy Communion.">거동이 불편한 가족이 영성체를 원합니다.</span></summary><p class="answer"><span class="a">A.</span><span data-en="Communion is brought to the sick and homebound on the last Wednesday of each month, leaving the church at 10:45 a.m. To request a visit, please contact the parish office.">매월 마지막 수요일에 병자 영성체가 있습니다. 오전 10시 45분에 성당에서 출발합니다. 방문을 원하시면 사무실에 신청해 주세요.</span></p></details>
+          </div>
+          <div class="qa-side reveal">
+            <p class="tel-info"><span data-en="Parish Office">사무실</span><b>02-6387-1784</b></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature" id="visit" aria-labelledby="visit-title">
+        <header class="f-head reveal">
+          <p class="f-meta"><span class="f-no">No. 08</span><span class="label">Visit</span></p>
+          <h2 id="visit-title" data-en="Visit Us">오시는 길</h2>
+        </header>
+        <div class="visit-grid">
+          <div class="reveal">
+            <p class="addr" data-en="15, Seongmisan-ro 2-gil<br>Mapo-gu, Seoul 03996">서울 마포구<br>성미산로2길 15</p>
+            <p class="note" data-en="Republic of Korea">우편번호 03996</p>
+            <div class="actions">
+              <a class="btn btn-accent" href="https://map.kakao.com/link/search/%EC%84%9C%EC%9A%B8%20%EB%A7%88%ED%8F%AC%EA%B5%AC%20%EC%84%B1%EB%AF%B8%EC%82%B0%EB%A1%9C2%EA%B8%B8%2015" data-en='Open in Kakao Map <span class="arrow" aria-hidden="true">→</span>'>카카오맵에서 보기 <span class="arrow" aria-hidden="true">→</span></a>
+              <a class="btn" href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%20%EB%A7%88%ED%8F%AC%EA%B5%AC%20%EC%84%B1%EB%AF%B8%EC%82%B0%EB%A1%9C2%EA%B8%B8%2015" data-en="Open in Naver Map">네이버 지도에서 보기</a>
+            </div>
+            <dl class="info-list">
+              <div><dt data-en="Parish Office">사무실</dt><dd data-en='<span>02-6387-1784</span>, <span>02-6387-1785</span><span class="from-abroad">From abroad: +82-2-6387-1784</span>'><span>02-6387-1784</span>, <span>02-6387-1785</span></dd></div>
+              <div><dt data-en="Now">지금</dt><dd id="office-now">사무실 시간은 오른쪽 표를 확인하세요.</dd></div>
+              <div><dt data-en="Affiliation">소속</dt><dd data-en="Catholic Archdiocese of Seoul Foundation">(재)천주교서울대교구 유지재단</dd></div>
+            </dl>
+          </div>
+          <div class="reveal">
+            <h3 class="sub-title" data-en="Office Hours">사무실 시간</h3>
+            <table class="hours">
+              <caption class="sr-only" data-en="Parish office hours by day">요일별 사무실 운영 시간</caption>
+              <tbody>
+                <tr data-day="1"><th scope="row" data-en="Monday">월요일</th><td class="closed" data-en="Closed">쉽니다</td></tr>
+                <tr data-day="2" data-open="09:00" data-close="19:30"><th scope="row" data-en="Tuesday">화요일</th><td data-en="9:00 a.m. – 7:30 p.m.">09:00 – 19:30</td></tr>
+                <tr data-day="3" data-open="09:00" data-close="18:00"><th scope="row" data-en="Wednesday">수요일</th><td data-en="9:00 a.m. – 6:00 p.m.">09:00 – 18:00</td></tr>
+                <tr data-day="4" data-open="09:00" data-close="19:30"><th scope="row" data-en="Thursday">목요일</th><td data-en="9:00 a.m. – 7:30 p.m.">09:00 – 19:30</td></tr>
+                <tr data-day="5" data-open="09:00" data-close="18:00"><th scope="row" data-en="Friday">금요일</th><td data-en="9:00 a.m. – 6:00 p.m.">09:00 – 18:00</td></tr>
+                <tr data-day="6" data-open="09:00" data-close="19:15"><th scope="row" data-en="Saturday">토요일</th><td data-en="9:00 a.m. – 7:15 p.m.">09:00 – 19:15</td></tr>
+                <tr data-day="0" data-open="07:45" data-close="19:15"><th scope="row" data-en="Sunday">주일</th><td data-en="7:45 a.m. – 7:15 p.m.">07:45 – 19:15</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <div class="mh-rule" aria-hidden="true"></div>
+    <div class="col-grid">
+      <div>
+        <a class="brand" href="#top" aria-label="천주교 성산동성당 처음으로" data-en-aria-label="Seongsan-dong Catholic Church, home">
+          <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
+          <span>
+            <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
+            <span class="wm-en" data-only="en"><span>Seongsan-dong</span> <span>Catholic Church</span></span>
+            <span class="brand-sub">103 Martyr Saints of Korea</span>
+          </span>
+        </a>
+      </div>
+      <p class="foot-info" data-en="15, Seongmisan-ro 2-gil, Mapo-gu,<br>Seoul 03996, Republic of Korea<br>Tel. 02-6387-1784, 1785 (from abroad +82-2-6387-1784)<br>Catholic Archdiocese of Seoul Foundation">03996 서울 마포구 성미산로2길 15<br>전화 02-6387-1784, 1785<br>(재)천주교서울대교구 유지재단 소속</p>
+      <div>
+        <ul class="foot-links foot-nav">
+          <li><a href="proto-16-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+          <li><a href="proto-16-committees.html" data-en="Committees">분과 소개</a></li>
+          <li><a href="proto-16-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
+        </ul>
+        <ul class="foot-links">
+          <li><a href="#" data-en="<strong>Privacy Policy</strong>"><strong>개인정보 처리방침</strong></a></li>
+          <li><a href="#" data-en="Terms of Use">이용약관</a></li>
+          <li><a href="#" data-en="Ministry Resources Login">단체 자료실 로그인</a></li>
+        </ul>
+      </div>
+      <p class="copy"><span data-en="© 2026 Seongsan-dong Catholic Church">© 2026 천주교 성산동성당</span><span id="colophon-issue">주간 소식</span></p>
+    </div>
+  </div>
+</footer>
+
+<script src="data/glossary.js"></script>
+<script>
+document.documentElement.classList.add('js');
+// 첫 화면 연출은 가장 먼저 시작한다(아래 스크립트에서 오류가 나도 글이 가려진 채 남지 않게)
+requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('is-loaded')));
+(() => {
+  // 정적 문구를 먼저 바꿔 둔다(아래에서 읽는 제목·차례가 해당 언어가 되도록)
+  I18N.apply();
+  const EN = I18N.en, T = I18N.t, U = I18N.ui;
+  // 영어 판: 「Seongsan-dong」이 하이픈에서 줄이 갈리지 않게 묶는다
+  const keepNames = root => {
+    if (!EN) return;
+    const tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: n => (/Seongsan-dong/.test(n.nodeValue) && !n.parentElement.closest('.nw, script, style, title') ? 1 : 2) });
+    const hits = [];
+    while (tw.nextNode()) hits.push(tw.currentNode);
+    hits.forEach(n => {
+      const frag = document.createDocumentFragment();
+      n.nodeValue.split(/(Seongsan-dong)/).forEach(part => {
+        if (part === 'Seongsan-dong') { const sp = document.createElement('span'); sp.className = 'nw'; sp.textContent = part; frag.append(sp); }
+        else if (part) frag.append(part);
+      });
+      n.replaceWith(frag);
+    });
+  };
+  keepNames(document.body);
+  const DAY = EN ? U.days.full : ['주일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+  const ORD = EN ? U.ordinals : ['첫째', '둘째', '셋째', '넷째', '다섯째'];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const now = new Date();
+  const dow = now.getDay();
+  const toMin = t => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
+  const nowMin = now.getHours() * 60 + now.getMinutes();
+  const partOf = h => (h < 7 ? '새벽' : h < 12 ? '오전' : h < 18 ? '오후' : '저녁');
+  const clock = min => { const h = Math.floor(min / 60), m = min % 60; return `${partOf(h)} ${h % 12 || 12}시${m ? ` ${m}분` : ''}`; };
+  const md = d => (EN ? I18N.date(d) : `${d.getMonth() + 1}월 ${d.getDate()}일`);
+  const fill = (s, o) => s.replace(/\{(\w+)\}/g, (_, k) => o[k]).replace(/([ap])\.m\.\./g, '$1.m.');
+  const iso = d => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const sameDay = (a, b) => a.toDateString() === b.toDateString();
+
+  // 호수: 가장 가까운 지난 주일을 기준으로 「몇 월 몇째 주」
+  const sun = new Date(now); sun.setDate(now.getDate() - dow);
+  const issue = EN
+    ? fill(U.dateFormats.weekIssue, { Ordinal: ORD[Math.ceil(sun.getDate() / 7) - 1], Month: I18N.date(sun, 'm'), yyyy: sun.getFullYear() })
+    : `${sun.getFullYear()}년 ${sun.getMonth() + 1}월 ${ORD[Math.ceil(sun.getDate() / 7) - 1]} 주`;
+  const today = EN ? I18N.date(now, 'mdw') : `${md(now)} ${DAY[dow]}`;
+  document.getElementById('issue-week').textContent = issue;
+  document.getElementById('today-date').textContent = today;
+  document.getElementById('sb-issue').textContent = `${issue} · ${today}`;
+  document.getElementById('toc-issue').textContent = EN ? fill(U.sections.weekly.issueTitle, { issue }) : `천주교 성산동성당 ${issue} 소식`;
+  keepNames(document.getElementById('toc-issue'));
+  document.getElementById('colophon-issue').textContent = EN ? fill(U.sections.weekly.colophon, { issue }) : `주간 소식 · ${issue}`;
+
+  // 미사 시간표(HTML)가 유일한 원본: 오늘, 지난 미사, 다음 미사를 찾는다
+  document.querySelectorAll(`.mass tr[data-day="${dow}"]`).forEach(tr => {
+    tr.classList.add('is-today');
+    tr.querySelector('th').insertAdjacentHTML('beforeend', `<em class="today-tag">${T('오늘', U.days.today)}</em>`);
+  });
+  const slots = [...document.querySelectorAll('.mass .slot')]
+    .map(el => ({ el, day: +el.closest('tr').dataset.day, min: toMin(el.dataset.time) }));
+  slots.forEach(s => {
+    if (s.day === dow && s.min <= nowMin) {
+      s.el.classList.add('is-past');
+      s.el.insertAdjacentHTML('beforeend', `<span class="sr-only">${T('(끝났습니다)', U.a11y.ended)}</span>`);
+    }
+  });
+  let next = null, ahead = 0;
+  for (let i = 0; i < 7 && !next; i++) {
+    const d = (dow + i) % 7;
+    next = slots.filter(s => s.day === d && (i > 0 || s.min > nowMin)).sort((a, b) => a.min - b.min)[0];
+    ahead = i;
+  }
+  if (next) {
+    next.el.classList.add('is-next');
+    next.el.insertAdjacentHTML('afterbegin', `<span class="next-tag">${T('NEXT · 다음 미사', 'NEXT MASS')}</span>`);
+    const left = ahead * 1440 + next.min - nowMin, hrs = Math.floor(left / 60), mins = left % 60;
+    if (EN) {
+      const when = ahead === 0 ? U.days.today : ahead === 1 ? U.days.tomorrow : DAY[next.day];
+      const [t, ap] = I18N.time(next.el.dataset.time).split(' ');
+      const dur = U.next.duration, plural = (n, one, many) => fill(n === 1 ? one : many, { n });
+      document.getElementById('next-time').innerHTML = `${t}<small>${ap}</small>`;
+      document.getElementById('next-name').textContent = `${when}, ${U.massNames[next.el.dataset.name] || next.el.dataset.name}`;
+      document.getElementById('next-left').textContent = fill(U.next.startsIn, {
+        duration: [hrs && plural(hrs, dur.hour, dur.hours), mins && plural(mins, dur.minute, dur.minutes)].filter(Boolean).join(dur.join),
+      });
+    } else {
+      const when = ahead === 0 ? '오늘' : ahead === 1 ? '내일' : DAY[next.day];
+      document.getElementById('next-time').textContent = next.el.dataset.time;
+      document.getElementById('next-name').textContent = `${when} ${partOf(Math.floor(next.min / 60))}, ${next.el.dataset.name}`;
+      document.getElementById('next-left').textContent = `${hrs ? `${hrs}시간 ` : ''}${mins ? `${mins}분 ` : ''}뒤에 시작합니다.`;
+    }
+  }
+
+  // 사무실: 사무실 시간 표가 원본
+  const row = document.querySelector(`.hours tr[data-day="${dow}"]`);
+  row.classList.add('is-today');
+  const state = document.getElementById('office-state');
+  const more = document.getElementById('office-more');
+  let stateText, moreText, nowText;
+  const OS = U.office || {};
+  const at = t => I18N.time(t, 'prose');
+  if (!row.dataset.open) {
+    [stateText, moreText] = EN ? [OS.states.closedToday, OS.states.closedTodayMore] : ['오늘은 쉽니다', '월요일은 사무실을 열지 않습니다.'];
+    nowText = EN && OS.sentences.closedToday;
+  } else if (nowMin < toMin(row.dataset.open)) {
+    [stateText, moreText] = EN ? [OS.states.notYetOpen, fill(OS.states.opensAt, { time: at(row.dataset.open) })] : ['아직 열기 전입니다', `오늘 ${clock(toMin(row.dataset.open))}에 엽니다.`];
+    nowText = EN && fill(OS.sentences.opensAt, { time: at(row.dataset.open) });
+  } else if (nowMin < toMin(row.dataset.close)) {
+    [stateText, moreText] = EN ? [OS.states.openNow, fill(OS.states.openUntil, { time: at(row.dataset.close) })] : ['지금 열려 있습니다', `오늘 ${clock(toMin(row.dataset.close))}까지 엽니다.`];
+    nowText = EN && fill(OS.sentences.openUntil, { time: at(row.dataset.close) });
+    state.classList.add('is-open');
+  } else {
+    [stateText, moreText] = EN ? [OS.states.closedForDay, fill(OS.states.closedAt, { time: at(row.dataset.close) })] : ['오늘은 닫았습니다', `오늘은 ${clock(toMin(row.dataset.close))}에 닫았습니다.`];
+    nowText = EN && fill(OS.sentences.closedAt, { time: at(row.dataset.close) });
+  }
+  state.textContent = stateText;
+  more.textContent = moreText;
+  document.getElementById('office-now').textContent = EN ? nowText : `${stateText}. ${moreText}`;
+
+  // 정기 전례: 규칙(첫째·마지막 요일, 시각, 건너뛰는 달)으로 다음 날짜를 계산해 가까운 순서로 놓는다
+  const nthDow = (y, m, wd, which) => {
+    if (which === 'first') { const d = new Date(y, m, 1); return new Date(y, m, 1 + (wd - d.getDay() + 7) % 7); }
+    const d = new Date(y, m + 1, 0); return new Date(y, m, d.getDate() - (d.getDay() - wd + 7) % 7);
+  };
+  const list = document.getElementById('rites-list');
+  const rites = [...list.querySelectorAll('.rite')].map(li => {
+    const skip = (li.dataset.skip || '').split(',').filter(Boolean).map(Number);
+    const [h, mi] = li.dataset.time.split(':').map(Number);
+    let date = null;
+    for (let k = 0; k < 14 && !date; k++) {
+      const base = new Date(now.getFullYear(), now.getMonth() + k, 1);
+      if (skip.includes(base.getMonth() + 1)) continue;
+      const d = nthDow(base.getFullYear(), base.getMonth(), +li.dataset.dow, li.dataset.which);
+      d.setHours(h, mi, 0, 0);
+      if (d > now) date = d;
+    }
+    return { li, date, name: li.querySelector('h3').textContent };
+  }).filter(r => r.date).sort((a, b) => a.date - b.date);
+  rites.forEach((r, i) => {
+    const isToday = sameDay(r.date, now);
+    r.li.querySelector('.r-date').innerHTML = `<time datetime="${iso(r.date)}">${md(r.date)}</time>${isToday ? `<span class="r-tag">${T('오늘', U.days.today)}</span>` : ''}`;
+    if (i === 0) r.li.classList.add('is-soon');
+    list.append(r.li);
+  });
+  document.getElementById('wk-rites').innerHTML = rites.slice(0, 3).map(r =>
+    `<li><a href="#rites"><time datetime="${iso(r.date)}">${EN ? I18N.date(r.date, 'mds') : md(r.date)}</time><span>${r.name}${sameDay(r.date, now) ? ` <em class="today">${T('오늘', U.days.today)}</em>` : ''}</span></a></li>`).join('');
+
+  // 영상 버튼: 상태에 따라 아이콘과 이름을 바꾼다
+  const bindVideo = (video, btn, extra, names = [T('영상 재생', U.a11y.playVideo), T('영상 정지', U.a11y.pauseVideo)]) => {
+    const sync = () => {
+      const playing = !video.paused;
+      btn.dataset.state = playing ? 'playing' : 'paused';
+      btn.setAttribute('aria-label', playing ? names[1] : names[0]);
+      if (extra) extra(playing);
+    };
+    const toggle = () => (video.paused ? video.play().catch(sync) : video.pause());
+    btn.addEventListener('click', toggle);
+    video.addEventListener('play', sync);
+    video.addEventListener('pause', sync);
+    sync();
+    return toggle;
+  };
+  const hero = document.getElementById('hero-video');
+  bindVideo(hero, document.getElementById('hero-toggle'), null, [T('영상 재생', U.a11y.playBg), T('영상 정지', U.a11y.pauseBg)]);
+  if (!reduce) hero.play().catch(() => {});
+  const shorts = document.getElementById('shorts');
+  const len = document.getElementById('shorts-len');
+  shorts.addEventListener('click', bindVideo(shorts, document.getElementById('shorts-toggle'), playing => { len.textContent = playing ? T('정지', U.buttons.stop) : '0:23'; }));
+
+  // 얇은 머리띠: 제호가 화면을 벗어나면 내려온다
+  const slim = document.getElementById('slimbar');
+  new IntersectionObserver(([en]) => slim.classList.toggle('is-on', !en.isIntersecting)).observe(document.getElementById('masthead'));
+
+  // 지금 읽는 꼭지: 차례와 머리띠에 표시
+  const sbNow = document.getElementById('sb-now');
+  const navLinks = [...document.querySelectorAll('.toc a, .sheet-list a')];
+  const features = [...document.querySelectorAll('.feature')];
+  const mark = id => {
+    navLinks.forEach(a => (a.hash === `#${id}` ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current')));
+    const a = document.querySelector(`.toc a[href="#${id}"]`);
+    sbNow.innerHTML = a ? a.innerHTML : '';
+  };
+  const spy = new IntersectionObserver(entries => entries.forEach(en => { if (en.isIntersecting) mark(en.target.id); }), { rootMargin: '-35% 0px -60% 0px' });
+  features.forEach(s => spy.observe(s));
+  new IntersectionObserver(([en]) => { if (en.isIntersecting) mark(''); }, { rootMargin: '0px 0px -60% 0px' }).observe(document.getElementById('top'));
+
+  // 모바일 메뉴 시트: Esc와 닫기 버튼으로 닫고, 연 버튼으로 초점을 돌려준다
+  const sheet = document.getElementById('sheet');
+  const togglers = [...document.querySelectorAll('[aria-controls="sheet"]')];
+  let opener = null;
+  const setSheet = (open, restore = true) => {
+    sheet.hidden = !open;
+    togglers.forEach(b => b.setAttribute('aria-expanded', open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) sheet.querySelector('.sheet-list a').focus();
+    else if (restore && opener) opener.focus();
+  };
+  togglers.forEach(b => b.addEventListener('click', () => { opener = b; setSheet(true); }));
+  sheet.querySelector('.sheet-close').addEventListener('click', () => setSheet(false));
+  sheet.addEventListener('click', e => { if (e.target.closest('a')) setSheet(false, false); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !sheet.hidden) setSheet(false); });
+
+  // 천천히 드러나기
+  const items = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    items.forEach(el => el.classList.add('is-in'));
+  } else {
+    const io = new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+    items.forEach(el => io.observe(el));
+  }
+
+  // 시차 액자: 보이는 액자만 스크롤에 맞춰 사진을 ±6% 안에서 옮긴다
+  if (!reduce) {
+    const frames = [...document.querySelectorAll('.plx')];
+    const shown = new Set();
+    const pio = new IntersectionObserver(es => es.forEach(e => (e.isIntersecting ? shown.add(e.target) : shown.delete(e.target))), { rootMargin: '15% 0px' });
+    frames.forEach(f => pio.observe(f));
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const vh = innerHeight;
+      shown.forEach(f => {
+        const r = f.getBoundingClientRect();
+        const p = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / (vh / 2 + r.height / 2)));
+        f.style.setProperty('--py', `${(-p * r.height * 0.06).toFixed(1)}px`);
+      });
+    };
+    addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    addEventListener('resize', update);
+    update();
+  }
+})();
+</script>
+</body>
+</html>

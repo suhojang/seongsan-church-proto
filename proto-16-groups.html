@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<script src="assets/i18n.js"></script>
+<title data-en="Ministries & Groups · Seongsan-dong Catholic Church">단체 소개 · 천주교 성산동성당</title>
+<meta name="description" content="천주교 성산동성당의 분과별 단체와 활동." data-en-content="The ministries and groups of Seongsan-dong Catholic Church, by committee, and what they do.">
+<meta name="theme-color" content="#FBFAF7">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="media/brand/symbol-light.svg" type="image/svg+xml">
+<link rel="stylesheet" href="media/fonts/fonts.css">
+<style>
+/* 주간 소식지 · 하위 쪽. 기본 바탕, 제호, 판권면은 proto-16-weekly.html과 같다. */
+:root {
+  --paper: #FBFAF7;
+  --paper-2: #F2F0EA;
+  --ink: #141414;
+  --ink-2: #5E5E59;
+  --line: #E2E0D9;
+  --accent: #2A3E8C;
+  --accent-tint: #ECEEF6;
+  --logo-bg: #2A3E8C;
+  --logo-fg: #FFFFFF;
+
+  --serif: "Noto Serif KR", "AppleMyungjo", "Batang", serif;
+  --sans: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --italic: "Cormorant Garamond", "Times New Roman", serif;
+
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --wrap: 84rem;
+  --bar: 3.75rem;
+  --section: clamp(6rem, 4rem + 6vw, 10rem);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--bar) + 1.5rem); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.28em; }
+h1, h2, h3, p, figure, blockquote, dl, dd, ol, ul { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0.01em; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.skip { position: absolute; left: 1rem; top: -5rem; z-index: 400; padding: 0.75rem 1.25rem; background: var(--ink); color: var(--paper); text-decoration: none; }
+.skip:focus { top: 1rem; }
+.wrap { width: min(100% - var(--gutter) * 2, var(--wrap)); margin-inline: auto; }
+
+.label {
+  display: flex; align-items: center; gap: 0.9rem;
+  color: var(--ink-2); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; line-height: 1.4;
+}
+.label::before { content: ""; flex: none; width: 2.25rem; height: 1px; background: currentColor; }
+.note { color: var(--ink-2); font-size: 0.9375rem; line-height: 1.8; }
+.fig { flex: none; color: var(--ink); font-family: var(--italic); font-size: 1rem; font-style: italic; line-height: 1.4; }
+.c-no { font-family: var(--italic); font-size: 1rem; font-style: italic; color: var(--accent); font-variant-numeric: lining-nums; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.9rem;
+  min-height: 3.25rem; padding: 0 1.6rem; border: 1px solid var(--ink); border-radius: 2px;
+  background: transparent; color: var(--ink); font: inherit; font-size: 0.9375rem; font-weight: 500;
+  text-decoration: none; cursor: pointer; transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn-accent { border-color: var(--accent); background: var(--accent); color: #FFFFFF; }
+.btn-accent:hover { border-color: var(--ink); background: var(--ink); color: #FFFFFF; }
+.btn .arrow { font-weight: 300; transition: transform 0.3s; }
+.btn:hover .arrow { transform: translateX(3px); }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.text-link { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 2.75rem; font-size: 0.9375rem; font-weight: 500; }
+
+/* 로고 묶음: 심볼 149:155, 로고타입 2038.58:322.07 */
+.brand { display: flex; align-items: center; gap: 0.85rem; color: var(--ink); text-decoration: none; }
+.brand .sym { --h: 2.25rem; flex: none; width: calc(var(--h) * 0.9613); height: var(--h); }
+.brand .wm { --h: 1.15rem; display: block; width: calc(var(--h) * 6.3296); height: var(--h); }
+.brand-sub { display: block; margin-top: 0.4rem; color: var(--ink-2); font-size: 0.625rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; line-height: 1; white-space: nowrap; }
+.brand-lg { gap: clamp(0.9rem, 1.6vw, 1.5rem); }
+.brand-lg .sym { --h: clamp(2.6rem, 1.4rem + 3vw, 4.6rem); }
+.brand-lg .wm { --h: clamp(1.3rem, 0.7rem + 1.6vw, 2.45rem); }
+.brand-lg .brand-sub { margin-top: clamp(0.45rem, 0.8vw, 0.75rem); font-size: clamp(0.625rem, 0.55rem + 0.25vw, 0.75rem); }
+.brand-sm .sym { --h: 2.1rem; }
+.brand-sm .wm { --h: 1.05rem; }
+/* 영문 로고: 한글 로고타입 대신 명조로 짠 이름. 좁으면 두 덩이 사이에서만 줄을 바꾼다 */
+.wm-en { display: block; color: var(--ink); font-family: var(--serif); font-size: 1.125rem; font-weight: 400; line-height: 1.12; letter-spacing: -0.015em; }
+.wm-en > span { display: inline-block; }
+.brand-lg .wm-en { font-size: clamp(1.25rem, 0.7rem + 1.6vw, 2.3rem); }
+.brand-sm .wm-en { font-size: 1rem; }
+
+.menu-btn {
+  display: none; align-items: center; gap: 0.6rem; min-height: 2.75rem; padding: 0 0.25rem;
+  border: 0; background: none; color: inherit; font: inherit; font-size: 0.9375rem; cursor: pointer;
+}
+.menu-lines { position: relative; width: 1.25rem; height: 0.5rem; }
+.menu-lines::before, .menu-lines::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: currentColor; }
+.menu-lines::before { top: 0; }
+.menu-lines::after { top: 100%; }
+
+/* 제호(마스트헤드): 호수 줄, 큰 로고, 두 줄 괘선, 차례 */
+.masthead { padding-top: 0.75rem; }
+.mh-top { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem 2rem; min-height: 2.75rem; }
+.mh-issue { display: flex; flex-wrap: wrap; gap: 0 0.6rem; color: var(--ink-2); font-size: 0.8125rem; font-variant-numeric: tabular-nums; }
+.mh-issue b { color: var(--ink); font-weight: 600; }
+.mh-name { display: flex; justify-content: center; align-items: center; padding: clamp(1.75rem, 1rem + 2.5vw, 3.25rem) 0 clamp(1.5rem, 1rem + 2vw, 2.75rem); }
+.mh-rule { position: relative; height: 5px; }
+.mh-rule::before, .mh-rule::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: var(--ink); transform-origin: left; }
+.mh-rule::before { top: 0; }
+.mh-rule::after { bottom: 0; }
+.contents ol { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--line); }
+.contents a { display: inline-flex; align-items: baseline; gap: 0.55rem; min-height: 3.25rem; padding: 0.95rem 0; font-size: 0.9375rem; text-decoration: none; }
+.contents a span:last-child { background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat; transition: background-size 0.4s var(--ease); }
+.contents a:hover span:last-child { background-size: 100% 1px; }
+
+/* 스크롤하면 나타나는 얇은 머리띠 */
+.slimbar {
+  position: fixed; inset: 0 0 auto 0; z-index: 120;
+  background: rgb(251 250 247 / 0.94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+  transform: translateY(-100%); visibility: hidden; transition: transform 0.55s var(--ease), visibility 0s linear 0.55s;
+}
+.slimbar.is-on { transform: none; visibility: visible; transition: transform 0.55s var(--ease); }
+.sb-row { display: flex; align-items: center; gap: 1.5rem; min-height: var(--bar); }
+.sb-now { display: flex; align-items: baseline; gap: 0.6rem; margin-left: auto; font-size: 0.875rem; font-weight: 500; }
+.sb-now:empty { display: none; }
+.sb-issue { color: var(--ink-2); font-size: 0.8125rem; font-variant-numeric: tabular-nums; }
+
+/* 언어 전환: 지금 언어는 먹색으로 굵게, 다른 언어는 눌러서 연다 */
+.mh-right { display: flex; align-items: center; gap: 0.5rem 1.25rem; }
+.lang { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 2.75rem; color: var(--ink-2); font-size: 0.8125rem; text-decoration: none; white-space: nowrap; }
+.lang-sep { color: #B9B7AF; }
+html.lang-ko .lang span[lang="ko"], html.lang-en .lang span[lang="en"] { color: var(--ink); font-weight: 600; }
+html.lang-ko .lang:hover span[lang="en"], html.lang-en .lang:hover span[lang="ko"] { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.28em; }
+.mh-right .lang { position: relative; padding-left: 1.25rem; }
+.mh-right .lang::before { content: ""; position: absolute; left: 0; top: 50%; height: 0.9rem; border-left: 1px solid var(--line); translate: 0 -50%; }
+.sheet-end { display: flex; flex-direction: column; gap: 0.75rem; }
+.sheet-end .lang { align-self: flex-start; font-size: 0.9375rem; }
+
+/* 모바일 메뉴: 전체 화면 시트 */
+.sheet { position: fixed; inset: 0; z-index: 300; display: flex; flex-direction: column; background: var(--paper); overflow-y: auto; }
+.sheet[hidden] { display: none; }
+.sheet-top { display: flex; justify-content: space-between; align-items: center; min-height: var(--bar); border-bottom: 1px solid var(--line); }
+.sheet-close { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 2.75rem; padding: 0 0.25rem; border: 0; background: none; color: var(--ink); font: inherit; font-size: 0.9375rem; cursor: pointer; }
+.sheet-close span[aria-hidden] { font-size: 1.4rem; font-weight: 200; line-height: 1; }
+.sheet nav { display: flex; flex: 1; flex-direction: column; justify-content: space-between; gap: 2.5rem; padding-top: 1.5rem; padding-bottom: calc(2rem + env(safe-area-inset-bottom)); }
+.sheet-list li { border-bottom: 1px solid var(--line); }
+.sheet-list a { display: grid; grid-template-columns: 2.25rem minmax(0, 1fr) auto; align-items: baseline; gap: 0.5rem; min-height: 3.75rem; padding: 0.75rem 0; font-family: var(--serif); font-size: 1.5rem; font-weight: 300; letter-spacing: -0.02em; text-decoration: none; }
+.sheet-list small { color: var(--ink-2); font-family: var(--sans); font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; }
+.sheet-list a[aria-current="true"] { color: var(--accent); }
+.sheet-foot { color: var(--ink-2); font-size: 0.9375rem; }
+
+@media (max-width: 63.99rem) {
+  .menu-btn { display: inline-flex; }
+  .masthead .wrap { display: flex; flex-direction: column; }
+  .mh-name { order: -1; justify-content: space-between; padding: 0.25rem 0 0.9rem; }
+  .mh-label { display: none; }
+  .mh-top { min-height: 0; padding-bottom: 0.75rem; }
+  .contents { display: none; }
+  .sb-issue { display: none; }
+  .mh-right { flex: 1; justify-content: space-between; }
+}
+@media (max-width: 40rem) { .sb-now { display: none; } .sb-row .menu-btn { margin-left: auto; } .sb-row .lang { display: none; } }
+
+/* 영어: 단어 단위로 줄을 바꾸고, 영문에 맞게 자간과 크기를 고른다 */
+html[lang="en"] body { word-break: normal; }
+html[lang="en"] .label { letter-spacing: 0.2em; }
+html[lang="en"] .mh-issue { gap: 0 0.5rem; }
+html[lang="en"] :is(h1, h2, h3, .cover-line) { text-wrap: balance; }
+.nw { white-space: nowrap; }
+
+/* 특집 머리 */
+.feature { padding-top: var(--section); }
+.feature:first-child { padding-top: clamp(4.5rem, 3rem + 4vw, 7.5rem); }
+.f-head { position: relative; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: end; gap: 1.5rem 3rem; margin-bottom: clamp(2.75rem, 2rem + 2.4vw, 4.5rem); padding-top: 1.1rem; }
+.f-head::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: var(--ink); transform-origin: left; }
+.f-meta { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+.f-meta .label::before { display: none; }
+.f-no { color: var(--accent); font-family: var(--italic); font-size: 1.1875rem; font-style: italic; }
+.f-head h2 { font-family: var(--serif); font-size: clamp(2.4rem, 1.4rem + 3.6vw, 4.75rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.04em; }
+.dek { color: var(--ink-2); font-size: 1.0625rem; line-height: 1.85; }
+@media (max-width: 52rem) { .f-head { grid-template-columns: 1fr; gap: 1.1rem; } }
+
+/* 판권면(푸터) */
+.colophon { margin-top: var(--section); padding: 0 0 2.5rem; }
+.colophon .mh-rule { margin-bottom: clamp(2.5rem, 4vw, 4rem); }
+.col-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 3fr); gap: 2.5rem 4rem; }
+.colophon .brand .sym { --h: 3.25rem; }
+.colophon .brand .wm { --h: 1.5rem; }
+.colophon .brand .wm-en { font-size: 1.5rem; }
+.foot-info { color: var(--ink-2); font-size: 0.9375rem; line-height: 1.9; }
+.foot-links li a { display: inline-flex; align-items: center; min-height: 2.75rem; font-size: 0.9375rem; }
+.foot-nav { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--line); }
+.copy { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 0.8125rem; }
+@media (max-width: 52rem) { .col-grid { grid-template-columns: 1fr; } }
+
+
+/* ── 하위 쪽 공통 ── */
+.contents a[aria-current="page"] { color: var(--accent); }
+.contents a[aria-current="page"] span:last-child { background-size: 100% 1px; }
+.sheet-list a[aria-current="page"] { color: var(--accent); }
+.page { padding-bottom: 1px; }
+.crumbs { margin-top: clamp(1.5rem, 1rem + 1.5vw, 2.5rem); }
+.crumbs ol { display: flex; flex-wrap: wrap; gap: 0 0.65rem; color: var(--ink-2); font-size: 0.8125rem; line-height: 1.6; }
+.crumbs li + li::before { content: "/"; margin-right: 0.65rem; color: #B9B7AF; }
+.crumbs a { text-decoration: none; }
+.crumbs a:hover { color: var(--ink); text-decoration: underline; }
+.crumbs [aria-current] { color: var(--ink); }
+.head-wrap { padding-top: clamp(2.25rem, 1.5rem + 2.5vw, 4.25rem); }
+.f-head h1 { font-family: var(--serif); font-size: clamp(2.4rem, 1.4rem + 3.6vw, 4.75rem); font-weight: 300; line-height: 1.1; letter-spacing: -0.04em; }
+.f-head .solo { grid-column: 1 / -1; }
+.rise { display: block; overflow: hidden; padding: 0.06em 0 0.12em; margin: -0.06em 0 -0.12em; }
+.rise > span { display: block; }
+.sub-title { padding-bottom: 1rem; border-bottom: 1px solid var(--ink); font-size: 0.9375rem; font-weight: 600; }
+.fig-cap { display: flex; align-items: baseline; gap: 0.75rem; margin-top: 0.9rem; color: var(--ink-2); font-size: 0.8125rem; line-height: 1.6; }
+.empty { padding: 3rem 0; border-top: 1px solid var(--ink); }
+.empty-state { padding: clamp(3rem, 2rem + 4vw, 6rem) 0 0; }
+.empty-state .note { max-width: 32rem; margin-top: 1.25rem; }
+.empty-state .actions { margin-top: 2rem; }
+.meta-list { border-top: 1px solid var(--ink); }
+.meta-list div { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr); gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid var(--line); font-size: 0.9375rem; }
+.meta-list dt { color: var(--ink-2); }
+.meta-list dd { font-variant-numeric: tabular-nums; }
+html[lang="en"] .meta-list div { grid-template-columns: 5.25rem minmax(0, 1fr); }
+html[lang="en"] .f-head h1 { letter-spacing: -0.035em; }
+
+/* 공동체 소개 하위 메뉴: 차례처럼 놓은 링크 줄 */
+.subnav { margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem); border-bottom: 1px solid var(--line); }
+.subnav ol { display: flex; gap: 0 clamp(1.5rem, 3vw, 2.75rem); overflow-x: auto; scrollbar-width: none; }
+.subnav ol::-webkit-scrollbar { display: none; }
+.subnav a { position: relative; display: inline-flex; flex: none; align-items: baseline; gap: 0.5rem; min-height: 3.25rem; padding: 0.95rem 0; color: var(--ink-2); font-size: 0.9375rem; text-decoration: none; white-space: nowrap; transition: color 0.3s; }
+.subnav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform 0.45s var(--ease); }
+.subnav a:hover { color: var(--ink); }
+.subnav a[aria-current="page"] { color: var(--ink); font-weight: 500; }
+.subnav a[aria-current="page"]::after { transform: none; }
+.subnav .c-no { font-size: 0.9375rem; }
+@media (max-width: 39.99rem) {
+  .subnav ol { flex-wrap: wrap; column-gap: 1.4rem; overflow: visible; }
+  .subnav a { min-height: 2.75rem; padding: 0.7rem 0; }
+}
+
+/* 단체 소개: 분과마다 한 꼭지. 왼쪽에 따라오는 분과 이름, 오른쪽에 신문 두 단 */
+.g-index { display: flex; flex-wrap: wrap; gap: 0.5rem 0.6rem; margin-bottom: clamp(3.5rem, 2.5rem + 3vw, 5.5rem); }
+.g-index a { display: inline-flex; align-items: baseline; gap: 0.5rem; min-height: 2.5rem; padding: 0.45rem 0.9rem; border: 1px solid var(--line); border-radius: 2px; font-size: 0.875rem; text-decoration: none; transition: border-color 0.3s, color 0.3s; }
+.g-index a:hover { border-color: var(--ink); }
+.g-index .n { color: var(--ink-2); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+.org { display: grid; grid-template-columns: 15rem minmax(0, 1fr); gap: 1.5rem clamp(2.5rem, 4vw, 5rem); padding: 1.6rem 0 clamp(3.5rem, 2.5rem + 3vw, 5rem); border-top: 1px solid var(--ink); }
+.org-head { position: sticky; top: calc(var(--bar) + 2rem); align-self: start; }
+.org-head .c-no { font-size: 1.75rem; line-height: 1; }
+.org-head h2 { margin-top: 0.75rem; font-family: var(--serif); font-size: clamp(1.375rem, 1.15rem + 0.7vw, 1.75rem); font-weight: 400; line-height: 1.35; letter-spacing: -0.03em; }
+html[lang="en"] .org-head h2 { letter-spacing: -0.02em; }
+.org-head h2 a { text-decoration: none; background: linear-gradient(currentColor, currentColor) left 92% / 0 1px no-repeat; transition: background-size 0.45s var(--ease); }
+.org-head h2 a:hover { background-size: 100% 1px; }
+.org-n { margin-top: 0.5rem; color: var(--ink-2); font-size: 0.8125rem; }
+.org-list { columns: 2 19rem; column-gap: clamp(2rem, 4vw, 3.5rem); column-rule: 1px solid var(--line); }
+.grp { break-inside: avoid; margin-bottom: 1.25rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--line); }
+.grp:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: 0; }
+.grp h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; line-height: 1.45; letter-spacing: -0.02em; }
+.grp p { margin-top: 0.5rem; color: var(--ink-2); font-size: 0.9375rem; line-height: 1.85; }
+@media (max-width: 52rem) {
+  .org { grid-template-columns: 1fr; gap: 1.25rem; }
+  .org-head { position: static; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.9rem; }
+  .org-head h2 { margin-top: 0; }
+  .org-n { flex-basis: 100%; margin-top: 0; }
+}
+
+/* 움직임: 본 페이지와 같다. 제호 괘선이 그어지고, 제목은 가림막 아래에서 올라오고, 나머지는 천천히 드러난다 */
+@media (prefers-reduced-motion: no-preference) {
+  .js .masthead .mh-rule::before, .js .masthead .mh-rule::after { transform: scaleX(0); transition: transform 1.6s var(--ease) 0.15s; }
+  .js .masthead .mh-rule::after { transition-delay: 0.35s; }
+  .js.is-loaded .masthead .mh-rule::before, .js.is-loaded .masthead .mh-rule::after { transform: none; }
+  .js .rise > span { transform: translateY(108%); transition: transform 1.4s var(--ease) var(--d, 0.3s); }
+  .js.is-loaded .rise > span { transform: none; }
+  .js .reveal { opacity: 0; transform: translateY(16px); transition: opacity 1.2s ease var(--d, 0s), transform 1.2s var(--ease) var(--d, 0s); }
+  .js .reveal.is-in { opacity: 1; transform: none; }
+  .js .f-head.reveal::before { transform: scaleX(0); transition: transform 1.5s var(--ease) 0.1s; }
+  .js .f-head.reveal.is-in::before { transform: none; }
+  .js .card.reveal .c-frame img, .js .bcard.reveal .b-frame img, .js .ph.reveal img { scale: 1.06; transition: scale 1.8s var(--ease), transform 1.2s var(--ease); }
+  .js .card.reveal.is-in .c-frame img, .js .bcard.reveal.is-in .b-frame img, .js .ph.reveal.is-in img { scale: 1; }
+  .js .dist.reveal .dist-col { opacity: 0; transform: translateY(10px); transition: opacity 1s ease 0.25s, transform 1s var(--ease) 0.25s; }
+  .js .dist.reveal .dist-col.is-new { transition-delay: 0.65s; }
+  .js .dist.reveal .dist-arrow { opacity: 0; transform: translateX(-8px); transition: opacity 0.8s ease 0.5s, transform 0.8s var(--ease) 0.5s; }
+  .js .dist.reveal.is-in .dist-col, .js .dist.reveal.is-in .dist-arrow { opacity: 1; transform: none; }
+  .sheet:not([hidden]) { animation: sheet-in 0.5s var(--ease); }
+  @keyframes sheet-in { from { opacity: 0; transform: translateY(-10px); } }
+}
+@media (orientation: landscape) and (max-height: 30rem) {
+  .slimbar { display: none; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="logo-symbol" viewBox="0 0 149 155"><rect width="149" height="155" style="fill:var(--logo-bg,#732939)"/><path style="fill:var(--logo-fg,#fff)" d="M9 5h4v4h-4zM21.7 5h4v4h-4zM34.4 5h4v4h-4zM47.1 5h4v4h-4zM59.8 5h4v4h-4zM72.5 5h4v4h-4zM85.2 5h4v4h-4zM97.9 5h4v4h-4zM110.6 5h4v4h-4zM123.3 5h4v4h-4zM136 5h4v4h-4zM9 11h4v4h-4zM21.7 11h4v4h-4zM34.4 11h4v4h-4zM47.1 11h4v4h-4zM59.8 11h4v4h-4zM85.2 11h4v4h-4zM97.9 11h4v4h-4zM110.6 11h4v4h-4zM123.3 11h4v4h-4zM136 11h4v4h-4zM9 17h4v4h-4zM21.7 17h4v4h-4zM34.4 17h4v4h-4zM47.1 17h4v4h-4zM97.9 17h4v4h-4zM110.6 17h4v4h-4zM123.3 17h4v4h-4zM136 17h4v4h-4zM9 24h4v4h-4zM21.7 24h4v4h-4zM34.4 24h4v4h-4zM47.1 24h4v4h-4zM97.9 24h4v4h-4zM110.6 24h4v4h-4zM123.3 24h4v4h-4zM136 24h4v4h-4zM9 33h4v4h-4zM21.7 33h4v4h-4zM34.4 33h4v4h-4zM47.1 33h4v4h-4zM97.9 33h4v4h-4zM110.6 33h4v4h-4zM123.3 33h4v4h-4zM136 33h4v4h-4zM9 42h4v4h-4zM21.7 42h4v4h-4zM34.4 42h4v4h-4zM47.1 42h4v4h-4zM97.9 42h4v4h-4zM110.6 42h4v4h-4zM123.3 42h4v4h-4zM136 42h4v4h-4zM9 53h4v4h-4zM21.7 53h4v4h-4zM34.4 53h4v4h-4zM110.6 53h4v4h-4zM123.3 53h4v4h-4zM136 53h4v4h-4zM9 66h4v4h-4zM21.7 66h4v4h-4zM34.4 66h4v4h-4zM110.6 66h4v4h-4zM123.3 66h4v4h-4zM136 66h4v4h-4zM9 82h4v4h-4zM21.7 82h4v4h-4zM34.4 82h4v4h-4zM110.6 82h4v4h-4zM123.3 82h4v4h-4zM136 82h4v4h-4zM9 100h4v4h-4zM21.7 100h4v4h-4zM123.3 100h4v4h-4zM136 100h4v4h-4zM9 121h4v4h-4zM21.7 121h4v4h-4zM123.3 121h4v4h-4zM136 121h4v4h-4zM69.5 11h10v44h-10zM57 20h35v9h-35zM56.5 46L63 55H50zM92.5 46L99 55H86zM51.75 57h9.5v39h-9.5zM87.75 57h9.5v39h-9.5zM61.25 61.6h26.5v8.4h-26.5zM74.5 72L80.5 81H68.5zM69.5 83h10v13h-10zM45.5 88.5L52 97H39zM103.5 88.5L110 97H97zM40.75 98h9.5v57h-9.5zM98.75 98h9.5v57h-9.5zM60.5 105h10v50h-10zM78.5 105h10v50h-10z"/></symbol>
+  <symbol id="logo-wordmark" viewBox="0 0 2038.577824 322.069312"><g transform="translate(-29.309204,336.920201) scale(1.000000,-1.000000)"><path d="M40 335 c-5 -2 -6 -6 -4 -15 1 -5 1 -11 1 -26 1 -32 -1 -30 39 -30 34 0 35 -1 34 -9 0 -4 -3 -7 -18 -21 -63 -58 -65 -61 -62 -69 2 -4 7 -8 11 -8 4 0 8 3 23 17 34 29 33 28 39 28 5 0 6 0 30 -24 19 -18 24 -22 27 -23 7 -1 14 5 13 14 -1 5 -1 6 -24 27 -30 30 -30 28 -6 53 16 17 19 24 15 34 -3 7 -3 7 -47 7 -44 1 -42 0 -47 7 -3 3 -3 14 -2 25 1 3 1 7 1 8 -2 6 -15 9 -23 5z M907 290 c-2 -1 -7 -8 -12 -15 -4 -7 -13 -19 -18 -26 -39 -54 -45 -63 -46 -67 -1 -12 11 -19 19 -11 2 2 13 16 24 31 29 39 32 41 40 34 3 -2 27 -33 41 -51 11 -14 15 -18 21 -18 8 0 13 11 8 20 -2 5 -17 24 -45 60 -12 14 -13 16 -13 28 0 8 0 10 -1 12 -5 6 -13 8 -18 3z M1652 291 c-2 -1 -7 -7 -11 -13 -5 -7 -19 -28 -33 -46 -34 -48 -32 -45 -33 -50 -1 -11 9 -18 17 -13 1 1 13 16 26 33 24 32 28 37 33 37 5 0 9 -3 21 -19 37 -48 38 -49 44 -52 10 -4 18 9 12 20 -3 4 -19 25 -39 50 -18 23 -18 23 -19 36 0 7 0 10 -1 13 -4 6 -12 8 -17 4z M191 290 c-11 -2 -14 -19 -4 -24 3 -2 5 -2 15 -3 14 0 17 -1 20 -8 3 -7 3 -167 -1 -172 -5 -7 0 -6 -77 -6 -79 0 -76 0 -80 8 -2 4 -2 18 -1 34 2 12 -1 16 -12 16 -10 0 -15 -5 -14 -14 1 -3 1 -18 2 -33 1 -32 1 -32 8 -35 7 -3 188 -3 194 0 8 4 7 -5 7 118 0 122 0 114 -7 117 -4 2 -42 3 -50 2z M299 290 c-13 -2 -15 -20 -3 -25 4 -2 6 -2 55 -2 53 1 56 0 58 -4 1 -4 -5 -9 -21 -17 -55 -27 -96 -48 -100 -52 -8 -8 -2 -22 10 -22 3 0 53 23 88 42 8 4 14 5 20 3 4 -1 31 -18 62 -38 16 -11 20 -12 27 -8 8 5 8 17 -2 23 -2 1 -11 7 -19 12 -9 5 -19 12 -24 14 -21 12 -20 18 4 31 18 10 29 16 33 21 7 7 4 20 -4 22 -5 0 -180 1 -184 0z M545 290 c-9 -3 -12 -16 -6 -23 4 -4 6 -4 90 -4 91 0 85 1 89 -7 1 -3 2 -9 2 -83 0 -86 0 -88 -5 -93 l-3 -2 -37 0 c-46 0 -46 0 -43 10 2 7 3 102 2 108 -2 6 -13 9 -21 6 -5 -2 -6 -5 -6 -11 1 -3 1 -26 2 -51 1 -42 1 -47 3 -52 3 -9 -2 -11 -24 -11 -20 1 -23 3 -19 13 1 2 2 17 2 51 1 26 1 49 1 52 1 7 -3 10 -12 10 -13 0 -16 -4 -14 -18 1 -5 1 -24 1 -48 0 -34 0 -39 2 -46 2 -10 2 -11 -8 -13 -13 -4 -17 -20 -6 -25 5 -3 202 -3 207 -1 9 4 11 11 6 24 l-3 8 -1 98 c-1 105 0 100 -5 105 -3 2 -4 3 -21 3 -47 0 -170 0 -173 0z M990 290 c-10 -2 -15 -17 -6 -23 4 -3 8 -4 21 -4 12 1 16 -1 19 -7 2 -3 3 -5 3 -48 0 -41 0 -45 1 -48 5 -8 17 -8 22 0 1 3 2 6 2 62 0 75 3 68 -35 68 -13 0 -25 0 -27 0z M1155 288 c-2 -2 -7 -7 -10 -11 -3 -5 -13 -19 -22 -31 -10 -13 -21 -29 -26 -35 -4 -6 -10 -14 -12 -17 -10 -12 -12 -21 -4 -28 7 -6 13 -3 22 9 4 5 13 18 21 28 7 10 15 20 17 22 8 12 15 12 25 -1 3 -4 12 -15 19 -24 7 -10 16 -21 20 -26 9 -12 13 -14 20 -10 6 4 9 12 5 19 -1 2 -5 8 -10 14 -25 32 -36 46 -43 56 -4 4 -4 7 -3 24 1 12 -11 18 -19 11z M1290 290 c-13 -1 -16 -2 -19 -7 -1 -3 -2 -10 -2 -100 -1 -109 0 -100 -8 -104 -4 -3 -137 -3 -141 0 -8 4 -10 17 -6 36 2 12 1 16 -6 19 -3 2 -5 2 -9 1 -11 -1 -14 -6 -12 -18 1 -4 1 -18 1 -31 0 -27 1 -30 7 -33 6 -3 187 -2 191 1 6 5 6 -2 6 103 1 114 -1 104 16 107 12 2 17 6 16 15 -2 10 -10 12 -34 11z M1352 290 c-11 -3 -11 -6 -12 -41 0 -45 -3 -42 46 -42 38 0 39 0 43 -7 2 -4 1 -9 -2 -12 -4 -5 -5 -5 -44 -5 -40 0 -43 0 -48 -5 -6 -6 -3 -18 6 -20 2 -1 42 -1 103 -1 96 0 99 0 103 2 9 4 9 16 0 22 -2 1 -6 2 -42 2 -42 0 -43 0 -47 5 -3 3 -4 9 -2 12 4 7 4 6 45 7 40 1 40 0 44 6 2 3 2 12 -1 15 -4 6 0 6 -88 6 -91 0 -85 -1 -90 6 -2 5 -2 14 0 17 4 7 0 6 90 6 81 1 82 1 85 3 8 6 8 18 -1 22 -3 2 -183 3 -188 2z M1735 290 c-13 -2 -17 -19 -6 -25 3 -1 6 -1 17 -2 15 0 18 -1 22 -6 1 -3 2 -7 2 -49 1 -49 0 -48 6 -52 7 -4 15 -1 17 6 2 4 2 11 2 62 -1 73 3 66 -34 66 -13 0 -24 0 -26 0z M1834 290 c-10 -2 -10 -2 -10 -63 0 -49 0 -52 2 -55 4 -7 -3 -6 101 -7 97 0 100 0 104 5 5 4 5 7 5 46 0 46 0 45 15 47 13 2 18 7 17 16 -2 9 -6 11 -28 11 -28 0 -27 2 -28 -50 0 -44 0 -44 -7 -47 -5 -3 -144 -3 -149 0 -7 3 -7 5 -7 35 0 38 -5 35 53 35 44 0 48 0 53 4 8 6 4 21 -6 23 -4 0 -110 1 -115 0z M974 150 c-15 -3 -33 -18 -41 -34 -14 -30 -9 -64 13 -86 11 -12 18 -14 33 -14 16 0 20 1 32 14 18 18 25 43 19 70 -5 28 -34 54 -56 50z m14 -29 c18 -9 26 -39 15 -60 -15 -31 -45 -24 -53 13 -5 27 18 56 38 47z M1717 150 c-29 -6 -53 -46 -48 -78 5 -25 18 -45 36 -53 10 -5 27 -5 36 0 27 14 41 48 32 84 -6 27 -34 51 -56 47z m14 -29 c7 -3 16 -16 19 -28 7 -24 -8 -51 -27 -51 -19 0 -34 27 -29 50 6 23 22 36 37 29z M1952 148 c-18 -8 -32 -24 -38 -44 -3 -10 -3 -33 -1 -43 9 -32 35 -51 62 -45 14 3 32 22 38 39 4 10 4 44 0 53 -8 24 -30 42 -49 42 -4 0 -8 -1 -12 -2z m21 -27 c22 -11 27 -50 8 -71 -21 -24 -52 6 -45 42 5 23 22 36 37 29z M1435 143 c-21 -4 -39 -23 -44 -46 -7 -34 7 -67 33 -79 9 -4 30 -4 39 1 15 7 26 22 32 44 4 16 2 33 -8 52 -8 19 -32 32 -52 28z m17 -28 c19 -9 26 -35 14 -57 -11 -23 -37 -22 -49 3 -13 28 11 65 35 54z M290 137 c-9 -3 -13 -17 -6 -24 4 -4 9 -4 48 -4 40 0 41 0 45 -6 3 -4 4 -24 2 -38 -2 -16 2 -22 13 -22 12 0 15 5 13 20 -2 18 -1 37 2 41 3 5 5 5 48 5 35 0 39 1 42 2 8 5 8 19 -1 24 -3 2 -5 3 -103 3 -55 0 -101 -1 -103 -1z"/></g></symbol>
+</svg>
+<a class="skip" href="#main" data-en="Skip to main content">본문 바로가기</a>
+
+<header class="masthead" id="masthead">
+  <div class="wrap">
+    <div class="mh-top">
+      <p class="label mh-label" data-en="Weekly">Weekly · 주간 소식</p>
+      <div class="mh-right">
+        <p class="mh-issue"><b id="issue-week">이번 주 소식</b><span aria-hidden="true">·</span><time id="today-date">이번 주</time></p>
+        <a class="lang" data-lang-switch href="?lang=en" aria-label="English" data-en-aria-label="한국어"><span lang="ko">한국어</span><span class="lang-sep" aria-hidden="true">/</span><span lang="en">English</span></a>
+      </div>
+    </div>
+    <div class="mh-name">
+      <a class="brand brand-lg" href="proto-16-weekly.html" aria-label="천주교 성산동성당 처음으로" data-en-aria-label="Seongsan-dong Catholic Church, home">
+        <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
+        <span>
+          <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
+          <span class="wm-en" data-only="en"><span>Seongsan-dong</span> <span>Catholic Church</span></span>
+          <span class="brand-sub">103 Martyr Saints of Korea</span>
+        </span>
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sheet"><span data-en="Menu">메뉴</span><span class="menu-lines" aria-hidden="true"></span></button>
+    </div>
+    <div class="mh-rule" aria-hidden="true"></div>
+    <nav class="contents" aria-label="주 메뉴" data-en-aria-label="Main menu">
+      <ol>
+        <li><a href="proto-16-weekly.html#mass"><span class="c-no">01</span><span data-en="Mass">미사</span></a></li>
+        <li><a href="proto-16-weekly.html#word"><span class="c-no">02</span><span data-en="Welcome">초대말씀</span></a></li>
+        <li><a href="proto-16-weekly.html#community" aria-current="page"><span class="c-no">03</span><span data-en="Community">공동체</span></a></li>
+        <li><a href="proto-16-weekly.html#rites"><span class="c-no">04</span><span data-en="Sacraments">성사와 전례</span></a></li>
+        <li><a href="proto-16-weekly.html#news"><span class="c-no">05</span><span data-en="News">소식</span></a></li>
+        <li><a href="proto-16-weekly.html#welcome"><span class="c-no">06</span><span data-en="New Here?">처음 오신 분</span></a></li>
+        <li><a href="proto-16-weekly.html#faq"><span class="c-no">07</span><span data-en="FAQ">묻고 답하기</span></a></li>
+        <li><a href="proto-16-weekly.html#visit"><span class="c-no">08</span><span data-en="Visit">오시는 길</span></a></li>
+      </ol>
+    </nav>
+  </div>
+</header>
+
+<div class="slimbar" id="slimbar">
+  <div class="wrap sb-row">
+    <a class="brand brand-sm" href="proto-16-weekly.html" aria-label="천주교 성산동성당 처음으로" data-en-aria-label="Seongsan-dong Catholic Church, home">
+      <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
+      <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
+      <span class="wm-en" data-only="en"><span>Seongsan-dong</span> <span>Catholic Church</span></span>
+    </a>
+    <p class="sb-now" id="sb-now" data-en='<span class="c-no">03</span>Community'><span class="c-no">03</span>공동체</p>
+    <p class="sb-issue" id="sb-issue">이번 주 소식</p>
+    <a class="lang" data-lang-switch href="?lang=en" aria-label="English" data-en-aria-label="한국어"><span lang="ko">한국어</span><span class="lang-sep" aria-hidden="true">/</span><span lang="en">English</span></a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sheet"><span data-en="Menu">메뉴</span><span class="menu-lines" aria-hidden="true"></span></button>
+  </div>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="메뉴" data-en-aria-label="Menu" hidden>
+  <div class="wrap sheet-top">
+    <span class="brand brand-sm">
+      <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
+      <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
+      <span class="wm-en" data-only="en"><span>Seongsan-dong</span> <span>Catholic Church</span></span>
+    </span>
+    <button class="sheet-close" type="button"><span data-en="Close">닫기</span><span aria-hidden="true">×</span></button>
+  </div>
+  <nav class="wrap" aria-label="모바일 메뉴" data-en-aria-label="Mobile menu">
+    <ol class="sheet-list">
+      <li><a href="proto-16-weekly.html#mass" data-en='<span class="c-no">01</span>Mass Times'><span class="c-no">01</span>미사<small>Mass</small></a></li>
+      <li><a href="proto-16-weekly.html#word" data-en='<span class="c-no">02</span>A Word of Welcome'><span class="c-no">02</span>초대말씀<small>Welcome</small></a></li>
+      <li><a href="proto-16-weekly.html#community" aria-current="page" data-en='<span class="c-no">03</span>Community'><span class="c-no">03</span>공동체<small>Community</small></a></li>
+      <li><a href="proto-16-weekly.html#rites" data-en='<span class="c-no">04</span>Sacraments &amp; Liturgy'><span class="c-no">04</span>성사와 전례<small>Sacraments</small></a></li>
+      <li><a href="proto-16-weekly.html#news" data-en='<span class="c-no">05</span>News'><span class="c-no">05</span>소식<small>News</small></a></li>
+      <li><a href="proto-16-weekly.html#welcome" data-en='<span class="c-no">06</span>New Here?'><span class="c-no">06</span>처음 오신 분<small>New Here?</small></a></li>
+      <li><a href="proto-16-weekly.html#faq" data-en='<span class="c-no">07</span>FAQ'><span class="c-no">07</span>묻고 답하기<small>FAQ</small></a></li>
+      <li><a href="proto-16-weekly.html#visit" data-en='<span class="c-no">08</span>Visit Us'><span class="c-no">08</span>오시는 길<small>Visit</small></a></li>
+    </ol>
+    <div class="sheet-end">
+      <a class="lang" data-lang-switch href="?lang=en" aria-label="English" data-en-aria-label="한국어"><span lang="ko">한국어</span><span class="lang-sep" aria-hidden="true">/</span><span lang="en">English</span></a>
+      <p class="sheet-foot" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul<br>Parish Office 02-6387-1784">서울 마포구 성미산로2길 15<br>사무실 02-6387-1784</p>
+    </div>
+  </nav>
+</div>
+
+<main id="main" class="page">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="현재 위치" data-en-aria-label="You are here"><ol><li><a href="proto-16-weekly.html" data-en="Home">홈</a></li><li><a href="proto-16-weekly.html#community" data-en="Community">공동체</a></li><li aria-current="page" data-en="Ministries &amp; Groups">단체 소개</li></ol></nav>
+
+    <div class="head-wrap">
+      <header class="f-head reveal">
+        <p class="f-meta"><span class="f-no">No. 03</span><span class="label" data-en="Ministries &amp; Groups">Ministries &amp; Groups · 단체 소개</span></p>
+        <h1><span class="rise"><span data-en="Ministries &amp; Groups">단체 소개</span></span></h1>
+        <p class="dek" data-en="The ministries and groups within each committee, and what they do.">분과마다 함께하는 단체와 그 활동을 소개합니다.</p>
+      </header>
+    </div>
+    <nav class="subnav reveal" aria-label="공동체 소개" data-en-aria-label="About our parish community"><ol><li><a href="proto-16-plan.html"><span class="c-no">i</span><span data-en="Pastoral Plan">사목지침</span></a></li><li><a href="proto-16-committees.html"><span class="c-no">ii</span><span data-en="Committees">분과 소개</span></a></li><li><a href="proto-16-groups.html" aria-current="page"><span class="c-no">iii</span><span data-en="Ministries &amp; Groups">단체 소개</span></a></li></ol></nav>
+    <nav class="g-index reveal" id="g-index" aria-label="분과로 바로 가기" data-en-aria-label="Jump to a committee"></nav>
+    <div id="orgs"></div>
+
+  </div>
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <div class="mh-rule" aria-hidden="true"></div>
+    <div class="col-grid">
+      <div>
+        <a class="brand" href="proto-16-weekly.html" aria-label="천주교 성산동성당 처음으로" data-en-aria-label="Seongsan-dong Catholic Church, home">
+          <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
+          <span>
+            <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
+            <span class="wm-en" data-only="en"><span>Seongsan-dong</span> <span>Catholic Church</span></span>
+            <span class="brand-sub">103 Martyr Saints of Korea</span>
+          </span>
+        </a>
+      </div>
+      <p class="foot-info" data-en="15, Seongmisan-ro 2-gil, Mapo-gu,<br>Seoul 03996, Republic of Korea<br>Tel. 02-6387-1784, 1785 (from abroad +82-2-6387-1784)<br>Catholic Archdiocese of Seoul Foundation">03996 서울 마포구 성미산로2길 15<br>전화 02-6387-1784, 1785<br>(재)천주교서울대교구 유지재단 소속</p>
+      <div>
+        <ul class="foot-links foot-nav">
+          <li><a href="proto-16-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+          <li><a href="proto-16-committees.html" data-en="Committees">분과 소개</a></li>
+          <li><a href="proto-16-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
+        </ul>
+        <ul class="foot-links">
+          <li><a href="#" data-en="<strong>Privacy Policy</strong>"><strong>개인정보 처리방침</strong></a></li>
+          <li><a href="#" data-en="Terms of Use">이용약관</a></li>
+          <li><a href="#" data-en="Ministry Resources Login">단체 자료실 로그인</a></li>
+        </ul>
+      </div>
+      <p class="copy"><span data-en="© 2026 Seongsan-dong Catholic Church">© 2026 천주교 성산동성당</span><span id="colophon-issue">주간 소식</span></p>
+    </div>
+  </div>
+</footer>
+
+<script src="data/parish.js"></script>
+<script src="data/glossary.js"></script>
+<script>
+document.documentElement.classList.add('js');
+requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement.classList.add('is-loaded')));
+(() => {
+  // 정적 문구를 먼저 바꾼다(아래에서 그려 넣는 글은 언어에 맞게 고른다)
+  I18N.apply();
+  const EN = I18N.en, T = I18N.t, U = I18N.ui, pick = I18N.pick;
+  const B = window.BOARD || { bulletins: [], news: [] };
+  const P = window.PARISH || { committees: [], organizations: [] };
+  const BRAND = T('천주교 성산동성당', U.brand && U.brand.name);
+  const DAY = EN ? U.days.full : ['주일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+  // 분류 이름: 한국어 판에서도 꾸밈 영문은 표기 기준(Announcement · Community · Photos · Video)을 따른다
+  const catEn = c => ((U.newsCategories || {})[c] || {}).label || 'News';
+  const catLabel = c => (EN ? catEn(c) : c);
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const fill = (s, o) => String(s).replace(/\{(\w+)\}/g, (_, k) => o[k]).replace(/([ap])\.m\.\./g, '$1.m.');
+  const pd = s => { const [y, m, d] = String(s).split('-').map(Number); return new Date(y, m - 1, d); };
+  const md = d => (EN ? I18N.date(d) : `${d.getMonth() + 1}월 ${d.getDate()}일`);
+  const ymd = d => (EN ? I18N.date(d, 'ymd') : `${d.getFullYear()}년 ${md(d)}`);
+  const param = name => new URLSearchParams(location.search).get(name);
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg>';
+  // 영어 판: 「Seongsan-dong」이 하이픈에서 줄이 갈리지 않게 묶는다(그려 넣은 뒤 한 번 더 부른다)
+  const keepNames = root => {
+    if (!EN) return;
+    const tw = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: n => (/Seongsan-dong/.test(n.nodeValue) && !n.parentElement.closest('.nw, script, style, title') ? 1 : 2) });
+    const hits = [];
+    while (tw.nextNode()) hits.push(tw.currentNode);
+    hits.forEach(n => {
+      const frag = document.createDocumentFragment();
+      n.nodeValue.split(/(Seongsan-dong)/).forEach(part => {
+        if (part === 'Seongsan-dong') { const sp = document.createElement('span'); sp.className = 'nw'; sp.textContent = part; frag.append(sp); }
+        else if (part) frag.append(part);
+      });
+      n.replaceWith(frag);
+    });
+  };
+
+  // 천천히 드러나기: 그려 넣은 뒤에도 다시 불러 새 요소를 지켜본다
+  let io = null;
+  const observeReveals = () => {
+    const items = document.querySelectorAll('.reveal:not(.is-in):not([data-watched])');
+    if (reduce || !('IntersectionObserver' in window)) { items.forEach(el => el.classList.add('is-in')); return; }
+    io = io || new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+    }), { rootMargin: '0px 0px -6% 0px' });
+    items.forEach(el => { el.dataset.watched = ''; io.observe(el); });
+  };
+
+  // 주보 표지 카드
+  const bulletinHref = b => `proto-16-bulletin-view.html?date=${encodeURIComponent(b.date)}`;
+  const thisWeek = T('이번 주', U.breadcrumb && U.breadcrumb.thisWeek);
+  const coverCard = (b, k, current) => `<li class="bcard reveal${current ? ' is-current' : ''}" style="--d: ${(k % 4) * 0.08}s"><a href="${bulletinHref(b)}">
+      <div class="b-frame"><img src="${esc(b.thumb)}" width="560" height="792" loading="lazy" decoding="async" alt=""></div>
+      <p class="b-k"><time datetime="${esc(b.date)}">${md(pd(b.date))}</time>${current ? `<span class="b-tag">${thisWeek}</span>` : ''}</p>
+      <h3 class="b-title">${esc(pick(b, 'title'))}</h3>
+    </a></li>`;
+
+  // 새 소식 카드
+  const newsHref = n => `proto-16-news-view.html?id=${encodeURIComponent(n.id)}`;
+  const newsCard = (n, k) => `<li class="card reveal" style="--d: ${(k % 3) * 0.08}s"><a href="${newsHref(n)}">
+      <div class="c-frame">${n.cover
+        ? `<img src="${esc(n.cover)}" width="720" height="480" loading="lazy" decoding="async" alt="">`
+        : `<span class="c-ph" aria-hidden="true"><span class="c-ph-b"><span class="c-ph-k">${esc(catEn(n.cat))}</span>${EN ? '' : `<span class="c-ph-t">${esc(n.cat)}</span>`}</span></span>`}${n.cat === '영상' ? `<span class="c-play" aria-hidden="true">${PLAY}</span>` : ''}</div>
+      <p class="c-k">${n.pinned ? `<span class="c-pin">${T('고정', U.newsCategories.pinned)}</span>` : ''}<span class="c-cat">${esc(catLabel(n.cat))}</span><time datetime="${esc(n.date)}">${md(pd(n.date))}</time></p>
+      <h3 class="c-title">${esc(pick(n, 'title'))}</h3>
+    </a></li>`;
+
+  // ── 단체 소개: data/parish.js 의 organizations(분과 순서는 committees 를 따른다) ──
+  const pad = x => String(x).padStart(2, '0');
+  const cs = P.committees || [];
+  const orgs = (P.organizations || []).map(o => {
+    const k = cs.findIndex(c => c.id === o.committee);
+    return { o, c: cs[k], no: k + 1 };
+  }).filter(x => x.c);
+  const countText = n => (EN ? `${n} ${n === 1 ? 'group' : 'groups'}` : `단체 ${n}곳`);
+  document.getElementById('g-index').innerHTML = orgs.map(({ o, c, no }) => `<a href="#${esc(o.committee)}"><span>${esc(pick(c, 'name'))}</span><span class="n">${o.groups.length}</span></a>`).join('');
+  document.getElementById('orgs').innerHTML = orgs.map(({ o, c, no }) => `<section class="org reveal" id="${esc(o.committee)}" aria-labelledby="${esc(o.committee)}-h">
+      <header class="org-head">
+        <span class="c-no" aria-hidden="true">${pad(no)}</span>
+        <h2 id="${esc(o.committee)}-h"><a href="proto-16-committees.html#${esc(o.committee)}">${esc(pick(c, 'name'))}</a></h2>
+        <p class="org-n">${countText(o.groups.length)}</p>
+      </header>
+      <div class="org-list">${o.groups.map(g => `<article class="grp"><h3>${esc(pick(g, 'name'))}</h3><p>${esc(pick(g, 'desc'))}</p></article>`).join('')}</div>
+    </section>`).join('');
+
+  // ── 공통: 호수 줄, 얇은 머리띠, 모바일 메뉴, 천천히 드러나기 ──
+  const ORD = EN ? U.ordinals : ['첫째', '둘째', '셋째', '넷째', '다섯째'];
+  const now = new Date();
+  const sun = new Date(now); sun.setDate(now.getDate() - now.getDay());
+  const issue = EN
+    ? fill(U.dateFormats.weekIssue, { Ordinal: ORD[Math.ceil(sun.getDate() / 7) - 1], Month: I18N.date(sun, 'm'), yyyy: sun.getFullYear() })
+    : `${sun.getFullYear()}년 ${sun.getMonth() + 1}월 ${ORD[Math.ceil(sun.getDate() / 7) - 1]} 주`;
+  const todayText = EN ? I18N.date(now, 'mdw') : `${md(now)} ${DAY[now.getDay()]}`;
+  document.getElementById('issue-week').textContent = issue;
+  document.getElementById('today-date').textContent = todayText;
+  document.getElementById('sb-issue').textContent = `${issue} · ${todayText}`;
+  document.getElementById('colophon-issue').textContent = EN ? fill(U.sections.weekly.colophon, { issue }) : `주간 소식 · ${issue}`;
+
+  const slim = document.getElementById('slimbar');
+  new IntersectionObserver(([en]) => slim.classList.toggle('is-on', !en.isIntersecting)).observe(document.getElementById('masthead'));
+
+  const sheet = document.getElementById('sheet');
+  const togglers = [...document.querySelectorAll('[aria-controls="sheet"]')];
+  let opener = null;
+  const setSheet = (open, restore = true) => {
+    sheet.hidden = !open;
+    togglers.forEach(b => b.setAttribute('aria-expanded', open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) sheet.querySelector('.sheet-list a').focus();
+    else if (restore && opener) opener.focus();
+  };
+  togglers.forEach(b => b.addEventListener('click', () => { opener = b; setSheet(true); }));
+  sheet.querySelector('.sheet-close').addEventListener('click', () => setSheet(false));
+  sheet.addEventListener('click', e => { if (e.target.closest('a')) setSheet(false, false); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !sheet.hidden) setSheet(false); });
+
+  keepNames(document.body);
+  observeReveals();
+})();
+</script>
+</body>
+</html>

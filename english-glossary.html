@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>영문 표기 기준 · 성산동성당 홈페이지 시안</title>
+<meta name="color-scheme" content="light">
+<link rel="icon" href="media/brand/symbol-light.svg" type="image/svg+xml">
+<link rel="stylesheet" href="media/fonts/fonts.css">
+<style>
+:root {
+  --paper: #F5F3EF; --paper-2: #ECE8E2; --ink: #2B2826; --ink-2: #6E6862; --line: #DAD5CE;
+  --sans: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 1rem; line-height: 1.7; word-break: keep-all; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.wrap { width: min(100% - 2.5rem, 76rem); margin-inline: auto; }
+header { padding: 3rem 0 3rem; }
+.back { color: var(--ink-2); font-size: 0.875rem; text-decoration: none; }
+.back:hover { color: var(--ink); }
+.label { display: flex; align-items: center; gap: 0.9rem; margin-top: 3.5rem; color: var(--ink-2); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; }
+.label::before { content: ""; width: 2.25rem; height: 1px; background: currentColor; }
+h1 { margin: 1.25rem 0 0; font-size: clamp(2.25rem, 1.4rem + 3.4vw, 4rem); font-weight: 250; line-height: 1.12; letter-spacing: -0.035em; }
+header p { max-width: 46rem; margin: 1.25rem 0 0; color: var(--ink-2); }
+.variant { margin-top: 1.5rem; padding: 0.25rem 1.5rem; border-left: 1px solid var(--ink); max-width: 52rem; color: var(--ink-2); font-size: 0.9375rem; }
+.variant p { margin: 0.75rem 0; }
+.variant strong { color: var(--ink); }
+.variant strong { font-weight: 600; }
+nav.cats { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; padding: 1.25rem 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); font-size: 0.9375rem; }
+nav.cats a { text-decoration: none; color: var(--ink-2); }
+nav.cats a:hover { color: var(--ink); }
+section { padding: 3.5rem 0 1rem; }
+h2 { margin: 0 0 1.25rem; font-size: 1.5rem; font-weight: 300; letter-spacing: -0.02em; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; }
+th { text-align: left; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; color: var(--ink-2); padding: 0 1rem 0.75rem 0; border-bottom: 1px solid var(--ink); }
+td { vertical-align: top; padding: 1rem 1rem 1rem 0; border-bottom: 1px solid var(--line); }
+td.ko { width: 18%; }
+td.en { width: 26%; font-weight: 500; word-break: normal; }
+td.note { color: var(--ink-2); }
+td.note .alt { display: block; margin-top: 0.35rem; font-size: 0.8125rem; }
+td.src { width: 20%; font-size: 0.8125rem; word-break: break-all; }
+td.src a { display: block; color: var(--ink-2); text-underline-offset: 0.2em; }
+td.src a + a { margin-top: 0.25rem; }
+.questions { margin: 0; padding-left: 1.25rem; }
+.questions li + li { margin-top: 0.5rem; }
+footer { margin-top: 4rem; padding: 2rem 0 3rem; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 0.875rem; }
+@media (max-width: 52rem) {
+  thead { display: none; }
+  table, tbody, tr, td { display: block; width: auto !important; }
+  tr { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  td { padding: 0.15rem 0; border: 0; }
+  td.en { font-size: 1.0625rem; }
+  td.src { margin-top: 0.4rem; }
+}
+</style>
+</head>
+<body>
+<header class="wrap">
+  <a class="back" href="index.html">← 시안 목록</a>
+  <p class="label">English Style Guide</p>
+  <h1>영문 표기 기준</h1>
+  <p>영문 페이지의 모든 용어는 이 표를 따릅니다. 해외 가톨릭 교회와 교구, 미국 주교회의(USCCB), 교황청, 서울대교구·한국천주교주교회의의 영문 표기를 조사해 정했고, 근거가 된 자료를 함께 적었습니다.</p>
+  <div class="variant" id="variant"></div>
+</header>
+
+<main class="wrap">
+  <nav class="cats" id="cats" aria-label="분류"></nav>
+  <div id="sections"></div>
+  <section id="questions-sec" hidden>
+    <h2>본당 확인이 필요한 항목</h2>
+    <ul class="questions" id="questions"></ul>
+  </section>
+</main>
+
+<footer class="wrap">프로토타입 자료입니다. 실제 적용 전에 본당과 교구 홍보 담당의 확인을 받아 주세요.</footer>
+
+<script src="data/glossary.js"></script>
+<script>
+(function () {
+  const G = window.GLOSSARY;
+  if (!G) return;
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const list = v => (Array.isArray(v) ? v : v ? [v] : []);
+  const rationale = list(G.rationale_ko).length ? list(G.rationale_ko) : list(G.rationale);
+  document.getElementById('variant').innerHTML = `<p><strong>기준 영어: ${esc(G.variant)}</strong></p>` + rationale.map(r => `<p>${esc(r)}</p>`).join('');
+
+  const cats = [];
+  const byCat = new Map();
+  (G.entries || []).forEach(e => {
+    const c = e.cat_ko ? `${e.cat_ko} · ${e.cat}` : e.cat;
+    if (!byCat.has(c)) { byCat.set(c, []); cats.push(c); }
+    byCat.get(c).push(e);
+  });
+  document.getElementById('cats').innerHTML = cats.map((c, i) => `<a href="#cat-${i}">${esc(c)} <small>${byCat.get(c).length}</small></a>`).join('')
+    + ((G.questions || []).length ? '<a href="#questions-sec">확인 필요</a>' : '');
+  document.getElementById('sections').innerHTML = cats.map((c, i) => `
+    <section id="cat-${i}" aria-labelledby="cat-${i}-h">
+      <h2 id="cat-${i}-h">${esc(c)}</h2>
+      <table>
+        <thead><tr><th scope="col">한국어</th><th scope="col">English</th><th scope="col">메모</th><th scope="col">근거</th></tr></thead>
+        <tbody>${byCat.get(c).map(e => `
+          <tr>
+            <td class="ko">${esc(e.ko)}</td>
+            <td class="en" lang="en">${esc(e.en)}</td>
+            <td class="note">${esc(e.note_ko || e.note)}${e.alt ? `<span class="alt">다른 표기: <span lang="en">${esc(Array.isArray(e.alt) ? e.alt.join(', ') : e.alt)}</span></span>` : ''}</td>
+            <td class="src">${(e.sources || []).map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label || s.url)}</a>`).join('')}</td>
+          </tr>`).join('')}
+        </tbody>
+      </table>
+    </section>`).join('');
+
+  const qs = (G.questions_ko && G.questions_ko.length ? G.questions_ko : G.questions) || [];
+  if (qs.length) {
+    document.getElementById('questions').innerHTML = qs.map(q => `<li>${esc(typeof q === 'string' ? q : q.text || q.q || JSON.stringify(q))}</li>`).join('');
+    document.getElementById('questions-sec').hidden = false;
+  }
+})();
+</script>
+</body>
+</html>

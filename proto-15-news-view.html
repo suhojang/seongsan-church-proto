@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<script src="assets/i18n.js"></script>
+<title data-en="News · Seongsan-dong Catholic Church">새 소식 · 천주교 성산동성당</title>
+<meta name="description" content="천주교 성산동성당 공동체 소식입니다." data-en-content="News from the Seongsan-dong Catholic Church community.">
+<meta name="theme-color" content="#F2F3F1">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="media/brand/symbol-light.svg" type="image/svg+xml">
+<link rel="stylesheet" href="media/fonts/fonts.css">
+<style>
+/* 회랑: 회랑 기둥처럼 일정한 12단 격자 위에 차갑고 정확한 리듬. 강조색은 깊은 세이지 하나뿐. */
+:root {
+  --mist: #F2F3F1;
+  --mist-2: #E8EBE9;
+  --white: #FFFFFF;
+  --ink: #222629;
+  --ink-2: #5F6568;
+  --line: #D5D9D8;
+  --grid: rgb(34 38 41 / 0.08);
+  --accent: #3D6A64;
+  --accent-deep: #2F544F;
+  --accent-tint: #E2EBE9;
+  --logo-bg: #222629;
+  --logo-fg: #F2F3F1;
+
+  --sans: "Pretendard Variable", Pretendard, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  --gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --wrap: 84rem;
+  --colgap: clamp(0.75rem, 1.8vw, 2rem);
+  --edge: max(var(--gutter), calc((100vw - var(--wrap)) / 2));
+  --header: 4rem;
+  --section: clamp(6rem, 4rem + 8vw, 11rem);
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header) + 1rem); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background: var(--mist);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.28em; }
+h1, h2, h3, p, figure, blockquote, dl, dd, ol, ul { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+h2 { font-size: clamp(2.75rem, 1.6rem + 4vw, 5.75rem); font-weight: 200; line-height: 1.08; letter-spacing: -0.04em; }
+h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0.01em; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.skip { position: absolute; left: 1rem; top: -5rem; z-index: 300; padding: 0.75rem 1.25rem; background: var(--ink); color: var(--mist); text-decoration: none; }
+.skip:focus { top: 1rem; }
+.wrap { width: min(100% - var(--gutter) * 2, var(--wrap)); margin-inline: auto; }
+
+.label {
+  display: flex; align-items: center; gap: 0.9rem;
+  color: var(--ink-2); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; line-height: 1.4;
+}
+.label::before { content: ""; flex: none; width: 2.25rem; height: 1px; background: currentColor; }
+.lead { color: var(--ink-2); font-size: 1.125rem; line-height: 1.85; max-width: 32rem; }
+.note { color: var(--ink-2); font-size: 0.9375rem; line-height: 1.8; }
+.num { font-variant-numeric: tabular-nums; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.9rem;
+  min-height: 3.25rem; padding: 0 1.6rem; border: 1px solid var(--ink); border-radius: 2px;
+  background: transparent; color: var(--ink); font: inherit; font-size: 0.9375rem; font-weight: 500; letter-spacing: 0.01em;
+  text-decoration: none; cursor: pointer; transition: background-color 0.35s, color 0.35s, border-color 0.35s;
+}
+.btn:hover { background: var(--ink); color: var(--mist); }
+.btn-accent { border-color: var(--accent); background: var(--accent); color: #FFFFFF; }
+.btn-accent:hover { border-color: var(--accent-deep); background: var(--accent-deep); color: #FFFFFF; }
+.btn .arrow { font-weight: 300; transition: transform 0.35s var(--ease); }
+.btn:hover .arrow { transform: translateX(4px); }
+.actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+.text-link { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 2.75rem; font-size: 0.9375rem; font-weight: 500; }
+.text-link span { transition: transform 0.35s var(--ease); }
+.text-link:hover span { transform: translateX(4px); }
+
+/* 로고 묶음: 심볼 149:155, 로고타입 2038.58:322.07 */
+.brand { display: flex; align-items: center; gap: 0.8rem; color: var(--ink); text-decoration: none; }
+.brand .sym { --h: 2.25rem; flex: none; width: calc(var(--h) * 0.9613); height: var(--h); }
+.brand .wm { --h: 1.15rem; display: block; width: calc(var(--h) * 6.3296); height: var(--h); }
+.brand-sub { display: block; margin-top: 0.3rem; color: var(--ink-2); font-size: 0.625rem; font-weight: 500; letter-spacing: 0.17em; text-transform: uppercase; line-height: 1; white-space: nowrap; }
+
+/* 헤더: 처음에는 바탕 없이, 스크롤하면 안개빛 바탕과 가는 선 */
+.site-header { position: fixed; inset: 0 0 auto 0; z-index: 100; border-bottom: 1px solid transparent; transition: background-color 0.4s, border-color 0.4s; }
+.site-header.is-solid { background: rgb(242 243 241 / 0.92); border-bottom-color: var(--line); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.site-header.menu-open { background: transparent; border-bottom-color: transparent; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.header-row { display: flex; align-items: center; gap: 2rem; min-height: var(--header); }
+.nav-list { display: flex; gap: 2.25rem; }
+.nav-list a { position: relative; display: inline-flex; align-items: center; min-height: 2.75rem; font-size: 0.9375rem; text-decoration: none; }
+.nav-list a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0.55rem; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease); }
+.nav-list a:hover::after { transform: scaleX(1); }
+.nav-foot { display: none; }
+.menu-btn {
+  display: none; align-items: center; gap: 0.6rem; margin-left: auto; min-height: 2.75rem; padding: 0 0.25rem;
+  border: 0; background: none; color: inherit; font: inherit; font-size: 0.9375rem; cursor: pointer;
+}
+.menu-lines { position: relative; width: 1.25rem; height: 0.5rem; }
+.menu-lines::before, .menu-lines::after { content: ""; position: absolute; left: 0; right: 0; height: 1px; background: currentColor; transition: transform 0.3s, top 0.3s; }
+.menu-lines::before { top: 0; }
+.menu-lines::after { top: 100%; }
+.menu-btn[aria-expanded="true"] .menu-lines::before { top: 50%; transform: rotate(45deg); }
+.menu-btn[aria-expanded="true"] .menu-lines::after { top: 50%; transform: rotate(-45deg); }
+
+@media (min-width: 64rem) {
+  :root { --header: 5.5rem; }
+  .brand .sym { --h: 2.75rem; }
+  .brand .wm { --h: 1.4rem; }
+  .brand-sub { font-size: 0.6875rem; }
+  #site-nav { margin-left: auto; }
+  .nav-list small { display: none; }
+}
+@media (max-width: 63.99rem) {
+  .menu-btn { display: inline-flex; }
+  /* 모바일 메뉴: 헤더 아래에 깔리는 전체 화면 시트 */
+  #site-nav {
+    position: fixed; inset: 0; z-index: -1; display: none; flex-direction: column; justify-content: space-between;
+    padding: calc(var(--header) + 2.5rem) var(--gutter) calc(2rem + env(safe-area-inset-bottom));
+    background: var(--mist); overflow-y: auto;
+  }
+  #site-nav.is-open { display: flex; }
+  .nav-list { flex-direction: column; gap: 0; }
+  .nav-list li { border-top: 1px solid var(--line); }
+  .nav-list li:last-child { border-bottom: 1px solid var(--line); }
+  .nav-list a { display: flex; justify-content: space-between; align-items: baseline; min-height: 4.25rem; padding: 0.9rem 0; font-size: 1.75rem; font-weight: 300; letter-spacing: -0.02em; }
+  .nav-list a::after { display: none; }
+  .nav-list small { color: var(--ink-2); font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.24em; text-transform: uppercase; }
+  .nav-foot { display: block; margin-top: 2.5rem; color: var(--ink-2); font-size: 0.9375rem; }
+}
+.grid-lines {
+  position: absolute; inset: 0 auto 0 50%; z-index: 0; width: min(100% - var(--gutter) * 2, var(--wrap)); transform: translateX(-50%);
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--colgap); pointer-events: none;
+}
+.grid-lines span { border-left: 1px solid var(--grid); transform-origin: top; }
+.grid-lines span:last-child { border-right: 1px solid var(--grid); }
+.media-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.55rem;
+  min-width: 2.75rem; min-height: 2.75rem; padding: 0 0.9rem; border: 1px solid rgb(255 255 255 / 0.55); border-radius: 2px;
+  background: rgb(26 29 31 / 0.38); color: #FFFFFF; font: inherit; font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.04em; cursor: pointer;
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+}
+.media-btn:hover { background: rgb(26 29 31 / 0.6); }
+.media-btn svg { width: 0.9rem; height: 0.9rem; }
+.media-btn .i-play, .media-btn[data-state="paused"] .i-pause { display: none; }
+.media-btn[data-state="paused"] .i-play { display: block; }
+.media-btn:focus-visible { outline-color: #FFFFFF; }
+/* 공통 장 머리: 번호, 라틴 이름, 그어지는 선 */
+.section { padding-top: var(--section); }
+.sec-head { margin-bottom: clamp(3rem, 2rem + 3vw, 5.5rem); }
+.sec-top { display: flex; align-items: center; gap: 1.1rem; color: var(--ink-2); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; }
+.sec-no { color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: 0.08em; }
+.sec-rule { flex: 1; height: 1px; background: var(--ink); transform-origin: left; }
+.sec-main { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: end; gap: 1.5rem 4rem; margin-top: 2rem; }
+@media (max-width: 52rem) { .sec-main { grid-template-columns: 1fr; } }
+/* 푸터 */
+.site-footer { margin-top: var(--section); padding: clamp(3.5rem, 6vw, 5.5rem) 0 2.5rem; background: var(--mist-2); font-size: 0.9375rem; }
+.foot { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 3fr); gap: 2.5rem 4rem; }
+.site-footer .brand .sym { --h: 3.25rem; }
+.site-footer .brand .wm { --h: 1.5rem; }
+.foot-info { color: var(--ink-2); line-height: 1.9; }
+.foot-links li a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.copy { grid-column: 1 / -1; padding-top: 1.5rem; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 0.8125rem; }
+@media (max-width: 52rem) { .foot { grid-template-columns: 1fr; } }
+@media (orientation: landscape) and (max-height: 30rem) {
+  .site-header { position: absolute; }
+}
+
+/* 한/영 전환: 지금 언어는 먹색, 다른 언어는 회색 링크. 가는 세로선으로 나눈다 */
+.nav-end { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2.5rem; }
+.lang { display: flex; align-items: center; gap: 0.85rem; font-size: 0.9375rem; line-height: 1; white-space: nowrap; }
+.lang-opt { display: inline-flex; align-items: center; min-height: 2.75rem; color: var(--ink-2); letter-spacing: 0.02em; text-decoration: none; }
+.lang-opt.is-cur { color: var(--ink); font-weight: 600; }
+a.lang-opt:hover { color: var(--ink); text-decoration: underline; }
+.lang-sep { flex: none; width: 1px; height: 0.95rem; background: var(--line); }
+.nav-end .nav-foot { margin-top: 0; }
+@media (min-width: 64rem) {
+  #site-nav { display: flex; align-items: center; gap: 2.25rem; }
+  .nav-end { flex-direction: row; align-items: center; margin-top: 0; }
+  .lang { gap: 0.7rem; padding-left: 2.25rem; border-left: 1px solid var(--line); font-size: 0.8125rem; }
+  .lang-opt { min-height: 2.75rem; }
+}
+@media (min-width: 64rem) and (max-width: 79.99rem) {
+  .nav-list, #site-nav { gap: 1.75rem; }
+  .lang { padding-left: 1.75rem; }
+}
+
+/* 영문 로고: 심볼은 그대로, 한글 로고타입 대신 같은 자리에 영문 이름을 짠다 */
+.wm-en { display: block; font-size: 0.9375rem; font-weight: 600; line-height: 1.1; letter-spacing: -0.01em; white-space: nowrap; }
+@media (min-width: 64rem) { .wm-en { font-size: 1.125rem; } }
+.site-footer .wm-en { font-size: 1.25rem; }
+
+/* 영문 메뉴: 막대 메뉴에는 짧은 이름, 펼친 메뉴에는 긴 이름.
+   영문은 이름이 길어 80rem 아래에서는 모바일처럼 펼치는 메뉴로 보여 준다 */
+.nl-s { display: none; }
+@media (min-width: 80rem) {
+  .nl-l { display: none; }
+  .nl-s { display: inline; }
+}
+@media (min-width: 64rem) and (max-width: 79.99rem) {
+  html[lang="en"] .menu-btn { display: inline-flex; }
+  html[lang="en"] #site-nav {
+    position: fixed; inset: 0; z-index: -1; display: none; flex-direction: column; justify-content: space-between; align-items: stretch; gap: 0; margin-left: 0;
+    padding: calc(var(--header) + 2.5rem) var(--gutter) calc(2rem + env(safe-area-inset-bottom));
+    background: var(--mist); overflow-y: auto;
+  }
+  html[lang="en"] #site-nav.is-open { display: flex; }
+  html[lang="en"] .nav-list { flex-direction: column; gap: 0; }
+  html[lang="en"] .nav-list li { border-top: 1px solid var(--line); }
+  html[lang="en"] .nav-list li:last-child { border-bottom: 1px solid var(--line); }
+  html[lang="en"] .nav-list a { display: flex; justify-content: space-between; align-items: baseline; min-height: 4.25rem; padding: 0.9rem 0; font-size: 1.75rem; font-weight: 300; letter-spacing: -0.02em; }
+  html[lang="en"] .nav-list a::after { display: none; }
+  html[lang="en"] .nav-list a[aria-current] { color: var(--accent); }
+  html[lang="en"] .nav-end { flex-direction: column; align-items: stretch; margin-top: 2.5rem; }
+  html[lang="en"] .lang { padding-left: 0; border-left: 0; font-size: 0.9375rem; }
+  html[lang="en"] .nav-foot { display: block; color: var(--ink-2); font-size: 0.9375rem; }
+}
+
+/* 영문 조판: 한국어의 단어 단위 줄바꿈 대신 보통 줄바꿈, 큰 제목 자간은 조금 덜 좁힌다 */
+html[lang="en"] body { word-break: normal; }
+html[lang="en"] h2 { letter-spacing: -0.035em; }
+
+/* 푸터: 공동체 소개 링크와 정책 링크 사이에 가는 선 */
+.foot-links .foot-sep { margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid var(--line); }
+
+
+@media (max-width: 63.99rem) {
+  .grid-lines { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .grid-lines span:nth-child(n + 5) { display: none; }
+  .grid-lines span:nth-child(4) { border-right: 1px solid var(--grid); }
+}
+
+/* 지금 보는 메뉴: 데스크톱은 밑줄을 그어 두고, 모바일 시트에서는 세이지색 */
+.nav-list a[aria-current]::after { transform: scaleX(1); }
+@media (max-width: 63.99rem) { .nav-list a[aria-current] { color: var(--accent); } }
+
+/* 쪽 머리: 첫 화면처럼 12단 격자 선이 그려지고 제목 줄이 올라온다 */
+.page-hero { position: relative; overflow: clip; padding-top: var(--header); }
+.page-hero-in { position: relative; z-index: 1; padding-top: clamp(1.75rem, 4vh, 3rem); }
+.crumbs ol { display: flex; flex-wrap: wrap; color: var(--ink-2); font-size: 0.8125rem; line-height: 1.6; }
+.crumbs li + li::before { content: "/"; margin: 0 0.75rem; color: var(--line); }
+.crumbs a { text-decoration: none; }
+.crumbs a:hover { color: var(--ink); text-decoration: underline; }
+.crumbs [aria-current] { color: var(--ink); }
+.page-hero .sec-head { margin: clamp(3rem, 2rem + 4vw, 6rem) 0 0; padding-bottom: clamp(3.5rem, 2.5rem + 3.5vw, 6rem); }
+.page-hero h1 { font-size: clamp(2.75rem, 1.6rem + 4vw, 5.75rem); font-weight: 200; line-height: 1.08; letter-spacing: -0.04em; }
+.page-hero h1.is-long { font-size: clamp(2rem, 1.15rem + 2.9vw, 4.125rem); line-height: 1.22; letter-spacing: -0.035em; }
+.page-hero h1 .line { display: block; overflow: hidden; padding-bottom: 0.08em; }
+.page-hero h1 .line > span { display: block; }
+.page-hero .sec-main .actions { margin-top: 1.75rem; }
+.hero-side .note { margin-top: 0.5rem; }
+.hero-title { font-size: clamp(1.375rem, 1.1rem + 0.9vw, 1.875rem); font-weight: 300; line-height: 1.4; letter-spacing: -0.025em; }
+
+.empty { padding: 1.5rem 0; border-top: 1px solid var(--ink); color: var(--ink-2); }
+.post-head > .lead { margin-top: 1.5rem; }
+.post-head > .actions { margin-top: 1.75rem; }
+
+/* 움직임: 격자 선 그리기, 제목 줄 올라오기, 장 머리 선 긋기, 천천히 드러나기 */
+.js .grid-lines span { transform: scaleY(0); transition: transform 1.8s var(--ease) calc(var(--i, 0) * 70ms); }
+.js.is-ready .grid-lines span { transform: none; }
+.js .page-hero h1 .line > span { transform: translateY(105%); transition: transform 1.3s var(--ease) calc(0.25s + var(--i, 0) * 0.12s); }
+.js.is-ready .page-hero h1 .line > span { transform: none; }
+.js .page-hero .fade { opacity: 0; transform: translateY(12px); transition: opacity 1.2s ease 0.7s, transform 1.2s var(--ease) 0.7s; }
+.js.is-ready .page-hero .fade { opacity: 1; transform: none; }
+.js .sec-rule { transform: scaleX(0); transition: transform 1.6s var(--ease) 0.2s; }
+.js .is-in .sec-rule, .js.is-ready .page-hero .sec-rule { transform: none; }
+.js .reveal { opacity: 0; transform: translateY(12px); transition: opacity 1.2s ease, transform 1.2s var(--ease); }
+.js .reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js .grid-lines span, .js .page-hero h1 .line > span, .js .page-hero .fade, .js .sec-rule, .js .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* 소식 카드: 사진 칸은 3:2로 정해져 있고, 사진이 없는 글(공지)은 격자 선 위의 큰 글자 */
+.n-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(3rem, 4vw, 4.5rem) var(--colgap); }
+.n-card { display: block; text-decoration: none; }
+.n-cover { position: relative; display: block; aspect-ratio: 3 / 2; overflow: hidden; background: var(--mist-2); }
+.n-cover img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; transition: transform 1.6s var(--ease); }
+.n-card:hover .n-cover img { transform: scale(1.03); }
+.n-cover.is-type { display: flex; flex-direction: column; justify-content: space-between; padding: 1.1rem 1.25rem 1.25rem; border: 1px solid var(--line); background: var(--white) linear-gradient(90deg, var(--grid) 1px, transparent 1px) 0 0 / 25% 100% repeat-x; }
+.n-type-en { color: var(--ink-2); font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; line-height: 1.4; }
+.n-type-ko { font-size: clamp(2.5rem, 1.6rem + 2.4vw, 3.75rem); font-weight: 200; line-height: 1; letter-spacing: -0.045em; }
+.n-cover .media-btn { position: absolute; left: 0.9rem; bottom: 0.9rem; pointer-events: none; }
+.n-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.9rem; margin-top: 1.1rem; color: var(--ink-2); font-size: 0.8125rem; line-height: 1.6; }
+.n-cat { color: var(--ink); font-weight: 500; letter-spacing: 0.04em; }
+.n-pin { display: inline-flex; align-items: center; gap: 0.45rem; color: var(--accent); font-weight: 600; }
+.n-pin::before { content: ""; width: 0.4rem; height: 0.4rem; border-radius: 50%; background: var(--accent); }
+.n-meta time { font-variant-numeric: tabular-nums; }
+.n-title { display: -webkit-box; margin-top: 0.45rem; overflow: hidden; font-size: 1.1875rem; font-weight: 400; line-height: 1.5; letter-spacing: -0.015em; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.n-card:hover .n-title { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.28em; }
+@media (max-width: 63.99rem) { .n-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* 모바일: 왼쪽 작은 사진, 오른쪽 글. 가는 선으로 나눈 목록 */
+@media (max-width: 40rem) {
+  .n-list { grid-template-columns: minmax(0, 1fr); gap: 0; border-top: 1px solid var(--line); }
+  .n-list > li { padding: 1.25rem 0; border-bottom: 1px solid var(--line); }
+  .n-card { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: 1rem; align-items: start; }
+  .n-cover { grid-row: 1 / 3; aspect-ratio: 4 / 3; }
+  .n-meta { margin-top: 0; }
+  .n-title { margin-top: 0.3rem; font-size: 1.0625rem; }
+  .n-cover.is-type { justify-content: flex-end; padding: 0.55rem 0.7rem; background-size: 50% 100%; }
+  .n-type-en { display: none; }
+  .n-type-ko { font-size: 1.75rem; }
+  .n-cover .media-btn { left: 0.45rem; bottom: 0.45rem; min-width: 2rem; min-height: 2rem; padding: 0; }
+  .n-cover .media-btn span { display: none; }
+}
+/* 영문: 공지 칸의 분류 이름(Announcement)이 길어 한 단계 작게 */
+html[lang="en"] .n-type-ko { font-size: clamp(1.75rem, 1rem + 1.6vw, 2.75rem); letter-spacing: -0.035em; }
+@media (max-width: 40rem) { html[lang="en"] .n-cover.is-type .n-type-ko { font-size: 0.8125rem; letter-spacing: 0; } }
+
+.post-head { margin-top: 2rem; }
+.post-meta { display: flex; flex-wrap: wrap; gap: 0.4rem 2.25rem; margin-top: clamp(1.75rem, 3vw, 2.5rem); color: var(--ink-2); font-size: 0.9375rem; }
+.post-meta b { margin-right: 0.55rem; color: var(--ink); font-weight: 500; }
+.post-meta time, .post-meta span { font-variant-numeric: tabular-nums; }
+
+/* 본문: 글은 가운데 여덟 칸, 사진과 영상은 열 칸 */
+.post { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--colgap); padding-top: clamp(2.5rem, 4vw, 3.5rem); border-top: 1px solid var(--ink); }
+.post > * { grid-column: 3 / 11; min-width: 0; }
+.post > .ph-run, .post > .yt-wrap { grid-column: 2 / 12; }
+.post > * + * { margin-top: 1.25rem; }
+.post > .ph-run, .post > .yt-wrap, .post > .tbl { margin-top: clamp(2.5rem, 4vw, 3.5rem); }
+.post > .post-h { margin-top: clamp(4rem, 3rem + 3vw, 6rem); padding-top: 1.1rem; border-top: 1px solid var(--ink); }
+.post > .post-h + * { margin-top: 1.5rem; }
+.post > :first-child { margin-top: 0; }
+.post > .post-h:first-child { padding-top: 0; border-top: 0; }
+.post-p { font-size: 1.125rem; line-height: 1.9; }
+.post-h { font-size: clamp(1.25rem, 1rem + 0.8vw, 1.625rem); font-weight: 400; line-height: 1.4; letter-spacing: -0.02em; }
+
+/* 사진: 첫 장은 크게, 나머지는 두 장씩 높이를 맞춰 나란히. 자르지 않고 제 비율 그대로 */
+.ph-run { display: flex; flex-direction: column; gap: var(--colgap); }
+.ph-row { display: flex; align-items: flex-start; gap: var(--colgap); }
+.ph { flex: var(--r) 1 0%; min-width: 0; }
+.ph-row.is-single .ph { flex: none; width: 100%; }
+.ph-row.is-single .ph.is-tall { width: min(100%, calc(80svh * var(--r))); margin-inline: auto; }
+.ph-open { display: block; width: 100%; padding: 0; border: 0; background: var(--mist-2); cursor: zoom-in; }
+.ph-open img { width: 100%; height: auto; transition: opacity 0.5s ease; }
+.ph-open:hover img { opacity: 0.9; }
+
+/* 영상: 처음에는 로컬 썸네일만. 누르면 그 자리에서 재생(웹), 파일로 열었을 때는 유튜브로 */
+.yt { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--ink); color: #FFFFFF; }
+.yt img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.6s var(--ease); }
+.yt:hover img { transform: scale(1.02); }
+.yt .media-btn { position: absolute; left: 1rem; bottom: 1rem; z-index: 2; min-height: 3rem; padding: 0 1.1rem; font-size: 0.875rem; }
+.yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.yt-note { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.25rem 1rem; margin-top: 0.85rem; color: var(--ink-2); font-size: 0.8125rem; }
+
+/* 표: 위아래 먹색 선, 행은 가는 선. 바뀐 값(마지막 칸)은 세이지색 */
+.tbl figcaption { margin-bottom: 1.1rem; }
+.tbl-scroll { overflow-x: auto; }
+.tbl table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+/* 시각 묶음("10:00 · 18:00")은 낱개로 나눠, 좁은 화면에서는 시각 단위로 줄을 바꾼다 */
+.tbl-items { display: flex; flex-wrap: wrap; gap: 0.15rem 1.1rem; }
+.tbl-items span { white-space: nowrap; }
+.tbl thead th { padding: 0.75rem 1rem; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); color: var(--ink-2); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.04em; text-align: left; }
+.tbl tbody th, .tbl tbody td { padding: 1.1rem 1rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: baseline; }
+.tbl tbody th { font-weight: 600; white-space: nowrap; }
+.tbl tbody td { font-size: 1.0625rem; }
+.tbl thead th:last-child, .tbl tbody td:last-child { color: var(--accent); }
+.tbl tbody td:last-child { font-weight: 500; }
+
+/* 이전 글·다음 글 */
+.pn { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: clamp(5rem, 4rem + 4vw, 8rem); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); }
+.pn a { display: flex; flex-direction: column; gap: 0.4rem; min-height: 7.5rem; padding: 1.5rem 2rem 1.5rem 0; text-decoration: none; }
+.pn a.pn-next { grid-column: 2; align-items: flex-end; padding: 1.5rem 0 1.5rem 2rem; border-left: 1px solid var(--line); text-align: right; }
+.pn small { color: var(--ink-2); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; }
+.pn span { display: -webkit-box; overflow: hidden; font-size: 1.0625rem; line-height: 1.55; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.pn a:hover span { text-decoration: underline; }
+.post-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 2rem; margin-top: 0.75rem; }
+.more-n { margin-top: clamp(6rem, 4rem + 6vw, 9rem); }
+.more-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.5rem 2rem; margin-bottom: clamp(2rem, 1.5rem + 2vw, 3rem); padding-top: 1.25rem; border-top: 1px solid var(--ink); }
+.more-head h2 { font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem); font-weight: 300; line-height: 1.3; letter-spacing: -0.03em; }
+
+/* 사진 크게 보기: 안개빛 바탕 위에 사진 한 장 */
+.lb { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: var(--mist); color: var(--ink); }
+.lb::backdrop { background: rgb(242 243 241 / 0.9); }
+.lb-in { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100%; }
+.lb-top, .lb-bottom { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0 var(--gutter); }
+.lb-top { min-height: var(--header); border-bottom: 1px solid var(--line); }
+.lb-bottom { min-height: 4.5rem; padding-bottom: env(safe-area-inset-bottom); border-top: 1px solid var(--line); }
+.lb-count { font-size: 0.875rem; font-variant-numeric: tabular-nums; letter-spacing: 0.08em; }
+.lb-stage { position: relative; min-height: 0; padding: clamp(1rem, 3vw, 2.5rem) var(--gutter); }
+.lb-stage img { width: 100%; height: 100%; object-fit: contain; }
+.lb-btn { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 2.75rem; padding: 0 0.25rem; border: 0; background: none; color: var(--ink); font: inherit; font-size: 0.9375rem; font-weight: 500; cursor: pointer; }
+.lb-btn:disabled { color: var(--line); cursor: default; }
+.lb-btn[hidden] { display: none; }
+.lb.is-single .lb-bottom { visibility: hidden; }
+
+@media (max-width: 63.99rem) {
+  .post > *, .post > .ph-run, .post > .yt-wrap { grid-column: 1 / -1; }
+}
+@media (max-width: 40rem) {
+  .tbl thead th, .tbl tbody th, .tbl tbody td { padding-inline: 0.6rem; }
+  .tbl tbody td { font-size: 1rem; }
+  .ph-row { flex-direction: column; }
+  .ph { flex: none; width: 100%; }
+  .pn { grid-template-columns: minmax(0, 1fr); }
+  .pn a, .pn a.pn-next { grid-column: 1; min-height: 0; padding: 1.25rem 0; }
+  .pn a.pn-next { align-items: flex-start; border-left: 0; border-top: 1px solid var(--line); text-align: left; }
+}
+/* 다른 소식 세 개는 모바일 전까지 한 줄에 */
+@media (min-width: 40.0625rem) { .more-n .n-list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+</style>
+<style>
+/* 좁은 화면 머리글: 영문 이름·언어 전환이 들어가도 메뉴 버튼이 화면 안에 남게 한다 */
+@media (max-width: 63.99rem) { .header-row { gap: 1rem; } }
+@media (max-width: 25.9rem) {
+  html[lang="en"] .menu-btn .menu-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="logo-symbol" viewBox="0 0 149 155"><rect width="149" height="155" style="fill:var(--logo-bg,#732939)"/><path style="fill:var(--logo-fg,#fff)" d="M9 5h4v4h-4zM21.7 5h4v4h-4zM34.4 5h4v4h-4zM47.1 5h4v4h-4zM59.8 5h4v4h-4zM72.5 5h4v4h-4zM85.2 5h4v4h-4zM97.9 5h4v4h-4zM110.6 5h4v4h-4zM123.3 5h4v4h-4zM136 5h4v4h-4zM9 11h4v4h-4zM21.7 11h4v4h-4zM34.4 11h4v4h-4zM47.1 11h4v4h-4zM59.8 11h4v4h-4zM85.2 11h4v4h-4zM97.9 11h4v4h-4zM110.6 11h4v4h-4zM123.3 11h4v4h-4zM136 11h4v4h-4zM9 17h4v4h-4zM21.7 17h4v4h-4zM34.4 17h4v4h-4zM47.1 17h4v4h-4zM97.9 17h4v4h-4zM110.6 17h4v4h-4zM123.3 17h4v4h-4zM136 17h4v4h-4zM9 24h4v4h-4zM21.7 24h4v4h-4zM34.4 24h4v4h-4zM47.1 24h4v4h-4zM97.9 24h4v4h-4zM110.6 24h4v4h-4zM123.3 24h4v4h-4zM136 24h4v4h-4zM9 33h4v4h-4zM21.7 33h4v4h-4zM34.4 33h4v4h-4zM47.1 33h4v4h-4zM97.9 33h4v4h-4zM110.6 33h4v4h-4zM123.3 33h4v4h-4zM136 33h4v4h-4zM9 42h4v4h-4zM21.7 42h4v4h-4zM34.4 42h4v4h-4zM47.1 42h4v4h-4zM97.9 42h4v4h-4zM110.6 42h4v4h-4zM123.3 42h4v4h-4zM136 42h4v4h-4zM9 53h4v4h-4zM21.7 53h4v4h-4zM34.4 53h4v4h-4zM110.6 53h4v4h-4zM123.3 53h4v4h-4zM136 53h4v4h-4zM9 66h4v4h-4zM21.7 66h4v4h-4zM34.4 66h4v4h-4zM110.6 66h4v4h-4zM123.3 66h4v4h-4zM136 66h4v4h-4zM9 82h4v4h-4zM21.7 82h4v4h-4zM34.4 82h4v4h-4zM110.6 82h4v4h-4zM123.3 82h4v4h-4zM136 82h4v4h-4zM9 100h4v4h-4zM21.7 100h4v4h-4zM123.3 100h4v4h-4zM136 100h4v4h-4zM9 121h4v4h-4zM21.7 121h4v4h-4zM123.3 121h4v4h-4zM136 121h4v4h-4zM69.5 11h10v44h-10zM57 20h35v9h-35zM56.5 46L63 55H50zM92.5 46L99 55H86zM51.75 57h9.5v39h-9.5zM87.75 57h9.5v39h-9.5zM61.25 61.6h26.5v8.4h-26.5zM74.5 72L80.5 81H68.5zM69.5 83h10v13h-10zM45.5 88.5L52 97H39zM103.5 88.5L110 97H97zM40.75 98h9.5v57h-9.5zM98.75 98h9.5v57h-9.5zM60.5 105h10v50h-10zM78.5 105h10v50h-10z"/></symbol>
+  <symbol id="logo-wordmark" viewBox="0 0 2038.577824 322.069312"><g transform="translate(-29.309204,336.920201) scale(1.000000,-1.000000)"><path d="M40 335 c-5 -2 -6 -6 -4 -15 1 -5 1 -11 1 -26 1 -32 -1 -30 39 -30 34 0 35 -1 34 -9 0 -4 -3 -7 -18 -21 -63 -58 -65 -61 -62 -69 2 -4 7 -8 11 -8 4 0 8 3 23 17 34 29 33 28 39 28 5 0 6 0 30 -24 19 -18 24 -22 27 -23 7 -1 14 5 13 14 -1 5 -1 6 -24 27 -30 30 -30 28 -6 53 16 17 19 24 15 34 -3 7 -3 7 -47 7 -44 1 -42 0 -47 7 -3 3 -3 14 -2 25 1 3 1 7 1 8 -2 6 -15 9 -23 5z M907 290 c-2 -1 -7 -8 -12 -15 -4 -7 -13 -19 -18 -26 -39 -54 -45 -63 -46 -67 -1 -12 11 -19 19 -11 2 2 13 16 24 31 29 39 32 41 40 34 3 -2 27 -33 41 -51 11 -14 15 -18 21 -18 8 0 13 11 8 20 -2 5 -17 24 -45 60 -12 14 -13 16 -13 28 0 8 0 10 -1 12 -5 6 -13 8 -18 3z M1652 291 c-2 -1 -7 -7 -11 -13 -5 -7 -19 -28 -33 -46 -34 -48 -32 -45 -33 -50 -1 -11 9 -18 17 -13 1 1 13 16 26 33 24 32 28 37 33 37 5 0 9 -3 21 -19 37 -48 38 -49 44 -52 10 -4 18 9 12 20 -3 4 -19 25 -39 50 -18 23 -18 23 -19 36 0 7 0 10 -1 13 -4 6 -12 8 -17 4z M191 290 c-11 -2 -14 -19 -4 -24 3 -2 5 -2 15 -3 14 0 17 -1 20 -8 3 -7 3 -167 -1 -172 -5 -7 0 -6 -77 -6 -79 0 -76 0 -80 8 -2 4 -2 18 -1 34 2 12 -1 16 -12 16 -10 0 -15 -5 -14 -14 1 -3 1 -18 2 -33 1 -32 1 -32 8 -35 7 -3 188 -3 194 0 8 4 7 -5 7 118 0 122 0 114 -7 117 -4 2 -42 3 -50 2z M299 290 c-13 -2 -15 -20 -3 -25 4 -2 6 -2 55 -2 53 1 56 0 58 -4 1 -4 -5 -9 -21 -17 -55 -27 -96 -48 -100 -52 -8 -8 -2 -22 10 -22 3 0 53 23 88 42 8 4 14 5 20 3 4 -1 31 -18 62 -38 16 -11 20 -12 27 -8 8 5 8 17 -2 23 -2 1 -11 7 -19 12 -9 5 -19 12 -24 14 -21 12 -20 18 4 31 18 10 29 16 33 21 7 7 4 20 -4 22 -5 0 -180 1 -184 0z M545 290 c-9 -3 -12 -16 -6 -23 4 -4 6 -4 90 -4 91 0 85 1 89 -7 1 -3 2 -9 2 -83 0 -86 0 -88 -5 -93 l-3 -2 -37 0 c-46 0 -46 0 -43 10 2 7 3 102 2 108 -2 6 -13 9 -21 6 -5 -2 -6 -5 -6 -11 1 -3 1 -26 2 -51 1 -42 1 -47 3 -52 3 -9 -2 -11 -24 -11 -20 1 -23 3 -19 13 1 2 2 17 2 51 1 26 1 49 1 52 1 7 -3 10 -12 10 -13 0 -16 -4 -14 -18 1 -5 1 -24 1 -48 0 -34 0 -39 2 -46 2 -10 2 -11 -8 -13 -13 -4 -17 -20 -6 -25 5 -3 202 -3 207 -1 9 4 11 11 6 24 l-3 8 -1 98 c-1 105 0 100 -5 105 -3 2 -4 3 -21 3 -47 0 -170 0 -173 0z M990 290 c-10 -2 -15 -17 -6 -23 4 -3 8 -4 21 -4 12 1 16 -1 19 -7 2 -3 3 -5 3 -48 0 -41 0 -45 1 -48 5 -8 17 -8 22 0 1 3 2 6 2 62 0 75 3 68 -35 68 -13 0 -25 0 -27 0z M1155 288 c-2 -2 -7 -7 -10 -11 -3 -5 -13 -19 -22 -31 -10 -13 -21 -29 -26 -35 -4 -6 -10 -14 -12 -17 -10 -12 -12 -21 -4 -28 7 -6 13 -3 22 9 4 5 13 18 21 28 7 10 15 20 17 22 8 12 15 12 25 -1 3 -4 12 -15 19 -24 7 -10 16 -21 20 -26 9 -12 13 -14 20 -10 6 4 9 12 5 19 -1 2 -5 8 -10 14 -25 32 -36 46 -43 56 -4 4 -4 7 -3 24 1 12 -11 18 -19 11z M1290 290 c-13 -1 -16 -2 -19 -7 -1 -3 -2 -10 -2 -100 -1 -109 0 -100 -8 -104 -4 -3 -137 -3 -141 0 -8 4 -10 17 -6 36 2 12 1 16 -6 19 -3 2 -5 2 -9 1 -11 -1 -14 -6 -12 -18 1 -4 1 -18 1 -31 0 -27 1 -30 7 -33 6 -3 187 -2 191 1 6 5 6 -2 6 103 1 114 -1 104 16 107 12 2 17 6 16 15 -2 10 -10 12 -34 11z M1352 290 c-11 -3 -11 -6 -12 -41 0 -45 -3 -42 46 -42 38 0 39 0 43 -7 2 -4 1 -9 -2 -12 -4 -5 -5 -5 -44 -5 -40 0 -43 0 -48 -5 -6 -6 -3 -18 6 -20 2 -1 42 -1 103 -1 96 0 99 0 103 2 9 4 9 16 0 22 -2 1 -6 2 -42 2 -42 0 -43 0 -47 5 -3 3 -4 9 -2 12 4 7 4 6 45 7 40 1 40 0 44 6 2 3 2 12 -1 15 -4 6 0 6 -88 6 -91 0 -85 -1 -90 6 -2 5 -2 14 0 17 4 7 0 6 90 6 81 1 82 1 85 3 8 6 8 18 -1 22 -3 2 -183 3 -188 2z M1735 290 c-13 -2 -17 -19 -6 -25 3 -1 6 -1 17 -2 15 0 18 -1 22 -6 1 -3 2 -7 2 -49 1 -49 0 -48 6 -52 7 -4 15 -1 17 6 2 4 2 11 2 62 -1 73 3 66 -34 66 -13 0 -24 0 -26 0z M1834 290 c-10 -2 -10 -2 -10 -63 0 -49 0 -52 2 -55 4 -7 -3 -6 101 -7 97 0 100 0 104 5 5 4 5 7 5 46 0 46 0 45 15 47 13 2 18 7 17 16 -2 9 -6 11 -28 11 -28 0 -27 2 -28 -50 0 -44 0 -44 -7 -47 -5 -3 -144 -3 -149 0 -7 3 -7 5 -7 35 0 38 -5 35 53 35 44 0 48 0 53 4 8 6 4 21 -6 23 -4 0 -110 1 -115 0z M974 150 c-15 -3 -33 -18 -41 -34 -14 -30 -9 -64 13 -86 11 -12 18 -14 33 -14 16 0 20 1 32 14 18 18 25 43 19 70 -5 28 -34 54 -56 50z m14 -29 c18 -9 26 -39 15 -60 -15 -31 -45 -24 -53 13 -5 27 18 56 38 47z M1717 150 c-29 -6 -53 -46 -48 -78 5 -25 18 -45 36 -53 10 -5 27 -5 36 0 27 14 41 48 32 84 -6 27 -34 51 -56 47z m14 -29 c7 -3 16 -16 19 -28 7 -24 -8 -51 -27 -51 -19 0 -34 27 -29 50 6 23 22 36 37 29z M1952 148 c-18 -8 -32 -24 -38 -44 -3 -10 -3 -33 -1 -43 9 -32 35 -51 62 -45 14 3 32 22 38 39 4 10 4 44 0 53 -8 24 -30 42 -49 42 -4 0 -8 -1 -12 -2z m21 -27 c22 -11 27 -50 8 -71 -21 -24 -52 6 -45 42 5 23 22 36 37 29z M1435 143 c-21 -4 -39 -23 -44 -46 -7 -34 7 -67 33 -79 9 -4 30 -4 39 1 15 7 26 22 32 44 4 16 2 33 -8 52 -8 19 -32 32 -52 28z m17 -28 c19 -9 26 -35 14 -57 -11 -23 -37 -22 -49 3 -13 28 11 65 35 54z M290 137 c-9 -3 -13 -17 -6 -24 4 -4 9 -4 48 -4 40 0 41 0 45 -6 3 -4 4 -24 2 -38 -2 -16 2 -22 13 -22 12 0 15 5 13 20 -2 18 -1 37 2 41 3 5 5 5 48 5 35 0 39 1 42 2 8 5 8 19 -1 24 -3 2 -5 3 -103 3 -55 0 -101 -1 -103 -1z"/></g></symbol>
+</svg>
+<a class="skip" href="#main" data-en="Skip to main content">본문 바로가기</a>
+
+<header class="site-header is-solid" id="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="proto-15-cloister.html" aria-label="천주교 성산동성당 처음으로" data-en-aria-label="Seongsan-dong Catholic Church, home">
+      <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
+      <span>
+        <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
+        <span class="wm-en" data-only="en" aria-hidden="true">Seongsan-dong Catholic Church</span>
+        <span class="brand-sub">103 Martyr Saints of Korea</span>
+      </span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="menu-label" data-en="Menu">메뉴</span><span class="menu-lines" aria-hidden="true"></span></button>
+    <nav id="site-nav" aria-label="주 메뉴" data-en-aria-label="Main menu">
+      <ul class="nav-list">
+        <li><a href="proto-15-cloister.html#mass"><span data-en="<span class='nl-l'>Mass Times</span><span class='nl-s'>Mass</span>">미사</span> <small data-only="ko">Mass</small></a></li>
+        <li><a href="proto-15-cloister.html#community"><span data-en="Community">공동체</span> <small data-only="ko">Community</small></a></li>
+        <li><a href="proto-15-cloister.html#rites"><span data-en="<span class='nl-l'>Sacraments &amp; Liturgy</span><span class='nl-s'>Sacraments</span>">성사와 전례</span> <small data-only="ko">Sacraments</small></a></li>
+        <li><a href="proto-15-cloister.html#news" aria-current="true"><span data-en="News">소식</span> <small data-only="ko">News</small></a></li>
+        <li><a href="proto-15-cloister.html#welcome"><span data-en="New Here?">처음 오신 분</span> <small data-only="ko">Welcome</small></a></li>
+        <li><a href="proto-15-cloister.html#visit"><span data-en="<span class='nl-l'>Visit Us</span><span class='nl-s'>Visit</span>">오시는 길</span> <small data-only="ko">Visit</small></a></li>
+      </ul>
+      <div class="nav-end">
+        <div class="lang" role="group" aria-label="언어" data-en-aria-label="Language">
+          <span class="lang-opt is-cur" data-only="ko">한국어</span>
+          <a class="lang-opt" data-only="en" data-lang-switch="ko">한국어</a>
+          <span class="lang-sep" aria-hidden="true"></span>
+          <a class="lang-opt" data-only="ko" data-lang-switch="en">English</a>
+          <span class="lang-opt is-cur" data-only="en">English</span>
+        </div>
+        <p class="nav-foot" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul<br>Parish Office 02-6387-1784">서울 마포구 성미산로2길 15<br>사무실 02-6387-1784</p>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="grid-lines" aria-hidden="true">
+      <span style="--i:0"></span><span style="--i:1"></span><span style="--i:2"></span><span style="--i:3"></span>
+      <span style="--i:4"></span><span style="--i:5"></span><span style="--i:6"></span><span style="--i:7"></span>
+      <span style="--i:8"></span><span style="--i:9"></span><span style="--i:10"></span><span style="--i:11"></span>
+    </div>
+    <div class="wrap page-hero-in">
+      <nav class="crumbs fade" aria-label="현재 위치" data-en-aria-label="Breadcrumb"><ol><li><a href="proto-15-cloister.html" data-en="Home">홈</a></li><li data-only="ko"><a href="proto-15-cloister.html#news" data-en="News">소식</a></li><li><a href="proto-15-news.html" data-en="News">새 소식</a></li><li aria-current="page" id="crumb-cur">소식 보기</li></ol></nav>
+      <div class="sec-head">
+        <p class="sec-top fade"><span class="sec-no">04</span><span id="sec-cat">News</span><span class="sec-rule" aria-hidden="true"></span></p>
+        <div class="post-head" id="hero-main">
+          <h1 class="is-long" id="page-title"><span class="line"><span data-en="News">새 소식</span></span></h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap" id="content"></div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <div>
+      <a class="brand" href="proto-15-cloister.html" aria-label="천주교 성산동성당 처음으로" data-en-aria-label="Seongsan-dong Catholic Church, home">
+      <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
+      <span>
+        <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
+        <span class="wm-en" data-only="en" aria-hidden="true">Seongsan-dong Catholic Church</span>
+        <span class="brand-sub">103 Martyr Saints of Korea</span>
+      </span>
+      </a>
+    </div>
+    <p class="foot-info" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul 03996, Republic of Korea<br>Tel. 02-6387-1784, 1785 (from abroad +82-2-6387-1784)<br>Catholic Archdiocese of Seoul Foundation">03996 서울 마포구 성미산로2길 15<br>전화 02-6387-1784, 1785<br>(재)천주교서울대교구 유지재단 소속</p>
+    <ul class="foot-links">
+      <li><a href="proto-15-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+      <li><a href="proto-15-committees.html" data-en="Committees">분과 소개</a></li>
+      <li><a href="proto-15-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
+      <li class="foot-sep"><a href="#"><strong data-en="Privacy Policy">개인정보 처리방침</strong></a></li>
+      <li><a href="#" data-en="Terms of Use">이용약관</a></li>
+      <li><a href="#" data-en="Ministry Resources Login">단체 자료실 로그인</a></li>
+    </ul>
+    <p class="copy" data-en="© 2026 Seongsan-dong Catholic Church">© 2026 천주교 성산동성당</p>
+  </div>
+</footer>
+<dialog class="lb" id="lb" aria-label="사진 크게 보기" data-en-aria-label="Photo viewer">
+  <div class="lb-in">
+    <div class="lb-top">
+      <p class="lb-count" aria-live="polite"><span id="lb-cur">01</span> / <span id="lb-total">01</span></p>
+      <button class="lb-btn" type="button" data-lb="close"><span data-en="Close">닫기</span> <span aria-hidden="true">×</span></button>
+    </div>
+    <div class="lb-stage"></div>
+    <div class="lb-bottom">
+      <button class="lb-btn" type="button" data-lb="prev"><span aria-hidden="true">←</span> <span data-en="Previous photo">이전 사진</span></button>
+      <button class="lb-btn" type="button" data-lb="next"><span data-en="Next photo">다음 사진</span> <span aria-hidden="true">→</span></button>
+    </div>
+  </div>
+</dialog>
+<script src="data/glossary.js"></script>
+<script src="data/board.js"></script>
+<script>
+document.documentElement.classList.add('js');
+(() => {
+  // 고정 문구(data-en)를 먼저 바꾸고, 아래에서 그리는 문구는 지금 언어로 바로 쓴다
+  I18N.apply();
+  const EN = I18N.en;
+  const UI = I18N.ui;
+  const t = I18N.t;
+  const pick = I18N.pick;
+  const SITE = t(' · 천주교 성산동성당', UI.meta.titleSuffix);
+  const root = document.documentElement;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const BOARD = window.BOARD || { bulletins: [], news: [] };
+  const params = new URLSearchParams(location.search);
+  const now = new Date();
+  const DAY = ['주일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+  const pad2 = n => String(n).padStart(2, '0');
+  const fill = (s, o) => String(s).replace(/\{(\w+)\}/g, (_, k) => (o[k] == null ? '' : o[k]));
+
+  // 날짜: 데이터의 YYYY-MM-DD를 읽어 "10월 25일"(영문 "October 25")처럼. 올해가 아니면 연도를 붙인다
+  const toDate = iso => { const [y, m, d] = String(iso).split('-').map(Number); return new Date(y, (m || 1) - 1, d || 1); };
+  const md = iso => { const d = toDate(iso); const other = d.getFullYear() !== now.getFullYear(); return EN ? I18N.date(d, other ? 'ymd' : 'md') : `${other ? `${d.getFullYear()}년 ` : ''}${d.getMonth() + 1}월 ${d.getDate()}일`; };
+  const ymd = iso => I18N.date(toDate(iso), 'ymd');
+  const dayOf = iso => (EN ? I18N.date(toDate(iso), 'dow') : DAY[toDate(iso).getDay()]);
+  const byDateDesc = (a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0);
+
+  const bulletinUrl = date => `proto-15-bulletin-view.html?date=${encodeURIComponent(date)}`;
+  const newsUrl = id => `proto-15-news-view.html?id=${encodeURIComponent(id)}`;
+
+  // 천천히 드러나기: 나중에 그린 칸도 같은 방식으로
+  let io = null;
+  if (!reduce && 'IntersectionObserver' in window) {
+    io = new IntersectionObserver(entries => entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+  }
+  const observe = () => document.querySelectorAll('.reveal:not(.is-in)').forEach(el => (io ? io.observe(el) : el.classList.add('is-in')));
+
+
+  // 소식 카드: 사진이 있으면 3:2 칸, 없으면(공지) 분류 이름을 크게. 영상 글에는 재생 표시
+  const CATS = UI.newsCategories || {};
+  const catEn = c => (CATS[c] && CATS[c].label) || 'News';
+  const catLabel = c => (EN ? catEn(c) : c);
+  const catPlural = c => (EN ? ((CATS[c] && CATS[c].plural) || c) : c);
+  const PLAY = '<svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg>';
+  const hasVideo = n => (n.body || []).some(b => b.type === 'video');
+  const sortNews = arr => arr.slice().sort((a, b) => (Number(!!b.pinned) - Number(!!a.pinned)) || byDateDesc(a, b));
+  const newsCard = n => {
+    const cover = n.cover
+      ? `<span class="n-cover"><img src="${esc(n.cover)}" alt="" loading="lazy" decoding="async">${hasVideo(n) ? `<span class="media-btn" data-state="paused" aria-hidden="true">${PLAY}<span>${esc(t('영상', UI.news.video))}</span></span>` : ''}</span>`
+      : `<span class="n-cover is-type" aria-hidden="true">${EN ? '' : `<span class="n-type-en">${esc(catEn(n.cat))}</span>`}<span class="n-type-ko">${esc(catLabel(n.cat))}</span></span>`;
+    return `<a class="n-card" href="${newsUrl(n.id)}">${cover}<span class="n-meta">${n.pinned ? `<span class="n-pin">${esc(t('고정', CATS.pinned))}</span>` : ''}<span class="n-cat">${esc(catLabel(n.cat))}</span><time datetime="${esc(n.date)}">${md(n.date)}</time></span><span class="n-title">${esc(pick(n, 'title'))}</span></a>`;
+  };
+  const news = sortNews(BOARD.news || []);
+
+
+  // 주소의 id로 글을 찾아 본문 블록(문단, 소제목, 사진, 영상, 표)을 차례로 그린다
+  const id = params.get('id');
+  const at = id ? news.findIndex(n => n.id === id) : -1;
+  const heroMain = document.getElementById('hero-main');
+  const content = document.getElementById('content');
+  const crumb = document.getElementById('crumb-cur');
+  const secCat = document.getElementById('sec-cat');
+  const isWeb = /^https?:$/.test(location.protocol);
+
+  if (at < 0) {
+    document.title = t('소식을 찾을 수 없습니다 · 천주교 성산동성당', UI.news.notFound.pageTitle);
+    crumb.textContent = t('찾을 수 없음', UI.news.notFound.short);
+    heroMain.innerHTML = `
+      <h1 class="is-long" id="page-title"><span class="line"><span>${esc(t('소식을 찾을 수 없습니다', UI.news.notFound.title))}</span></span></h1>
+      <p class="lead fade">${esc(t('주소가 바뀌었거나 지워진 글입니다.', UI.news.notFound.body))}</p>
+      <div class="actions fade"><a class="btn btn-accent" href="proto-15-news.html">${esc(t('새 소식 목록으로', UI.buttons.backToNews))} <span class="arrow" aria-hidden="true">→</span></a></div>`;
+  } else {
+    const n = news[at];
+    const title = pick(n, 'title');
+    const body = n.body || [];
+    const photos = [];
+    const imgCount = body.filter(b => b.type === 'img').length;
+    // 블록의 영문: 문단·소제목은 en 문자열, 표는 en 객체
+    const txt = b => (EN && b.en != null ? b.en : b.text);
+    document.title = title + SITE;
+    crumb.textContent = catLabel(n.cat);
+    secCat.textContent = EN ? catEn(n.cat) : `${catEn(n.cat)} · ${n.cat}`;
+    heroMain.innerHTML = `
+      <h1 class="is-long" id="page-title"><span class="line"><span>${esc(title)}</span></span></h1>
+      <p class="post-meta fade">
+        <span><b>${esc(t('올린 날', UI.bulletin.postedLabel))}</b><time datetime="${esc(n.date)}">${EN ? I18N.date(toDate(n.date), 'ymdw') : `${ymd(n.date)} ${dayOf(n.date)}`}</time></span>
+        ${n.author && !EN ? `<span><b>글</b>${esc(n.author)}</span>` : ''}
+        ${imgCount ? `<span><b>${esc(t('사진', 'Photos'))}</b>${EN ? imgCount : `${imgCount}장`}</span>` : ''}
+        ${hasVideo(n) ? `<span><b>${esc(t('영상', UI.news.video))}</b>YouTube</span>` : ''}
+      </p>`;
+
+    // 사진 묶음: 첫 장은 크게, 나머지는 두 장씩 높이를 맞춰 나란히(비율대로 폭을 나눠 자르지 않는다)
+    const photoAlt = k => (EN ? `${title}, ${fill(UI.news.photo, { n: k + 1 }).toLowerCase()}` : `${title} 사진 ${k + 1}`);
+    const fig = b => {
+      const k = photos.push(b) - 1;
+      const r = (Number(b.w) / Number(b.h)) || 1.5;
+      return `<figure class="ph${r < 1 ? ' is-tall' : ''}" style="--r:${r.toFixed(4)}"><button class="ph-open" type="button" data-idx="${k}" aria-label="${esc(t(`사진 ${k + 1} 크게 보기`, `${UI.buttons.viewPhotoFull}: ${k + 1}`))}"><img src="${esc(b.src)}" width="${Number(b.w) || ''}" height="${Number(b.h) || ''}" alt="${esc(photoAlt(k))}" loading="${k < 2 ? 'eager' : 'lazy'}" decoding="async"></button></figure>`;
+    };
+    const photoRun = imgs => {
+      const rows = [[imgs[0]]];
+      for (let k = 1; k < imgs.length; k += 2) rows.push(imgs.slice(k, k + 2));
+      return `<div class="ph-run">${rows.map(r => `<div class="ph-row${r.length === 1 ? ' is-single' : ''} reveal">${r.map(fig).join('')}</div>`).join('')}</div>`;
+    };
+    const video = b => `
+      <figure class="yt-wrap reveal">
+        <a class="yt" href="https://www.youtube.com/watch?v=${encodeURIComponent(b.youtube)}" target="_blank" rel="noopener" data-yt="${esc(b.youtube)}">
+          <img src="${esc(b.poster)}" width="${Number(b.w) || ''}" height="${Number(b.h) || ''}" alt="" decoding="async">
+          <span class="media-btn" data-state="paused" aria-hidden="true">${PLAY}<span>${esc(isWeb ? t('영상 재생', UI.a11y.playVideo) : t('유튜브에서 재생', UI.buttons.watchYoutube))}</span></span>
+          <span class="sr-only">${esc(isWeb ? t('영상 재생', UI.a11y.playVideo) : t('유튜브에서 영상 보기(새 창)', UI.buttons.watchYoutubeNew))}: ${esc(title)}</span>
+        </a>
+        <figcaption class="yt-note"><span>YouTube</span><span>${esc(isWeb ? t('누르면 이 자리에서 재생됩니다.', UI.news.tapPlay) : t('누르면 유튜브에서 열립니다.', UI.news.tapYoutube))}</span></figcaption>
+      </figure>`;
+    const table = b => {
+      const tb = EN && b.en ? b.en : b;
+      return `
+      <figure class="tbl reveal">
+        ${tb.caption ? `<figcaption class="label">${esc(tb.caption)}</figcaption>` : ''}
+        <div class="tbl-scroll" tabindex="0" role="region" aria-label="${esc(tb.caption || t('표', UI.news.table))}">
+          <table>
+            ${(tb.head || []).length ? `<thead><tr>${tb.head.map(h => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead>` : ''}
+            <tbody>${(tb.rows || []).map(r => `<tr>${r.map((c, j) => (j === 0 ? `<th scope="row">${esc(c)}</th>` : `<td><span class="tbl-items">${String(c).split(' · ').map(x => `<span>${esc(x)}</span>`).join('')}</span></td>`)).join('')}</tr>`).join('')}</tbody>
+          </table>
+        </div>
+      </figure>`;
+    };
+    const out = [];
+    let run = [];
+    const flush = () => { if (run.length) { out.push(photoRun(run)); run = []; } };
+    body.forEach(b => {
+      if (b.type === 'img') { run.push(b); return; }
+      flush();
+      if (b.type === 'p') out.push(`<p class="post-p reveal">${esc(txt(b))}</p>`);
+      else if (b.type === 'h') out.push(`<h2 class="post-h reveal">${esc(txt(b))}</h2>`);
+      else if (b.type === 'video') out.push(video(b));
+      else if (b.type === 'table') out.push(table(b));
+    });
+    flush();
+
+    const prev = news[at - 1];
+    const next = news[at + 1];
+    const others = news.filter(x => x !== n && !x.pinned).slice(0, 3);
+    const catAll = EN ? (catPlural(n.cat) === 'Community' ? 'All Community News' : `All ${catPlural(n.cat)}`) : `${n.cat} 소식 모두 보기`;
+    content.innerHTML = `
+      <article class="post" aria-labelledby="page-title">${out.join('')}</article>
+      <nav class="pn reveal" aria-label="${esc(t('이전 글과 다음 글', UI.news.prevNext))}">
+        ${prev ? `<a class="pn-prev" href="${newsUrl(prev.id)}" rel="prev"><small>${esc(t('Prev · 이전 글', UI.buttons.prevPost))}</small><span>${esc(pick(prev, 'title'))}</span></a>` : ''}
+        ${next ? `<a class="pn-next" href="${newsUrl(next.id)}" rel="next"><small>${esc(t('Next · 다음 글', UI.buttons.nextPost))}</small><span>${esc(pick(next, 'title'))}</span></a>` : ''}
+      </nav>
+      <div class="post-foot">
+        <a class="text-link" href="proto-15-news.html">${esc(t('새 소식 목록 보기', UI.buttons.backToNews))} <span aria-hidden="true">→</span></a>
+        <a class="text-link" href="proto-15-news.html?cat=${encodeURIComponent(n.cat)}">${esc(catAll)} <span aria-hidden="true">→</span></a>
+      </div>
+      ${others.length ? `<section class="more-n" aria-labelledby="more-title">
+        <div class="more-head reveal"><h2 id="more-title">${esc(t('다른 소식', UI.news.more))}</h2><a class="text-link" href="proto-15-news.html">${esc(t('모두 보기', UI.buttons.viewAll))} <span aria-hidden="true">→</span></a></div>
+        <ul class="n-list">${others.map((o, k) => `<li class="reveal" style="transition-delay:${k * 90}ms">${newsCard(o)}</li>`).join('')}</ul>
+      </section>` : ''}`;
+
+    // 데이터의 크기가 없거나 실제 사진과 다르면, 불러온 사진의 비율로 고친다(나란한 두 장의 높이가 늘 같도록)
+    content.addEventListener('load', e => {
+      const fig = e.target.closest && e.target.closest('.ph');
+      if (!fig || !e.target.naturalWidth) return;
+      const r = e.target.naturalWidth / e.target.naturalHeight;
+      fig.style.setProperty('--r', r.toFixed(4));
+      fig.classList.toggle('is-tall', r < 1);
+    }, true);
+
+    // 영상: 웹에서는 그 자리에서 재생, 파일로 열었을 때는 링크대로 유튜브가 열린다
+    content.addEventListener('click', e => {
+      const yt = e.target.closest('a.yt');
+      if (!yt || !isWeb) return;
+      e.preventDefault();
+      const box = document.createElement('div');
+      box.className = 'yt';
+      const frame = document.createElement('iframe');
+      frame.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(yt.dataset.yt)}?autoplay=1&rel=0`;
+      frame.title = title;
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      frame.allowFullscreen = true;
+      box.append(frame);
+      yt.replaceWith(box);
+      frame.focus();
+    });
+
+    // 사진 크게 보기: 이전·다음, 화살표 키, 밀어 넘기기, Esc. 닫으면 누른 사진으로 초점이 돌아간다
+    // 사진은 처음 열 때 만든다(빈 img를 미리 두지 않는다)
+    const lb = document.getElementById('lb');
+    const lbStage = lb.querySelector('.lb-stage');
+    let lbImg = null;
+    const lbCur = document.getElementById('lb-cur');
+    const lbTotal = document.getElementById('lb-total');
+    const lbPrev = lb.querySelector('[data-lb="prev"]');
+    const lbNext = lb.querySelector('[data-lb="next"]');
+    let cur = 0;
+    let opener = null;
+    const show = k => {
+      cur = Math.max(0, Math.min(photos.length - 1, k));
+      const p = photos[cur];
+      if (!lbImg) { lbImg = document.createElement('img'); lbStage.append(lbImg); }
+      lbImg.src = p.src;
+      lbImg.alt = photoAlt(cur);
+      lbCur.textContent = pad2(cur + 1);
+      lbTotal.textContent = pad2(photos.length);
+      lbPrev.disabled = cur === 0;
+      lbNext.disabled = cur === photos.length - 1;
+      if (document.activeElement && document.activeElement.disabled) (lbPrev.disabled ? lbNext : lbPrev).focus();
+    };
+    content.addEventListener('click', e => {
+      const b = e.target.closest('.ph-open');
+      if (!b) return;
+      opener = b;
+      lb.classList.toggle('is-single', photos.length < 2);
+      show(Number(b.dataset.idx));
+      lb.showModal();
+      document.body.style.overflow = 'hidden';
+    });
+    lb.addEventListener('close', () => { document.body.style.overflow = ''; if (opener) opener.focus(); });
+    lb.addEventListener('click', e => {
+      const act = e.target.closest('[data-lb]');
+      if (act) { if (act.dataset.lb === 'close') lb.close(); else show(cur + (act.dataset.lb === 'next' ? 1 : -1)); }
+      else if (e.target.classList.contains('lb-stage')) lb.close();
+    });
+    lb.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') { e.preventDefault(); show(cur + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); show(cur - 1); }
+    });
+    let x0 = null;
+    lb.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', e => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      x0 = null;
+      if (Math.abs(dx) > 48) show(cur + (dx < 0 ? 1 : -1));
+    });
+  }
+
+
+  // 모바일 메뉴: 전체 화면 시트, Esc로 닫고 버튼으로 초점을 돌려준다
+  const header = document.getElementById('site-header');
+  const menuBtn = document.querySelector('.menu-btn');
+  const nav = document.getElementById('site-nav');
+  const setMenu = open => {
+    nav.classList.toggle('is-open', open);
+    header.classList.toggle('menu-open', open);
+    menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.querySelector('.menu-label').textContent = open ? t('닫기', UI.a11y.close) : t('메뉴', UI.a11y.menu);
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) nav.querySelector('a').focus();
+  };
+  menuBtn.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
+  nav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  addEventListener('keydown', e => {
+    if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); }
+  });
+
+  observe();
+  // 주소의 #자리가 스크립트로 그린 칸이면, 그린 뒤에 그 자리로 옮긴다
+  if (location.hash.length > 1) {
+    let target = null;
+    try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch (e) {}
+    if (target) target.scrollIntoView({ behavior: 'instant' });
+  }
+  // 쪽 머리 연출: 격자 선, 제목 줄, 장 머리 선이 차례로
+  requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('is-ready')));
+
+})();
+</script>
+</body>
+</html>
