@@ -297,6 +297,31 @@ html[lang="en"] .page-title { letter-spacing: -0.03em; }
   html[lang="en"] .menu-btn { margin-left: auto; }
 }
 </style>
+<style>
+/* 하위 메뉴: 넓은 화면은 위 메뉴에 마우스를 올리거나 초점이 오면 아래로 펼치고, 모바일 메뉴 시트에서는 늘 보인다 */
+.nav-list > li { position: relative; }
+@media (min-width: 64rem) {
+  .nav-list .sub {
+    position: absolute; top: calc(100% + (var(--header) - 2.75rem) / 2); left: -1.4rem; z-index: 1;
+    display: grid; min-width: 12.5rem; padding: 0.6rem 1.4rem 0.75rem;
+    border: 1px solid var(--line); border-radius: 2px; background: var(--paper); color: var(--ink);
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0.35s;
+  }
+  /* 위 메뉴에서 하위 메뉴로 내려가는 틈에서 닫히지 않게 */
+  .nav-list .sub::before { content: ""; position: absolute; left: -1px; right: -1px; bottom: 100%; height: calc((var(--header) - 2.75rem) / 2 + 1px); }
+  .has-sub:hover > .sub, .has-sub:focus-within > .sub { opacity: 1; visibility: visible; transform: none; transition: opacity 0.35s ease, transform 0.35s ease; }
+  .has-sub.is-closed > .sub { opacity: 0; visibility: hidden; transform: translateY(-6px); }
+  .nav-list .sub a { min-height: 2.6rem; white-space: nowrap; }
+  .nav-list .sub a::after { bottom: 0.5rem; }
+}
+@media (max-width: 63.99rem) {
+  .nav-list .sub { display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin-top: -0.6rem; padding-bottom: 0.9rem; }
+  .nav-list .sub li { border: 0; }
+  .nav-list .sub a { display: inline-flex; min-height: 2.75rem; padding: 0; color: var(--ink-2); font-size: 1rem; font-weight: 400; letter-spacing: 0; }
+  .nav-list .sub a[aria-current] { color: var(--ink); font-weight: 500; }
+}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -318,9 +343,19 @@ html[lang="en"] .page-title { letter-spacing: -0.03em; }
     <nav id="site-nav" aria-label="주 메뉴" data-en-aria-label="Main menu">
       <ul class="nav-list">
         <li><a href="proto-9-stillness.html#mass"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Mass Times&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Mass&lt;/span&gt;">미사</span> <small data-only="ko">Mass</small></a></li>
-        <li><a href="proto-9-stillness.html#community" aria-current="true"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Community&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Community&lt;/span&gt;">공동체</span> <small data-only="ko">Community</small></a></li>
+        <li class="has-sub"><a href="proto-9-stillness.html#community" aria-current="true"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Community&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Community&lt;/span&gt;">공동체</span> <small data-only="ko">Community</small></a>
+          <ul class="sub">
+            <li><a href="proto-9-plan.html" aria-current="page" data-en="Pastoral Plan">사목지침</a></li>
+            <li><a href="proto-9-committees.html" data-en="Committees">분과 소개</a></li>
+            <li><a href="proto-9-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
+          </ul></li>
         <li><a href="proto-9-stillness.html#rites"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Sacraments &amp;amp; Liturgy&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Sacraments&lt;/span&gt;">성사와 전례</span> <small data-only="ko">Sacraments</small></a></li>
-        <li><a href="proto-9-stillness.html#news"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;News&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;News&lt;/span&gt;">소식</span> <small data-only="ko">News</small></a></li>
+        <li class="has-sub"><a href="proto-9-stillness.html#news"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;News&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;News&lt;/span&gt;">소식</span> <small data-only="ko">News</small></a>
+          <ul class="sub">
+            <li><a href="proto-9-bulletin-view.html" data-en="This Week’s Bulletin">이번 주 주보</a></li>
+            <li><a href="proto-9-bulletin.html" data-en="Past Bulletins">지난 주보</a></li>
+            <li><a href="proto-9-news.html" data-en="All News">새 소식</a></li>
+          </ul></li>
         <li><a href="proto-9-stillness.html#welcome"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;New Here?&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;New Here?&lt;/span&gt;">처음 오신 분</span> <small data-only="ko">Welcome</small></a></li>
         <li><a href="proto-9-stillness.html#visit"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Visit Us&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Visit&lt;/span&gt;">오시는 길</span> <small data-only="ko">Visit</small></a></li>
       </ul>
@@ -487,6 +522,16 @@ document.documentElement.classList.add('js');
   menuBtn.querySelector('.menu-label').textContent = T('메뉴', UI.buttons.menu);
   menuBtn.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
   nav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  // 하위 메뉴(넓은 화면): Esc로 닫고 위 메뉴로 초점을 돌려준다
+  document.querySelectorAll('.has-sub').forEach(li => {
+    const top = li.querySelector('a');
+    li.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !nav.classList.contains('is-open')) { li.classList.add('is-closed'); top.focus(); }
+    });
+    li.addEventListener('focusin', e => { if (e.target !== top) li.classList.remove('is-closed'); });
+    li.addEventListener('focusout', e => { if (!li.contains(e.relatedTarget)) li.classList.remove('is-closed'); });
+    li.addEventListener('mouseleave', () => li.classList.remove('is-closed'));
+  });
   addEventListener('keydown', e => {
     if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); }
   });

@@ -34,6 +34,11 @@
   --wrap: 84rem;
   --header: 4rem;
   --section: clamp(6rem, 4rem + 8vw, 11rem);
+  /* 사진 자리: 벽(--paper)보다 밝은 매트, 매트 여백, 제단화 패널 사이 틈 */
+  --mat: #FBFAF8;
+  --mat-pad: clamp(0.75rem, 0.4rem + 1.4vw, 1.875rem);
+  --poly-gap: clamp(0.375rem, 0.2rem + 0.45vw, 0.75rem);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
   color-scheme: light;
 }
 
@@ -237,55 +242,89 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
   .mass-notes { grid-template-columns: 1fr; }
 }
 
+/* 사진 자리: 석회암 벽에 건 액자처럼, 밝은 매트와 가는 테두리 안에 사진을 두고 이름표는 매트 아랫단에 적는다 */
+.plate { padding: var(--mat-pad); border: 1px solid var(--line); background: var(--mat); }
+.plate-img { position: relative; overflow: hidden; background: var(--paper-2); }
+.plate-img img { width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 50%); }
+.plate > figcaption { display: flex; align-items: center; gap: 0.85rem; margin: calc(var(--mat-pad) * 0.7) 0 calc(var(--mat-pad) * -0.25); color: var(--ink-2); font-size: 0.8125rem; line-height: 1.6; }
+.plate > figcaption::before { content: ""; flex: none; width: 1.5rem; height: 1px; background: currentColor; opacity: 0.7; }
+/* 액자가 드러날 때 사진은 조금 크게 시작해 천천히 제자리에 앉는다 */
+.js .plate.reveal .plate-img img { transform: scale(1.06); transition: transform 2.4s var(--ease); }
+.js .plate.reveal.is-in .plate-img img { transform: none; }
+
 /* 초대말씀 */
 .word-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: center; gap: clamp(2.5rem, 7vw, 8rem); }
-.word-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
-.word-photo figcaption, .g-item figcaption, .interlude figcaption { display: flex; gap: 0.75rem; margin-top: 0.85rem; color: var(--ink-2); font-size: 0.8125rem; line-height: 1.6; }
-.g-no { font-family: var(--italic); font-size: 1rem; font-style: italic; line-height: 1.3; }
+.word-photo .plate-img { aspect-ratio: 4 / 5; }
 .word blockquote { margin-top: 2rem; }
 .word blockquote p { font-size: clamp(1.375rem, 1rem + 1.4vw, 2.125rem); font-weight: 300; line-height: 1.65; letter-spacing: -0.025em; }
 .word blockquote p + p { margin-top: 1.4rem; }
 .word cite { display: block; margin-top: 2rem; color: var(--ink-2); font-size: 0.9375rem; font-style: normal; }
-@media (max-width: 52rem) { .word-grid { grid-template-columns: 1fr; } .word-photo img { aspect-ratio: 4 / 3; } }
+@media (max-width: 52rem) { .word-grid { grid-template-columns: 1fr; } .word-photo .plate-img { aspect-ratio: 4 / 3; } }
 
-/* 공동체 갤러리: 사진마다 자리를 정하지 않고 순서 규칙으로 배치한다.
-   다섯 장이 한 마디로 되풀이되고, 칸마다 비율이 고정되어 어떤 사진을 넣어도 틀이 흔들리지 않는다.
-   사진의 중심은 --focus(object-position)로 사진별로 옮길 수 있다. */
-.gallery { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(1rem, 2.2vw, 2rem); row-gap: clamp(4rem, 7vw, 7.5rem); align-items: start; }
-.g-frame { position: relative; overflow: hidden; aspect-ratio: var(--ratio, 3 / 2); background: var(--paper-2); }
-.g-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 45%); }
-.g-item figcaption { min-height: calc(0.8125rem * 1.6 * 2); }
-.g-cap { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
-@media (min-width: 52.0625rem) {
-  .g-item:nth-child(5n + 1) { grid-column: 1 / 8; }
-  .g-item:nth-child(5n + 2) { grid-column: 9 / 13; align-self: end; --ratio: 1 / 1; }
-  .g-item:nth-child(5n + 3) { grid-column: 2 / 6; --ratio: 4 / 3; }
-  .g-item:nth-child(5n + 4) { grid-column: 7 / 13; margin-top: clamp(2.5rem, 6vw, 6.5rem); }
-  .g-item:nth-child(5n + 5) { grid-column: 4 / 11; --ratio: 16 / 9; }
-  /* 마디가 홀로 끝나면 가운데 넓은 한 장으로 마무리 */
-  .g-item:nth-child(5n + 1):last-child { grid-column: 2 / 12; --ratio: 16 / 9; }
-  .g-item:nth-child(5n + 3):last-child { grid-column: 3 / 11; --ratio: 16 / 9; }
+/* 공동체: 사진을 한 폭의 제단화처럼 하나의 액자에 모은다.
+   다섯 장이 한 마디(가운데 큰 패널과 양 날개 두 장씩)로 되풀이되고, 마디를 다 채우지 못한 1~4장은 아랫단(프레델라)에 고르게 나눠 놓는다.
+   사진마다 자리를 정하지 않고 순서 규칙으로 놓으며 칸 비율이 정해져 있어, 어떤 사진을 몇 장 넣어도 틀이 흔들리지 않는다.
+   사진의 중심은 --focus(object-position)로 옮긴다. 번호는 순서대로 자동으로 매기고, 설명은 액자 아랫단 목록에 모은다. */
+.poly { padding: var(--mat-pad); border: 1px solid var(--line); background: var(--mat); counter-reset: plate; }
+.poly-field { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-auto-flow: row dense; gap: var(--poly-gap); }
+.g-item { position: relative; counter-increment: plate; }
+.g-frame { position: relative; height: 100%; overflow: hidden; aspect-ratio: var(--ratio, 4 / 3); background: var(--paper-2); }
+.g-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 45%); transition: opacity 0.6s ease; }
+/* 패널 번호: 사진 위 글자 대신 매트를 패널 모서리로 조금 들인 이름표. 어떤 사진에서도 읽힌다 */
+.g-frame::after {
+  content: counter(plate, upper-roman); position: absolute; left: 0; bottom: 0; min-width: 2.25rem; padding: 0.4rem 0.65rem 0.3rem; pointer-events: none;
+  background: var(--mat); color: var(--ink-2); font-family: var(--italic); font-size: 0.9375rem; font-style: italic; line-height: 1; text-align: center;
+  transition: color 0.4s;
 }
+.g-item.is-on .g-frame::after { color: var(--ink); }
+/* 설명은 화면 읽기 프로그램이 사진과 함께 읽고, 눈으로는 아랫단 목록에서 본다 */
+.g-item figcaption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (min-width: 52.0625rem) {
+  .g-item:nth-child(5n + 1) { grid-column: 4 / 10; grid-row: span 2; --ratio: auto; }
+  .g-item:nth-child(5n + 2), .g-item:nth-child(5n + 3) { grid-column: 1 / 4; }
+  .g-item:nth-child(5n + 4), .g-item:nth-child(5n + 5) { grid-column: 10 / 13; }
+  /* 마디를 다 채우지 못한 장은 아랫단에 고르게 나눈다: 1장 전체, 2장 반씩, 3장 셋으로, 4장 넷으로 */
+  .g-item:nth-child(5n + 1):last-child { grid-column: 1 / -1; grid-row: auto; --ratio: 21 / 9; }
+  .g-item:nth-child(5n + 1):nth-last-child(2), .g-item:nth-child(5n + 2):last-child { grid-column: span 6; grid-row: auto; --ratio: 2 / 1; }
+  .g-item:nth-child(5n + 1):nth-last-child(3), .g-item:nth-child(5n + 2):nth-last-child(2), .g-item:nth-child(5n + 3):last-child { grid-column: span 4; grid-row: auto; --ratio: 3 / 2; }
+  .g-item:nth-child(5n + 1):nth-last-child(4), .g-item:nth-child(5n + 2):nth-last-child(3),
+  .g-item:nth-child(5n + 3):nth-last-child(2), .g-item:nth-child(5n + 4):last-child { grid-column: span 3; grid-row: auto; --ratio: 4 / 3; }
+}
+@media (max-width: 52rem) {
+  /* 모바일: 넓은 한 장과 정사각 네 장이 한 마디, 남는 장은 짝을 맞춘다 */
+  .poly-field { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .g-item { --ratio: 1 / 1; }
+  .g-item:nth-child(5n + 1) { grid-column: 1 / -1; --ratio: 3 / 2; }
+  .g-item:nth-child(5n + 1):nth-last-child(2), .g-item:nth-child(5n + 1):nth-last-child(4) { grid-column: auto; --ratio: 1 / 1; }
+  .g-frame::after { min-width: 1.75rem; padding: 0.3rem 0.45rem 0.2rem; font-size: 0.8125rem; }
+}
+/* 아랫단 목록: 번호와 설명. 사진에 마우스를 올리면 그 사진만 남기고 나머지는 물러난다 */
+.poly-legend {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); gap: 0.25rem 2.5rem;
+  margin-top: calc(var(--mat-pad) * 0.8); padding-top: calc(var(--mat-pad) * 0.7); border-top: 1px solid var(--line);
+  counter-reset: legend; color: var(--ink-2); font-size: 0.8125rem; line-height: 1.6;
+}
+.poly-legend li { display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); align-items: baseline; counter-increment: legend; transition: color 0.4s; }
+.poly-legend li::before { content: counter(legend, upper-roman); font-family: var(--italic); font-size: 1rem; font-style: italic; }
+.poly-legend li.is-on { color: var(--ink); }
+@media (hover: hover) { .poly.is-pointing .g-item:not(.is-on) img { opacity: 0.4; } }
+/* 액자가 드러날 때 패널이 가운데부터 차례로 제자리에 앉는다 */
+.js .poly.reveal .g-frame img { transform: scale(1.06); transition: transform 2.4s var(--ease), opacity 0.6s ease; }
+.js .poly.reveal.is-in .g-frame img { transform: none; }
+.js .poly .g-item:nth-child(5n + 2) img, .js .poly .g-item:nth-child(5n + 4) img { transition-delay: 0.15s, 0s; }
+.js .poly .g-item:nth-child(5n + 3) img, .js .poly .g-item:nth-child(5n + 5) img { transition-delay: 0.3s, 0s; }
 .gallery-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem 2rem; margin-top: clamp(3.5rem, 6vw, 6rem); padding-top: 1.25rem; border-top: 1px solid var(--line); }
 .links-row { display: flex; flex-wrap: wrap; gap: 0 2rem; }
-@media (max-width: 52rem) {
-  /* 모바일: 넓은 한 장, 정사각 두 장이 한 마디 */
-  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 0.9rem; row-gap: 2.75rem; }
-  .g-item { --ratio: 1 / 1; }
-  .g-item:nth-child(3n + 1) { grid-column: 1 / -1; --ratio: 3 / 2; }
-  .g-item:nth-child(3n) { margin-top: 2.5rem; }
-  .g-item:nth-child(3n + 2):last-child { grid-column: 1 / -1; --ratio: 3 / 2; }
-}
 
 /* 영상: 사진 흐름과 떼어 따로 둔다 */
 .film { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(1rem, 2.2vw, 2rem); align-items: center; margin-top: clamp(5rem, 8vw, 9rem); }
-.film .vtile { grid-column: 2 / 5; }
+.film .film-plate { grid-column: 2 / 5; }
 .film-text { grid-column: 6 / 12; }
 .film-text h3 { margin-top: 1.4rem; font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem); font-weight: 300; line-height: 1.3; letter-spacing: -0.03em; }
 .film-text .note { margin-top: 1rem; max-width: 30rem; }
 @media (max-width: 52rem) {
   .film { grid-template-columns: 1fr; row-gap: 2rem; }
-  .film .vtile { grid-column: auto; width: min(68%, 17rem); margin-inline: auto; }
+  .film .film-plate { grid-column: auto; width: min(72%, 18rem); margin-inline: auto; }
   .film-text { grid-column: auto; }
 }
 
@@ -342,10 +381,10 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
   .feed-cat { grid-column: 1 / -1; }
 }
 
-/* 화면 사이 쉼 */
+/* 화면 사이 쉼: 가로로 긴 액자 한 점 */
 .interlude { margin-top: var(--section); }
-.interlude img { width: 100%; aspect-ratio: 21 / 9; object-fit: cover; }
-@media (max-width: 52rem) { .interlude img { aspect-ratio: 4 / 3; } }
+.interlude .plate-img { aspect-ratio: 21 / 9; }
+@media (max-width: 52rem) { .interlude .plate-img { aspect-ratio: 4 / 3; } }
 
 /* 처음 오신 분 */
 .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 3rem clamp(1.5rem, 3vw, 3rem); counter-reset: step; }
@@ -413,6 +452,7 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
 .js .reveal.is-in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .js .reveal { opacity: 1; transform: none; transition: none; }
+  .js .plate.reveal .plate-img img, .js .poly.reveal .g-frame img { transform: none; transition: none; }
   .hero .media-btn { display: none; }
 }
 @media (orientation: landscape) and (max-height: 30rem) {
@@ -475,6 +515,31 @@ html[lang="en"] .intake dl div { grid-template-columns: 4.75rem minmax(0, 1fr); 
   html[lang="en"] .menu-btn { margin-left: auto; }
 }
 </style>
+<style>
+/* 하위 메뉴: 넓은 화면은 위 메뉴에 마우스를 올리거나 초점이 오면 아래로 펼치고, 모바일 메뉴 시트에서는 늘 보인다 */
+.nav-list > li { position: relative; }
+@media (min-width: 64rem) {
+  .nav-list .sub {
+    position: absolute; top: calc(100% + (var(--header) - 2.75rem) / 2); left: -1.4rem; z-index: 1;
+    display: grid; min-width: 12.5rem; padding: 0.6rem 1.4rem 0.75rem;
+    border: 1px solid var(--line); border-radius: 2px; background: var(--paper); color: var(--ink);
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0.35s;
+  }
+  /* 위 메뉴에서 하위 메뉴로 내려가는 틈에서 닫히지 않게 */
+  .nav-list .sub::before { content: ""; position: absolute; left: -1px; right: -1px; bottom: 100%; height: calc((var(--header) - 2.75rem) / 2 + 1px); }
+  .has-sub:hover > .sub, .has-sub:focus-within > .sub { opacity: 1; visibility: visible; transform: none; transition: opacity 0.35s ease, transform 0.35s ease; }
+  .has-sub.is-closed > .sub { opacity: 0; visibility: hidden; transform: translateY(-6px); }
+  .nav-list .sub a { min-height: 2.6rem; white-space: nowrap; }
+  .nav-list .sub a::after { bottom: 0.5rem; }
+}
+@media (max-width: 63.99rem) {
+  .nav-list .sub { display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin-top: -0.6rem; padding-bottom: 0.9rem; }
+  .nav-list .sub li { border: 0; }
+  .nav-list .sub a { display: inline-flex; min-height: 2.75rem; padding: 0; color: var(--ink-2); font-size: 1rem; font-weight: 400; letter-spacing: 0; }
+  .nav-list .sub a[aria-current] { color: var(--ink); font-weight: 500; }
+}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -496,9 +561,19 @@ html[lang="en"] .intake dl div { grid-template-columns: 4.75rem minmax(0, 1fr); 
     <nav id="site-nav" aria-label="주 메뉴" data-en-aria-label="Main menu">
       <ul class="nav-list">
         <li><a href="#mass"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Mass Times&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Mass&lt;/span&gt;">미사</span> <small data-only="ko">Mass</small></a></li>
-        <li><a href="#community"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Community&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Community&lt;/span&gt;">공동체</span> <small data-only="ko">Community</small></a></li>
+        <li class="has-sub"><a href="#community"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Community&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Community&lt;/span&gt;">공동체</span> <small data-only="ko">Community</small></a>
+          <ul class="sub">
+            <li><a href="proto-9-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+            <li><a href="proto-9-committees.html" data-en="Committees">분과 소개</a></li>
+            <li><a href="proto-9-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
+          </ul></li>
         <li><a href="#rites"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Sacraments &amp;amp; Liturgy&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Sacraments&lt;/span&gt;">성사와 전례</span> <small data-only="ko">Sacraments</small></a></li>
-        <li><a href="#news"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;News&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;News&lt;/span&gt;">소식</span> <small data-only="ko">News</small></a></li>
+        <li class="has-sub"><a href="#news"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;News&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;News&lt;/span&gt;">소식</span> <small data-only="ko">News</small></a>
+          <ul class="sub">
+            <li><a href="proto-9-bulletin-view.html" data-en="This Week’s Bulletin">이번 주 주보</a></li>
+            <li><a href="proto-9-bulletin.html" data-en="Past Bulletins">지난 주보</a></li>
+            <li><a href="proto-9-news.html" data-en="All News">새 소식</a></li>
+          </ul></li>
         <li><a href="#welcome"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;New Here?&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;New Here?&lt;/span&gt;">처음 오신 분</span> <small data-only="ko">Welcome</small></a></li>
         <li><a href="#visit"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Visit Us&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Visit&lt;/span&gt;">오시는 길</span> <small data-only="ko">Visit</small></a></li>
       </ul>
@@ -606,8 +681,8 @@ html[lang="en"] .intake dl div { grid-template-columns: 4.75rem minmax(0, 1fr); 
 
   <section class="section word" aria-labelledby="word-title">
     <div class="wrap word-grid">
-      <figure class="word-photo reveal">
-        <img src="media/photos/candles.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="성당 안 계단식 초 봉헌대에 작은 초들이 줄지어 놓인 모습" data-en-alt="Rows of small candles on a tiered votive stand inside the church">
+      <figure class="word-photo plate reveal">
+        <div class="plate-img"><img src="media/hero/candles.webp" width="1600" height="1067" loading="lazy" decoding="async" style="--focus: 58% 50%" alt="성당 안 계단식 초 봉헌대에 작은 초들이 줄지어 놓인 모습" data-en-alt="Rows of small candles on a tiered votive stand inside the church"></div>
         <figcaption data-en="Votive candles">초 봉헌대</figcaption>
       </figure>
       <div class="reveal">
@@ -631,46 +706,48 @@ html[lang="en"] .intake dl div { grid-template-columns: 4.75rem minmax(0, 1fr); 
         <p class="lead" data-en="From Christmas and Lent to Baptisms and pilgrimages: the year our parish community shared.">성탄과 사순, 세례식과 순례까지. 본당 공동체가 함께 보낸 한 해입니다.</p>
       </div>
 
-      <div class="gallery" data-gallery>
-        <figure class="g-item reveal" data-gallery-item>
-          <div class="g-frame"><img src="media/photos/nave-wide.jpg" width="1600" height="1067" loading="lazy" decoding="async" data-en-alt="The church interior seen from above, with the faithful praying beneath red brick walls and arched windows" alt="높은 곳에서 내려다본 성당 안. 붉은 벽돌 벽과 아치 창 아래 신자들이 기도하고 있다"></div>
-          <figcaption><span class="g-no">01</span><span class="g-cap" data-en="The main church: red brick and arched windows">대성전, 붉은 벽돌과 아치 창</span></figcaption>
-        </figure>
-        <figure class="g-item reveal" data-gallery-item>
-          <div class="g-frame"><img src="media/photos/chandelier.jpg" width="1068" height="1600" loading="lazy" decoding="async" data-en-alt="Glass lamps glowing against a red brick wall" alt="붉은 벽돌 벽에 걸린 유리 장식 등이 불을 밝힌 모습" style="--focus: 50% 30%"></div>
-          <figcaption><span class="g-no">02</span><span class="g-cap" data-en="Lamps in the church">성당 안의 등</span></figcaption>
-        </figure>
-        <figure class="g-item reveal" data-gallery-item>
-          <div class="g-frame"><img src="media/photos/baptism-ewer.jpg" width="1600" height="1067" loading="lazy" decoding="async" data-en-alt="A gold ewer and basin used for Baptism, set on a white cloth" alt="세례식에 쓰는 금빛 물병과 대야가 흰 천 위에 놓인 모습"></div>
-          <figcaption><span class="g-no">03</span><span class="g-cap" data-en="Ewer and basin for Baptism">세례식에 쓰는 물병과 대야</span></figcaption>
-        </figure>
-        <figure class="g-item reveal" data-gallery-item>
-          <div class="g-frame"><img src="media/photos/way-of-cross.jpg" width="1600" height="1066" loading="lazy" decoding="async" data-en-alt="A priest wearing a purple stole leads the Stations of the Cross inside the church" alt="보라색 영대를 한 사제가 성당 안에서 십자가의 길 기도를 이끄는 모습"></div>
-          <figcaption><span class="g-no">04</span><span class="g-cap" data-en="2026 Stations of the Cross">2026년 십자가의 길</span></figcaption>
-        </figure>
-        <figure class="g-item reveal" data-gallery-item>
-          <div class="g-frame"><img src="media/photos/pilgrimage.jpg" width="1400" height="1050" loading="lazy" decoding="async" data-en-alt="Catechumens holding a pilgrimage banner in an outdoor group photo" alt="예비신자들이 성지 순례 현수막을 들고 야외에서 찍은 단체 사진"></div>
-          <figcaption><span class="g-no">05</span><span class="g-cap" data-en="2026 Catechumens’ Shrine Pilgrimage">2026년 예비자 성지 순례</span></figcaption>
-        </figure>
-        <figure class="g-item reveal" data-gallery-item>
-          <div class="g-frame"><img src="media/photos/kids-family.jpg" width="1280" height="960" loading="lazy" decoding="async" data-en-alt="Children and families gathered before the statue of Mary in the church courtyard" alt="성당 마당 성모상 앞에 어린이와 가족들이 모인 모습"></div>
-          <figcaption><span class="g-no">06</span><span class="g-cap" data-en="Children and families before the statue of Mary">성모상 앞, 어린이와 가족</span></figcaption>
-        </figure>
-        <figure class="g-item reveal" data-gallery-item>
-          <div class="g-frame"><img src="media/photos/youth-camp.jpg" width="1405" height="1056" loading="lazy" decoding="async" data-en-alt="Young adults gathered for a group photo in front of the summer camp banner" alt="청년들이 청년 여름 캠프 현수막 앞에 모여 찍은 단체 사진"></div>
-          <figcaption><span class="g-no">07</span><span class="g-cap" data-en="2026 Young Adult Summer Camp">2026년 청년 여름 캠프</span></figcaption>
-        </figure>
+      <div class="poly reveal" data-gallery>
+        <div class="poly-field">
+          <figure class="g-item" data-gallery-item>
+            <div class="g-frame"><img src="media/hero/nave-wide.webp" width="1600" height="960" loading="lazy" decoding="async" data-en-alt="The church interior seen from above, with the faithful praying beneath red brick walls and arched windows" alt="높은 곳에서 내려다본 성당 안. 붉은 벽돌 벽과 아치 창 아래 신자들이 기도하고 있다"></div>
+            <figcaption><span class="g-cap" data-en="The main church: red brick and arched windows">대성전, 붉은 벽돌과 아치 창</span></figcaption>
+          </figure>
+          <figure class="g-item" data-gallery-item>
+            <div class="g-frame"><img style="--focus: 50% 30%" src="media/photos/chandelier.webp" width="1068" height="1490" loading="lazy" decoding="async" data-en-alt="Glass lamps glowing against a red brick wall" alt="붉은 벽돌 벽에 걸린 유리 장식 등이 불을 밝힌 모습"></div>
+            <figcaption><span class="g-cap" data-en="Lamps in the church">성당 안의 등</span></figcaption>
+          </figure>
+          <figure class="g-item" data-gallery-item>
+            <div class="g-frame"><img src="media/photos/baptism-ewer.webp" width="1280" height="768" loading="lazy" decoding="async" data-en-alt="A gold ewer and basin used for Baptism, set on a white cloth" alt="세례식에 쓰는 금빛 물병과 대야가 흰 천 위에 놓인 모습"></div>
+            <figcaption><span class="g-cap" data-en="Ewer and basin for Baptism">세례식에 쓰는 물병과 대야</span></figcaption>
+          </figure>
+          <figure class="g-item" data-gallery-item>
+            <div class="g-frame"><img style="--focus: 55% 40%" src="media/photos/way-of-cross.webp" width="1280" height="768" loading="lazy" decoding="async" data-en-alt="A priest wearing a purple stole leads the Stations of the Cross inside the church" alt="보라색 영대를 한 사제가 성당 안에서 십자가의 길 기도를 이끄는 모습"></div>
+            <figcaption><span class="g-cap" data-en="2026 Stations of the Cross">2026년 십자가의 길</span></figcaption>
+          </figure>
+          <figure class="g-item" data-gallery-item>
+            <div class="g-frame"><img style="--focus: 50% 55%" src="media/photos/pilgrimage.webp" width="1280" height="960" loading="lazy" decoding="async" data-en-alt="Catechumens holding a pilgrimage banner in an outdoor group photo" alt="예비신자들이 성지 순례 현수막을 들고 야외에서 찍은 단체 사진"></div>
+            <figcaption><span class="g-cap" data-en="2026 Catechumens’ Shrine Pilgrimage">2026년 예비자 성지 순례</span></figcaption>
+          </figure>
+          <figure class="g-item" data-gallery-item>
+            <div class="g-frame"><img style="--focus: 50% 55%" src="media/photos/kids-family.webp" width="1280" height="960" loading="lazy" decoding="async" data-en-alt="Children and families gathered before the statue of Mary in the church courtyard" alt="성당 마당 성모상 앞에 어린이와 가족들이 모인 모습"></div>
+            <figcaption><span class="g-cap" data-en="Children and families before the statue of Mary">성모상 앞, 어린이와 가족</span></figcaption>
+          </figure>
+          <figure class="g-item" data-gallery-item>
+            <div class="g-frame"><img style="--focus: 50% 55%" src="media/photos/youth-camp.webp" width="1280" height="963" loading="lazy" decoding="async" data-en-alt="Young adults gathered for a group photo in front of the summer camp banner" alt="청년들이 청년 여름 캠프 현수막 앞에 모여 찍은 단체 사진"></div>
+            <figcaption><span class="g-cap" data-en="2026 Young Adult Summer Camp">2026년 청년 여름 캠프</span></figcaption>
+          </figure>
+        </div>
       </div>
 
       <div class="film reveal">
-        <div class="vtile">
+        <div class="film-plate plate"><div class="vtile">
           <video id="shorts" src="media/shorts-year.mp4" poster="media/shorts-year-poster.jpg" muted playsinline loop preload="metadata" aria-describedby="shorts-desc"></video>
           <button class="media-btn" id="shorts-toggle" type="button" aria-label="영상 재생" data-state="paused">
             <svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h3.2v16H7zM13.8 4H17v16h-3.2z" fill="currentColor"/></svg>
             <svg class="i-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg>
             <span class="vtile-len" id="shorts-len">0:23</span>
           </button>
-        </div>
+        </div></div>
         <div class="film-text">
           <p class="label" data-en="Video">Video · 영상</p>
           <h3 data-en="A Year at&lt;br&gt;Seongsan-dong Catholic Church">영상으로 보는<br>성산동성당의 한 해</h3>
@@ -767,10 +844,12 @@ html[lang="en"] .intake dl div { grid-template-columns: 4.75rem minmax(0, 1fr); 
     </div>
   </section>
 
-  <figure class="interlude reveal">
-    <img src="media/photos/sanctuary-christmas.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="붉은 벽돌 아치 사이, 십자가가 걸린 회색 부조 벽 앞의 제대" data-en-alt="The altar before a gray relief wall with a cross, framed by red brick arches">
-    <figcaption class="wrap" data-en="The altar and cross of the main church">대성전 제대와 십자가</figcaption>
-  </figure>
+  <div class="wrap">
+    <figure class="interlude plate reveal">
+      <div class="plate-img"><img src="media/hero/sanctuary-christmas.webp" width="1600" height="960" loading="lazy" decoding="async" alt="붉은 벽돌 아치 사이, 십자가가 걸린 회색 부조 벽 앞의 제대" data-en-alt="The altar before a gray relief wall with a cross, framed by red brick arches"></div>
+      <figcaption data-en="The altar and cross of the main church">대성전 제대와 십자가</figcaption>
+    </figure>
+  </div>
 
   <section class="section" id="welcome" aria-labelledby="welcome-title">
     <div class="wrap">
@@ -1033,9 +1112,36 @@ document.documentElement.classList.add('js');
   menuBtn.querySelector('.menu-label').textContent = T('메뉴', UI.buttons.menu);
   menuBtn.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
   nav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  // 하위 메뉴(넓은 화면): Esc로 닫고 위 메뉴로 초점을 돌려준다
+  document.querySelectorAll('.has-sub').forEach(li => {
+    const top = li.querySelector('a');
+    li.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !nav.classList.contains('is-open')) { li.classList.add('is-closed'); top.focus(); }
+    });
+    li.addEventListener('focusin', e => { if (e.target !== top) li.classList.remove('is-closed'); });
+    li.addEventListener('focusout', e => { if (!li.contains(e.relatedTarget)) li.classList.remove('is-closed'); });
+    li.addEventListener('mouseleave', () => li.classList.remove('is-closed'));
+  });
   addEventListener('keydown', e => {
     if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); }
   });
+
+  // 공동체 액자: 사진 설명을 아랫단 목록으로 모으고, 사진과 목록이 서로를 가리키게 한다
+  const poly = document.querySelector('[data-gallery]');
+  if (poly) {
+    const figs = [...poly.querySelectorAll('[data-gallery-item]')];
+    const legend = document.createElement('ol');
+    legend.className = 'poly-legend';
+    legend.setAttribute('aria-hidden', 'true'); // 설명은 각 사진의 figcaption이 읽어 준다
+    figs.forEach(f => { const li = document.createElement('li'); li.textContent = f.querySelector('figcaption').textContent; legend.append(li); });
+    poly.append(legend);
+    const marks = [...legend.children];
+    const point = (i, on) => { poly.classList.toggle('is-pointing', on); figs[i].classList.toggle('is-on', on); marks[i].classList.toggle('is-on', on); };
+    [figs, marks].forEach(list => list.forEach((el, i) => {
+      el.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') point(i, true); });
+      el.addEventListener('pointerleave', () => point(i, false));
+    }));
+  }
 
   // 천천히 드러나기
   const items = document.querySelectorAll('.reveal');
