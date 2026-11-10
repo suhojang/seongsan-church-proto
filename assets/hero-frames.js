@@ -1,7 +1,7 @@
 // 첫 화면 배경 — WebP 장면을 차례로 겹쳐 넘기는 프레임 애니메이션. 모든 시안 공용.
 //
 // 마크업
-//   <div class="hero-frames" id="hero-frames" aria-hidden="true" data-hold="6000" data-fade="1800">
+//   <div class="hero-frames" id="hero-frames" aria-hidden="true" data-hold="4000" data-fade="1200">
 //     <img src="media/hero/a.webp" alt="" data-from="scale(1.03)" data-to="translate(-2%, 1%) scale(1.1)">
 //     <img src="media/hero/b.webp" alt="">
 //   </div>
@@ -39,8 +39,8 @@
       super();
       this.root = root;
       this.frames = [...root.querySelectorAll('img')];
-      this.hold = +root.dataset.hold || 6000;
-      this.fade = +root.dataset.fade || 1800;
+      this.hold = +root.dataset.hold || 4000;
+      this.fade = +root.dataset.fade || 1200;
       this.paused = true;
       this.index = -1;          // 지금 보이는 장면, 아직 시작 전이면 -1
       this.offscreen = false;   // 화면 밖이라 잠시 쉬는 중(paused와 별개라 버튼 상태는 그대로)
