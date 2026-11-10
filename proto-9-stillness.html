@@ -146,10 +146,14 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
 }
 @media (min-width: 64rem) { .nav-list small { display: none; } }
 
-/* 첫 화면: 밝은 성당 영상, 아래쪽만 살짝 어둡게 */
-.hero { position: relative; height: 86svh; min-height: 34rem; overflow: hidden; background: #8C6A5A url("media/hero-loop-poster.jpg") center / cover no-repeat; color: var(--on-media); }
+/* 첫 화면: 천천히 넘어가는 밝은 성당 사진, 아래쪽만 살짝 어둡게 */
+.hero { position: relative; height: 86svh; min-height: 34rem; overflow: hidden; background: #8C6A5A; color: var(--on-media); }
 .hero-media { position: absolute; inset: 0; overflow: hidden; }
-.hero-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* 첫 화면 배경: WebP 장면을 겹쳐 넘기는 프레임 애니메이션(assets/hero-frames.js). 스크립트 전·움직임 줄이기에서는 첫 장면만 */
+.hero-frames { position: absolute; inset: 0; overflow: hidden; isolation: isolate; }
+.hero-frames img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+.hero-frames img:first-child { opacity: 1; }
+.hero-frames.is-live img { opacity: 0; }
 .hero::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background:
@@ -511,9 +515,12 @@ html[lang="en"] .intake dl div { grid-template-columns: 4.75rem minmax(0, 1fr); 
 <main id="main">
   <section class="hero" id="top" aria-labelledby="hero-title">
     <div class="hero-media">
-      <video id="hero-video" muted playsinline loop preload="metadata" poster="media/hero-loop-poster.jpg" aria-hidden="true">
-        <source src="media/hero-loop.mp4" type="video/mp4">
-      </video>
+      <div class="hero-frames" id="hero-frames" aria-hidden="true" data-hold="6000" data-fade="1800">
+        <img src="media/hero/nave-wide.webp" alt="" width="1600" height="960" fetchpriority="high" style="object-position: 60% 50%" data-from="scale(1.03)" data-to="translate(-2.5%, 1%) scale(1.1)">
+        <img src="media/hero/sanctuary-christmas.webp" alt="" width="1600" height="960" fetchpriority="low" style="object-position: 55% 50%" data-from="translate(2.5%, 0) scale(1.08)" data-to="translate(-2.5%, 0) scale(1.08)">
+        <img src="media/hero/communion-line.webp" alt="" width="1600" height="1067" fetchpriority="low" style="object-position: 52% 40%" data-from="translate(0, 2%) scale(1.1)" data-to="scale(1.03)">
+        <img src="media/hero/candles.webp" alt="" width="1600" height="1067" fetchpriority="low" style="object-position: 62% 50%" data-from="scale(1.02)" data-to="translate(1.5%, -1%) scale(1.08)">
+      </div>
     </div>
     <div class="wrap hero-inner">
       <p class="label" data-en="Invitation">Invitation · 초대말씀</p>
@@ -886,6 +893,7 @@ html[lang="en"] .intake dl div { grid-template-columns: 4.75rem minmax(0, 1fr); 
   </div>
 </footer>
 
+<script src="assets/hero-frames.js"></script>
 <script src="data/glossary.js"></script>
 <script>
 document.documentElement.classList.add('js');
@@ -993,7 +1001,7 @@ document.documentElement.classList.add('js');
     sync();
     return toggle;
   };
-  const hero = document.getElementById('hero-video');
+  const hero = new HeroFrames(document.getElementById('hero-frames'));
   bindVideo(hero, document.getElementById('hero-toggle'), [T('배경 영상 재생', UI.a11y.playBg), T('배경 영상 정지', UI.a11y.pauseBg)]);
   if (!reduce) hero.play().catch(() => {});
 
