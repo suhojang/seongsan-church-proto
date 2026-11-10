@@ -335,6 +335,31 @@ html[lang="en"] .c-title { letter-spacing: -0.015em; }
 @media (orientation: landscape) and (max-height: 30rem) {
   .slimbar { display: none; }
 }
+/* 소식 하위 메뉴: 주보와 새 소식을 오간다 */
+.subnav { margin-top: clamp(1.75rem, 1.25rem + 2vw, 3rem); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); }
+.subnav ul { display: flex; flex-wrap: wrap; gap: 0 2.25rem; }
+.subnav a { display: inline-flex; align-items: center; min-height: 3.25rem; color: var(--ink-2); font-size: 0.9375rem; text-decoration: none; transition: color 0.3s; }
+.subnav a:hover { color: var(--ink); }
+.subnav a[aria-current] { color: var(--ink); font-weight: 500; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.35em; }
+</style>
+<style>
+/* 하위 메뉴: 넓은 화면의 차례는 마우스를 올리거나 초점이 오면 아래로 펼치고, 메뉴 시트에서는 늘 보인다 */
+.contents li { position: relative; }
+.contents .sub {
+  position: absolute; top: 100%; left: -1.25rem; z-index: 60;
+  display: grid; min-width: 12.5rem; padding: 0.55rem 1.25rem 0.7rem;
+  border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+  opacity: 0; visibility: hidden; transform: translateY(-6px);
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0.35s;
+}
+.contents .has-sub:hover > .sub, .contents .has-sub:focus-within > .sub { opacity: 1; visibility: visible; transform: none; transition: opacity 0.35s ease, transform 0.35s ease; }
+.contents .has-sub.is-closed > .sub { opacity: 0; visibility: hidden; transform: translateY(-6px); }
+.contents .sub a { display: inline-flex; min-height: 2.6rem; padding: 0; white-space: nowrap; }
+.contents .sub a:hover, .contents .sub a[aria-current] { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.3em; }
+.sheet-list .sub { display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin-top: -0.4rem; padding: 0 0 0.85rem 2.75rem; }
+.sheet-list .sub li { border: 0; }
+.sheet-list .sub a { display: inline-flex; min-height: 2.75rem; padding: 0; color: var(--ink-2); font-family: var(--sans); font-size: 1rem; font-weight: 400; letter-spacing: 0; }
+.sheet-list .sub a[aria-current] { color: var(--ink); font-weight: 500; }
 </style>
 </head>
 <body>
@@ -369,9 +394,19 @@ html[lang="en"] .c-title { letter-spacing: -0.015em; }
       <ol>
         <li><a href="proto-16-weekly.html#mass"><span class="c-no">01</span><span data-en="Mass">미사</span></a></li>
         <li><a href="proto-16-weekly.html#word"><span class="c-no">02</span><span data-en="Welcome">초대말씀</span></a></li>
-        <li><a href="proto-16-weekly.html#community"><span class="c-no">03</span><span data-en="Community">공동체</span></a></li>
+        <li class="has-sub"><a href="proto-16-weekly.html#community"><span class="c-no">03</span><span data-en="Community">공동체</span></a>
+          <ul class="sub">
+            <li><a href="proto-16-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+            <li><a href="proto-16-committees.html" data-en="Committees">분과 소개</a></li>
+            <li><a href="proto-16-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
+          </ul></li>
         <li><a href="proto-16-weekly.html#rites"><span class="c-no">04</span><span data-en="Sacraments">성사와 전례</span></a></li>
-        <li><a href="proto-16-weekly.html#news" aria-current="page"><span class="c-no">05</span><span data-en="News">소식</span></a></li>
+        <li class="has-sub"><a href="proto-16-weekly.html#news" aria-current="page"><span class="c-no">05</span><span data-en="News">소식</span></a>
+          <ul class="sub">
+            <li><a href="proto-16-bulletin-view.html" data-en="This Week’s Bulletin">이번 주 주보</a></li>
+            <li><a href="proto-16-bulletin.html" data-en="Past Bulletins">지난 주보</a></li>
+            <li><a href="proto-16-news.html" aria-current="page" data-en="All News">새 소식</a></li>
+          </ul></li>
         <li><a href="proto-16-weekly.html#welcome"><span class="c-no">06</span><span data-en="New Here?">처음 오신 분</span></a></li>
         <li><a href="proto-16-weekly.html#faq"><span class="c-no">07</span><span data-en="FAQ">묻고 답하기</span></a></li>
         <li><a href="proto-16-weekly.html#visit"><span class="c-no">08</span><span data-en="Visit">오시는 길</span></a></li>
@@ -407,9 +442,19 @@ html[lang="en"] .c-title { letter-spacing: -0.015em; }
     <ol class="sheet-list">
       <li><a href="proto-16-weekly.html#mass" data-en='<span class="c-no">01</span>Mass Times'><span class="c-no">01</span>미사<small>Mass</small></a></li>
       <li><a href="proto-16-weekly.html#word" data-en='<span class="c-no">02</span>A Word of Welcome'><span class="c-no">02</span>초대말씀<small>Welcome</small></a></li>
-      <li><a href="proto-16-weekly.html#community" data-en='<span class="c-no">03</span>Community'><span class="c-no">03</span>공동체<small>Community</small></a></li>
+      <li class="has-sub"><a href="proto-16-weekly.html#community" data-en='<span class="c-no">03</span>Community'><span class="c-no">03</span>공동체<small>Community</small></a>
+        <ul class="sub">
+          <li><a href="proto-16-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+          <li><a href="proto-16-committees.html" data-en="Committees">분과 소개</a></li>
+          <li><a href="proto-16-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
+        </ul></li>
       <li><a href="proto-16-weekly.html#rites" data-en='<span class="c-no">04</span>Sacraments &amp; Liturgy'><span class="c-no">04</span>성사와 전례<small>Sacraments</small></a></li>
-      <li><a href="proto-16-weekly.html#news" aria-current="page" data-en='<span class="c-no">05</span>News'><span class="c-no">05</span>소식<small>News</small></a></li>
+      <li class="has-sub"><a href="proto-16-weekly.html#news" aria-current="page" data-en='<span class="c-no">05</span>News'><span class="c-no">05</span>소식<small>News</small></a>
+        <ul class="sub">
+          <li><a href="proto-16-bulletin-view.html" data-en="This Week’s Bulletin">이번 주 주보</a></li>
+          <li><a href="proto-16-bulletin.html" data-en="Past Bulletins">지난 주보</a></li>
+          <li><a href="proto-16-news.html" aria-current="page" data-en="All News">새 소식</a></li>
+        </ul></li>
       <li><a href="proto-16-weekly.html#welcome" data-en='<span class="c-no">06</span>New Here?'><span class="c-no">06</span>처음 오신 분<small>New Here?</small></a></li>
       <li><a href="proto-16-weekly.html#faq" data-en='<span class="c-no">07</span>FAQ'><span class="c-no">07</span>묻고 답하기<small>FAQ</small></a></li>
       <li><a href="proto-16-weekly.html#visit" data-en='<span class="c-no">08</span>Visit Us'><span class="c-no">08</span>오시는 길<small>Visit</small></a></li>
@@ -432,6 +477,7 @@ html[lang="en"] .c-title { letter-spacing: -0.015em; }
         <p class="dek" data-en="Announcements, event photos, and videos from our parish community.">본당의 공지와 공동체 소식, 행사 사진과 영상을 모았습니다.</p>
       </header>
     </div>
+    <nav class="subnav" aria-label="소식" data-en-aria-label="News"><ul><li><a href="proto-16-bulletin.html"><span data-en="Bulletin">주보</span></a></li><li><a href="proto-16-news.html" aria-current="page"><span data-en="All News">새 소식</span></a></li></ul></nav>
     <div class="filters reveal" id="filters" role="group" aria-label="분류" data-en-aria-label="Filter by category"></div>
     <ul class="cards" id="cards"></ul>
     <div class="more-row" id="more-row" hidden>
@@ -615,6 +661,16 @@ requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement
   sheet.querySelector('.sheet-close').addEventListener('click', () => setSheet(false));
   sheet.addEventListener('click', e => { if (e.target.closest('a')) setSheet(false, false); });
   addEventListener('keydown', e => { if (e.key === 'Escape' && !sheet.hidden) setSheet(false); });
+  // 하위 메뉴(넓은 화면): Esc로 닫고 위 메뉴로 초점을 돌려준다
+  document.querySelectorAll('.contents .has-sub').forEach(li => {
+    const top = li.querySelector('a');
+    li.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { li.classList.add('is-closed'); top.focus(); }
+    });
+    li.addEventListener('focusin', e => { if (e.target !== top) li.classList.remove('is-closed'); });
+    li.addEventListener('focusout', e => { if (!li.contains(e.relatedTarget)) li.classList.remove('is-closed'); });
+    li.addEventListener('mouseleave', () => li.classList.remove('is-closed'));
+  });
 
   keepNames(document.body);
   observeReveals();

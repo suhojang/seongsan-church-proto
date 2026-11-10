@@ -424,7 +424,7 @@ document.documentElement.classList.add('js');
   const i = q ? bulletins.findIndex(b => b.date === q) : bulletins.length ? 0 : -1;
   const b = bulletins[i];
   // 메뉴 표시: 가장 최근 주보를 보고 있으면 '이번 주 주보', 그보다 지난 주보(또는 없는 날짜)면 '지난 주보'
-  const subCur = document.querySelector(`.nav-list .sub a[href="${i === 0 ? 'proto-9-bulletin-view.html' : 'proto-9-bulletin.html'}"]`);
+  const subCur = document.querySelector(`.nav-list .sub a[href^="${i === 0 ? 'proto-9-bulletin-view.html' : 'proto-9-bulletin.html'}"]`);
   if (subCur) subCur.setAttribute('aria-current', i === 0 ? 'page' : 'true');
   const step = (x, prev) => x ? `<a class="bv-step" href="proto-9-bulletin-view.html?date=${encodeURIComponent(x.date)}" rel="${prev ? 'prev' : 'next'}">
       <span class="bv-step-k">${prev ? T('← 지난 주', UI.buttons.prevWeekArrow) : T('다음 주 →', UI.buttons.nextWeekArrow)}</span><span class="bv-step-t">${md(x.date)} · ${esc(pick(x, 'title'))}</span></a>` : '';

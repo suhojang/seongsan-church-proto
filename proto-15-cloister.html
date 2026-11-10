@@ -41,6 +41,9 @@
   --edge: max(var(--gutter), calc((100vw - var(--wrap)) / 2));
   --header: 4rem;
   --section: clamp(6rem, 4rem + 8vw, 11rem);
+  /* 사진 자리: 회랑 벽(--mist)보다 밝은 매트와 매트 여백 */
+  --mat: #FAFBFA;
+  --mat-pad: clamp(0.6rem, 0.3rem + 1.2vw, 1.5rem);
   color-scheme: light;
 }
 
@@ -281,6 +284,10 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
 .word-photo .ph { aspect-ratio: 4 / 5; overflow: hidden; background: var(--mist-2); }
 .word-photo img, .interlude img { width: 100%; height: 100%; object-fit: cover; }
 .cap { display: flex; gap: 0.75rem; margin-top: 0.85rem; color: var(--ink-2); font-size: 0.8125rem; line-height: 1.6; }
+/* 액자: 회랑 벽에 건 그림처럼, 밝은 매트와 가는 테두리 안에 사진을 두고 이름표는 매트 아랫단에 적는다 */
+.plate { padding: var(--mat-pad); border: 1px solid var(--line); background: var(--mat); }
+.plate > .cap { align-items: center; margin: calc(var(--mat-pad) * 0.75) 0 calc(var(--mat-pad) * -0.25); }
+.plate > .cap::before { content: ""; flex: none; width: 1.5rem; height: 1px; background: var(--accent); }
 .word blockquote { margin-top: 2rem; }
 .word blockquote p { font-size: clamp(1.375rem, 1rem + 1.4vw, 2.125rem); font-weight: 300; line-height: 1.65; letter-spacing: -0.025em; }
 .word blockquote p + p { margin-top: 1.4rem; }
@@ -294,20 +301,21 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
 /* 공동체: 높이가 같은 사진 칸이 3:2, 1:1, 4:3 순서로 되풀이된다.
    사진 크기나 장수와 상관없이 칸 모양이 정해져 있어, 사진을 바꿔도 배치가 흔들리지 않는다. */
 .h-pin { position: relative; }
-.h-sticky { --card-h: 13.5rem; position: relative; }
+.h-sticky { --card-h: 12.25rem; position: relative; }
 .h-track {
   position: relative; display: flex; align-items: flex-start; gap: clamp(0.9rem, 2.2vw, 2.25rem);
   padding: 0 var(--edge) 1.25rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--edge);
   counter-reset: g; scrollbar-width: none; overscroll-behavior-x: contain;
 }
 .h-track::-webkit-scrollbar { display: none; }
-.g-item { --r: 1.5; flex: none; width: calc(var(--card-h) * var(--r)); scroll-snap-align: start; counter-increment: g; }
+/* 칸마다 회랑 벽에 건 액자처럼 밝은 매트와 가는 테두리를 두르고, 번호와 설명은 매트 아랫단에 적는다 */
+.g-item { --r: 1.5; flex: none; width: calc(var(--card-h) * var(--r) + var(--mat-pad) * 2 + 2px); padding: var(--mat-pad) var(--mat-pad) calc(var(--mat-pad) * 0.8); border: 1px solid var(--line); background: var(--mat); scroll-snap-align: start; counter-increment: g; }
 .g-item:nth-child(3n + 2) { --r: 1; }
 .g-item:nth-child(3n) { --r: 1.3333; }
 .g-frame { height: var(--card-h); overflow: hidden; background: var(--mist-2); }
 .g-frame img { width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 45%); transition: transform 1.6s var(--ease); }
 .g-item:hover .g-frame img { transform: scale(1.03); }
-.g-item figcaption { display: flex; gap: 0.75rem; margin-top: 0.85rem; color: var(--ink-2); font-size: 0.8125rem; line-height: 1.6; }
+.g-item figcaption { display: flex; gap: 0.75rem; margin-top: calc(var(--mat-pad) * 0.75); color: var(--ink-2); font-size: 0.8125rem; line-height: 1.6; }
 .g-no { flex: none; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: 0.06em; }
 .g-no::before { content: counter(g, decimal-leading-zero); }
 .g-cap { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
@@ -338,7 +346,7 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
 .links-row { display: flex; flex-wrap: wrap; gap: 0 2rem; }
 @media (max-width: 52rem) {
   .film { display: block; }
-  .film-media { width: min(72%, 20rem); margin: 2.5rem 0 0 auto; }
+  .film-media { width: min(76%, 20rem); margin: 2.5rem 0 0 auto; }
 }
 
 /* 성사와 전례: 날짜는 규칙으로 계산해 가까운 날부터 */
@@ -562,6 +570,32 @@ html[lang="en"] .r-date time, html[lang="en"] .r-rel { white-space: nowrap; }
   html[lang="en"] .menu-btn .menu-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 }
 </style>
+<style>
+/* 하위 메뉴: 넓은 화면은 위 메뉴에 마우스를 올리거나 초점이 오면 아래로 펼치고, 모바일 메뉴 시트에서는 늘 보인다 */
+.nav-list > li { position: relative; }
+@media (min-width: 64rem) {
+  .nav-list .sub {
+    position: absolute; top: calc(100% + (var(--header) - 2.75rem) / 2); left: -1.4rem; z-index: 1;
+    display: grid; min-width: 12.5rem; padding: 0.6rem 1.4rem 0.75rem;
+    border: 1px solid var(--line); border-radius: 2px; background: var(--mist); color: var(--ink);
+    opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0.35s;
+  }
+  /* 위 메뉴에서 하위 메뉴로 내려가는 틈에서 닫히지 않게 */
+  .nav-list .sub::before { content: ""; position: absolute; left: -1px; right: -1px; bottom: 100%; height: calc((var(--header) - 2.75rem) / 2 + 1px); }
+  .has-sub:hover > .sub, .has-sub:focus-within > .sub { opacity: 1; visibility: visible; transform: none; transition: opacity 0.35s ease, transform 0.35s ease; }
+  .has-sub.is-closed > .sub { opacity: 0; visibility: hidden; transform: translateY(-6px); }
+  .nav-list .sub a { min-height: 2.6rem; white-space: nowrap; }
+  .nav-list .sub a::after { bottom: 0.5rem; }
+  .nav-list .sub a[aria-current]::after { transform: scaleX(1); }
+}
+@media (max-width: 63.99rem) {
+  .nav-list .sub { display: flex; flex-wrap: wrap; gap: 0 1.5rem; margin-top: -0.6rem; padding-bottom: 0.9rem; }
+  .nav-list .sub li { border: 0; }
+  .nav-list .sub a { display: inline-flex; min-height: 2.75rem; padding: 0; color: var(--ink-2); font-size: 1rem; font-weight: 400; letter-spacing: 0; }
+  .nav-list .sub a[aria-current] { color: var(--ink); font-weight: 500; }
+}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -584,9 +618,19 @@ html[lang="en"] .r-date time, html[lang="en"] .r-rel { white-space: nowrap; }
     <nav id="site-nav" aria-label="주 메뉴" data-en-aria-label="Main menu">
       <ul class="nav-list">
         <li><a href="#mass"><span data-en="<span class='nl-l'>Mass Times</span><span class='nl-s'>Mass</span>">미사</span> <small data-only="ko">Mass</small></a></li>
-        <li><a href="#community"><span data-en="Community">공동체</span> <small data-only="ko">Community</small></a></li>
+        <li class="has-sub"><a href="#community"><span data-en="Community">공동체</span> <small data-only="ko">Community</small></a>
+          <ul class="sub">
+            <li><a href="proto-15-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+            <li><a href="proto-15-committees.html" data-en="Committees">분과 소개</a></li>
+            <li><a href="proto-15-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
+          </ul></li>
         <li><a href="#rites"><span data-en="<span class='nl-l'>Sacraments &amp; Liturgy</span><span class='nl-s'>Sacraments</span>">성사와 전례</span> <small data-only="ko">Sacraments</small></a></li>
-        <li><a href="#news"><span data-en="News">소식</span> <small data-only="ko">News</small></a></li>
+        <li class="has-sub"><a href="#news"><span data-en="News">소식</span> <small data-only="ko">News</small></a>
+          <ul class="sub">
+            <li><a href="proto-15-bulletin-view.html" data-en="This Week’s Bulletin">이번 주 주보</a></li>
+            <li><a href="proto-15-bulletin.html" data-en="Past Bulletins">지난 주보</a></li>
+            <li><a href="proto-15-news.html" data-en="All News">새 소식</a></li>
+          </ul></li>
         <li><a href="#welcome"><span data-en="New Here?">처음 오신 분</span> <small data-only="ko">Welcome</small></a></li>
         <li><a href="#visit"><span data-en="<span class='nl-l'>Visit Us</span><span class='nl-s'>Visit</span>">오시는 길</span> <small data-only="ko">Visit</small></a></li>
       </ul>
@@ -717,8 +761,8 @@ html[lang="en"] .r-date time, html[lang="en"] .r-rel { white-space: nowrap; }
 
   <section class="section word" aria-labelledby="word-title">
     <div class="wrap word-grid">
-      <figure class="word-photo wipe">
-        <div class="ph"><img src="media/photos/candles.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="성당 안 계단식 초 봉헌대에 작은 초들이 줄지어 놓인 모습" data-en-alt="Rows of small candles on a tiered votive stand inside the church"></div>
+      <figure class="word-photo plate wipe">
+        <div class="ph"><img src="media/hero/candles.webp" width="1600" height="1067" loading="lazy" decoding="async" alt="성당 안 계단식 초 봉헌대에 작은 초들이 줄지어 놓인 모습" data-en-alt="Rows of small candles on a tiered votive stand inside the church"></div>
         <figcaption class="cap" data-en="Votive candles">초 봉헌대</figcaption>
       </figure>
       <div class="word-text reveal">
@@ -747,35 +791,35 @@ html[lang="en"] .r-date time, html[lang="en"] .r-rel { white-space: nowrap; }
       <div class="h-sticky">
         <div class="h-track" data-gallery tabindex="0" role="region" aria-label="공동체 사진. 옆으로 넘겨 볼 수 있습니다" data-en-aria-label="Community photos. Swipe sideways to browse.">
           <figure class="g-item" data-gallery-item>
-            <div class="g-frame"><img src="media/photos/pilgrimage.jpg" width="1400" height="1050" loading="lazy" decoding="async" alt="예비신자들이 성지 순례 현수막을 들고 야외에서 찍은 단체 사진" data-en-alt="Catechumens holding a pilgrimage banner in an outdoor group photo" style="--focus: 50% 55%"></div>
+            <div class="g-frame"><img src="media/photos/pilgrimage.webp" width="1280" height="960" loading="lazy" decoding="async" alt="예비신자들이 성지 순례 현수막을 들고 야외에서 찍은 단체 사진" data-en-alt="Catechumens holding a pilgrimage banner in an outdoor group photo" style="--focus: 50% 55%"></div>
             <figcaption><span class="g-no" aria-hidden="true"></span><span class="g-cap" data-en="2026 Catechumens’ Shrine Pilgrimage">2026년 예비자 성지 순례</span></figcaption>
           </figure>
           <figure class="g-item" data-gallery-item>
-            <div class="g-frame"><img src="media/photos/way-of-cross.jpg" width="1600" height="1066" loading="lazy" decoding="async" alt="보라색 영대를 한 사제가 성당 안에서 십자가의 길 기도를 이끄는 모습" data-en-alt="A priest wearing a purple stole leads the Stations of the Cross inside the church" style="--focus: 62% 45%"></div>
+            <div class="g-frame"><img src="media/photos/way-of-cross.webp" width="1280" height="768" loading="lazy" decoding="async" alt="보라색 영대를 한 사제가 성당 안에서 십자가의 길 기도를 이끄는 모습" data-en-alt="A priest wearing a purple stole leads the Stations of the Cross inside the church" style="--focus: 62% 45%"></div>
             <figcaption><span class="g-no" aria-hidden="true"></span><span class="g-cap" data-en="2026 Stations of the Cross">2026년 십자가의 길</span></figcaption>
           </figure>
           <figure class="g-item" data-gallery-item>
-            <div class="g-frame"><img src="media/photos/youth-camp.jpg" width="1405" height="1056" loading="lazy" decoding="async" alt="청년들이 청년 여름 캠프 현수막 앞에 모여 찍은 단체 사진" data-en-alt="Young adults gathered for a group photo in front of the summer camp banner" style="--focus: 50% 60%"></div>
+            <div class="g-frame"><img src="media/photos/youth-camp.webp" width="1280" height="963" loading="lazy" decoding="async" alt="청년들이 청년 여름 캠프 현수막 앞에 모여 찍은 단체 사진" data-en-alt="Young adults gathered for a group photo in front of the summer camp banner" style="--focus: 50% 60%"></div>
             <figcaption><span class="g-no" aria-hidden="true"></span><span class="g-cap" data-en="2026 Young Adult Summer Camp">2026년 청년 여름 캠프</span></figcaption>
           </figure>
           <figure class="g-item" data-gallery-item>
-            <div class="g-frame"><img src="media/photos/nave-wide.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="높은 곳에서 내려다본 성당 안. 붉은 벽돌 벽과 아치 창 아래 신자들이 기도하고 있다" data-en-alt="The church interior seen from above, with the faithful praying beneath red brick walls and arched windows"></div>
+            <div class="g-frame"><img src="media/hero/nave-wide.webp" width="1600" height="960" loading="lazy" decoding="async" alt="높은 곳에서 내려다본 성당 안. 붉은 벽돌 벽과 아치 창 아래 신자들이 기도하고 있다" data-en-alt="The church interior seen from above, with the faithful praying beneath red brick walls and arched windows"></div>
             <figcaption><span class="g-no" aria-hidden="true"></span><span class="g-cap" data-en="The main church: red brick and arched windows">대성전, 붉은 벽돌과 아치 창</span></figcaption>
           </figure>
           <figure class="g-item" data-gallery-item>
-            <div class="g-frame"><img src="media/photos/baptism.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="흰 제의를 입은 사제가 두 손 모은 새 신자의 머리에 손을 얹는 모습" data-en-alt="A priest in white vestments lays his hand on the head of a newly baptized person whose hands are joined" style="--focus: 45% 40%"></div>
+            <div class="g-frame"><img src="media/photos/baptism.webp" width="1280" height="768" loading="lazy" decoding="async" alt="흰 제의를 입은 사제가 두 손 모은 새 신자의 머리에 손을 얹는 모습" data-en-alt="A priest in white vestments lays his hand on the head of a newly baptized person whose hands are joined" style="--focus: 45% 40%"></div>
             <figcaption><span class="g-no" aria-hidden="true"></span><span class="g-cap" data-en="2025 Christmas Baptisms">2025년 성탄 세례식</span></figcaption>
           </figure>
           <figure class="g-item" data-gallery-item>
-            <div class="g-frame"><img src="media/photos/kids-family.jpg" width="1280" height="960" loading="lazy" decoding="async" alt="성당 마당 성모상 앞에 어린이와 가족들이 모인 모습" data-en-alt="Children and families gathered before the statue of Mary in the church courtyard" style="--focus: 50% 55%"></div>
+            <div class="g-frame"><img src="media/photos/kids-family.webp" width="1280" height="960" loading="lazy" decoding="async" alt="성당 마당 성모상 앞에 어린이와 가족들이 모인 모습" data-en-alt="Children and families gathered before the statue of Mary in the church courtyard" style="--focus: 50% 55%"></div>
             <figcaption><span class="g-no" aria-hidden="true"></span><span class="g-cap" data-en="Children and families before the statue of Mary">성모상 앞, 어린이와 가족</span></figcaption>
           </figure>
           <figure class="g-item" data-gallery-item>
-            <div class="g-frame"><img src="media/photos/children-christmas.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="빨간 성탄 옷을 입은 아이들이 성당 의자에 앉아 미사에 참례하는 모습" data-en-alt="Children in red Christmas outfits sitting in the pews at Mass"></div>
+            <div class="g-frame"><img src="media/photos/children-christmas.webp" width="1280" height="768" loading="lazy" decoding="async" alt="빨간 성탄 옷을 입은 아이들이 성당 의자에 앉아 미사에 참례하는 모습" data-en-alt="Children in red Christmas outfits sitting in the pews at Mass"></div>
             <figcaption><span class="g-no" aria-hidden="true"></span><span class="g-cap" data-en="2025 Christmas Mass during the Night">2025년 성탄 밤미사</span></figcaption>
           </figure>
           <figure class="g-item" data-gallery-item>
-            <div class="g-frame"><img src="media/photos/baptism-ewer.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="세례식에 쓰는 금빛 물병과 대야가 흰 천 위에 놓인 모습" data-en-alt="A gold ewer and basin used for Baptism, set on a white cloth"></div>
+            <div class="g-frame"><img src="media/photos/baptism-ewer.webp" width="1280" height="768" loading="lazy" decoding="async" alt="세례식에 쓰는 금빛 물병과 대야가 흰 천 위에 놓인 모습" data-en-alt="A gold ewer and basin used for Baptism, set on a white cloth"></div>
             <figcaption><span class="g-no" aria-hidden="true"></span><span class="g-cap" data-en="Ewer and basin for Baptism">세례식에 쓰는 물병과 대야</span></figcaption>
           </figure>
         </div>
@@ -795,7 +839,7 @@ html[lang="en"] .r-date time, html[lang="en"] .r-rel { white-space: nowrap; }
           <h3 data-en="A Year at<br>Seongsan-dong Catholic Church">영상으로 보는<br>성산동성당의 한 해</h3>
           <p class="note" data-en="23 seconds, no sound. Christmas, Baptisms, the Stations of the Cross, a shrine pilgrimage, and the young adult camp.">23초, 소리 없음. 성탄과 세례식, 십자가의 길, 성지 순례, 청년 캠프를 담았습니다.</p>
         </div>
-        <figure class="film-media reveal">
+        <figure class="film-media plate reveal">
           <div class="vtile">
             <video id="shorts" src="media/shorts-year.mp4" poster="media/shorts-year-poster.jpg" muted playsinline loop preload="metadata" aria-describedby="shorts-desc"></video>
             <button class="media-btn" id="shorts-toggle" type="button" aria-label="영상 재생" data-state="paused">
@@ -926,8 +970,8 @@ html[lang="en"] .r-date time, html[lang="en"] .r-rel { white-space: nowrap; }
     </div>
   </section>
 
-  <figure class="interlude wrap wipe">
-    <div class="ph"><img src="media/photos/sanctuary-christmas.jpg" width="1600" height="1067" loading="lazy" decoding="async" alt="붉은 벽돌 아치 사이, 십자가가 걸린 회색 부조 벽 앞의 제대" data-en-alt="The altar before a gray relief wall with a cross, framed by red brick arches"></div>
+  <figure class="interlude wrap plate wipe">
+    <div class="ph"><img src="media/hero/sanctuary-christmas.webp" width="1600" height="960" loading="lazy" decoding="async" alt="붉은 벽돌 아치 사이, 십자가가 걸린 회색 부조 벽 앞의 제대" data-en-alt="The altar before a gray relief wall with a cross, framed by red brick arches"></div>
     <figcaption class="cap" data-en="The altar and cross of the main church">대성전 제대와 십자가</figcaption>
   </figure>
 
@@ -1208,6 +1252,16 @@ document.documentElement.classList.add('js');
   };
   menuBtn.addEventListener('click', () => setMenu(!nav.classList.contains('is-open')));
   nav.addEventListener('click', e => { if (e.target.closest('a')) setMenu(false); });
+  // 하위 메뉴(넓은 화면): Esc로 닫고 위 메뉴로 초점을 돌려준다
+  document.querySelectorAll('.has-sub').forEach(li => {
+    const top = li.querySelector('a');
+    li.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && !nav.classList.contains('is-open')) { li.classList.add('is-closed'); top.focus(); }
+    });
+    li.addEventListener('focusin', e => { if (e.target !== top) li.classList.remove('is-closed'); });
+    li.addEventListener('focusout', e => { if (!li.contains(e.relatedTarget)) li.classList.remove('is-closed'); });
+    li.addEventListener('mouseleave', () => li.classList.remove('is-closed'));
+  });
   addEventListener('keydown', e => {
     if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); }
   });

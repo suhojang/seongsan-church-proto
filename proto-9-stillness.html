@@ -294,9 +294,9 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
 @media (max-width: 52rem) {
   /* 모바일: 회랑처럼 같은 크기의 패널이 가로로 늘어서고, 옆 패널이 조금 보여 넘겨 볼 수 있음을 알린다.
      패널마다 아래에 번호와 설명을 달고(그림 옆 이름표처럼), 아랫단 목록 대신 지금 위치를 가는 선과 번호로 보여 준다. */
+  /* 패널 사이를 넉넉히 띄우고 회랑은 매트 안쪽에서 잘라, 지난 패널이 가장자리에 걸쳐 보이지 않게 한다 */
   .poly-field {
-    display: flex; align-items: flex-start; gap: var(--poly-gap);
-    margin-inline: calc(var(--mat-pad) * -1); padding-inline: var(--mat-pad); scroll-padding-inline: var(--mat-pad);
+    display: flex; align-items: flex-start; gap: 0.875rem;
     overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none;
   }
   .poly-field::-webkit-scrollbar { display: none; }
