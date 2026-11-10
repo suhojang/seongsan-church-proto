@@ -329,7 +329,7 @@ html[lang="en"] .feed-cat { letter-spacing: 0.04em; }
         <li class="has-sub"><a href="proto-9-stillness.html#news" aria-current="true"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;News&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;News&lt;/span&gt;">소식</span> <small data-only="ko">News</small></a>
           <ul class="sub">
             <li><a href="proto-9-bulletin-view.html" data-en="This Week’s Bulletin">이번 주 주보</a></li>
-            <li><a href="proto-9-bulletin.html" aria-current="true" data-en="Past Bulletins">지난 주보</a></li>
+            <li><a href="proto-9-bulletin.html" data-en="Past Bulletins">지난 주보</a></li>
             <li><a href="proto-9-news.html" data-en="All News">새 소식</a></li>
           </ul></li>
         <li><a href="proto-9-stillness.html#welcome"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;New Here?&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;New Here?&lt;/span&gt;">처음 오신 분</span> <small data-only="ko">Welcome</small></a></li>
@@ -423,6 +423,9 @@ document.documentElement.classList.add('js');
   const q = param('date');
   const i = q ? bulletins.findIndex(b => b.date === q) : bulletins.length ? 0 : -1;
   const b = bulletins[i];
+  // 메뉴 표시: 가장 최근 주보를 보고 있으면 '이번 주 주보', 그보다 지난 주보(또는 없는 날짜)면 '지난 주보'
+  const subCur = document.querySelector(`.nav-list .sub a[href="${i === 0 ? 'proto-9-bulletin-view.html' : 'proto-9-bulletin.html'}"]`);
+  if (subCur) subCur.setAttribute('aria-current', i === 0 ? 'page' : 'true');
   const step = (x, prev) => x ? `<a class="bv-step" href="proto-9-bulletin-view.html?date=${encodeURIComponent(x.date)}" rel="${prev ? 'prev' : 'next'}">
       <span class="bv-step-k">${prev ? T('← 지난 주', UI.buttons.prevWeekArrow) : T('다음 주 →', UI.buttons.nextWeekArrow)}</span><span class="bv-step-t">${md(x.date)} · ${esc(pick(x, 'title'))}</span></a>` : '';
 

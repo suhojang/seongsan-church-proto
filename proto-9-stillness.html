@@ -290,13 +290,32 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
   .g-item:nth-child(5n + 1):nth-last-child(4), .g-item:nth-child(5n + 2):nth-last-child(3),
   .g-item:nth-child(5n + 3):nth-last-child(2), .g-item:nth-child(5n + 4):last-child { grid-column: span 3; grid-row: auto; --ratio: 4 / 3; }
 }
+.poly-nav { display: none; }
 @media (max-width: 52rem) {
-  /* 모바일: 넓은 한 장과 정사각 네 장이 한 마디, 남는 장은 짝을 맞춘다 */
-  .poly-field { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .g-item { --ratio: 1 / 1; }
-  .g-item:nth-child(5n + 1) { grid-column: 1 / -1; --ratio: 3 / 2; }
-  .g-item:nth-child(5n + 1):nth-last-child(2), .g-item:nth-child(5n + 1):nth-last-child(4) { grid-column: auto; --ratio: 1 / 1; }
-  .g-frame::after { min-width: 1.75rem; padding: 0.3rem 0.45rem 0.2rem; font-size: 0.8125rem; }
+  /* 모바일: 회랑처럼 같은 크기의 패널이 가로로 늘어서고, 옆 패널이 조금 보여 넘겨 볼 수 있음을 알린다.
+     패널마다 아래에 번호와 설명을 달고(그림 옆 이름표처럼), 아랫단 목록 대신 지금 위치를 가는 선과 번호로 보여 준다. */
+  .poly-field {
+    display: flex; align-items: flex-start; gap: var(--poly-gap);
+    margin-inline: calc(var(--mat-pad) * -1); padding-inline: var(--mat-pad); scroll-padding-inline: var(--mat-pad);
+    overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none;
+  }
+  .poly-field::-webkit-scrollbar { display: none; }
+  .g-item { flex: 0 0 84%; scroll-snap-align: start; --ratio: 4 / 3; }
+  .g-frame { height: auto; }
+  .g-frame::after { display: none; }
+  .g-item figcaption {
+    position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal;
+    display: grid; grid-template-columns: 2.1rem minmax(0, 1fr); align-items: baseline; margin-top: 0.75rem;
+    color: var(--ink-2); font-size: 0.8125rem; line-height: 1.6;
+  }
+  .g-item figcaption::before { content: counter(plate, upper-roman); font-family: var(--italic); font-size: 0.9375rem; font-style: italic; }
+  .g-cap { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+  .poly > .poly-legend { display: none; }
+  .poly-nav { display: flex; align-items: center; gap: 1rem; margin-top: calc(var(--mat-pad) * 1.1); }
+  .poly-track { position: relative; flex: 1; height: 1px; overflow: hidden; background: var(--line); }
+  .poly-track i { position: absolute; top: 0; bottom: 0; left: 0; background: var(--ink); transition: transform 0.25s ease-out; }
+  .poly-count { color: var(--ink-2); font-family: var(--italic); font-size: 0.9375rem; font-style: italic; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .poly-count b { color: var(--ink); font-weight: 400; }
 }
 /* 아랫단 목록: 번호와 설명. 사진에 마우스를 올리면 그 사진만 남기고 나머지는 물러난다 */
 .poly-legend {
@@ -1141,6 +1160,38 @@ document.documentElement.classList.add('js');
       el.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') point(i, true); });
       el.addEventListener('pointerleave', () => point(i, false));
     }));
+
+    // 모바일 회랑: 가로로 넘길 수 있을 때만 키보드로 닿게 하고, 지금 위치를 가는 선과 번호로 보여 준다
+    const field = poly.querySelector('.poly-field');
+    const roman = n => [[1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'], [100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'], [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I']]
+      .reduce((out, [v, r]) => { while (n >= v) { out += r; n -= v; } return out; }, '');
+    const navEl = document.createElement('div');
+    navEl.className = 'poly-nav';
+    navEl.setAttribute('aria-hidden', 'true');
+    navEl.innerHTML = `<span class="poly-track"><i></i></span><span class="poly-count"><b></b> / ${roman(figs.length)}</span>`;
+    field.after(navEl);
+    const bar = navEl.querySelector('i'), now = navEl.querySelector('b');
+    const syncCorridor = () => {
+      const max = field.scrollWidth - field.clientWidth;
+      const scrollable = max > 1;
+      if (scrollable) {
+        field.tabIndex = 0;
+        field.setAttribute('role', 'region');
+        field.setAttribute('aria-label', T('공동체 사진, 옆으로 넘겨 보기', 'Community photos, scroll sideways'));
+      } else {
+        field.removeAttribute('tabindex'); field.removeAttribute('role'); field.removeAttribute('aria-label');
+      }
+      if (!scrollable) return;
+      const size = field.clientWidth / field.scrollWidth, pos = field.scrollLeft / max;
+      bar.style.width = `${size * 100}%`;
+      bar.style.transform = `translateX(${pos * (1 / size - 1) * 100}%)`;
+      const step = figs.length > 1 ? figs[1].offsetLeft - figs[0].offsetLeft : 1;
+      const k = field.scrollLeft >= max - 2 ? figs.length - 1 : Math.round(field.scrollLeft / step);
+      now.textContent = roman(Math.min(figs.length, Math.max(1, k + 1)));
+    };
+    field.addEventListener('scroll', syncCorridor, { passive: true });
+    addEventListener('resize', syncCorridor);
+    syncCorridor();
   }
 
   // 천천히 드러나기
