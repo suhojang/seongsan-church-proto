@@ -1,7 +1,7 @@
 // 신부님·수녀님·본당 출신 성직자와 수도자 데이터 (www.103.or.kr 이미지 게시물을 글로 옮김, 2026-11-23)
 // 출처: 신부님 소개(pid=165), 수녀님 소개(pid=166), 본당 출신 성직·수도자 소개(pid=79). 이메일·웹 주소는 옮기지 않았다.
-// photo = 사진(신부님 pid=165·수녀님 pid=166 이미지에서 잘라 낸 media/clergy/*.webp, 원본 크기 그대로 약 120px). 2026-11-23 사용자 요청으로 넣음.
-//   원본이 회색 빈 얼굴인 수녀님 5분(안보화·황정임·이필주·김남순·유영상)은 photo 를 두지 않았다. 본당 출신은 아직 없음.
+// photo = 사진(pid=165·166·79 이미지에서 잘라 낸 media/clergy/*.webp, 원본 크기 그대로 약 120px). 2026-11-23 사용자 요청으로 넣음.
+//   원본이 회색 빈 얼굴인 7분(수녀님 안보화·황정임·이필주·김남순·유영상, 본당 출신 강현진·양재령)은 photo 를 두지 않았다.
 // 로컬 파일로 열리도록 fetch 대신 전역 변수로 둔다. 영문은 각 사람의 en 에 둔다(data/glossary.js 기준).
 // groups: 이미지에 나오는 순서대로. id, title(이미지에 인쇄된 칸 제목), en(영문 제목), page·pageEn(원래 게시물 제목), people.
 // 이미지에 현재 수녀님 칸은 없다(역대 원장수녀님·역대 전교수녀님만 있음). 본당 출신 칸 제목은 원문대로 ‘성직자’·‘수도자’다.
@@ -165,18 +165,18 @@ window.CLERGY = {
    "page": "본당 출신 성직·수도자 소개",
    "pageEn": "Vocations from Our Parish",
    "people": [
-    {"name": "김남철", "baptismal": "바르톨로메오", "feast": "08-24", "ordained": "1987-02-06", "institute": "의정부교구", "en": {"name": "Fr. Bartholomew Kim", "baptismal": "Bartholomew", "institute": "Diocese of Uijeongbu"}},
-    {"name": "홍근표", "baptismal": "바오로", "feast": "01-25", "ordained": "1988-02-12", "institute": "서울대교구", "en": {"name": "Fr. Paul Hong", "baptismal": "Paul", "institute": "Archdiocese of Seoul"}},
-    {"name": "나승구", "baptismal": "프란치스코하비에르", "feast": "12-03", "ordained": "1991-08-23", "institute": "서울대교구", "en": {"name": "Fr. Francis Xavier Na", "baptismal": "Francis Xavier", "institute": "Archdiocese of Seoul"}},
-    {"name": "조성풍", "baptismal": "아우구스티노", "feast": "08-28", "ordained": "1993-07-16", "institute": "서울대교구", "en": {"name": "Fr. Augustine Cho", "baptismal": "Augustine", "institute": "Archdiocese of Seoul"}},
-    {"name": "김철현", "baptismal": "도미니코사비오", "feast": "03-09", "ordained": "1995-07-05", "institute": "서울대교구", "en": {"name": "Fr. Dominic Savio Kim", "baptismal": "Dominic Savio", "institute": "Archdiocese of Seoul"}},
-    {"name": "현재봉", "baptismal": "베드로", "feast": "06-29", "ordained": "1997-01-31", "institute": "수원교구", "en": {"name": "Fr. Peter Hyun", "baptismal": "Peter", "institute": "Diocese of Suwon"}},
-    {"name": "조지훈", "baptismal": "힐라리오", "feast": "01-13", "ordained": "2003-07-04", "institute": "의정부교구", "en": {"name": "Fr. Hilary Cho", "baptismal": "Hilary", "institute": "Diocese of Uijeongbu"}},
-    {"name": "장우건", "baptismal": "토마스아퀴나스", "feast": "01-28", "ordained": "2008-06-27", "institute": "서울대교구", "en": {"name": "Fr. Thomas Aquinas Jang", "baptismal": "Thomas Aquinas", "institute": "Archdiocese of Seoul"}},
-    {"name": "이민수", "baptismal": "레오", "ordained": "2014-02-07", "institute": "서울대교구", "en": {"name": "Fr. Leo Lee", "baptismal": "Leo", "institute": "Archdiocese of Seoul"}},
-    {"name": "최필규", "baptismal": "루도비꼬", "ordained": "2014-02-07", "institute": "천주교 서울국제선교회", "en": {"name": "Fr. Louis Choi", "baptismal": "Louis", "institute": "Seoul International Mission Society"}},
-    {"name": "박성준", "baptismal": "가브리엘", "feast": "09-29", "ordained": "2025-02-07", "institute": "서울대교구", "en": {"name": "Fr. Gabriel Park", "baptismal": "Gabriel", "institute": "Archdiocese of Seoul"}},
-    {"name": "김동준", "baptismal": "갈리스도", "feast": "10-14", "ordained": "2025-02-07", "institute": "서울대교구", "en": {"name": "Fr. Callistus Kim", "baptismal": "Callistus", "institute": "Archdiocese of Seoul"}}
+    {"photo": {"src": "media/clergy/vocations-priests-01.webp", "w": 120, "h": 120}, "name": "김남철", "baptismal": "바르톨로메오", "feast": "08-24", "ordained": "1987-02-06", "institute": "의정부교구", "en": {"name": "Fr. Bartholomew Kim", "baptismal": "Bartholomew", "institute": "Diocese of Uijeongbu"}},
+    {"photo": {"src": "media/clergy/vocations-priests-02.webp", "w": 120, "h": 120}, "name": "홍근표", "baptismal": "바오로", "feast": "01-25", "ordained": "1988-02-12", "institute": "서울대교구", "en": {"name": "Fr. Paul Hong", "baptismal": "Paul", "institute": "Archdiocese of Seoul"}},
+    {"photo": {"src": "media/clergy/vocations-priests-03.webp", "w": 120, "h": 120}, "name": "나승구", "baptismal": "프란치스코하비에르", "feast": "12-03", "ordained": "1991-08-23", "institute": "서울대교구", "en": {"name": "Fr. Francis Xavier Na", "baptismal": "Francis Xavier", "institute": "Archdiocese of Seoul"}},
+    {"photo": {"src": "media/clergy/vocations-priests-04.webp", "w": 120, "h": 120}, "name": "조성풍", "baptismal": "아우구스티노", "feast": "08-28", "ordained": "1993-07-16", "institute": "서울대교구", "en": {"name": "Fr. Augustine Cho", "baptismal": "Augustine", "institute": "Archdiocese of Seoul"}},
+    {"photo": {"src": "media/clergy/vocations-priests-05.webp", "w": 120, "h": 120}, "name": "김철현", "baptismal": "도미니코사비오", "feast": "03-09", "ordained": "1995-07-05", "institute": "서울대교구", "en": {"name": "Fr. Dominic Savio Kim", "baptismal": "Dominic Savio", "institute": "Archdiocese of Seoul"}},
+    {"photo": {"src": "media/clergy/vocations-priests-06.webp", "w": 120, "h": 120}, "name": "현재봉", "baptismal": "베드로", "feast": "06-29", "ordained": "1997-01-31", "institute": "수원교구", "en": {"name": "Fr. Peter Hyun", "baptismal": "Peter", "institute": "Diocese of Suwon"}},
+    {"photo": {"src": "media/clergy/vocations-priests-07.webp", "w": 120, "h": 120}, "name": "조지훈", "baptismal": "힐라리오", "feast": "01-13", "ordained": "2003-07-04", "institute": "의정부교구", "en": {"name": "Fr. Hilary Cho", "baptismal": "Hilary", "institute": "Diocese of Uijeongbu"}},
+    {"photo": {"src": "media/clergy/vocations-priests-08.webp", "w": 120, "h": 120}, "name": "장우건", "baptismal": "토마스아퀴나스", "feast": "01-28", "ordained": "2008-06-27", "institute": "서울대교구", "en": {"name": "Fr. Thomas Aquinas Jang", "baptismal": "Thomas Aquinas", "institute": "Archdiocese of Seoul"}},
+    {"photo": {"src": "media/clergy/vocations-priests-09.webp", "w": 120, "h": 120}, "name": "이민수", "baptismal": "레오", "ordained": "2014-02-07", "institute": "서울대교구", "en": {"name": "Fr. Leo Lee", "baptismal": "Leo", "institute": "Archdiocese of Seoul"}},
+    {"photo": {"src": "media/clergy/vocations-priests-10.webp", "w": 120, "h": 120}, "name": "최필규", "baptismal": "루도비꼬", "ordained": "2014-02-07", "institute": "천주교 서울국제선교회", "en": {"name": "Fr. Louis Choi", "baptismal": "Louis", "institute": "Seoul International Mission Society"}},
+    {"photo": {"src": "media/clergy/vocations-priests-11.webp", "w": 120, "h": 120}, "name": "박성준", "baptismal": "가브리엘", "feast": "09-29", "ordained": "2025-02-07", "institute": "서울대교구", "en": {"name": "Fr. Gabriel Park", "baptismal": "Gabriel", "institute": "Archdiocese of Seoul"}},
+    {"photo": {"src": "media/clergy/vocations-priests-12.webp", "w": 120, "h": 120}, "name": "김동준", "baptismal": "갈리스도", "feast": "10-14", "ordained": "2025-02-07", "institute": "서울대교구", "en": {"name": "Fr. Callistus Kim", "baptismal": "Callistus", "institute": "Archdiocese of Seoul"}}
    ]
   },
   {
@@ -187,15 +187,15 @@ window.CLERGY = {
    "pageEn": "Vocations from Our Parish",
    "people": [
     {"name": "강현진", "baptismal": "가우덴시아", "institute": "영원한 도움의 성모수녀회", "entered": "1982-02-27", "finalVows": "1992-08-28", "en": {"name": "Sr. Gaudentia Kang", "baptismal": "Gaudentia", "institute": "Sisters of Our Lady of Perpetual Help"}},
-    {"name": "정정자", "baptismal": "마리아도미니카", "institute": "천주의 섭리회", "entered": "1982-11-15", "finalVows": "1991-02-02", "en": {"name": "Sr. Maria Dominica Chung", "baptismal": "Maria Dominica", "institute": "Congregation of Divine Providence"}},
-    {"name": "신소희", "baptismal": "까리타스", "institute": "성심수녀회", "entered": "1986-04-10", "finalVows": "1997-01-05", "en": {"name": "Sr. Caritas Shin", "baptismal": "Caritas", "institute": "Society of the Sacred Heart"}},
-    {"name": "마승희", "baptismal": "마리아", "institute": "살레시오 수녀회", "entered": "1987-01-31", "finalVows": "1997-01-30", "en": {"name": "Sr. Mary Ma", "baptismal": "Mary", "institute": "Salesian Sisters of St. John Bosco (Daughters of Mary Help of Christians)"}},
+    {"photo": {"src": "media/clergy/vocations-religious-02.webp", "w": 120, "h": 120}, "name": "정정자", "baptismal": "마리아도미니카", "institute": "천주의 섭리회", "entered": "1982-11-15", "finalVows": "1991-02-02", "en": {"name": "Sr. Maria Dominica Chung", "baptismal": "Maria Dominica", "institute": "Congregation of Divine Providence"}},
+    {"photo": {"src": "media/clergy/vocations-religious-03.webp", "w": 120, "h": 120}, "name": "신소희", "baptismal": "까리타스", "institute": "성심수녀회", "entered": "1986-04-10", "finalVows": "1997-01-05", "en": {"name": "Sr. Caritas Shin", "baptismal": "Caritas", "institute": "Society of the Sacred Heart"}},
+    {"photo": {"src": "media/clergy/vocations-religious-04.webp", "w": 120, "h": 120}, "name": "마승희", "baptismal": "마리아", "institute": "살레시오 수녀회", "entered": "1987-01-31", "finalVows": "1997-01-30", "en": {"name": "Sr. Mary Ma", "baptismal": "Mary", "institute": "Salesian Sisters of St. John Bosco (Daughters of Mary Help of Christians)"}},
     {"name": "양재령", "baptismal": "예수성심의데레사 프란치스카", "institute": "가르멜의 모후 수녀회", "entered": "1989-05-11", "finalVows": "1999. ?", "en": {"name": "Sr. Teresa of the Sacred Heart of Jesus Yang", "baptismal": "Teresa of the Sacred Heart of Jesus (Frances)", "institute": "Congregation of the Mother of Carmel"}},
-    {"name": "민경은", "baptismal": "잉그리드", "institute": "영원한 도움의 성모수녀회", "entered": "1997-09-01", "finalVows": "2009-02-13", "en": {"name": "Sr. Ingrid Min", "baptismal": "Ingrid", "institute": "Sisters of Our Lady of Perpetual Help"}},
-    {"name": "류지희", "baptismal": "비비안나", "institute": "한국순교복자수녀회", "entered": "1999-03-19", "finalVows": "2010-01-18", "en": {"name": "Sr. Bibiana Ryu", "baptismal": "Bibiana", "institute": "Sisters of the Blessed Korean Martyrs"}},
-    {"name": "신세란", "baptismal": "바르톨로메오", "institute": "예수의 꽃동네 자매회", "entered": "2001-08-14", "finalVows": "2010-02-02", "en": {"name": "Sr. Bartholomew Shin", "baptismal": "Bartholomew", "institute": "Kkottongnae Sisters of Jesus"}},
-    {"name": "이에리사", "institute": "성 골롬반 외방선교수녀회", "entered": "2003-09-29", "finalVows": "2012-10-05", "en": {"name": "Sr. Lee", "institute": "Missionary Sisters of St. Columban"}},
-    {"name": "박현애", "baptismal": "리오바", "institute": "성가소비녀회", "entered": "2009-10-31", "en": {"name": "Sr. Lioba Park", "baptismal": "Lioba", "institute": "Handmaids of the Holy Family"}}
+    {"photo": {"src": "media/clergy/vocations-religious-06.webp", "w": 120, "h": 120}, "name": "민경은", "baptismal": "잉그리드", "institute": "영원한 도움의 성모수녀회", "entered": "1997-09-01", "finalVows": "2009-02-13", "en": {"name": "Sr. Ingrid Min", "baptismal": "Ingrid", "institute": "Sisters of Our Lady of Perpetual Help"}},
+    {"photo": {"src": "media/clergy/vocations-religious-07.webp", "w": 120, "h": 114}, "name": "류지희", "baptismal": "비비안나", "institute": "한국순교복자수녀회", "entered": "1999-03-19", "finalVows": "2010-01-18", "en": {"name": "Sr. Bibiana Ryu", "baptismal": "Bibiana", "institute": "Sisters of the Blessed Korean Martyrs"}},
+    {"photo": {"src": "media/clergy/vocations-religious-08.webp", "w": 120, "h": 120}, "name": "신세란", "baptismal": "바르톨로메오", "institute": "예수의 꽃동네 자매회", "entered": "2001-08-14", "finalVows": "2010-02-02", "en": {"name": "Sr. Bartholomew Shin", "baptismal": "Bartholomew", "institute": "Kkottongnae Sisters of Jesus"}},
+    {"photo": {"src": "media/clergy/vocations-religious-09.webp", "w": 111, "h": 116}, "name": "이에리사", "institute": "성 골롬반 외방선교수녀회", "entered": "2003-09-29", "finalVows": "2012-10-05", "en": {"name": "Sr. Lee", "institute": "Missionary Sisters of St. Columban"}},
+    {"photo": {"src": "media/clergy/vocations-religious-10.webp", "w": 120, "h": 120}, "name": "박현애", "baptismal": "리오바", "institute": "성가소비녀회", "entered": "2009-10-31", "en": {"name": "Sr. Lioba Park", "baptismal": "Lioba", "institute": "Handmaids of the Holy Family"}}
    ]
   }
  ],
