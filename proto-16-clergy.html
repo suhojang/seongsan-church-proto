@@ -362,6 +362,8 @@ html[lang="en"] .f-head h1 { letter-spacing: -0.035em; }
 @media (orientation: landscape) and (max-height: 30rem) {
   .slimbar { display: none; }
 }
+/* 맨 위로 버튼: 지면의 파란 강조색으로 반응 */
+:root { --to-top-hover: var(--accent); }
 </style>
 <style>
 /* 하위 메뉴: 넓은 화면의 차례는 마우스를 올리거나 초점이 오면 아래로 펼치고, 메뉴 시트에서는 늘 보인다 */
@@ -784,5 +786,6 @@ requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement
   jump();
 })();
 </script>
+<script src="assets/to-top.js" defer></script>
 </body>
 </html>

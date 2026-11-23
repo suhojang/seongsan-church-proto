@@ -722,5 +722,6 @@ document.documentElement.classList.add('js');
   (document.fonts ? Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 1200))]) : Promise.resolve()).then(() => requestAnimationFrame(go));
 })();
 </script>
+<script src="assets/to-top.js" defer></script>
 </body>
 </html>

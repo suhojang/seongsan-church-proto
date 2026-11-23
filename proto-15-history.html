@@ -304,6 +304,8 @@ html[lang="en"] h2 { letter-spacing: -0.035em; }
   .subnav a { align-items: flex-end; min-height: 3.5rem; padding: 0.9rem 0 0.75rem; font-size: 0.875rem; line-height: 1.35; white-space: normal; }
   .subnav small { display: none; }
 }
+/* 맨 위로 버튼: 회랑 격자에 맞춰 각지게 */
+:root { --to-top-radius: 2px; --to-top-hover: var(--accent); }
 </style>
 <style>
 /* 좁은 화면 머리글: 영문 이름·언어 전환이 들어가도 메뉴 버튼이 화면 안에 남게 한다 */
@@ -720,5 +722,6 @@ document.documentElement.classList.add('js');
   requestAnimationFrame(() => requestAnimationFrame(() => docEl.classList.add('is-ready')));
 })();
 </script>
+<script src="assets/to-top.js" defer></script>
 </body>
 </html>
