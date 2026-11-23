@@ -280,6 +280,19 @@ html[lang="en"] .page-title { letter-spacing: -0.03em; }
 }
 </style>
 <style>
+:root {
+  --mat: #FBFAF8;
+  --mat-pad: clamp(0.75rem, 0.4rem + 1.4vw, 1.875rem);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+/* 사진 자리: 석회암 벽에 건 액자처럼 밝은 매트와 가는 테두리 */
+.plate { padding: var(--mat-pad); border: 1px solid var(--line); background: var(--mat); }
+.plate-img { position: relative; overflow: hidden; background: var(--paper-2); }
+.plate-img img { width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 50%); }
+.js .reveal .plate-img img { transform: scale(1.06); transition: transform 2.4s var(--ease); }
+.js .reveal.is-in .plate-img img { transform: none; }
+@media (prefers-reduced-motion: reduce) { .js .reveal .plate-img img { transform: none; transition: none; } }
+
 .jump { position: sticky; top: var(--header); z-index: 5; border-bottom: 1px solid var(--line); background: rgb(245 243 239 / 0.94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
 .jump ul { display: flex; gap: 0 1.75rem; overflow-x: auto; scrollbar-width: none; }
 .jump ul::-webkit-scrollbar { display: none; }
@@ -304,6 +317,11 @@ html[lang="en"] .page-title { letter-spacing: -0.03em; }
 .ev { display: grid; grid-template-columns: 5.25rem minmax(0, 1fr); gap: 0 1rem; padding: 0.3rem 0; }
 .ev time { padding-top: 0.15rem; color: var(--ink-2); font-size: 0.875rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .ev p + p { margin-top: 0.1rem; }
+/* 연대 사진: 연대 숫자 아래 액자. 그 연대의 일과 이어지는 지금 모습만 둔다 */
+.era-fig { margin-top: clamp(2rem, 1.5rem + 1.5vw, 3rem); max-width: 26rem; }
+.era-fig .plate-img { aspect-ratio: 4 / 3; }
+.era-fig figcaption { display: flex; align-items: baseline; gap: 0.85rem; margin: calc(var(--mat-pad) * 0.7) 0 calc(var(--mat-pad) * -0.25); color: var(--ink-2); font-size: 0.8125rem; line-height: 1.6; }
+.era-fig figcaption::before { content: ""; flex: none; width: 1.5rem; height: 1px; background: currentColor; opacity: 0.7; transform: translateY(-0.3em); }
 @media (max-width: 40rem) {
   .yr { grid-template-columns: 1fr; }
   .ev { grid-template-columns: 4.75rem minmax(0, 1fr); gap: 0 0.75rem; }
@@ -488,13 +506,33 @@ document.documentElement.classList.add('js');
   };
   const iso = v => { const p = parts(v); return p ? [p[0], p[1] && two(p[1]), p[2] && two(p[2])].filter(Boolean).join('-') : ''; };
   const eras = (H.decades || []).filter(e => (e.items || []).length);
+  // 연대 사진: 사진에 보이는 것과 연혁에 적힌 일만 적는다(날짜는 연혁 데이터 그대로). 2000년대는 이어 둘 사진이 없어 비워 둔다
+  const FIGS = {
+    1980: { src: 'media/hero/nave-wide.webp', w: 1600, h: 960, focus: '50% 45%',
+      alt: ['높은 곳에서 내려다본 성당 안. 붉은 벽돌 벽과 아치 창 아래 신자들이 기도하고 있다', 'The church interior seen from above, with the faithful praying beneath red brick walls and arched windows'],
+      cap: ['1985년 8월 1일부터 미사를 드려 온 대성전, 지금 모습', 'The main church, where Mass has been celebrated since August 1, 1985, as it is today'] },
+    1990: { src: 'media/photos/kids-family.webp', w: 1280, h: 960, focus: '40% 50%',
+      alt: ['성당 마당 나무 사이에 선 성모상 앞에 어린이와 가족들이 모인 모습', 'Children and families gathered before the statue of Mary among the trees of the church courtyard'],
+      cap: ['1989년과 1996년에 자리를 옮긴 성모동산, 지금 모습', 'The Marian garden, moved in 1989 and again in 1996, as it is today'] },
+    2010: { src: 'media/photos/altar-mass.webp', w: 427, h: 320, focus: '55% 40%',
+      alt: ['부조 벽 앞 제대에서 두 신부님이 미사를 드리고, 신자들이 고개 숙여 기도하는 모습', 'Two priests celebrate Mass at the altar before the relief wall as the faithful bow their heads in prayer'],
+      cap: ['2010년 「아름다운 성전만들기」로 리모델링한 대성전, 지금 모습', 'The main church, remodeled in 2010 in the “Beautiful Church” project, as it is today'] },
+    2020: { src: 'media/photos/parish-day-2026.webp', w: 427, h: 320, focus: '50% 55%',
+      alt: ['「본당의 날 어울림 한마당」 현수막 뒤로 신부님들과 신자들이 성당 안을 가득 메우고 손을 들어 환호하는 모습', 'Priests and parishioners filling the church, cheering with raised hands behind a “Parish Day” banner'],
+      cap: ['2026년 10월 18일, 본당의 날 어울림 한마당', 'Parish Day, October 18, 2026'] },
+  };
+  const fig = d => {
+    const f = FIGS[d];
+    if (!f) return '';
+    return `<figure class="plate era-fig reveal"><div class="plate-img"><img src="${f.src}" width="${f.w}" height="${f.h}" loading="lazy" decoding="async" style="--focus: ${f.focus}" alt="${esc(T(f.alt[0], f.alt[1]))}"></div><figcaption>${esc(T(f.cap[0], f.cap[1]))}</figcaption></figure>`;
+  };
   root.innerHTML = eras.length ? `
     <nav class="jump" aria-label="${T('연대 바로가기', 'Jump to a decade')}"><div class="wrap"><ul>${eras.map(e => `<li><a href="#y${e.decade}">${EN ? `${e.decade}s` : `${e.decade}년대`}</a></li>`).join('')}</ul></div></nav>
     <div class="wrap">${eras.map(e => {
       const years = new Map();
       e.items.forEach(it => { const y = String(it.date).slice(0, 4); if (!years.has(y)) years.set(y, []); years.get(y).push(it); });
       return `<section class="chapter" id="y${e.decade}" aria-labelledby="y${e.decade}-t">
-        <h2 class="ch-title era-title" id="y${e.decade}-t"><span>${e.decade}</span><small>${EN ? `The ${e.decade}s` : '년대'}</small></h2>
+        <div class="ch-title"><h2 class="era-title" id="y${e.decade}-t"><span>${e.decade}</span><small>${EN ? `The ${e.decade}s` : '년대'}</small></h2>${fig(e.decade)}</div>
         <div>${[...years].map(([y, list]) => `<div class="yr reveal"><h3 class="yr-n">${y}</h3><ol>${list.map(it => {
           const lines = EN && Array.isArray(it.en) && it.en.length ? it.en : it.text;
           const t = md(it.date);
