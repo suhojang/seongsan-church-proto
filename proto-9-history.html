@@ -506,7 +506,7 @@ document.documentElement.classList.add('js');
   };
   const iso = v => { const p = parts(v); return p ? [p[0], p[1] && two(p[1]), p[2] && two(p[2])].filter(Boolean).join('-') : ''; };
   const eras = (H.decades || []).filter(e => (e.items || []).length);
-  // 연대 사진: 사진에 보이는 것과 연혁에 적힌 일만 적는다(날짜는 연혁 데이터 그대로). 2000년대는 이어 둘 사진이 없어 비워 둔다
+  // 연대 사진: 사진에 보이는 것과 연혁에 적힌 일만 적는다(날짜는 연혁 데이터 그대로)
   const FIGS = {
     1980: { src: 'media/hero/nave-wide.webp', w: 1600, h: 960, focus: '50% 45%',
       alt: ['높은 곳에서 내려다본 성당 안. 붉은 벽돌 벽과 아치 창 아래 신자들이 기도하고 있다', 'The church interior seen from above, with the faithful praying beneath red brick walls and arched windows'],
@@ -514,6 +514,9 @@ document.documentElement.classList.add('js');
     1990: { src: 'media/photos/kids-family.webp', w: 1280, h: 960, focus: '40% 50%',
       alt: ['성당 마당 나무 사이에 선 성모상 앞에 어린이와 가족들이 모인 모습', 'Children and families gathered before the statue of Mary among the trees of the church courtyard'],
       cap: ['1989년과 1996년에 자리를 옮긴 성모동산, 지금 모습', 'The Marian garden, moved in 1989 and again in 1996, as it is today'] },
+    2000: { src: 'media/photos/adoration-chapel.webp', w: 427, h: 320, focus: '50% 40%',
+      alt: ['은은한 빛이 번지는 벽 앞, 돌 받침 위에 놓인 금빛 햇살 무늬 장식. 가운데에 둥근 창이 있다', 'A gold sunburst with a round window at its center, set on a stone pedestal before a softly lit wall'],
+      cap: ['2008년 10월 구조를 바꾼 성체 조배실, 지금 모습', 'The adoration chapel, rearranged in October 2008, as it is today'] },
     2010: { src: 'media/photos/altar-mass.webp', w: 427, h: 320, focus: '55% 40%',
       alt: ['부조 벽 앞 제대에서 두 신부님이 미사를 드리고, 신자들이 고개 숙여 기도하는 모습', 'Two priests celebrate Mass at the altar before the relief wall as the faithful bow their heads in prayer'],
       cap: ['2010년 「아름다운 성전만들기」로 리모델링한 대성전, 지금 모습', 'The main church, remodeled in 2010 in the “Beautiful Church” project, as it is today'] },
