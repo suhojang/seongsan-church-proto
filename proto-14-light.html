@@ -6,7 +6,7 @@
 <meta name="robots" content="noindex, nofollow">
 <script src="assets/i18n.js"></script>
 <title data-en="Seongsan-dong Catholic Church">천주교 성산동성당</title>
-<meta name="description" content="한국 103위 순교성인을 주보로 모신 천주교 성산동성당입니다. 미사 시간, 정기 전례, 공동체 소식, 예비신자 입교 안내, 오시는 길을 확인하세요." data-en-content="Seongsan-dong Catholic Church in Seoul, under the patronage of the 103 Korean Martyr Saints. Find Mass times, monthly liturgies, parish news, how to become Catholic, and directions.">
+<meta name="description" content="한국 103위 순교성인을 주보로 모신 천주교 성산동성당입니다. 미사 시간과 정기 전례, 본당 소개, 예비신자 입교 안내, 오시는 길을 확인하세요." data-en-content="Seongsan-dong Catholic Church in Seoul, under the patronage of the 103 Korean Martyr Saints. Find Mass times, monthly liturgies, our parish history, how to become Catholic, and directions.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ko_KR" data-en-content="en_US">
 <meta property="og:title" content="천주교 성산동성당" data-en-content="Seongsan-dong Catholic Church">
@@ -268,13 +268,15 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
 .slot time { display: block; font-size: clamp(1.75rem, 0.6rem + 1.8vw, 2.6rem); font-weight: 200; line-height: 1.05; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
 .slot > span { display: block; margin-top: 0.3rem; color: var(--ink-2); font-size: 0.875rem; }
 .slot.is-past { opacity: 0.34; }
-.slot.is-next time { font-weight: 450; }
-.next-tag { display: flex; align-items: baseline; gap: 0.4rem; margin-bottom: 0.35rem; font-size: 0.75rem; font-weight: 600; }
-.next-tag i { font-family: var(--italic); font-size: 0.9375rem; font-weight: 400; }
-.mass-notes { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 1.5rem 4rem; margin-top: 2.25rem; }
-.notice { display: flex; gap: 0.9rem; }
-.notice::before { content: ""; flex: none; width: 0.4rem; height: 0.4rem; margin-top: 0.65rem; border-radius: 50%; background: var(--ink); }
-.notice strong { font-weight: 600; }
+/* 다음 미사: 표 안에서 한눈에 찾도록 칸 너비만큼 먹색 띠로 뒤집고, 남은 시간을 함께 적는다 */
+.slot.is-next { margin-inline: -1.2rem; padding: 1rem 1.2rem 1.15rem; background: var(--ink); color: var(--paper); }
+.slot.is-next > span { color: rgb(247 245 240 / 0.72); }
+.slot.is-next time { font-weight: 300; }
+.slot.is-next > .next-tag { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem 0.45rem; margin: 0 0 0.6rem; color: var(--paper); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.02em; line-height: 1.4; }
+.next-tag::before { content: ""; flex: none; width: 0.4rem; height: 0.4rem; border-radius: 50%; background: currentColor; animation: next-breathe 2.4s ease-in-out infinite; }
+.next-tag small { color: rgb(247 245 240 / 0.72); font-size: inherit; font-weight: 400; }
+@keyframes next-breathe { 50% { opacity: 0.2; } }
+@media (prefers-reduced-motion: reduce) { .next-tag::before { animation: none; } }
 @media (max-width: 63.99rem) {
   .week { display: flex; flex-direction: column; }
   .day { order: var(--ord, 0); display: grid; grid-template-columns: 5.25rem minmax(0, 1fr); align-items: start; gap: 1rem; padding: 1.2rem 0.9rem; border-left: 0; border-top: 1px solid var(--line); }
@@ -283,7 +285,8 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
   .slots { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0.9rem 1.75rem; margin-top: 0; }
   .slot time { font-size: 1.625rem; font-weight: 300; }
   .slot > span { margin-top: 0.1rem; font-size: 0.8125rem; }
-  .mass-notes { grid-template-columns: 1fr; }
+  .slot.is-next { flex-basis: 100%; margin-inline: -0.75rem 0; padding: 0.75rem 0.75rem 0.85rem; }
+  .slot.is-next > .next-tag { margin-bottom: 0.45rem; }
 }
 
 /* 사진 틀: 틀이 비율을 정하고 사진은 틀을 채운다. 사진이 바뀌어도 자리는 그대로다. */
@@ -423,27 +426,52 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
   .timeline h3 { margin-top: 0.75rem; }
 }
 
-/* 주보와 새 소식 */
-.news-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3.5rem clamp(3rem, 7vw, 8rem); align-items: start; }
-.bulletin-kind { margin-top: 1.4rem; color: var(--ink-2); font-size: 0.9375rem; }
-.bulletin h3 { margin-top: 0.6rem; font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem); font-weight: 300; line-height: 1.3; letter-spacing: -0.03em; }
-.bulletin .btn { margin-top: 1.75rem; }
+/* 본당 소개: 주보 성인 한 점(스테인드글라스 액자 아래 103)과 사진이 붙은 세 갈래 목차 */
+.about-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3.5rem clamp(3rem, 7vw, 8rem); align-items: start; }
+.patron { display: flex; flex-direction: column; color: inherit; text-decoration: none; transition: border-color 0.4s; }
+.patron:hover { border-color: var(--ink); }
+.patron .ph, .ai-img .ph { display: block; }
+.patron-ph { --ratio: 16 / 11; }
+.patron > .cap { margin-bottom: 0; }
+.patron-body { display: flex; flex-direction: column; align-items: flex-start; padding: clamp(1.75rem, 1rem + 2vw, 2.75rem) clamp(0.25rem, 1vw, 1rem) clamp(1rem, 0.5rem + 1vw, 1.5rem); }
+.patron-n { font-family: var(--italic); font-size: clamp(5.5rem, 3rem + 7vw, 9rem); font-style: italic; font-weight: 300; line-height: 0.85; letter-spacing: -0.03em; font-variant-numeric: lining-nums; }
+.patron-t { margin-top: 1.25rem; font-size: clamp(1.25rem, 1.05rem + 0.8vw, 1.625rem); font-weight: 300; line-height: 1.5; letter-spacing: -0.02em; }
+.patron .text-link { margin-top: 1rem; }
+.about-index { border-top: 1px solid var(--ink); }
+.about-index li { border-bottom: 1px solid var(--line); }
+.about-index a { display: grid; grid-template-columns: clamp(7.5rem, 5rem + 6vw, 11rem) minmax(0, 1fr) auto; grid-template-rows: auto auto 1fr; align-items: start; gap: 0.15rem clamp(1.25rem, 2.5vw, 2.25rem); padding: clamp(1.25rem, 1rem + 1vw, 1.75rem) 0; text-decoration: none; }
+.ai-img { grid-row: 1 / span 3; padding: 4px; border: 1px solid var(--line); background: var(--mat); }
+.ai-img .ph { --ratio: 4 / 3; }
+.about-index .no { grid-column: 2; padding-top: 0.35rem; color: var(--ink-2); font-family: var(--italic); font-size: 1.125rem; font-style: italic; line-height: 1.3; font-variant-numeric: lining-nums; }
+.ai-t { grid-column: 2; font-size: clamp(1.375rem, 1.1rem + 1vw, 1.875rem); font-weight: 300; line-height: 1.3; letter-spacing: -0.025em; }
+.ai-d { grid-column: 2; margin-top: 0.2rem; color: var(--ink-2); font-size: 0.9375rem; }
+.ai-arrow { grid-column: 3; grid-row: 1 / span 3; align-self: center; font-weight: 300; transition: transform 0.35s var(--ease); }
+.about-index a:hover .ai-t { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.25em; }
+.about-index a:hover .ai-arrow { transform: translateX(4px); }
+@media (max-width: 52rem) { .about-grid { grid-template-columns: 1fr; } }
+@media (max-width: 40rem) {
+  .about-index a { grid-template-columns: 6.5rem minmax(0, 1fr); column-gap: 1rem; }
+  .ai-arrow { display: none; }
+  .ai-t { font-size: 1.25rem; }
+  .ai-d { font-size: 0.875rem; }
+}
+
+/* 미사 참례 자세: 여섯 가지를 세 칸에 */
+.manners { margin-top: clamp(3.5rem, 3rem + 3vw, 5.5rem); }
+.manners-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(1.5rem, 3vw, 3rem); }
+.manners-list > div { padding: 1.25rem 0 1.5rem; border-bottom: 1px solid var(--line); }
+.manners-list dt { font-weight: 600; }
+.manners-list dd { margin: 0.35rem 0 0; color: var(--ink-2); font-size: 0.9375rem; line-height: 1.75; }
+@media (max-width: 63.99rem) { .manners-list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 40rem) { .manners-list { grid-template-columns: 1fr; } }
+
+/* 목록 줄 */
 .sub-title { padding-bottom: 1.1rem; border-bottom: 1px solid var(--ink); font-size: 0.9375rem; font-weight: 600; }
-.past { margin-top: 2.5rem; }
 .rows li { border-bottom: 1px solid var(--line); }
 .rows a { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1.5rem; min-height: 3.5rem; padding: 0.9rem 0; text-decoration: none; }
 .rows a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: right; transition: transform 0.6s var(--ease); }
 .rows a:hover::after { transform: scaleX(1); transform-origin: left; }
 .rows time, .rows .row-date { color: var(--ink-2); font-size: 0.875rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.feed a { grid-template-columns: 5.5rem minmax(0, 1fr) auto; }
-.feed-cat { color: var(--ink-2); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; }
-.row-title { font-weight: 450; }
-.past-all { margin-top: 0.75rem; }
-@media (max-width: 52rem) {
-  .news-grid { grid-template-columns: 1fr; }
-  .feed a { grid-template-columns: minmax(0, 1fr) auto; gap: 0.15rem 1.25rem; }
-  .feed-cat { grid-column: 1 / -1; }
-}
 
 /* 화면 사이 쉼: 사진이 스크롤보다 조금 느리게 움직인다 */
 .interlude { margin-top: var(--section); }
@@ -624,6 +652,44 @@ html[lang="en"] .film-text h3 { text-wrap: balance; }
   .nav-list .sub a[aria-current] { color: var(--ink); font-weight: 500; }
 }
 </style>
+<style id="foot-css">
+/* 바닥글: 왼쪽은 성당 이름과 주소, 오른쪽은 메뉴 묶음과 가톨릭 사이트. 관리자·회원 기능은 두지 않는다 */
+.foot { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 3rem clamp(3rem, 6vw, 6rem); }
+.foot-id .foot-info { margin-top: 1.75rem; }
+.foot-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem 1.75rem; }
+.foot-h { margin-bottom: 0.35rem; color: var(--ink-2); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; }
+.foot-links li a { min-height: 2.25rem; line-height: 1.45; text-decoration: none; }
+.foot-links li a:hover { text-decoration: underline; }
+.foot-bottom { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.25rem 2rem; padding-top: 1.25rem; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 0.8125rem; }
+.foot-bottom .copy { grid-column: auto; padding: 0; border: 0; }
+.foot-legal { display: flex; flex-wrap: wrap; gap: 0 1.5rem; font-size: 0.8125rem; }
+.foot-legal a { display: inline-flex; align-items: center; min-height: 2.75rem; color: inherit; text-decoration: none; }
+.foot-legal a:hover { text-decoration: underline; }
+@media (max-width: 63.99rem) {
+  .foot { grid-template-columns: 1fr; }
+  .foot-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+</style>
+<style id="hd-lang-css">
+/* 모바일 머리글 언어 전환: 넓은 화면은 메뉴 오른쪽 KO / EN, 모바일은 헤더에 바꿀 언어 하나만(한국어 화면엔 EN, 영어 화면엔 KO) */
+.hd-lang { display: none; }
+@media (max-width: 63.99rem) {
+  .hd-lang { display: flex; align-items: center; margin-left: auto; padding-left: 0.5rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; line-height: 1; }
+  .hd-lang a { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0 0.2rem; color: inherit; opacity: 0.55; text-decoration: none; transition: opacity 0.3s; }
+  .hd-lang a:hover { opacity: 1; }
+  html:not([lang="en"]) .hd-lang a[data-lang-switch="ko"], html[lang="en"] .hd-lang a[data-lang-switch="en"] { display: none; }
+  .hd-lang + .menu-btn { margin-left: 0; }
+  .site-header .wm-en .wm-l2 { display: block; }
+  html[lang="en"] .site-header .brand-sub { letter-spacing: 0.12em; }
+}
+@media (max-width: 26rem) {
+  .site-header .menu-btn .menu-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+@media (max-width: 24rem) {
+  .site-header .brand { gap: 0.6rem; }
+  .site-header .brand-sub, html[lang="en"] .site-header .brand-sub { letter-spacing: 0.08em; white-space: normal; }
+}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -638,10 +704,11 @@ html[lang="en"] .film-text h3 { text-wrap: balance; }
       <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
       <span>
         <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
-        <span class="wm-en" data-only="en" aria-hidden="true">Seongsan-dong Catholic Church</span>
+        <span class="wm-en" data-only="en" aria-hidden="true">Seongsan-dong <span class="wm-l2">Catholic Church</span></span>
         <span class="brand-sub">103 Martyr Saints of Korea</span>
       </span>
     </a>
+    <nav class="hd-lang" aria-label="언어" data-en-aria-label="Language"><a data-lang-switch="ko" aria-label="한국어">KO</a><a data-lang-switch="en" aria-label="English">EN</a></nav>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="menu-label">메뉴</span><span class="menu-lines" aria-hidden="true"></span></button>
     <nav id="site-nav" aria-label="주 메뉴" data-en-aria-label="Main menu">
       <ul class="nav-list">
@@ -649,23 +716,30 @@ html[lang="en"] .film-text h3 { text-wrap: balance; }
         <li class="has-sub"><a href="#community" data-en="&lt;span class=&#x27;nl-full&#x27;&gt;Community&lt;/span&gt;&lt;span class=&#x27;nl-short&#x27;&gt;Community&lt;/span&gt;">공동체 <small>Community</small></a>
           <ul class="sub">
             <li><a href="proto-14-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+            <li><a href="proto-14-org.html" data-en="Parish Organization">사목 조직</a></li>
             <li><a href="proto-14-committees.html" data-en="Committees">분과 소개</a></li>
-            <li><a href="proto-14-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
+            <li><a href="proto-14-groups.html" data-en="Ministries &amp;amp; Groups">단체 소개</a></li>
           </ul></li>
         <li><a href="#rites" data-en="&lt;span class=&#x27;nl-full&#x27;&gt;Sacraments &amp;amp; Liturgy&lt;/span&gt;&lt;span class=&#x27;nl-short&#x27;&gt;Sacraments&lt;/span&gt;">성사와 전례 <small>Sacraments</small></a></li>
-        <li class="has-sub"><a href="#news" data-en="&lt;span class=&#x27;nl-full&#x27;&gt;News&lt;/span&gt;&lt;span class=&#x27;nl-short&#x27;&gt;News&lt;/span&gt;">소식 <small>News</small></a>
+        <li class="has-sub"><a href="#about" data-en="&lt;span class=&#x27;nl-full&#x27;&gt;About the Parish&lt;/span&gt;&lt;span class=&#x27;nl-short&#x27;&gt;About&lt;/span&gt;">본당 소개 <small>About</small></a>
           <ul class="sub">
-            <li><a href="proto-14-bulletin-view.html" data-en="This Week’s Bulletin">이번 주 주보</a></li>
-            <li><a href="proto-14-bulletin.html" data-en="Past Bulletins">지난 주보</a></li>
-            <li><a href="proto-14-news.html" data-en="All News">새 소식</a></li>
+            <li><a href="proto-14-history.html" data-en="History">본당 연혁</a></li>
+            <li><a href="proto-14-clergy.html" data-en="Clergy &amp;amp; Religious">사제와 수도자</a></li>
+            <li><a href="proto-14-saints.html" data-en="Patron Saints">주보 성인</a></li>
+            <li><a href="proto-14-tour.html" data-en="Church Tour">성당 둘러보기</a></li>
           </ul></li>
-        <li><a href="#welcome" data-en="&lt;span class=&#x27;nl-full&#x27;&gt;New Here?&lt;/span&gt;&lt;span class=&#x27;nl-short&#x27;&gt;New Here?&lt;/span&gt;">처음 오신 분 <small>Welcome</small></a></li>
+        <li class="has-sub"><a href="#welcome" data-en="&lt;span class=&#x27;nl-full&#x27;&gt;New Here?&lt;/span&gt;&lt;span class=&#x27;nl-short&#x27;&gt;New Here?&lt;/span&gt;">처음 오신 분 <small>Welcome</small></a>
+          <ul class="sub">
+            <li><a href="#welcome" data-en="Becoming Catholic">입교 안내</a></li>
+            <li><a href="#faq" data-en="FAQ">자주 묻는 질문</a></li>
+            <li><a href="proto-14-district.html" data-en="Find Your District">관할구역 찾기</a></li>
+          </ul></li>
         <li><a href="#visit" data-en="&lt;span class=&#x27;nl-full&#x27;&gt;Visit Us&lt;/span&gt;&lt;span class=&#x27;nl-short&#x27;&gt;Visit&lt;/span&gt;">오시는 길 <small>Visit</small></a></li>
       </ul>
       <div class="lang" role="group" aria-label="언어" data-en-aria-label="Language">
         <a href="?lang=ko" data-lang-switch="ko" aria-label="한국어"><span class="l-short">KO</span><span class="l-long">한국어</span></a><span class="lang-sep" aria-hidden="true"></span><a href="?lang=en" data-lang-switch="en" aria-label="English"><span class="l-short">EN</span><span class="l-long">English</span></a>
       </div>
-      <p class="nav-foot" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul<br>Parish Office 02-6387-1784">서울 마포구 성미산로2길 15<br>사무실 02-6387-1784</p>
+      <p class="nav-foot" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul&lt;br&gt;Parish Office 02-6387-1784">서울 마포구 성미산로2길 15<br>사무실 02-6387-1784</p>
     </nav>
   </div>
 </header>
@@ -676,7 +750,7 @@ html[lang="en"] .film-text h3 { text-wrap: balance; }
     <li><a href="#word" data-for="word"><span class="ch-no">02</span><span class="ch-line" aria-hidden="true"></span><span class="sr-only" data-en="Welcome">초대말씀</span></a></li>
     <li><a href="#community" data-for="community"><span class="ch-no">03</span><span class="ch-line" aria-hidden="true"></span><span class="sr-only" data-en="Community">공동체</span></a></li>
     <li><a href="#rites" data-for="rites"><span class="ch-no">04</span><span class="ch-line" aria-hidden="true"></span><span class="sr-only" data-en="Sacraments">성사와 전례</span></a></li>
-    <li><a href="#news" data-for="news"><span class="ch-no">05</span><span class="ch-line" aria-hidden="true"></span><span class="sr-only" data-en="News">소식</span></a></li>
+    <li><a href="#about" data-for="about"><span class="ch-no">05</span><span class="ch-line" aria-hidden="true"></span><span class="sr-only" data-en="About">본당 소개</span></a></li>
     <li><a href="#welcome" data-for="welcome"><span class="ch-no">06</span><span class="ch-line" aria-hidden="true"></span><span class="sr-only" data-en="New Here?">처음 오신 분</span></a></li>
     <li><a href="#visit" data-for="visit"><span class="ch-no">07</span><span class="ch-line" aria-hidden="true"></span><span class="sr-only" data-en="Visit">오시는 길</span></a></li>
   </ol>
@@ -785,9 +859,16 @@ html[lang="en"] .film-text h3 { text-wrap: balance; }
           </ul></li>
       </ol>
 
-      <div class="mass-notes reveal">
-        <p class="notice"><span data-en="&lt;strong&gt;Sunday Mass times changed on August 1.&lt;/strong&gt; The Saturday 3 p.m. Children’s Mass has moved to Sunday at 3 p.m. as the Family Mass, and the Sunday 10:30 a.m. Mass is now the Parish Mass."><strong>8월 1일부터 주일 미사 시간이 바뀌었습니다.</strong> 토요일 오후 3시 어린이미사는 주일 오후 3시 가정미사로 옮겼고, 주일 10시 30분 미사는 교중미사로 드립니다.</span></p>
-        <p class="note" data-en="Please arrive 10 minutes before Mass to quiet your heart, and switch off your phone.">미사 시작 10분 전에 도착해 마음을 가다듬고, 휴대전화는 꺼 두세요.</p>
+      <div class="manners">
+        <h3 class="sub-title" data-en="Taking Part in Mass">미사 참례 자세</h3>
+        <dl class="manners-list">
+          <div class="reveal"><dt data-en="Before Mass">미사 전</dt><dd data-en="Arrive 10 minutes early to quiet your heart, and switch off your phone.">미사 시작 10분 전에 도착해 마음을 가다듬고, 휴대전화는 꺼 둡니다.</dd></div>
+          <div class="reveal"><dt data-en="What to Wear">옷차림</dt><dd data-en="You are coming to meet the Lord. Please dress neatly and avoid athletic wear and slippers.">주님을 만나러 오는 날입니다. 단정하게 입고, 운동복이나 슬리퍼는 삼갑니다.</dd></div>
+          <div class="reveal"><dt data-en="Attentiveness">자세</dt><dd data-en="Take part quietly and reverently. During the readings, the Gospel, and the homily, set the bulletin aside and listen to the Word.">조용하고 정중하게 참례합니다. 독서·복음·강론 때는 주보나 안내 책자를 보지 않고 말씀에 귀 기울입니다.</dd></div>
+          <div class="reveal"><dt data-en="Offertory">봉헌</dt><dd data-en="This is the time to offer yourself to God. Please have your offering ready beforehand.">자신을 하느님께 봉헌하는 시간입니다. 봉헌금은 미리 준비해 둡니다.</dd></div>
+          <div class="reveal"><dt data-en="Holy Communion">영성체</dt><dd data-en="Receiving the Lord is a holy moment. Keep the one-hour Eucharistic fast before Communion, and wash your hands.">주님을 모시는 거룩한 시간입니다. 영성체 전 1시간 동안 음식을 먹지 않는 공복재를 지키고, 손을 깨끗이 씻습니다.</dd></div>
+          <div class="reveal"><dt data-en="For Those Around You">함께하는 분들을 위해</dt><dd data-en="If you come with children, please help them not to distract others. Take the bulletin home rather than leaving it behind.">아이와 함께라면 주위 분들이 분심 들지 않게 살펴 주시고, 주보는 두고 가지 말고 집에 가져갑니다.</dd></div>
+        </dl>
       </div>
     </div>
   </section>
@@ -889,10 +970,10 @@ html[lang="en"] .film-text h3 { text-wrap: balance; }
       <div class="community-foot">
         <ul class="links-row">
           <li><a class="text-link" href="proto-14-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+          <li><a class="text-link" href="proto-14-org.html" data-en="Parish Organization">사목 조직</a></li>
           <li><a class="text-link" href="proto-14-committees.html" data-en="Committees">분과 소개</a></li>
           <li><a class="text-link" href="proto-14-groups.html" data-en="Ministries &amp;amp; Groups">단체 소개</a></li>
         </ul>
-        <a class="text-link" href="https://www.103.or.kr/board/index.html?id=board13" data-en="All event photos (in Korean) &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;">행사 앨범 전체 보기 <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </section>
@@ -919,46 +1000,30 @@ html[lang="en"] .film-text h3 { text-wrap: balance; }
     </div>
   </section>
 
-  <section class="section" id="news" data-chapter aria-labelledby="news-title">
+  <section class="section" id="about" data-chapter aria-labelledby="about-title">
     <div class="wrap">
       <div class="sec-head">
         <div>
-          <p class="label" data-en="Bulletin &amp;amp; News">News</p>
-          <h2 id="news-title"><span class="mask"><span data-en="News">소식</span></span></h2>
+          <p class="label">About</p>
+          <h2 id="about-title"><span class="mask"><span data-en="About the Parish">본당 소개</span></span></h2>
         </div>
-        <p class="lead" data-en="This week’s bulletin and the latest parish news.">이번 주 주보와 본당의 새 소식입니다.</p>
+        <p class="lead" data-en="The road our parish has walked since 1981, the priests and sisters who have walked it with us, our patron saints, and the church itself.">1981년부터 걸어온 길과 함께한 사제·수도자, 본당의 주보 성인과 성당 곳곳을 소개합니다.</p>
       </div>
-      <div class="news-grid">
-        <div class="reveal">
-          <article class="bulletin" aria-labelledby="bulletin-title">
-            <p class="sub-title" data-en="This Week’s Bulletin">이번 주 주보</p>
-            <p class="bulletin-kind" data-en="Bulletin for October 25">10월 25일 주보</p>
-            <h3 id="bulletin-title" data-en="Thirtieth Sunday in Ordinary Time">연중 제30주일</h3>
-            <p class="note" data-en="Posted October 24.">10월 24일에 올렸습니다.</p>
-            <a class="btn btn-solid" href="proto-14-bulletin-view.html?date=2026-10-25" data-en="View Bulletin &lt;span class=&quot;arrow&quot; aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;">주보 보기 <span class="arrow" aria-hidden="true">→</span></a>
-          </article>
-          <div class="past">
-            <h3 class="sub-title" data-en="Past Bulletins">지난 주보</h3>
-            <ul class="rows">
-              <li><a href="proto-14-bulletin-view.html?date=2026-10-18"><span class="row-title" data-en="Mass for the Evangelization of Peoples (World Mission Sunday)">민족들의 복음화를 위한 미사</span><span class="row-date" data-en="October 18">10월 18일</span></a></li>
-              <li><a href="proto-14-bulletin-view.html?date=2026-10-11"><span class="row-title" data-en="Twenty-eighth Sunday in Ordinary Time">연중 제28주일</span><span class="row-date" data-en="October 11">10월 11일</span></a></li>
-              <li><a href="proto-14-bulletin-view.html?date=2026-10-04"><span class="row-title" data-en="Twenty-seventh Sunday in Ordinary Time">연중 제27주일</span><span class="row-date" data-en="October 4">10월 4일</span></a></li>
-            </ul>
-            <a class="text-link past-all" href="proto-14-bulletin.html" data-en="All past bulletins &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;">지난 주보 모두 보기 <span aria-hidden="true">→</span></a>
-          </div>
-        </div>
-        <div class="reveal">
-          <h3 class="sub-title" data-en="Latest News">새 소식</h3>
-          <ul class="rows feed">
-            <li><a href="proto-14-news-view.html?id=notice-1"><span class="feed-cat" data-en="Announcement">공지</span><span class="row-title" data-en="Mass Schedule Change (Effective August 1)">미사 시간 변경 안내 (8월 1일부터)</span><time datetime="2026-07-06" data-en="July 6">7월 6일</time></a></li>
-            <li><a href="proto-14-news-view.html?id=board17-21"><span class="feed-cat" data-en="Community">공동체</span><span class="row-title" data-en="2026 Deanery 2 Elementary Community Mass and Writing Contest">2026년 2지구 초등부 공동체 미사 및 백일장</span><time datetime="2026-10-27" data-en="October 27">10월 27일</time></a></li>
-            <li><a href="proto-14-news-view.html?id=board17-20"><span class="feed-cat" data-en="Community">공동체</span><span class="row-title" data-en="Funeral Ministry Monthly Meeting">연령회 월례 회합</span><time datetime="2026-10-26" data-en="October 26">10월 26일</time></a></li>
-            <li><a href="proto-14-news-view.html?id=board17-19"><span class="feed-cat" data-en="Community">공동체</span><span class="row-title" data-en="October 2026 Sansarang Trail Walk">2026년 10월 산사랑 둘레길</span><time datetime="2026-10-25" data-en="October 25">10월 25일</time></a></li>
-            <li><a href="proto-14-news-view.html?id=board17-14"><span class="feed-cat" data-en="Community">공동체</span><span class="row-title" data-en="2026 Parish Day: Eoullim Madang Community Festival #1">2026년 본당의 날 (어울림 마당) #1</span><time datetime="2026-10-23" data-en="October 23">10월 23일</time></a></li>
-            <li><a href="proto-14-news-view.html?id=news-91"><span class="feed-cat" data-en="Video">영상</span><span class="row-title" data-en="2026 Parish Day: Eoullim Madang Community Festival (Photo Video)">2026년도 본당의 날 (어울림 마당) 사진 영상</span><time datetime="2026-10-22" data-en="October 22">10월 22일</time></a></li>
-          </ul>
-          <a class="text-link past-all" href="proto-14-news.html" data-en="All news &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;">새 소식 모두 보기 <span aria-hidden="true">→</span></a>
-        </div>
+      <div class="about-grid">
+        <a class="patron plate wipe" href="proto-14-saints.html">
+          <span class="ph patron-ph"><img src="media/photos/stained-glass.webp" width="480" height="320" loading="lazy" decoding="async" style="--focus: 50% 0%" alt="어두운 벽에서 빛나는 스테인드글라스. 한복을 입은 두 사람이 십자가를 사이에 두고 마주 앉아 있다" data-en-alt="Stained glass glowing on a dark wall: two figures in hanbok sit facing each other with a cross between them"></span>
+          <span class="cap"><span class="cap-text" data-en="Stained glass in the main church">대성전 스테인드글라스</span></span>
+          <span class="patron-body">
+            <span class="patron-n" aria-hidden="true">103</span>
+            <span class="patron-t" data-en="Our parish is under the patronage of the 103 Martyr Saints of Korea.">본당은 한국 103위 순교 성인을 주보로 모십니다.</span>
+            <span class="text-link" data-en="Our patron saints &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;">주보 성인 보기 <span aria-hidden="true">→</span></span>
+          </span>
+        </a>
+        <ol class="about-index reveal">
+          <li><a href="proto-14-history.html"><span class="ai-img"><span class="ph"><img src="media/photos/parish-day-2026.webp" width="427" height="320" loading="lazy" decoding="async" alt="" style="--focus: 50% 60%"></span></span><span class="no" aria-hidden="true">01</span><span class="ai-t" data-en="History">본당 연혁</span><span class="ai-d" data-en="From 1981 to today, decade by decade">1981년부터 오늘까지, 연대별로</span><span class="ai-arrow" aria-hidden="true">→</span></a></li>
+          <li><a href="proto-14-clergy.html"><span class="ai-img"><span class="ph"><img src="media/photos/altar-mass.webp" width="427" height="320" loading="lazy" decoding="async" alt="" style="--focus: 55% 45%"></span></span><span class="no" aria-hidden="true">02</span><span class="ai-t" data-en="Clergy &amp;amp; Religious">사제와 수도자</span><span class="ai-d" data-en="Our priests, former priests and sisters, and vocations from our parish">지금의 신부님과 역대 신부님·수녀님, 본당 출신 성직자·수도자</span><span class="ai-arrow" aria-hidden="true">→</span></a></li>
+          <li><a href="proto-14-tour.html"><span class="ai-img"><span class="ph"><img src="media/photos/sacred-heart.webp" width="427" height="320" loading="lazy" decoding="async" alt="" style="--focus: 55% 30%"></span></span><span class="no" aria-hidden="true">03</span><span class="ai-t" data-en="Church Tour">성당 둘러보기</span><span class="ai-d" data-en="From the main church to the Marian garden">대성전에서 성모동산까지</span><span class="ai-arrow" aria-hidden="true">→</span></a></li>
+        </ol>
       </div>
     </div>
   </section>
@@ -1019,6 +1084,7 @@ html[lang="en"] .film-text h3 { text-wrap: balance; }
           <details><summary data-en="Where can I get a baptismal certificate or parish registration records?">세례증명서나 교적 서류는 어디서 받나요?</summary><p data-en="The parish office can help. Please check the office hours below and give us a call.">본당 사무실에서 안내해 드립니다. 아래 사무실 시간을 확인하고 전화해 주세요.</p></details>
           <details><summary data-en="When are marriage preparation interviews held?">혼인 면담은 언제 하나요?</summary><p data-en="On the last Saturday of the month at 10:45 a.m., except in August and December.">마지막 주 토요일 오전 10시 45분에 합니다. 8월과 12월에는 없습니다.</p></details>
           <details><summary data-en="A homebound family member would like to receive Holy Communion.">거동이 불편한 가족이 영성체를 원합니다.</summary><p data-en="Communion is brought to the sick and homebound on the last Wednesday of each month, leaving the church at 10:45 a.m. To request a visit, please contact the parish office.">매월 마지막 수요일에 병자 영성체가 있습니다. 오전 10시 45분에 성당에서 출발합니다. 방문을 원하시면 사무실에 신청해 주세요.</p></details>
+          <details><summary data-en="I’ve just moved here. Which parish do I belong to?">이사 왔는데 어느 본당에 다녀야 하나요?</summary><p data-en="You register at the parish whose boundaries include your home. Check whether your address is in our parish with &lt;a href=&quot;proto-14-district.html&quot;&gt;Find Your District&lt;/a&gt;, then ask the parish office to register you.">사는 곳의 관할 본당에 교적을 둡니다. 우리 본당 관할인지는 <a href="proto-14-district.html">관할구역 찾기</a>에서 확인하고, 사무실에 교적 전입을 신청해 주세요.</p></details>
         </div>
       </div>
     </div>
@@ -1065,30 +1131,63 @@ html[lang="en"] .film-text h3 { text-wrap: balance; }
 
 <footer class="site-footer">
   <div class="wrap foot">
-    <div>
+    <div class="foot-id">
       <a class="brand" href="#top" aria-label="천주교 성산동성당 처음으로" data-en-aria-label="Seongsan-dong Catholic Church, home">
-        <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
-        <span>
-          <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
-          <span class="wm-en" data-only="en" aria-hidden="true">Seongsan-dong Catholic Church</span>
-          <span class="brand-sub">103 Martyr Saints of Korea</span>
-        </span>
+      <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
+      <span>
+        <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
+        <span class="wm-en" data-only="en" aria-hidden="true">Seongsan-dong <span class="wm-l2">Catholic Church</span></span>
+        <span class="brand-sub">103 Martyr Saints of Korea</span>
+      </span>
       </a>
+      <p class="foot-info" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul 03996, Republic of Korea&lt;br&gt;Tel. &lt;span class=&quot;nw&quot;&gt;02-6387-1784&lt;/span&gt;, 1785 (from abroad &lt;span class=&quot;nw&quot;&gt;+82-2-6387-1784&lt;/span&gt;)&lt;br&gt;Catholic Archdiocese of Seoul Foundation">03996 서울 마포구 성미산로2길 15<br>전화 02-6387-1784, 1785<br>(재)천주교서울대교구 유지재단 소속</p>
     </div>
-    <p class="foot-info" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul 03996, Republic of Korea&lt;br&gt;Tel. 02-6387-1784, 1785 (from abroad &lt;span class=&quot;nw&quot;&gt;+82-2-6387-1784&lt;/span&gt;)&lt;br&gt;Catholic Archdiocese of Seoul Foundation">03996 서울 마포구 성미산로2길 15<br>전화 02-6387-1784, 1785<br>(재)천주교서울대교구 유지재단 소속</p>
-    <div>
-      <ul class="foot-links foot-group">
-        <li><a href="proto-14-plan.html" data-en="Pastoral Plan">사목지침</a></li>
-        <li><a href="proto-14-committees.html" data-en="Committees">분과 소개</a></li>
-        <li><a href="proto-14-groups.html" data-en="Ministries &amp;amp; Groups">단체 소개</a></li>
-      </ul>
-      <ul class="foot-links foot-legal foot-group">
-        <li><a href="#" data-en="&lt;strong&gt;Privacy Policy&lt;/strong&gt;"><strong>개인정보 처리방침</strong></a></li>
+    <nav class="foot-nav" aria-label="사이트 안내" data-en-aria-label="Site links">
+      <div>
+        <p class="foot-h" data-en="About the Parish">본당 소개</p>
+        <ul class="foot-links">
+          <li><a href="proto-14-history.html" data-en="History">본당 연혁</a></li>
+          <li><a href="proto-14-clergy.html" data-en="Clergy &amp;amp; Religious">사제와 수도자</a></li>
+          <li><a href="proto-14-saints.html" data-en="Patron Saints">주보 성인</a></li>
+          <li><a href="proto-14-tour.html" data-en="Church Tour">성당 둘러보기</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h" data-en="Community">공동체</p>
+        <ul class="foot-links">
+          <li><a href="proto-14-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+          <li><a href="proto-14-org.html" data-en="Parish Organization">사목 조직</a></li>
+          <li><a href="proto-14-committees.html" data-en="Committees">분과 소개</a></li>
+          <li><a href="proto-14-groups.html" data-en="Ministries &amp;amp; Groups">단체 소개</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h" data-en="New Here?">처음 오신 분</p>
+        <ul class="foot-links">
+          <li><a href="#welcome" data-en="Becoming Catholic">입교 안내</a></li>
+          <li><a href="#faq" data-en="FAQ">자주 묻는 질문</a></li>
+          <li><a href="proto-14-district.html" data-en="Find Your District">관할구역 찾기</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h" data-en="Catholic Links">가톨릭 사이트</p>
+        <ul class="foot-links">
+          <li><a href="https://www.vatican.va/" data-en="The Holy See">교황청</a></li>
+          <li><a href="https://aos.catholic.or.kr/" data-en="Archdiocese of Seoul">천주교 서울대교구</a></li>
+          <li><a href="https://maria.catholic.or.kr/" data-en="Goodnews">굿뉴스</a></li>
+          <li><a href="https://www.cpbc.co.kr/" data-en="CPBC">가톨릭평화방송</a></li>
+          <li><a href="https://www.catholictimes.org/" data-en="The Catholic Times">가톨릭신문</a></li>
+          <li><a href="https://school.catholic.or.kr/" data-en="Online Catechesis">가톨릭 인터넷 교리</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="foot-bottom">
+      <p class="copy" data-en="© 2026 Seongsan-dong Catholic Church">© 2026 천주교 성산동성당</p>
+      <ul class="foot-legal">
+        <li><a href="#"><strong data-en="Privacy Policy">개인정보 처리방침</strong></a></li>
         <li><a href="#" data-en="Terms of Use">이용약관</a></li>
-        <li><a href="#" data-en="Ministry Resources Login">단체 자료실 로그인</a></li>
       </ul>
     </div>
-    <p class="copy" data-en="© 2026 Seongsan-dong Catholic Church">© 2026 천주교 성산동성당</p>
   </div>
 </footer>
 
@@ -1133,41 +1232,48 @@ document.documentElement.classList.add('js');
     }
   });
 
-  // 미사 시간표(HTML)가 유일한 원본: 지난 미사와 다음 미사를 찾는다
+  // 미사 시간표(HTML)가 유일한 원본: 지난 미사와 다음 미사를 찾는다. 페이지를 열어 둔 채 시간이 지나도 맞도록 1분마다 다시 계산한다
   const slots = [...document.querySelectorAll('.slot[data-time]')]
     .map(el => ({ el, day: +el.closest('.day').dataset.day, min: toMin(el.dataset.time) }));
-  slots.forEach(s => {
-    if (s.day === dow && s.min <= nowMin) {
-      s.el.classList.add('is-past');
-      s.el.insertAdjacentHTML('beforeend', `<span class="sr-only">${t('(끝났습니다)', '(ended)')}</span>`);
+  const NX = U.next || {};
+  const markMass = () => {
+    const n = new Date(), today = n.getDay(), cur = n.getHours() * 60 + n.getMinutes();
+    document.querySelectorAll('.slot .next-tag, .slot .past-note').forEach(el => el.remove());
+    slots.forEach(s => {
+      s.el.classList.remove('is-next');
+      const past = s.day === today && s.min <= cur;
+      s.el.classList.toggle('is-past', past);
+      if (past) s.el.insertAdjacentHTML('beforeend', `<span class="sr-only past-note">${t('(끝났습니다)', '(ended)')}</span>`);
+    });
+    let next = null, ahead = 0;
+    for (let i = 0; i < 7 && !next; i++) {
+      const d = (today + i) % 7;
+      next = slots.filter(s => s.day === d && (i > 0 || s.min > cur)).sort((a, b) => a.min - b.min)[0];
+      ahead = i;
     }
-  });
-  let next = null, ahead = 0;
-  for (let i = 0; i < 7 && !next; i++) {
-    const d = (dow + i) % 7;
-    next = slots.filter(s => s.day === d && (i > 0 || s.min > nowMin)).sort((a, b) => a.min - b.min)[0];
-    ahead = i;
-  }
-  if (next) {
-    next.el.classList.add('is-next');
-    next.el.insertAdjacentHTML('afterbegin', EN ? '<span class="next-tag"><i>Next Mass</i></span>' : '<span class="next-tag"><i>Next</i>다음 미사</span>');
+    if (!next) return;
     const h = Math.floor(next.min / 60);
     const part = h < 7 ? '새벽' : h < 12 ? '오전' : h < 18 ? '오후' : '저녁';
     const when = ahead === 0 ? '오늘' : ahead === 1 ? '내일' : DAY[next.day];
-    const left = ahead * 1440 + next.min - nowMin, hrs = Math.floor(left / 60), mins = left % 60;
+    const left = ahead * 1440 + next.min - cur, hrs = Math.floor(left / 60), mins = left % 60;
+    const dur = EN ? [hrs ? plural(hrs, 'hour', 'hours') : '', mins ? plural(mins, 'minute', 'minutes') : ''].filter(Boolean).join(' ')
+      : `${hrs ? `${hrs}시간 ` : ''}${mins ? `${mins}분` : ''}`.trim();
+    next.el.classList.add('is-next');
+    next.el.insertAdjacentHTML('afterbegin', `<span class="next-tag">${t('다음 미사', 'Next Mass')} <small>${EN ? (NX.inShort || 'in {duration}').replace('{duration}', dur) : `${dur} 뒤`}</small></span>`);
     if (EN) {
       const [hh, mm] = next.el.dataset.time.split(':').map(Number);
       const whenEn = ahead === 0 ? 'Today' : ahead === 1 ? 'Tomorrow' : DAY_EN[next.day];
       document.getElementById('next-time').innerHTML = `${hh % 12 || 12}:${String(mm).padStart(2, '0')}<span class="ap">${hh < 12 ? 'a.m.' : 'p.m.'}</span>`;
       document.getElementById('next-name').textContent = `${whenEn}, ${massEn(next.el.dataset.name)}`;
-      const dur = [hrs ? plural(hrs, 'hour', 'hours') : '', mins ? plural(mins, 'minute', 'minutes') : ''].filter(Boolean).join(' ');
       document.getElementById('next-left').textContent = `Starts in ${dur}. Confession is available before every Mass.`;
     } else {
       document.getElementById('next-time').textContent = next.el.dataset.time;
       document.getElementById('next-name').textContent = `${when} ${part}, ${next.el.dataset.name}`;
-      document.getElementById('next-left').textContent = `${hrs ? `${hrs}시간 ` : ''}${mins ? `${mins}분 ` : ''}뒤에 시작합니다. 고해성사는 매 미사 전에 드릴 수 있습니다.`;
+      document.getElementById('next-left').textContent = `${dur} 뒤에 시작합니다. 고해성사는 매 미사 전에 드릴 수 있습니다.`;
     }
-  }
+  };
+  markMass();
+  setInterval(markMass, 60000);
 
   // 정기 전례: 규칙에서 다음 날짜를 계산해 가까운 순으로 늘어놓는다
   const nthDay = (y, m, rule, d) => {

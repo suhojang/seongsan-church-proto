@@ -355,6 +355,41 @@ html[lang="en"] .dist-group { grid-template-columns: 6.5rem minmax(0, 1fr); }
 .sheet-list .sub a { display: inline-flex; min-height: 2.75rem; padding: 0; color: var(--ink-2); font-family: var(--sans); font-size: 1rem; font-weight: 400; letter-spacing: 0; }
 .sheet-list .sub a[aria-current] { color: var(--ink); font-weight: 500; }
 </style>
+<style id="chrome16-css">
+/* 판권면: 왼쪽은 이름과 주소, 오른쪽은 메뉴 묶음과 가톨릭 사이트. 관리자·회원 기능은 두지 않는다 */
+.colophon .col-grid { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 3rem clamp(3rem, 6vw, 6rem); }
+.col-id .foot-info { margin-top: 1.75rem; }
+.col-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem 1.75rem; }
+.col-h { margin-bottom: 0.35rem; color: var(--ink-2); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; }
+.col-nav .foot-links li a { min-height: 2.25rem; line-height: 1.45; text-decoration: none; }
+.col-nav .foot-links li a:hover { text-decoration: underline; }
+.colophon .copy { align-items: center; }
+.col-legal { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+.col-legal a { display: inline-flex; align-items: center; min-height: 2.75rem; color: inherit; text-decoration: none; }
+.col-legal a:hover { text-decoration: underline; }
+@media (max-width: 63.99rem) {
+  .colophon .col-grid { grid-template-columns: 1fr; }
+  .col-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* 모바일 언어 전환: 제호와 머리띠에는 바꿀 언어 하나만(한국어 쪽엔 English, 영어 쪽엔 한국어). 메뉴 시트에는 두 언어 */
+@media (max-width: 63.99rem) {
+  html.lang-ko .masthead .lang span[lang="ko"], html.lang-en .masthead .lang span[lang="en"],
+  html.lang-ko .slimbar .lang span[lang="ko"], html.lang-en .slimbar .lang span[lang="en"],
+  .masthead .lang .lang-sep, .slimbar .lang .lang-sep { display: none; }
+}
+/* 좁은 화면: 제호 줄(로고 + 메뉴)이 넘치지 않게 로고 아래 영문 한 줄의 자간을 줄이고, 아주 좁으면 줄을 바꾼다 */
+@media (max-width: 24rem) {
+  .mh-name .brand { min-width: 0; }
+  .mh-name .menu-btn { flex: none; margin-left: 0.75rem; }
+  .brand-lg .brand-sub { letter-spacing: 0.1em; white-space: normal; line-height: 1.35; }
+}
+@media (max-width: 40rem) {
+  .sb-row { gap: 1rem; }
+  .sb-row .lang { display: inline-flex; margin-left: auto; }
+  .sb-row .menu-btn { margin-left: 0; }
+  .sb-row .brand { min-width: 0; }
+}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -391,19 +426,25 @@ html[lang="en"] .dist-group { grid-template-columns: 6.5rem minmax(0, 1fr); }
         <li class="has-sub"><a href="proto-16-weekly.html#community" aria-current="page"><span class="c-no">03</span><span data-en="Community">공동체</span></a>
           <ul class="sub">
             <li><a href="proto-16-plan.html" aria-current="page" data-en="Pastoral Plan">사목지침</a></li>
+            <li><a href="proto-16-org.html" data-en="Parish Organization">사목 조직</a></li>
             <li><a href="proto-16-committees.html" data-en="Committees">분과 소개</a></li>
-            <li><a href="proto-16-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
+            <li><a href="proto-16-groups.html" data-en="Ministries &amp;amp; Groups">단체 소개</a></li>
           </ul></li>
         <li><a href="proto-16-weekly.html#rites"><span class="c-no">04</span><span data-en="Sacraments">성사와 전례</span></a></li>
-        <li class="has-sub"><a href="proto-16-weekly.html#news"><span class="c-no">05</span><span data-en="News">소식</span></a>
+        <li class="has-sub"><a href="proto-16-weekly.html#about"><span class="c-no">05</span><span data-en="About">본당 소개</span></a>
           <ul class="sub">
-            <li><a href="proto-16-bulletin-view.html" data-en="This Week’s Bulletin">이번 주 주보</a></li>
-            <li><a href="proto-16-bulletin.html" data-en="Past Bulletins">지난 주보</a></li>
-            <li><a href="proto-16-news.html" data-en="All News">새 소식</a></li>
+            <li><a href="proto-16-history.html" data-en="History">본당 연혁</a></li>
+            <li><a href="proto-16-clergy.html" data-en="Clergy &amp;amp; Religious">사제와 수도자</a></li>
+            <li><a href="proto-16-saints.html" data-en="Patron Saints">주보 성인</a></li>
+            <li><a href="proto-16-tour.html" data-en="Church Tour">성당 둘러보기</a></li>
           </ul></li>
-        <li><a href="proto-16-weekly.html#welcome"><span class="c-no">06</span><span data-en="New Here?">처음 오신 분</span></a></li>
-        <li><a href="proto-16-weekly.html#faq"><span class="c-no">07</span><span data-en="FAQ">묻고 답하기</span></a></li>
-        <li><a href="proto-16-weekly.html#visit"><span class="c-no">08</span><span data-en="Visit">오시는 길</span></a></li>
+        <li class="has-sub"><a href="proto-16-weekly.html#welcome"><span class="c-no">06</span><span data-en="New Here?">처음 오신 분</span></a>
+          <ul class="sub">
+            <li><a href="proto-16-weekly.html#welcome" data-en="Becoming Catholic">입교 안내</a></li>
+            <li><a href="proto-16-weekly.html#faq" data-en="FAQ">자주 묻는 질문</a></li>
+            <li><a href="proto-16-district.html" data-en="Find Your District">관할구역 찾기</a></li>
+          </ul></li>
+        <li><a href="proto-16-weekly.html#visit"><span class="c-no">07</span><span data-en="Visit">오시는 길</span></a></li>
       </ol>
     </nav>
   </div>
@@ -416,7 +457,7 @@ html[lang="en"] .dist-group { grid-template-columns: 6.5rem minmax(0, 1fr); }
       <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
       <span class="wm-en" data-only="en"><span>Seongsan-dong</span> <span>Catholic Church</span></span>
     </a>
-    <p class="sb-now" id="sb-now" data-en='<span class="c-no">03</span>Community'><span class="c-no">03</span>공동체</p>
+    <p class="sb-now" id="sb-now" data-en="&lt;span class=&quot;c-no&quot;&gt;03&lt;/span&gt;Community"><span class="c-no">03</span>공동체</p>
     <p class="sb-issue" id="sb-issue">이번 주 소식</p>
     <a class="lang" data-lang-switch href="?lang=en" aria-label="English" data-en-aria-label="한국어"><span lang="ko">한국어</span><span class="lang-sep" aria-hidden="true">/</span><span lang="en">English</span></a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="sheet"><span data-en="Menu">메뉴</span><span class="menu-lines" aria-hidden="true"></span></button>
@@ -434,28 +475,34 @@ html[lang="en"] .dist-group { grid-template-columns: 6.5rem minmax(0, 1fr); }
   </div>
   <nav class="wrap" aria-label="모바일 메뉴" data-en-aria-label="Mobile menu">
     <ol class="sheet-list">
-      <li><a href="proto-16-weekly.html#mass" data-en='<span class="c-no">01</span>Mass Times'><span class="c-no">01</span>미사<small>Mass</small></a></li>
-      <li><a href="proto-16-weekly.html#word" data-en='<span class="c-no">02</span>A Word of Welcome'><span class="c-no">02</span>초대말씀<small>Welcome</small></a></li>
-      <li class="has-sub"><a href="proto-16-weekly.html#community" aria-current="page" data-en='<span class="c-no">03</span>Community'><span class="c-no">03</span>공동체<small>Community</small></a>
+      <li><a href="proto-16-weekly.html#mass" data-en="&lt;span class=&quot;c-no&quot;&gt;01&lt;/span&gt;Mass Times"><span class="c-no">01</span>미사<small>Mass</small></a></li>
+      <li><a href="proto-16-weekly.html#word" data-en="&lt;span class=&quot;c-no&quot;&gt;02&lt;/span&gt;A Word of Welcome"><span class="c-no">02</span>초대말씀<small>Welcome</small></a></li>
+      <li class="has-sub"><a href="proto-16-weekly.html#community" aria-current="page" data-en="&lt;span class=&quot;c-no&quot;&gt;03&lt;/span&gt;Community"><span class="c-no">03</span>공동체<small>Community</small></a>
         <ul class="sub">
           <li><a href="proto-16-plan.html" aria-current="page" data-en="Pastoral Plan">사목지침</a></li>
+          <li><a href="proto-16-org.html" data-en="Parish Organization">사목 조직</a></li>
           <li><a href="proto-16-committees.html" data-en="Committees">분과 소개</a></li>
-          <li><a href="proto-16-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
+          <li><a href="proto-16-groups.html" data-en="Ministries &amp;amp; Groups">단체 소개</a></li>
         </ul></li>
-      <li><a href="proto-16-weekly.html#rites" data-en='<span class="c-no">04</span>Sacraments &amp; Liturgy'><span class="c-no">04</span>성사와 전례<small>Sacraments</small></a></li>
-      <li class="has-sub"><a href="proto-16-weekly.html#news" data-en='<span class="c-no">05</span>News'><span class="c-no">05</span>소식<small>News</small></a>
+      <li><a href="proto-16-weekly.html#rites" data-en="&lt;span class=&quot;c-no&quot;&gt;04&lt;/span&gt;Sacraments &amp;amp; Liturgy"><span class="c-no">04</span>성사와 전례<small>Sacraments</small></a></li>
+      <li class="has-sub"><a href="proto-16-weekly.html#about" data-en="&lt;span class=&quot;c-no&quot;&gt;05&lt;/span&gt;About the Parish"><span class="c-no">05</span>본당 소개<small>About</small></a>
         <ul class="sub">
-          <li><a href="proto-16-bulletin-view.html" data-en="This Week’s Bulletin">이번 주 주보</a></li>
-          <li><a href="proto-16-bulletin.html" data-en="Past Bulletins">지난 주보</a></li>
-          <li><a href="proto-16-news.html" data-en="All News">새 소식</a></li>
+          <li><a href="proto-16-history.html" data-en="History">본당 연혁</a></li>
+          <li><a href="proto-16-clergy.html" data-en="Clergy &amp;amp; Religious">사제와 수도자</a></li>
+          <li><a href="proto-16-saints.html" data-en="Patron Saints">주보 성인</a></li>
+          <li><a href="proto-16-tour.html" data-en="Church Tour">성당 둘러보기</a></li>
         </ul></li>
-      <li><a href="proto-16-weekly.html#welcome" data-en='<span class="c-no">06</span>New Here?'><span class="c-no">06</span>처음 오신 분<small>New Here?</small></a></li>
-      <li><a href="proto-16-weekly.html#faq" data-en='<span class="c-no">07</span>FAQ'><span class="c-no">07</span>묻고 답하기<small>FAQ</small></a></li>
-      <li><a href="proto-16-weekly.html#visit" data-en='<span class="c-no">08</span>Visit Us'><span class="c-no">08</span>오시는 길<small>Visit</small></a></li>
+      <li class="has-sub"><a href="proto-16-weekly.html#welcome" data-en="&lt;span class=&quot;c-no&quot;&gt;06&lt;/span&gt;New Here?"><span class="c-no">06</span>처음 오신 분<small>New Here?</small></a>
+        <ul class="sub">
+          <li><a href="proto-16-weekly.html#welcome" data-en="Becoming Catholic">입교 안내</a></li>
+          <li><a href="proto-16-weekly.html#faq" data-en="FAQ">자주 묻는 질문</a></li>
+          <li><a href="proto-16-district.html" data-en="Find Your District">관할구역 찾기</a></li>
+        </ul></li>
+      <li><a href="proto-16-weekly.html#visit" data-en="&lt;span class=&quot;c-no&quot;&gt;07&lt;/span&gt;Visit Us"><span class="c-no">07</span>오시는 길<small>Visit</small></a></li>
     </ol>
     <div class="sheet-end">
       <a class="lang" data-lang-switch href="?lang=en" aria-label="English" data-en-aria-label="한국어"><span lang="ko">한국어</span><span class="lang-sep" aria-hidden="true">/</span><span lang="en">English</span></a>
-      <p class="sheet-foot" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul<br>Parish Office 02-6387-1784">서울 마포구 성미산로2길 15<br>사무실 02-6387-1784</p>
+      <p class="sheet-foot" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul&lt;br&gt;Parish Office 02-6387-1784">서울 마포구 성미산로2길 15<br>사무실 02-6387-1784</p>
     </div>
   </nav>
 </div>
@@ -471,7 +518,7 @@ html[lang="en"] .dist-group { grid-template-columns: 6.5rem minmax(0, 1fr); }
         <p class="byline" id="plan-byline"></p>
       </header>
     </div>
-    <nav class="subnav reveal" aria-label="공동체 소개" data-en-aria-label="About our parish community"><ol><li><a href="proto-16-plan.html" aria-current="page"><span class="c-no">i</span><span data-en="Pastoral Plan">사목지침</span></a></li><li><a href="proto-16-committees.html"><span class="c-no">ii</span><span data-en="Committees">분과 소개</span></a></li><li><a href="proto-16-groups.html"><span class="c-no">iii</span><span data-en="Ministries &amp; Groups">단체 소개</span></a></li></ol></nav>
+    <nav class="subnav reveal" aria-label="공동체 소개" data-en-aria-label="About our parish community"><ol><li><a href="proto-16-plan.html" aria-current="page"><span class="c-no">i</span><span data-en="Pastoral Plan">사목지침</span></a></li><li><a href="proto-16-org.html"><span class="c-no">ii</span><span data-en="Parish Organization">사목 조직</span></a></li><li><a href="proto-16-committees.html"><span class="c-no">iii</span><span data-en="Committees">분과 소개</span></a></li><li><a href="proto-16-groups.html"><span class="c-no">iv</span><span data-en="Ministries &amp;amp; Groups">단체 소개</span></a></li></ol></nav>
     <div class="letter">
       <nav class="l-index" aria-label="편지 차례" data-en-aria-label="In this letter"><p class="label" data-en="In this letter">In this letter</p><ol id="l-index"></ol></nav>
       <article class="l-body" id="l-body"></article>
@@ -484,7 +531,7 @@ html[lang="en"] .dist-group { grid-template-columns: 6.5rem minmax(0, 1fr); }
   <div class="wrap">
     <div class="mh-rule" aria-hidden="true"></div>
     <div class="col-grid">
-      <div>
+      <div class="col-id">
         <a class="brand" href="proto-16-weekly.html" aria-label="천주교 성산동성당 처음으로" data-en-aria-label="Seongsan-dong Catholic Church, home">
           <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
           <span>
@@ -493,21 +540,55 @@ html[lang="en"] .dist-group { grid-template-columns: 6.5rem minmax(0, 1fr); }
             <span class="brand-sub">103 Martyr Saints of Korea</span>
           </span>
         </a>
+        <p class="foot-info" data-en="15, Seongmisan-ro 2-gil, Mapo-gu,&lt;br&gt;Seoul 03996, Republic of Korea&lt;br&gt;Tel. 02-6387-1784, 1785 (from abroad +82-2-6387-1784)&lt;br&gt;Catholic Archdiocese of Seoul Foundation">03996 서울 마포구 성미산로2길 15<br>전화 02-6387-1784, 1785<br>(재)천주교서울대교구 유지재단 소속</p>
       </div>
-      <p class="foot-info" data-en="15, Seongmisan-ro 2-gil, Mapo-gu,<br>Seoul 03996, Republic of Korea<br>Tel. 02-6387-1784, 1785 (from abroad +82-2-6387-1784)<br>Catholic Archdiocese of Seoul Foundation">03996 서울 마포구 성미산로2길 15<br>전화 02-6387-1784, 1785<br>(재)천주교서울대교구 유지재단 소속</p>
-      <div>
-        <ul class="foot-links foot-nav">
-          <li><a href="proto-16-plan.html" data-en="Pastoral Plan">사목지침</a></li>
-          <li><a href="proto-16-committees.html" data-en="Committees">분과 소개</a></li>
-          <li><a href="proto-16-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
-        </ul>
-        <ul class="foot-links">
-          <li><a href="#" data-en="<strong>Privacy Policy</strong>"><strong>개인정보 처리방침</strong></a></li>
+      <nav class="col-nav" aria-label="사이트 안내" data-en-aria-label="Site links">
+        <div>
+          <p class="col-h" data-en="About the Parish">본당 소개</p>
+          <ul class="foot-links">
+            <li><a href="proto-16-history.html" data-en="History">본당 연혁</a></li>
+            <li><a href="proto-16-clergy.html" data-en="Clergy &amp;amp; Religious">사제와 수도자</a></li>
+            <li><a href="proto-16-saints.html" data-en="Patron Saints">주보 성인</a></li>
+            <li><a href="proto-16-tour.html" data-en="Church Tour">성당 둘러보기</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="col-h" data-en="Community">공동체</p>
+          <ul class="foot-links">
+            <li><a href="proto-16-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+            <li><a href="proto-16-org.html" data-en="Parish Organization">사목 조직</a></li>
+            <li><a href="proto-16-committees.html" data-en="Committees">분과 소개</a></li>
+            <li><a href="proto-16-groups.html" data-en="Ministries &amp;amp; Groups">단체 소개</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="col-h" data-en="New Here?">처음 오신 분</p>
+          <ul class="foot-links">
+            <li><a href="proto-16-weekly.html#welcome" data-en="Becoming Catholic">입교 안내</a></li>
+            <li><a href="proto-16-weekly.html#faq" data-en="FAQ">자주 묻는 질문</a></li>
+            <li><a href="proto-16-district.html" data-en="Find Your District">관할구역 찾기</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="col-h" data-en="Catholic Links">가톨릭 사이트</p>
+          <ul class="foot-links">
+            <li><a href="https://www.vatican.va/" data-en="The Holy See">교황청</a></li>
+            <li><a href="https://aos.catholic.or.kr/" data-en="Archdiocese of Seoul">천주교 서울대교구</a></li>
+            <li><a href="https://maria.catholic.or.kr/" data-en="Goodnews">굿뉴스</a></li>
+            <li><a href="https://www.cpbc.co.kr/" data-en="CPBC">가톨릭평화방송</a></li>
+            <li><a href="https://www.catholictimes.org/" data-en="The Catholic Times">가톨릭신문</a></li>
+            <li><a href="https://school.catholic.or.kr/" data-en="Online Catechesis">가톨릭 인터넷 교리</a></li>
+          </ul>
+        </div>
+      </nav>
+      <div class="copy">
+        <span data-en="© 2026 Seongsan-dong Catholic Church">© 2026 천주교 성산동성당</span>
+        <ul class="col-legal">
+          <li><a href="#"><strong data-en="Privacy Policy">개인정보 처리방침</strong></a></li>
           <li><a href="#" data-en="Terms of Use">이용약관</a></li>
-          <li><a href="#" data-en="Ministry Resources Login">단체 자료실 로그인</a></li>
         </ul>
+        <span id="colophon-issue">주간 소식</span>
       </div>
-      <p class="copy"><span data-en="© 2026 Seongsan-dong Catholic Church">© 2026 천주교 성산동성당</span><span id="colophon-issue">주간 소식</span></p>
     </div>
   </div>
 </footer>
@@ -521,13 +602,9 @@ requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement
   // 정적 문구를 먼저 바꾼다(아래에서 그려 넣는 글은 언어에 맞게 고른다)
   I18N.apply();
   const EN = I18N.en, T = I18N.t, U = I18N.ui, pick = I18N.pick;
-  const B = window.BOARD || { bulletins: [], news: [] };
   const P = window.PARISH || { committees: [], organizations: [] };
   const BRAND = T('천주교 성산동성당', U.brand && U.brand.name);
   const DAY = EN ? U.days.full : ['주일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
-  // 분류 이름: 한국어 판에서도 꾸밈 영문은 표기 기준(Announcement · Community · Photos · Video)을 따른다
-  const catEn = c => ((U.newsCategories || {})[c] || {}).label || 'News';
-  const catLabel = c => (EN ? catEn(c) : c);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
   const fill = (s, o) => String(s).replace(/\{(\w+)\}/g, (_, k) => o[k]).replace(/([ap])\.m\.\./g, '$1.m.');
   const pd = s => { const [y, m, d] = String(s).split('-').map(Number); return new Date(y, m - 1, d); };
@@ -535,7 +612,6 @@ requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement
   const ymd = d => (EN ? I18N.date(d, 'ymd') : `${d.getFullYear()}년 ${md(d)}`);
   const param = name => new URLSearchParams(location.search).get(name);
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></svg>';
   // 영어 판: 「Seongsan-dong」이 하이픈에서 줄이 갈리지 않게 묶는다(그려 넣은 뒤 한 번 더 부른다)
   const keepNames = root => {
     if (!EN) return;
@@ -562,25 +638,6 @@ requestAnimationFrame(() => requestAnimationFrame(() => document.documentElement
     }), { rootMargin: '0px 0px -6% 0px' });
     items.forEach(el => { el.dataset.watched = ''; io.observe(el); });
   };
-
-  // 주보 표지 카드
-  const bulletinHref = b => `proto-16-bulletin-view.html?date=${encodeURIComponent(b.date)}`;
-  const thisWeek = T('이번 주', U.breadcrumb && U.breadcrumb.thisWeek);
-  const coverCard = (b, k, current) => `<li class="bcard reveal${current ? ' is-current' : ''}" style="--d: ${(k % 4) * 0.08}s"><a href="${bulletinHref(b)}">
-      <div class="b-frame"><img src="${esc(b.thumb)}" width="560" height="792" loading="lazy" decoding="async" alt=""></div>
-      <p class="b-k"><time datetime="${esc(b.date)}">${md(pd(b.date))}</time>${current ? `<span class="b-tag">${thisWeek}</span>` : ''}</p>
-      <h3 class="b-title">${esc(pick(b, 'title'))}</h3>
-    </a></li>`;
-
-  // 새 소식 카드
-  const newsHref = n => `proto-16-news-view.html?id=${encodeURIComponent(n.id)}`;
-  const newsCard = (n, k) => `<li class="card reveal" style="--d: ${(k % 3) * 0.08}s"><a href="${newsHref(n)}">
-      <div class="c-frame">${n.cover
-        ? `<img src="${esc(n.cover)}" width="720" height="480" loading="lazy" decoding="async" alt="">`
-        : `<span class="c-ph" aria-hidden="true"><span class="c-ph-b"><span class="c-ph-k">${esc(catEn(n.cat))}</span>${EN ? '' : `<span class="c-ph-t">${esc(n.cat)}</span>`}</span></span>`}${n.cat === '영상' ? `<span class="c-play" aria-hidden="true">${PLAY}</span>` : ''}</div>
-      <p class="c-k">${n.pinned ? `<span class="c-pin">${T('고정', U.newsCategories.pinned)}</span>` : ''}<span class="c-cat">${esc(catLabel(n.cat))}</span><time datetime="${esc(n.date)}">${md(pd(n.date))}</time></p>
-      <h3 class="c-title">${esc(pick(n, 'title'))}</h3>
-    </a></li>`;
 
   // ── 사목지침: data/parish.js 의 plan(영어는 plan.en)을 편지로 짠다 ──
   const plan = EN && P.plan.en ? P.plan.en : P.plan;
