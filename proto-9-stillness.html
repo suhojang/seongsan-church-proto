@@ -225,8 +225,15 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
 .slot time { display: block; font-size: clamp(1.75rem, 0.6rem + 1.8vw, 2.6rem); font-weight: 200; line-height: 1.05; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
 .slot > span { display: block; margin-top: 0.3rem; color: var(--ink-2); font-size: 0.875rem; }
 .slot.is-past { opacity: 0.36; }
-.slot.is-next time { font-weight: 450; }
-.next-tag { display: block; margin-bottom: 0.35rem; color: var(--accent); font-size: 0.75rem; font-weight: 600; }
+/* 다음 미사: 표 안에서 한눈에 찾도록 칸 너비만큼 먹색 띠로 뒤집고, 남은 시간을 함께 적는다 */
+.slot.is-next { margin-inline: -1.2rem; padding: 1rem 1.2rem 1.15rem; background: var(--ink); color: var(--paper); }
+.slot.is-next > span { color: rgb(245 243 239 / 0.72); }
+.slot.is-next time { font-weight: 300; }
+.slot.is-next > .next-tag { display: flex; flex-wrap: wrap; align-items: center; gap: 0.2rem 0.45rem; margin: 0 0 0.6rem; color: var(--paper); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.02em; line-height: 1.4; }
+.next-tag::before { content: ""; flex: none; width: 0.4rem; height: 0.4rem; border-radius: 50%; background: currentColor; animation: next-breathe 2.4s ease-in-out infinite; }
+.next-tag small { color: rgb(245 243 239 / 0.72); font-size: inherit; font-weight: 400; }
+@keyframes next-breathe { 50% { opacity: 0.2; } }
+@media (prefers-reduced-motion: reduce) { .next-tag::before { animation: none; } }
 @media (max-width: 63.99rem) {
   .week { display: flex; flex-direction: column; }
   .day { order: var(--ord, 0); display: grid; grid-template-columns: 5.25rem minmax(0, 1fr); align-items: start; gap: 1rem; padding: 1.2rem 0.9rem; border-left: 0; border-top: 1px solid var(--line); }
@@ -235,6 +242,8 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
   .slots { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0.9rem 1.75rem; margin-top: 0; }
   .slot time { font-size: 1.625rem; font-weight: 300; }
   .slot > span { margin-top: 0.1rem; font-size: 0.8125rem; }
+  .slot.is-next { flex-basis: 100%; margin-inline: -0.75rem 0; padding: 0.75rem 0.75rem 0.85rem; }
+  .slot.is-next > .next-tag { margin-bottom: 0.45rem; }
 }
 
 /* 사진 자리: 석회암 벽에 건 액자처럼, 밝은 매트와 가는 테두리 안에 사진을 두고 이름표는 매트 아랫단에 적는다 */
@@ -1075,37 +1084,44 @@ document.documentElement.classList.add('js');
   if (EN) document.querySelectorAll('.slot[data-time] time').forEach(t => { t.dateTime = t.parentNode.dataset.time; t.innerHTML = clock(t.parentNode.dataset.time); });
   const slots = [...document.querySelectorAll('.slot[data-time]')]
     .map(el => ({ el, day: +el.closest('.day').dataset.day, min: toMin(el.dataset.time) }));
-  slots.forEach(s => {
-    if (s.day === dow && s.min <= nowMin) {
-      s.el.classList.add('is-past');
-      s.el.insertAdjacentHTML('beforeend', `<span class="sr-only">${T('(끝났습니다)', UI.next.ended)}</span>`);
+  // 지난 미사와 다음 미사 표시: 페이지를 열어 둔 채 시간이 지나도 맞도록 1분마다 다시 계산한다
+  const markMass = () => {
+    const t = new Date(), today = t.getDay(), cur = t.getHours() * 60 + t.getMinutes();
+    document.querySelectorAll('.slot .next-tag, .slot .past-note').forEach(el => el.remove());
+    slots.forEach(s => {
+      s.el.classList.remove('is-next');
+      const past = s.day === today && s.min <= cur;
+      s.el.classList.toggle('is-past', past);
+      if (past) s.el.insertAdjacentHTML('beforeend', `<span class="sr-only past-note">${T('(끝났습니다)', UI.next.ended)}</span>`);
+    });
+    let next = null, ahead = 0;
+    for (let i = 0; i < 7 && !next; i++) {
+      const d = (today + i) % 7;
+      next = slots.filter(s => s.day === d && (i > 0 || s.min > cur)).sort((a, b) => a.min - b.min)[0];
+      ahead = i;
     }
-  });
-  let next = null, ahead = 0;
-  for (let i = 0; i < 7 && !next; i++) {
-    const d = (dow + i) % 7;
-    next = slots.filter(s => s.day === d && (i > 0 || s.min > nowMin)).sort((a, b) => a.min - b.min)[0];
-    ahead = i;
-  }
-  if (next) {
-    next.el.classList.add('is-next');
-    next.el.insertAdjacentHTML('afterbegin', `<span class="next-tag">${T('다음 미사', UI.next.tag)}</span>`);
+    if (!next) return;
     const h = Math.floor(next.min / 60);
     const part = h < 7 ? '새벽' : h < 12 ? '오전' : h < 18 ? '오후' : '저녁';
     const when = ahead === 0 ? '오늘' : ahead === 1 ? '내일' : DAY[next.day];
+    const left = ahead * 1440 + next.min - cur, hrs = Math.floor(left / 60), mins = left % 60;
+    const D = UI.next.duration, unit = (n, one, many) => (n === 1 ? one : many).replace('{n}', n);
+    const dur = EN ? [hrs ? unit(hrs, D.hour, D.hours) : '', mins ? unit(mins, D.minute, D.minutes) : ''].filter(Boolean).join(D.join)
+      : `${hrs ? `${hrs}시간 ` : ''}${mins ? `${mins}분` : ''}`.trim();
+    next.el.classList.add('is-next');
+    next.el.insertAdjacentHTML('afterbegin', `<span class="next-tag">${T('다음 미사', UI.next.tag)} <small>${EN ? UI.next.inShort.replace('{duration}', dur) : `${dur} 뒤`}</small></span>`);
     document.getElementById('next-time').innerHTML = clock(next.el.dataset.time);
-    const left = ahead * 1440 + next.min - nowMin, hrs = Math.floor(left / 60), mins = left % 60;
     if (EN) {
       const whenEn = ahead === 0 ? UI.days.today : ahead === 1 ? UI.days.tomorrow : UI.days.full[next.day];
-      const D = UI.next.duration, unit = (n, one, many) => (n === 1 ? one : many).replace('{n}', n);
-      const dur = [hrs ? unit(hrs, D.hour, D.hours) : '', mins ? unit(mins, D.minute, D.minutes) : ''].filter(Boolean).join(D.join);
       document.getElementById('next-name').textContent = `${whenEn}, ${UI.massNames[next.el.dataset.name] || next.el.dataset.name}`;
       document.getElementById('next-left').textContent = UI.next.startsInConfession.replace('{duration}', dur);
     } else {
       document.getElementById('next-name').textContent = `${when} ${part}, ${next.el.dataset.name}`;
-      document.getElementById('next-left').textContent = `${hrs ? `${hrs}시간 ` : ''}${mins ? `${mins}분 ` : ''}뒤에 시작합니다. 고해성사는 매 미사 전에 드릴 수 있습니다.`;
+      document.getElementById('next-left').textContent = `${dur} 뒤에 시작합니다. 고해성사는 매 미사 전에 드릴 수 있습니다.`;
     }
-  }
+  };
+  markMass();
+  setInterval(markMass, 60000);
 
   // 정기 전례: 규칙(매월 첫째·마지막 요일)으로 오늘 이후 가장 가까운 날을 계산해 차례로 늘어놓는다
   const ritesList = document.getElementById('rites-list');

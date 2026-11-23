@@ -511,6 +511,7 @@
     confession: "Confession is available before every Mass.",
     when: "{when} at {time}",
     startsIn: "Starts in {duration}.",
+    inShort: "in {duration}",
     startsInConfession: "Starts in {duration}. Confession is available before every Mass.",
     duration: { hour: "{n} hour", hours: "{n} hours", minute: "{n} minute", minutes: "{n} minutes", join: " " },
     ended: "(ended)"
