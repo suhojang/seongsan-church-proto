@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <script src="assets/i18n.js"></script>
-<title data-en="Bulletin · Seongsan-dong Catholic Church">주보 · 천주교 성산동성당</title>
-<meta name="description" content="천주교 성산동성당 본당 주보. 이번 주 주보와 지난 주보를 날짜별로 볼 수 있습니다." data-en-content="The Sunday bulletin of Seongsan-dong Catholic Church: view this week’s and past issues and download them.">
+<title data-en="Church Tour · Seongsan-dong Catholic Church">성당 둘러보기 · 천주교 성산동성당</title>
+<meta name="description" content="천주교 성산동성당의 대성전과 제대, 성모동산을 사진으로 둘러봅니다." data-en-content="A photo tour of Seongsan-dong Catholic Church: the main church, the altar, and the Marian garden.">
 <meta name="theme-color" content="#F5F3EF">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="media/brand/symbol-light.svg" type="image/svg+xml">
@@ -202,16 +202,6 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
 @media (min-width: 64rem) { .wm-en { font-size: 1.125rem; } }
 .site-footer .wm-en { font-size: 1.25rem; }
 
-/* 소식 하위 메뉴: 글자와 밑줄 */
-.subnav { border-bottom: 1px solid var(--line); }
-.subnav ul { display: flex; flex-wrap: wrap; gap: 0 2rem; }
-.subnav a { position: relative; display: inline-flex; align-items: center; min-height: 3.25rem; color: var(--ink-2); font-size: 0.9375rem; text-decoration: none; transition: color 0.3s; }
-.subnav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
-.subnav a:hover { color: var(--ink); }
-.subnav a[aria-current] { color: var(--ink); font-weight: 500; }
-.subnav a[aria-current]::after { transform: scaleX(1); }
-@media (max-width: 30rem) { .subnav ul { gap: 0 1.25rem; } }
-
 /* 메뉴: 넓은 화면은 긴 이름, 좁은 데스크톱은 짧은 이름 */
 .nl-s { display: none; }
 @media (min-width: 64rem) and (max-width: 79.99rem) {
@@ -223,30 +213,19 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
 .foot-nav .foot-legal { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 html[lang="en"] .feed-cat { letter-spacing: 0.04em; }
 
-/* 주보 카드: A4 세로 비율 고정, 표지 위쪽을 기준으로 채운다 */
-.b-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(2.5rem, 4vw, 3.5rem) clamp(1rem, 2vw, 2rem); }
-.b-card a { display: block; text-decoration: none; }
-.b-frame { position: relative; overflow: hidden; aspect-ratio: 1240 / 1754; border: 1px solid var(--line); background: var(--paper-2); }
-.b-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1); }
-.b-card a:hover .b-frame img { transform: scale(1.025); }
-.b-date { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.6rem; margin-top: 1rem; font-size: 1.0625rem; font-weight: 500; line-height: 1.4; font-variant-numeric: tabular-nums; }
-.b-chip { padding: 0.1rem 0.5rem; border-radius: 2px; background: var(--ink); color: var(--paper); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.04em; line-height: 1.5; }
-.b-title { margin-top: 0.25rem; color: var(--ink-2); font-size: 0.9375rem; line-height: 1.6; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
-.b-card a:hover .b-title { color: var(--ink); text-decoration: underline; }
-@media (max-width: 63.99rem) { .b-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 40rem) { .b-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem 0.9rem; } .b-date { font-size: 1rem; } .b-title { font-size: 0.875rem; } }
-
-/* 달마다 한 묶음: 왼쪽에 달, 오른쪽에 그달의 주보 */
-.month { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 9fr); gap: 2rem clamp(2rem, 4vw, 4rem); padding-top: 1.4rem; border-top: 1px solid var(--ink); }
-.month + .month { margin-top: clamp(4.5rem, 3rem + 4vw, 7rem); }
-.month-head { position: sticky; top: calc(var(--header) + 1.5rem); align-self: start; display: flex; flex-direction: column; gap: 0.7rem; font-weight: inherit; }
-.month-year { color: var(--ink-2); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.24em; line-height: 1.4; }
-.month-name { font-size: clamp(2.5rem, 1.8rem + 2.2vw, 4rem); font-weight: 200; line-height: 1; letter-spacing: -0.045em; font-variant-numeric: tabular-nums; }
-@media (max-width: 63.99rem) {
-  .month { grid-template-columns: minmax(0, 1fr); gap: 1.75rem; }
-  .month-head { position: static; flex-direction: row-reverse; justify-content: flex-end; align-items: baseline; gap: 1rem; }
-}
-html[lang="en"] .month-name { font-size: clamp(2rem, 1.3rem + 1.6vw, 3rem); letter-spacing: -0.03em; }
+/* 공동체 소개 하위 메뉴: 글자와 밑줄 */
+.subnav { border-bottom: 1px solid var(--line); }
+.subnav ul { display: flex; flex-wrap: wrap; gap: 0 2rem; }
+.subnav a { position: relative; display: inline-flex; align-items: center; min-height: 3.25rem; color: var(--ink-2); font-size: 0.9375rem; text-decoration: none; transition: color 0.3s; }
+.subnav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
+.subnav a:hover { color: var(--ink); }
+.subnav a[aria-current] { color: var(--ink); font-weight: 500; }
+.subnav a[aria-current]::after { transform: scaleX(1); }
+@media (max-width: 30rem) { .subnav ul { gap: 0 1.25rem; } }
+.sec-head { margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem); }
+.no { font-family: var(--italic); font-style: italic; font-weight: 400; color: var(--ink-2); font-variant-numeric: lining-nums; }
+.empty-note { margin-top: clamp(3rem, 2rem + 3vw, 4.5rem); }
+html[lang="en"] .page-title { letter-spacing: -0.03em; }
 </style>
 <style>
 /* 좁은 화면 머리글: 영문 이름·언어 전환이 들어가도 메뉴 버튼이 화면 안에 남게 한다 */
@@ -282,6 +261,58 @@ html[lang="en"] .month-name { font-size: clamp(2rem, 1.3rem + 1.6vw, 3rem); lett
   .nav-list .sub a[aria-current] { color: var(--ink); font-weight: 500; }
 }
 </style>
+<style id="foot-css">
+/* 바닥글: 왼쪽은 성당 이름과 주소, 오른쪽은 메뉴 묶음과 가톨릭 사이트. 관리자·회원 기능은 두지 않는다 */
+.foot { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 3rem clamp(3rem, 6vw, 6rem); }
+.foot-id .foot-info { margin-top: 1.75rem; }
+.foot-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem 1.75rem; }
+.foot-h { margin-bottom: 0.35rem; color: var(--ink-2); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; }
+.foot-links li a { min-height: 2.25rem; line-height: 1.45; text-decoration: none; }
+.foot-links li a:hover { text-decoration: underline; }
+.foot-bottom { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.25rem 2rem; padding-top: 1.25rem; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 0.8125rem; }
+.foot-bottom .copy { grid-column: auto; padding: 0; border: 0; }
+.foot-legal { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+.foot-legal a { display: inline-flex; align-items: center; min-height: 2.75rem; color: inherit; text-decoration: none; }
+.foot-legal a:hover { text-decoration: underline; }
+@media (max-width: 63.99rem) {
+  .foot { grid-template-columns: 1fr; }
+  .foot-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+</style>
+<style>
+:root {
+  --mat: #FBFAF8;
+  --mat-pad: clamp(0.75rem, 0.4rem + 1.4vw, 1.875rem);
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+/* 사진 자리: 석회암 벽에 건 액자처럼 밝은 매트와 가는 테두리 */
+.plate { padding: var(--mat-pad); border: 1px solid var(--line); background: var(--mat); }
+.plate-img { position: relative; overflow: hidden; background: var(--paper-2); }
+.plate-img img { width: 100%; height: 100%; object-fit: cover; object-position: var(--focus, 50% 50%); }
+.js .reveal .plate-img img { transform: scale(1.06); transition: transform 2.4s var(--ease); }
+.js .reveal.is-in .plate-img img { transform: none; }
+@media (prefers-reduced-motion: reduce) { .js .reveal .plate-img img { transform: none; transition: none; } }
+
+/* 성당 둘러보기: 액자 한 점과 짧은 설명이 번갈아 놓인 산책길 */
+.walk { display: grid; gap: clamp(4.5rem, 3rem + 6vw, 9rem); margin-top: clamp(3rem, 2rem + 4vw, 5.5rem); }
+.stop { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); align-items: end; gap: 2rem clamp(2rem, 5vw, 5.5rem); }
+.stop:nth-child(even) { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); }
+.stop:nth-child(even) .stop-fig { order: 2; }
+.stop.is-tall { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
+.stop.is-tall:nth-child(even) { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); }
+.stop-fig .plate-img { aspect-ratio: var(--ar, 3 / 2); }
+.stop-text { padding-bottom: 0.25rem; }
+.stop-text .no { display: block; font-size: clamp(2.5rem, 1.8rem + 2vw, 3.5rem); line-height: 1; }
+.stop-text h2 { margin-top: 1.25rem; font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem); font-weight: 300; line-height: 1.3; letter-spacing: -0.03em; }
+.stop-text p { margin-top: 0.9rem; color: var(--ink-2); max-width: 26rem; }
+.tour-foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem 2rem; margin-top: clamp(5rem, 4rem + 4vw, 8rem); padding-top: 1.25rem; border-top: 1px solid var(--line); }
+.links-row { display: flex; flex-wrap: wrap; gap: 0 2rem; }
+@media (max-width: 52rem) {
+  .stop, .stop:nth-child(even), .stop.is-tall, .stop.is-tall:nth-child(even) { grid-template-columns: 1fr; gap: 1.5rem; }
+  .stop:nth-child(even) .stop-fig { order: 0; }
+  .stop.is-tall .stop-fig { width: min(100%, 26rem); }
+}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -306,17 +337,24 @@ html[lang="en"] .month-name { font-size: clamp(2rem, 1.3rem + 1.6vw, 3rem); lett
         <li class="has-sub"><a href="proto-9-stillness.html#community"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Community&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Community&lt;/span&gt;">공동체</span> <small data-only="ko">Community</small></a>
           <ul class="sub">
             <li><a href="proto-9-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+            <li><a href="proto-9-org.html" data-en="Parish Organization">사목 조직</a></li>
             <li><a href="proto-9-committees.html" data-en="Committees">분과 소개</a></li>
-            <li><a href="proto-9-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
+            <li><a href="proto-9-groups.html" data-en="Ministries &amp;amp; Groups">단체 소개</a></li>
           </ul></li>
         <li><a href="proto-9-stillness.html#rites"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Sacraments &amp;amp; Liturgy&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Sacraments&lt;/span&gt;">성사와 전례</span> <small data-only="ko">Sacraments</small></a></li>
-        <li class="has-sub"><a href="proto-9-stillness.html#news" aria-current="true"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;News&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;News&lt;/span&gt;">소식</span> <small data-only="ko">News</small></a>
+        <li class="has-sub"><a href="proto-9-stillness.html#about" aria-current="true"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;About the Parish&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;About&lt;/span&gt;">본당 소개</span> <small data-only="ko">About</small></a>
           <ul class="sub">
-            <li><a href="proto-9-bulletin-view.html" data-en="This Week’s Bulletin">이번 주 주보</a></li>
-            <li><a href="proto-9-bulletin.html" aria-current="page" data-en="Past Bulletins">지난 주보</a></li>
-            <li><a href="proto-9-news.html" data-en="All News">새 소식</a></li>
+            <li><a href="proto-9-history.html" data-en="History">본당 연혁</a></li>
+            <li><a href="proto-9-clergy.html" data-en="Clergy &amp;amp; Religious">사제와 수도자</a></li>
+            <li><a href="proto-9-saints.html" data-en="Patron Saints">주보 성인</a></li>
+            <li><a href="proto-9-tour.html" aria-current="page" data-en="Church Tour">성당 둘러보기</a></li>
           </ul></li>
-        <li><a href="proto-9-stillness.html#welcome"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;New Here?&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;New Here?&lt;/span&gt;">처음 오신 분</span> <small data-only="ko">Welcome</small></a></li>
+        <li class="has-sub"><a href="proto-9-stillness.html#welcome"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;New Here?&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;New Here?&lt;/span&gt;">처음 오신 분</span> <small data-only="ko">Welcome</small></a>
+          <ul class="sub">
+            <li><a href="proto-9-stillness.html#welcome" data-en="Becoming Catholic">입교 안내</a></li>
+            <li><a href="proto-9-stillness.html#faq" data-en="FAQ">자주 묻는 질문</a></li>
+            <li><a href="proto-9-district.html" data-en="Find Your District">관할구역 찾기</a></li>
+          </ul></li>
         <li><a href="proto-9-stillness.html#visit"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Visit Us&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Visit&lt;/span&gt;">오시는 길</span> <small data-only="ko">Visit</small></a></li>
       </ul>
       <div class="nav-foot">
@@ -332,97 +370,163 @@ html[lang="en"] .month-name { font-size: clamp(2rem, 1.3rem + 1.6vw, 3rem); lett
 <main id="main">
   <section class="page-head">
     <div class="wrap">
-      <nav class="crumbs" aria-label="현재 위치" data-en-aria-label="Breadcrumb"><ol><li><a href="proto-9-stillness.html" data-en="Home">홈</a></li><li><a href="proto-9-stillness.html#news" data-en="News">소식</a></li><li aria-current="page" data-en="Bulletin">주보</li></ol></nav>
+      <nav class="crumbs" aria-label="현재 위치" data-en-aria-label="Breadcrumb"><ol><li><a href="proto-9-stillness.html" data-en="Home">홈</a></li><li><a href="proto-9-stillness.html#about" data-en="About the Parish">본당 소개</a></li><li aria-current="page" data-en="Church Tour">성당 둘러보기</li></ol></nav>
       <div class="sec-head">
         <div>
-          <p class="label">Bulletin</p>
-          <h1 class="page-title" data-en="Bulletin">주보</h1>
+          <p class="label">Church Tour</p>
+          <h1 class="page-title" data-en="Church Tour">성당 둘러보기</h1>
         </div>
-        <p class="lead" data-en="Our parish bulletin is published every Sunday. Past issues are available here too. The bulletin is published in Korean.">주일마다 펴내는 본당 주보입니다. 지난 주보도 날짜별로 다시 볼 수 있습니다.</p>
+        <p class="lead" data-en="From the red brick main church to the Marian garden in the courtyard, take a slow walk through the church.">붉은 벽돌로 지은 대성전부터 마당의 성모동산까지, 성당 안팎을 천천히 걸어 봅니다.</p>
       </div>
-      <nav class="subnav" aria-label="소식" data-en-aria-label="News"><ul><li><a href="proto-9-bulletin.html" aria-current="page" data-en="Bulletin">주보</a></li><li><a href="proto-9-news.html" data-en="All News">새 소식</a></li></ul></nav>
+      <nav class="subnav" aria-label="본당 소개" data-en-aria-label="About the parish"><ul><li><a href="proto-9-history.html" data-en="History">본당 연혁</a></li><li><a href="proto-9-clergy.html" data-en="Clergy &amp;amp; Religious">사제와 수도자</a></li><li><a href="proto-9-saints.html" data-en="Patron Saints">주보 성인</a></li><li><a href="proto-9-tour.html" aria-current="page" data-en="Church Tour">성당 둘러보기</a></li></ul></nav>
     </div>
   </section>
-  <div class="wrap" id="archive"></div>
+  <div class="wrap">
+    <ol class="walk">
+      <li class="stop reveal">
+        <figure class="plate stop-fig"><div class="plate-img" style="--ar: 5 / 3"><img src="media/hero/nave-wide.webp" width="1600" height="960" loading="lazy" decoding="async" style="--focus: 60% 50%" alt="높은 곳에서 내려다본 성당 안. 붉은 벽돌 벽과 아치 창 아래 신자들이 기도하고 있다" data-en-alt="The church interior seen from above, with the faithful praying beneath red brick walls and arched windows"></div></figure>
+        <div class="stop-text">
+          <span class="no" aria-hidden="true">01</span>
+          <h2 data-en="The Main Church">대성전</h2>
+          <p data-en="Red brick walls and arched windows surround the pews and draw the eye toward the sanctuary.">붉은 벽돌 벽과 아치 창이 신자석을 둘러싸고, 시선은 제대가 있는 앞쪽으로 모입니다.</p>
+        </div>
+      </li>
+      <li class="stop reveal">
+        <figure class="plate stop-fig"><div class="plate-img" style="--ar: 5 / 3"><img src="media/hero/sanctuary-christmas.webp" width="1600" height="960" loading="lazy" decoding="async" style="--focus: 55% 45%" alt="붉은 벽돌 아치 사이, 십자가가 걸린 회색 부조 벽 앞의 제대" data-en-alt="The altar before a gray relief wall with a cross, framed by red brick arches"></div></figure>
+        <div class="stop-text">
+          <span class="no" aria-hidden="true">02</span>
+          <h2 data-en="The Altar and Cross">제대와 십자가</h2>
+          <p data-en="A crucifix hangs on the gray relief wall, and Mass is offered at the altar before it every day.">회색 부조 벽에 십자가가 걸려 있고, 그 앞 제대에서 날마다 미사를 봉헌합니다.</p>
+        </div>
+      </li>
+      <li class="stop reveal">
+        <figure class="plate stop-fig"><div class="plate-img" style="--ar: 4 / 3"><img src="media/photos/kids-family.webp" width="1280" height="960" loading="lazy" decoding="async" style="--focus: 45% 45%" alt="성당 마당 나무 사이에 선 성모상 앞에 어린이와 가족들이 모인 모습" data-en-alt="Children and families gathered before the statue of Mary among the trees of the church courtyard"></div></figure>
+        <div class="stop-text">
+          <span class="no" aria-hidden="true">03</span>
+          <h2 data-en="The Marian Garden">성모동산</h2>
+          <p data-en="A statue of Mary stands among the trees of the church courtyard.">성당 마당, 나무 사이에 성모상이 서 있습니다.</p>
+        </div>
+      </li>
+      <li class="stop is-tall reveal">
+        <figure class="plate stop-fig"><div class="plate-img" style="--ar: 4 / 5"><img src="media/photos/chandelier.webp" width="1068" height="1490" loading="lazy" decoding="async" style="--focus: 50% 30%" alt="붉은 벽돌 벽에 걸린 유리 장식 등이 불을 밝힌 모습" data-en-alt="Glass lamps glowing against a red brick wall"></div></figure>
+        <div class="stop-text">
+          <span class="no" aria-hidden="true">04</span>
+          <h2 data-en="Lamps in the Church">성당 안의 등</h2>
+          <p data-en="Glass lamps on the red brick walls cast a soft light through the church.">붉은 벽돌 벽에 유리 장식 등이 걸려 성당 안을 은은하게 밝힙니다.</p>
+        </div>
+      </li>
+      <li class="stop reveal">
+        <figure class="plate stop-fig"><div class="plate-img" style="--ar: 3 / 2"><img src="media/hero/candles.webp" width="1600" height="1067" loading="lazy" decoding="async" style="--focus: 58% 50%" alt="성당 안 계단식 초 봉헌대에 작은 초들이 줄지어 놓인 모습" data-en-alt="Rows of small candles on a tiered votive stand inside the church"></div></figure>
+        <div class="stop-text">
+          <span class="no" aria-hidden="true">05</span>
+          <h2 data-en="Votive Candles">초 봉헌대</h2>
+          <p data-en="On the tiered stand, people light candles for their own intentions.">계단처럼 놓인 봉헌대에 저마다의 지향을 담아 초를 밝힙니다.</p>
+        </div>
+      </li>
+      <li class="stop reveal">
+        <figure class="plate stop-fig"><div class="plate-img" style="--ar: 5 / 3"><img src="media/photos/baptism-ewer.webp" width="1280" height="768" loading="lazy" decoding="async" style="--focus: 50% 50%" alt="세례식에 쓰는 금빛 물병과 대야가 흰 천 위에 놓인 모습" data-en-alt="A gold ewer and basin used for Baptism, set on a white cloth"></div></figure>
+        <div class="stop-text">
+          <span class="no" aria-hidden="true">06</span>
+          <h2 data-en="Baptismal Ewer and Basin">세례 물병과 대야</h2>
+          <p data-en="The gold ewer and basin used to pour the water of Baptism over new Christians.">세례식 때 물을 부어 새 신자를 맞이하는 금빛 물병과 대야입니다.</p>
+        </div>
+      </li>
+    </ol>
+    <div class="tour-foot">
+      <p class="note" data-en="Find the church’s address and office hours under Visit Us.">성당 위치와 사무실 시간은 오시는 길에서 확인하세요.</p>
+      <ul class="links-row">
+        <li><a class="text-link" href="proto-9-stillness.html#mass" data-en="Mass Times &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;">미사 시간 <span aria-hidden="true">→</span></a></li>
+        <li><a class="text-link" href="proto-9-stillness.html#visit" data-en="Visit Us &lt;span aria-hidden=&quot;true&quot;&gt;→&lt;/span&gt;">오시는 길 <span aria-hidden="true">→</span></a></li>
+      </ul>
+    </div>
+  </div>
 </main>
 
 <footer class="site-footer">
   <div class="wrap foot">
-    <div>
+    <div class="foot-id">
       <a class="brand" href="proto-9-stillness.html" aria-label="천주교 성산동성당 처음으로" data-en-aria-label="Seongsan-dong Catholic Church, home">
         <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
-      <span>
-        <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
-        <span class="wm-en" data-only="en">Seongsan-dong Catholic Church</span>
-        <span class="brand-sub">103 Martyr Saints of Korea</span>
-      </span>
+        <span>
+          <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
+          <span class="wm-en" data-only="en">Seongsan-dong Catholic Church</span>
+          <span class="brand-sub">103 Martyr Saints of Korea</span>
+        </span>
       </a>
+      <p class="foot-info" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul 03996, Republic of Korea&lt;br&gt;Tel. &lt;span class=&quot;nw&quot;&gt;02-6387-1784&lt;/span&gt;, 1785 (from abroad &lt;span class=&quot;nw&quot;&gt;+82-2-6387-1784&lt;/span&gt;)&lt;br&gt;Catholic Archdiocese of Seoul Foundation">03996 서울 마포구 성미산로2길 15<br>전화 02-6387-1784, 1785<br>(재)천주교서울대교구 유지재단 소속</p>
     </div>
-    <p class="foot-info" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul 03996, Republic of Korea&lt;br&gt;Tel. &lt;span class=&quot;nw&quot;&gt;02-6387-1784&lt;/span&gt;, 1785 (from abroad &lt;span class=&quot;nw&quot;&gt;+82-2-6387-1784&lt;/span&gt;)&lt;br&gt;Catholic Archdiocese of Seoul Foundation">03996 서울 마포구 성미산로2길 15<br>전화 02-6387-1784, 1785<br>(재)천주교서울대교구 유지재단 소속</p>
-    <div class="foot-nav">
-      <ul class="foot-links">
-        <li><a href="proto-9-plan.html" data-en="Pastoral Plan">사목지침</a></li>
-        <li><a href="proto-9-committees.html" data-en="Committees">분과 소개</a></li>
-        <li><a href="proto-9-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
-      </ul>
-      <ul class="foot-links foot-legal">
+    <nav class="foot-nav" aria-label="사이트 안내" data-en-aria-label="Site links">
+      <div>
+        <p class="foot-h" data-en="About the Parish">본당 소개</p>
+        <ul class="foot-links">
+          <li><a href="proto-9-history.html" data-en="History">본당 연혁</a></li>
+          <li><a href="proto-9-clergy.html" data-en="Clergy &amp;amp; Religious">사제와 수도자</a></li>
+          <li><a href="proto-9-saints.html" data-en="Patron Saints">주보 성인</a></li>
+          <li><a href="proto-9-tour.html" data-en="Church Tour">성당 둘러보기</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h" data-en="Community">공동체</p>
+        <ul class="foot-links">
+          <li><a href="proto-9-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+          <li><a href="proto-9-org.html" data-en="Parish Organization">사목 조직</a></li>
+          <li><a href="proto-9-committees.html" data-en="Committees">분과 소개</a></li>
+          <li><a href="proto-9-groups.html" data-en="Ministries &amp;amp; Groups">단체 소개</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h" data-en="New Here?">처음 오신 분</p>
+        <ul class="foot-links">
+          <li><a href="proto-9-stillness.html#welcome" data-en="Becoming Catholic">입교 안내</a></li>
+          <li><a href="proto-9-stillness.html#faq" data-en="FAQ">자주 묻는 질문</a></li>
+          <li><a href="proto-9-district.html" data-en="Find Your District">관할구역 찾기</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h" data-en="Catholic Links">가톨릭 사이트</p>
+        <ul class="foot-links">
+          <li><a href="https://www.vatican.va/" data-en="The Holy See">교황청</a></li>
+          <li><a href="https://aos.catholic.or.kr/" data-en="Archdiocese of Seoul">천주교 서울대교구</a></li>
+          <li><a href="https://maria.catholic.or.kr/" data-en="Goodnews">굿뉴스</a></li>
+          <li><a href="https://www.cpbc.co.kr/" data-en="CPBC">가톨릭평화방송</a></li>
+          <li><a href="https://www.catholictimes.org/" data-en="The Catholic Times">가톨릭신문</a></li>
+          <li><a href="https://school.catholic.or.kr/" data-en="Online Catechesis">가톨릭 인터넷 교리</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="foot-bottom">
+      <p class="copy" data-en="© 2026 Seongsan-dong Catholic Church">© 2026 천주교 성산동성당</p>
+      <ul class="foot-legal">
         <li><a href="#"><strong data-en="Privacy Policy">개인정보 처리방침</strong></a></li>
         <li><a href="#" data-en="Terms of Use">이용약관</a></li>
-        <li><a href="#" data-en="Ministry Resources Login">단체 자료실 로그인</a></li>
       </ul>
     </div>
-    <p class="copy" data-en="© 2026 Seongsan-dong Catholic Church">© 2026 천주교 성산동성당</p>
   </div>
 </footer>
 
 <script src="data/glossary.js"></script>
-<script src="data/board.js"></script>
 <script>
 document.documentElement.classList.add('js');
 (() => {
   // 한/영: 정적 문구(data-en)를 먼저 바꾼 뒤, 스크립트가 쓰는 문구는 언어에 맞춰 쓴다
   I18N.apply();
   const EN = I18N.en, T = I18N.t, UI = I18N.ui, pick = I18N.pick;
-  const BRAND = T('천주교 성산동성당', UI.brand.name);
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const DAY = ['주일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
   const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ESC[c]);
-  const toDate = s => { const [y, m, d] = String(s).split('-').map(Number); return new Date(y, m - 1, d); };
-  const thisYear = new Date().getFullYear();
-  // 올해 날짜는 "10월 25일", 다른 해는 "2025년 12월 24일"
-  const md = s => { const d = toDate(s); if (EN) return I18N.date(d, d.getFullYear() === thisYear ? 'md' : 'ymd'); return `${d.getFullYear() === thisYear ? '' : `${d.getFullYear()}년 `}${d.getMonth() + 1}월 ${d.getDate()}일`; };
-  const fullDate = s => { const d = toDate(s); return EN ? I18N.date(d, 'ymdw') : `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일 ${DAY[d.getDay()]}`; };
-  const param = k => new URLSearchParams(location.search).get(k);
-  const BOARD = window.BOARD || { bulletins: [], news: [] };
+  const two = n => String(n).padStart(2, '0');
 
   // 천천히 드러나기: 나중에 그린 요소도 reveal(root)로 관찰한다
   const io = reduce || !('IntersectionObserver' in window) ? null : new IntersectionObserver(entries => entries.forEach(en => {
     if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
   }), { rootMargin: '0px 0px -8% 0px' });
   const reveal = (root = document) => root.querySelectorAll('.reveal:not(.is-in)').forEach(el => (io ? io.observe(el) : el.classList.add('is-in')));
+  const jump = () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const el = id && document.getElementById(id);
+    if (el) requestAnimationFrame(() => el.scrollIntoView({ behavior: 'instant', block: 'start' }));
+  };
 
-  const bulletins = [...(BOARD.bulletins || [])].sort((a, b) => b.date.localeCompare(a.date));
-  const latest = bulletins[0];
-  const bCard = (b, i) => `<li class="b-card reveal" style="--i:${i % 4}"><a href="proto-9-bulletin-view.html?date=${encodeURIComponent(b.date)}">
-    <div class="b-frame"><img src="${esc(b.thumb)}" width="560" height="792" loading="lazy" decoding="async" alt=""></div>
-    <p class="b-date"><time datetime="${esc(b.date)}">${md(b.date)}</time><span class="sr-only">${T(' 주보', ' bulletin')}</span>${b === latest ? `<span class="b-chip">${T('이번 주', UI.breadcrumb.thisWeek)}</span>` : ''}</p>
-    <p class="b-title">${esc(pick(b, 'title'))}</p></a></li>`;
-
-  // 주보를 달별로 묶는다(최신 달부터)
-  const groups = [];
-  bulletins.forEach(b => {
-    const key = b.date.slice(0, 7);
-    let g = groups[groups.length - 1];
-    if (!g || g.key !== key) groups.push(g = { key, items: [] });
-    g.items.push(b);
-  });
-  document.getElementById('archive').innerHTML = groups.length ? groups.map(g => {
-    const [y, m] = g.key.split('-').map(Number);
-    return `<section class="month" aria-labelledby="m-${g.key}">
-      <h2 class="month-head reveal" id="m-${g.key}"><span class="month-year">${y}${EN ? '' : '<span class="sr-only">년</span>'}</span><span class="month-name">${EN ? UI.months.full[m - 1] : `${m}월`}</span></h2>
-      <ol class="b-grid">${g.items.map(bCard).join('')}</ol></section>`;
-  }).join('') : `<p class="empty-note">${T('아직 올라온 주보가 없습니다.', UI.bulletin.empty)}</p>`;
 
   // 모바일 메뉴: 전체 화면 시트, Esc로 닫고 버튼으로 초점을 돌려준다
   const header = document.getElementById('site-header');
@@ -454,6 +558,7 @@ document.documentElement.classList.add('js');
   });
 
   reveal();
+  jump();
 })();
 </script>
 </body>

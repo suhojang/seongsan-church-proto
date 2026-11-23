@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <script src="assets/i18n.js"></script>
-<title data-en="Bulletin · Seongsan-dong Catholic Church">주보 보기 · 천주교 성산동성당</title>
-<meta name="description" content="천주교 성산동성당 주보를 크게 보고 내려받을 수 있습니다." data-en-content="The Sunday bulletin of Seongsan-dong Catholic Church: view this week’s and past issues and download them.">
+<title data-en="Clergy &amp; Religious · Seongsan-dong Catholic Church">사제와 수도자 · 천주교 성산동성당</title>
+<meta name="description" content="천주교 성산동성당의 주임신부·부주임신부와 역대 신부님·수녀님, 본당 출신 성직자와 수도자를 소개합니다." data-en-content="The pastor and parochial vicar of Seongsan-dong Catholic Church, former priests and sisters, and vocations from our parish.">
 <meta name="theme-color" content="#F5F3EF">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="media/brand/symbol-light.svg" type="image/svg+xml">
@@ -213,56 +213,19 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
 .foot-nav .foot-legal { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 html[lang="en"] .feed-cat { letter-spacing: 0.04em; }
 
-/* 주보 카드: A4 세로 비율 고정, 표지 위쪽을 기준으로 채운다 */
-.b-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(2.5rem, 4vw, 3.5rem) clamp(1rem, 2vw, 2rem); }
-.b-card a { display: block; text-decoration: none; }
-.b-frame { position: relative; overflow: hidden; aspect-ratio: 1240 / 1754; border: 1px solid var(--line); background: var(--paper-2); }
-.b-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1); }
-.b-card a:hover .b-frame img { transform: scale(1.025); }
-.b-date { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.6rem; margin-top: 1rem; font-size: 1.0625rem; font-weight: 500; line-height: 1.4; font-variant-numeric: tabular-nums; }
-.b-chip { padding: 0.1rem 0.5rem; border-radius: 2px; background: var(--ink); color: var(--paper); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.04em; line-height: 1.5; }
-.b-title { margin-top: 0.25rem; color: var(--ink-2); font-size: 0.9375rem; line-height: 1.6; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
-.b-card a:hover .b-title { color: var(--ink); text-decoration: underline; }
-@media (max-width: 63.99rem) { .b-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 40rem) { .b-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem 0.9rem; } .b-date { font-size: 1rem; } .b-title { font-size: 0.875rem; } }
-
-/* 주보 보기: 왼쪽에 정보와 이동, 오른쪽에 주보 한 장 */
-.crumbs + * { margin-top: clamp(2.5rem, 2rem + 2.5vw, 4.5rem); }
-.bv { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 3rem clamp(3rem, 6vw, 7rem); align-items: start; }
-.bv-side { position: sticky; top: calc(var(--header) + 2rem); }
-.bv-kind { margin-top: 1.4rem; color: var(--ink-2); font-size: 0.9375rem; }
-.bv-title { margin-top: 0.6rem; font-size: clamp(2rem, 1.4rem + 2vw, 3.25rem); font-weight: 250; line-height: 1.22; letter-spacing: -0.035em; }
-.bv-head > .note { margin-top: 0.9rem; }
-.bv-head .actions { margin-top: 2rem; }
-.bv-more { margin-top: 2.75rem; }
-.bv-nav { border-top: 1px solid var(--ink); }
-.bv-step { display: grid; gap: 0.1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); text-decoration: none; }
-.bv-step-k { color: var(--ink-2); font-size: 0.8125rem; letter-spacing: 0.02em; }
-.bv-step-t { font-weight: 450; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
-.bv-step:hover .bv-step-t { text-decoration: underline; }
-.bv-more .text-link { margin-top: 1rem; }
-.bv-sheet { justify-self: start; width: min(100%, 54rem); }
-.bv-sheet img { width: 100%; border: 1px solid var(--line); background: #FFFFFF; }
-.bv-sheet figcaption { margin-top: 0.85rem; color: var(--ink-2); font-size: 0.8125rem; }
-.empty .page-title { font-size: clamp(2.25rem, 1.5rem + 3vw, 4.25rem); }
-.empty .lead { margin-top: 1.5rem; }
-.empty .actions { margin-top: 2.25rem; }
-
-/* 다른 주보 */
-.more { margin-top: var(--section); display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 2rem clamp(3rem, 6vw, 7rem); padding-top: 1.4rem; border-top: 1px solid var(--ink); }
-.more-head h2 { margin-top: 1.4rem; font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem); font-weight: 300; line-height: 1.3; letter-spacing: -0.03em; }
-.more-head .text-link { margin-top: 0.75rem; }
-@media (max-width: 63.99rem) {
-  .bv, .more { grid-template-columns: minmax(0, 1fr); }
-  .bv { gap: 2.75rem; }
-  .bv-side { display: contents; }
-  .bv-head { order: 1; }
-  .bv-sheet { order: 2; width: 100%; }
-  .bv-more { order: 3; margin-top: 0; }
-  .more .b-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-}
-@media (max-width: 40rem) { .more .b-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.bv-lang { margin-top: 0.35rem; }
+/* 공동체 소개 하위 메뉴: 글자와 밑줄 */
+.subnav { border-bottom: 1px solid var(--line); }
+.subnav ul { display: flex; flex-wrap: wrap; gap: 0 2rem; }
+.subnav a { position: relative; display: inline-flex; align-items: center; min-height: 3.25rem; color: var(--ink-2); font-size: 0.9375rem; text-decoration: none; transition: color 0.3s; }
+.subnav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
+.subnav a:hover { color: var(--ink); }
+.subnav a[aria-current] { color: var(--ink); font-weight: 500; }
+.subnav a[aria-current]::after { transform: scaleX(1); }
+@media (max-width: 30rem) { .subnav ul { gap: 0 1.25rem; } }
+.sec-head { margin-bottom: clamp(2.5rem, 2rem + 2vw, 4rem); }
+.no { font-family: var(--italic); font-style: italic; font-weight: 400; color: var(--ink-2); font-variant-numeric: lining-nums; }
+.empty-note { margin-top: clamp(3rem, 2rem + 3vw, 4.5rem); }
+html[lang="en"] .page-title { letter-spacing: -0.03em; }
 </style>
 <style>
 /* 좁은 화면 머리글: 영문 이름·언어 전환이 들어가도 메뉴 버튼이 화면 안에 남게 한다 */
@@ -298,6 +261,74 @@ html[lang="en"] .feed-cat { letter-spacing: 0.04em; }
   .nav-list .sub a[aria-current] { color: var(--ink); font-weight: 500; }
 }
 </style>
+<style id="foot-css">
+/* 바닥글: 왼쪽은 성당 이름과 주소, 오른쪽은 메뉴 묶음과 가톨릭 사이트. 관리자·회원 기능은 두지 않는다 */
+.foot { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 3rem clamp(3rem, 6vw, 6rem); }
+.foot-id .foot-info { margin-top: 1.75rem; }
+.foot-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem 1.75rem; }
+.foot-h { margin-bottom: 0.35rem; color: var(--ink-2); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; }
+.foot-links li a { min-height: 2.25rem; line-height: 1.45; text-decoration: none; }
+.foot-links li a:hover { text-decoration: underline; }
+.foot-bottom { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.25rem 2rem; padding-top: 1.25rem; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 0.8125rem; }
+.foot-bottom .copy { grid-column: auto; padding: 0; border: 0; }
+.foot-legal { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+.foot-legal a { display: inline-flex; align-items: center; min-height: 2.75rem; color: inherit; text-decoration: none; }
+.foot-legal a:hover { text-decoration: underline; }
+@media (max-width: 63.99rem) {
+  .foot { grid-template-columns: 1fr; }
+  .foot-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+</style>
+<style>
+.jump { position: sticky; top: var(--header); z-index: 5; border-bottom: 1px solid var(--line); background: rgb(245 243 239 / 0.94); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.jump ul { display: flex; gap: 0 1.75rem; overflow-x: auto; scrollbar-width: none; }
+.jump ul::-webkit-scrollbar { display: none; }
+.jump a { position: relative; display: inline-flex; align-items: center; min-height: 3rem; color: var(--ink-2); font-size: 0.875rem; text-decoration: none; white-space: nowrap; font-variant-numeric: tabular-nums; transition: color 0.3s; }
+.jump a::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
+.jump a:hover, .jump a[aria-current] { color: var(--ink); }
+.jump a[aria-current]::after { transform: scaleX(1); }
+.chapter { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 2rem clamp(2rem, 5vw, 6rem); padding: clamp(3.5rem, 2.5rem + 4vw, 6.5rem) 0; border-bottom: 1px solid var(--line); scroll-margin-top: calc(var(--header) + 2rem); }
+.chapter:last-child { border-bottom: 0; }
+.ch-title { position: sticky; top: calc(var(--header) + 5rem); align-self: start; }
+@media (max-width: 52rem) {
+  .chapter { grid-template-columns: 1fr; }
+  .ch-title { position: static; }
+}
+
+:root { --mat: #FBFAF8; }
+/* 사제와 수도자: 지금 계신 신부님은 이름을 크게, 역대 신부님·수녀님은 장부처럼 */
+.ch-title h2 { font-size: clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem); font-weight: 300; line-height: 1.3; letter-spacing: -0.03em; }
+.ch-title .note { margin-top: 0.75rem; }
+.who-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.who { display: flex; flex-direction: column; padding: clamp(1.5rem, 1rem + 1.5vw, 2.5rem); border: 1px solid var(--line); background: var(--mat); }
+.who-role { color: var(--ink-2); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; }
+.who-name { margin-top: 1rem; font-size: clamp(2rem, 1.4rem + 2vw, 3rem); font-weight: 250; line-height: 1.15; letter-spacing: -0.035em; }
+.who-name span { display: block; margin-top: 0.35rem; color: var(--ink-2); font-size: 0.45em; font-weight: 400; letter-spacing: -0.01em; }
+.who-meta { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.4rem 1.25rem; margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid var(--line); font-size: 0.9375rem; }
+.who-meta dt { color: var(--ink-2); }
+.who-meta dd { margin: 0; font-variant-numeric: tabular-nums; }
+.who-motto { margin: auto 0 0; padding-top: 1.75rem; }
+.who-motto p { font-size: 1.125rem; font-weight: 400; line-height: 1.7; letter-spacing: -0.01em; }
+.who-motto p::before { content: "“"; } .who-motto p::after { content: "”"; }
+.who-motto cite { display: block; margin-top: 0.35rem; color: var(--ink-2); font-size: 0.8125rem; font-style: normal; }
+.roll + .roll { margin-top: clamp(3rem, 2rem + 3vw, 4.5rem); }
+.roll h3 { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--ink); font-size: 1rem; font-weight: 600; }
+.roll h3 small { color: var(--ink-2); font-size: 0.8125rem; font-weight: 400; font-variant-numeric: tabular-nums; }
+.cl { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr) minmax(0, 1.15fr); gap: 0.15rem 1.25rem; align-items: baseline; padding: 0.8rem 0; border-bottom: 1px solid var(--line); }
+.roll.no-ord .cl { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); }
+.cl .no { font-size: 1.125rem; line-height: 1.4; }
+.cl-name { font-weight: 500; }
+.cl-name small { margin-left: 0.3rem; color: var(--ink-2); font-size: 0.8125rem; font-weight: 400; }
+.cl-meta { color: var(--ink-2); font-size: 0.875rem; font-variant-numeric: tabular-nums; }
+.cl-meta span { display: block; }
+@media (max-width: 52rem) { .who-list { grid-template-columns: 1fr; } }
+@media (max-width: 40rem) {
+  .cl { grid-template-columns: 2.25rem minmax(0, 1fr); }
+  .cl .cl-meta { grid-column: 2; }
+  .roll.no-ord .cl { grid-template-columns: 1fr; }
+  .roll.no-ord .cl .cl-meta { grid-column: 1; }
+}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -322,17 +353,24 @@ html[lang="en"] .feed-cat { letter-spacing: 0.04em; }
         <li class="has-sub"><a href="proto-9-stillness.html#community"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Community&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Community&lt;/span&gt;">공동체</span> <small data-only="ko">Community</small></a>
           <ul class="sub">
             <li><a href="proto-9-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+            <li><a href="proto-9-org.html" data-en="Parish Organization">사목 조직</a></li>
             <li><a href="proto-9-committees.html" data-en="Committees">분과 소개</a></li>
-            <li><a href="proto-9-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
+            <li><a href="proto-9-groups.html" data-en="Ministries &amp;amp; Groups">단체 소개</a></li>
           </ul></li>
         <li><a href="proto-9-stillness.html#rites"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Sacraments &amp;amp; Liturgy&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Sacraments&lt;/span&gt;">성사와 전례</span> <small data-only="ko">Sacraments</small></a></li>
-        <li class="has-sub"><a href="proto-9-stillness.html#news" aria-current="true"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;News&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;News&lt;/span&gt;">소식</span> <small data-only="ko">News</small></a>
+        <li class="has-sub"><a href="proto-9-stillness.html#about" aria-current="true"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;About the Parish&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;About&lt;/span&gt;">본당 소개</span> <small data-only="ko">About</small></a>
           <ul class="sub">
-            <li><a href="proto-9-bulletin-view.html" data-en="This Week’s Bulletin">이번 주 주보</a></li>
-            <li><a href="proto-9-bulletin.html" data-en="Past Bulletins">지난 주보</a></li>
-            <li><a href="proto-9-news.html" data-en="All News">새 소식</a></li>
+            <li><a href="proto-9-history.html" data-en="History">본당 연혁</a></li>
+            <li><a href="proto-9-clergy.html" aria-current="page" data-en="Clergy &amp;amp; Religious">사제와 수도자</a></li>
+            <li><a href="proto-9-saints.html" data-en="Patron Saints">주보 성인</a></li>
+            <li><a href="proto-9-tour.html" data-en="Church Tour">성당 둘러보기</a></li>
           </ul></li>
-        <li><a href="proto-9-stillness.html#welcome"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;New Here?&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;New Here?&lt;/span&gt;">처음 오신 분</span> <small data-only="ko">Welcome</small></a></li>
+        <li class="has-sub"><a href="proto-9-stillness.html#welcome"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;New Here?&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;New Here?&lt;/span&gt;">처음 오신 분</span> <small data-only="ko">Welcome</small></a>
+          <ul class="sub">
+            <li><a href="proto-9-stillness.html#welcome" data-en="Becoming Catholic">입교 안내</a></li>
+            <li><a href="proto-9-stillness.html#faq" data-en="FAQ">자주 묻는 질문</a></li>
+            <li><a href="proto-9-district.html" data-en="Find Your District">관할구역 찾기</a></li>
+          </ul></li>
         <li><a href="proto-9-stillness.html#visit"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Visit Us&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Visit&lt;/span&gt;">오시는 길</span> <small data-only="ko">Visit</small></a></li>
       </ul>
       <div class="nav-foot">
@@ -346,141 +384,179 @@ html[lang="en"] .feed-cat { letter-spacing: 0.04em; }
 </header>
 
 <main id="main">
-  <div class="page-head">
+  <section class="page-head">
     <div class="wrap">
-      <nav class="crumbs" aria-label="현재 위치" data-en-aria-label="Breadcrumb"><ol><li><a href="proto-9-stillness.html" data-en="Home">홈</a></li><li><a href="proto-9-stillness.html#news" data-en="News">소식</a></li><li><a href="proto-9-bulletin.html" data-en="Bulletin">주보</a></li><li aria-current="page" id="crumb-now"></li></ol></nav>
-      <div id="view"></div>
+      <nav class="crumbs" aria-label="현재 위치" data-en-aria-label="Breadcrumb"><ol><li><a href="proto-9-stillness.html" data-en="Home">홈</a></li><li><a href="proto-9-stillness.html#about" data-en="About the Parish">본당 소개</a></li><li aria-current="page" data-en="Clergy &amp;amp; Religious">사제와 수도자</li></ol></nav>
+      <div class="sec-head">
+        <div>
+          <p class="label">Clergy &amp; Religious</p>
+          <h1 class="page-title" data-en="Clergy &amp;amp; Religious">사제와 수도자</h1>
+        </div>
+        <p class="lead" data-en="The priests who lead our parish today, the priests and sisters who have served here since 1981, and the priests and religious who grew up in our parish.">지금 본당을 이끄는 신부님과 1981년부터 이곳을 거쳐 간 신부님·수녀님, 그리고 우리 본당에서 자라 사제와 수도자가 된 분들입니다.</p>
+      </div>
+      <nav class="subnav" aria-label="본당 소개" data-en-aria-label="About the parish"><ul><li><a href="proto-9-history.html" data-en="History">본당 연혁</a></li><li><a href="proto-9-clergy.html" aria-current="page" data-en="Clergy &amp;amp; Religious">사제와 수도자</a></li><li><a href="proto-9-saints.html" data-en="Patron Saints">주보 성인</a></li><li><a href="proto-9-tour.html" data-en="Church Tour">성당 둘러보기</a></li></ul></nav>
     </div>
-  </div>
-  <section class="wrap more" id="more" aria-labelledby="more-title"></section>
+  </section>
+  <div id="clergy"></div>
 </main>
 
 <footer class="site-footer">
   <div class="wrap foot">
-    <div>
+    <div class="foot-id">
       <a class="brand" href="proto-9-stillness.html" aria-label="천주교 성산동성당 처음으로" data-en-aria-label="Seongsan-dong Catholic Church, home">
         <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
-      <span>
-        <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
-        <span class="wm-en" data-only="en">Seongsan-dong Catholic Church</span>
-        <span class="brand-sub">103 Martyr Saints of Korea</span>
-      </span>
+        <span>
+          <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
+          <span class="wm-en" data-only="en">Seongsan-dong Catholic Church</span>
+          <span class="brand-sub">103 Martyr Saints of Korea</span>
+        </span>
       </a>
+      <p class="foot-info" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul 03996, Republic of Korea&lt;br&gt;Tel. &lt;span class=&quot;nw&quot;&gt;02-6387-1784&lt;/span&gt;, 1785 (from abroad &lt;span class=&quot;nw&quot;&gt;+82-2-6387-1784&lt;/span&gt;)&lt;br&gt;Catholic Archdiocese of Seoul Foundation">03996 서울 마포구 성미산로2길 15<br>전화 02-6387-1784, 1785<br>(재)천주교서울대교구 유지재단 소속</p>
     </div>
-    <p class="foot-info" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul 03996, Republic of Korea&lt;br&gt;Tel. &lt;span class=&quot;nw&quot;&gt;02-6387-1784&lt;/span&gt;, 1785 (from abroad &lt;span class=&quot;nw&quot;&gt;+82-2-6387-1784&lt;/span&gt;)&lt;br&gt;Catholic Archdiocese of Seoul Foundation">03996 서울 마포구 성미산로2길 15<br>전화 02-6387-1784, 1785<br>(재)천주교서울대교구 유지재단 소속</p>
-    <div class="foot-nav">
-      <ul class="foot-links">
-        <li><a href="proto-9-plan.html" data-en="Pastoral Plan">사목지침</a></li>
-        <li><a href="proto-9-committees.html" data-en="Committees">분과 소개</a></li>
-        <li><a href="proto-9-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
-      </ul>
-      <ul class="foot-links foot-legal">
+    <nav class="foot-nav" aria-label="사이트 안내" data-en-aria-label="Site links">
+      <div>
+        <p class="foot-h" data-en="About the Parish">본당 소개</p>
+        <ul class="foot-links">
+          <li><a href="proto-9-history.html" data-en="History">본당 연혁</a></li>
+          <li><a href="proto-9-clergy.html" data-en="Clergy &amp;amp; Religious">사제와 수도자</a></li>
+          <li><a href="proto-9-saints.html" data-en="Patron Saints">주보 성인</a></li>
+          <li><a href="proto-9-tour.html" data-en="Church Tour">성당 둘러보기</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h" data-en="Community">공동체</p>
+        <ul class="foot-links">
+          <li><a href="proto-9-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+          <li><a href="proto-9-org.html" data-en="Parish Organization">사목 조직</a></li>
+          <li><a href="proto-9-committees.html" data-en="Committees">분과 소개</a></li>
+          <li><a href="proto-9-groups.html" data-en="Ministries &amp;amp; Groups">단체 소개</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h" data-en="New Here?">처음 오신 분</p>
+        <ul class="foot-links">
+          <li><a href="proto-9-stillness.html#welcome" data-en="Becoming Catholic">입교 안내</a></li>
+          <li><a href="proto-9-stillness.html#faq" data-en="FAQ">자주 묻는 질문</a></li>
+          <li><a href="proto-9-district.html" data-en="Find Your District">관할구역 찾기</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h" data-en="Catholic Links">가톨릭 사이트</p>
+        <ul class="foot-links">
+          <li><a href="https://www.vatican.va/" data-en="The Holy See">교황청</a></li>
+          <li><a href="https://aos.catholic.or.kr/" data-en="Archdiocese of Seoul">천주교 서울대교구</a></li>
+          <li><a href="https://maria.catholic.or.kr/" data-en="Goodnews">굿뉴스</a></li>
+          <li><a href="https://www.cpbc.co.kr/" data-en="CPBC">가톨릭평화방송</a></li>
+          <li><a href="https://www.catholictimes.org/" data-en="The Catholic Times">가톨릭신문</a></li>
+          <li><a href="https://school.catholic.or.kr/" data-en="Online Catechesis">가톨릭 인터넷 교리</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="foot-bottom">
+      <p class="copy" data-en="© 2026 Seongsan-dong Catholic Church">© 2026 천주교 성산동성당</p>
+      <ul class="foot-legal">
         <li><a href="#"><strong data-en="Privacy Policy">개인정보 처리방침</strong></a></li>
         <li><a href="#" data-en="Terms of Use">이용약관</a></li>
-        <li><a href="#" data-en="Ministry Resources Login">단체 자료실 로그인</a></li>
       </ul>
     </div>
-    <p class="copy" data-en="© 2026 Seongsan-dong Catholic Church">© 2026 천주교 성산동성당</p>
   </div>
 </footer>
 
 <script src="data/glossary.js"></script>
-<script src="data/board.js"></script>
+<script src="data/clergy.js"></script>
 <script>
 document.documentElement.classList.add('js');
 (() => {
   // 한/영: 정적 문구(data-en)를 먼저 바꾼 뒤, 스크립트가 쓰는 문구는 언어에 맞춰 쓴다
   I18N.apply();
   const EN = I18N.en, T = I18N.t, UI = I18N.ui, pick = I18N.pick;
-  const BRAND = T('천주교 성산동성당', UI.brand.name);
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const DAY = ['주일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
   const ESC = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ESC[c]);
-  const toDate = s => { const [y, m, d] = String(s).split('-').map(Number); return new Date(y, m - 1, d); };
-  const thisYear = new Date().getFullYear();
-  // 올해 날짜는 "10월 25일", 다른 해는 "2025년 12월 24일"
-  const md = s => { const d = toDate(s); if (EN) return I18N.date(d, d.getFullYear() === thisYear ? 'md' : 'ymd'); return `${d.getFullYear() === thisYear ? '' : `${d.getFullYear()}년 `}${d.getMonth() + 1}월 ${d.getDate()}일`; };
-  const fullDate = s => { const d = toDate(s); return EN ? I18N.date(d, 'ymdw') : `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일 ${DAY[d.getDay()]}`; };
-  const param = k => new URLSearchParams(location.search).get(k);
-  const BOARD = window.BOARD || { bulletins: [], news: [] };
+  const two = n => String(n).padStart(2, '0');
 
   // 천천히 드러나기: 나중에 그린 요소도 reveal(root)로 관찰한다
   const io = reduce || !('IntersectionObserver' in window) ? null : new IntersectionObserver(entries => entries.forEach(en => {
     if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
   }), { rootMargin: '0px 0px -8% 0px' });
   const reveal = (root = document) => root.querySelectorAll('.reveal:not(.is-in)').forEach(el => (io ? io.observe(el) : el.classList.add('is-in')));
+  const jump = () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const el = id && document.getElementById(id);
+    if (el) requestAnimationFrame(() => el.scrollIntoView({ behavior: 'instant', block: 'start' }));
+  };
 
-  const bulletins = [...(BOARD.bulletins || [])].sort((a, b) => b.date.localeCompare(a.date));
-  const latest = bulletins[0];
-  const bCard = (b, i) => `<li class="b-card reveal" style="--i:${i % 4}"><a href="proto-9-bulletin-view.html?date=${encodeURIComponent(b.date)}">
-    <div class="b-frame"><img src="${esc(b.thumb)}" width="560" height="792" loading="lazy" decoding="async" alt=""></div>
-    <p class="b-date"><time datetime="${esc(b.date)}">${md(b.date)}</time><span class="sr-only">${T(' 주보', ' bulletin')}</span>${b === latest ? `<span class="b-chip">${T('이번 주', UI.breadcrumb.thisWeek)}</span>` : ''}</p>
-    <p class="b-title">${esc(pick(b, 'title'))}</p></a></li>`;
+  const parts = v => { const m = /^(\d{4})(?:[-.](\d{1,2}))?(?:[-.](\d{1,2}))?$/.exec(String(v ?? '').trim()); return m ? [+m[1], m[2] ? +m[2] : 0, m[3] ? +m[3] : 0] : null; };
+  const fullDate = v => {
+    const p = parts(v);
+    if (!p) return esc(v);
+    const [y, m, d] = p;
+    if (d) return EN ? I18N.date(new Date(y, m - 1, d), 'dot') : `${y}. ${m}. ${d}.`;
+    if (m) return EN ? I18N.date(new Date(y, m - 1, 1), 'ym') : `${y}. ${m}.`;
+    return String(y);
+  };
 
-  const view = document.getElementById('view');
-  const now = document.getElementById('crumb-now');
-  const q = param('date');
-  const i = q ? bulletins.findIndex(b => b.date === q) : bulletins.length ? 0 : -1;
-  const b = bulletins[i];
-  // 메뉴 표시: 가장 최근 주보를 보고 있으면 '이번 주 주보', 그보다 지난 주보(또는 없는 날짜)면 '지난 주보'
-  const subCur = document.querySelector(`.nav-list .sub a[href^="${i === 0 ? 'proto-9-bulletin-view.html' : 'proto-9-bulletin.html'}"]`);
-  if (subCur) subCur.setAttribute('aria-current', i === 0 ? 'page' : 'true');
-  const step = (x, prev) => x ? `<a class="bv-step" href="proto-9-bulletin-view.html?date=${encodeURIComponent(x.date)}" rel="${prev ? 'prev' : 'next'}">
-      <span class="bv-step-k">${prev ? T('← 지난 주', UI.buttons.prevWeekArrow) : T('다음 주 →', UI.buttons.nextWeekArrow)}</span><span class="bv-step-t">${md(x.date)} · ${esc(pick(x, 'title'))}</span></a>` : '';
+  // 사제와 수도자: 지금 계신 분은 카드, 역대는 장부. 장은 지금 · 역대 신부님 · 역대 수녀님 · 본당 출신
+  const C = window.CLERGY || { groups: [] };
+  const root = document.getElementById('clergy');
+  const G = id => (C.groups || []).find(g => g.id === id);
+  const feast = v => { const m = /^(\d{1,2})-(\d{1,2})$/.exec(String(v || '')); return m ? (EN ? I18N.date(new Date(2000, m[1] - 1, +m[2]), 'mds') : `${+m[1]}월 ${+m[2]}일`) : esc(v); };
+  const isSister = g => /수녀/.test(g.title) || (g.id === 'vocations-religious');
+  const nameOf = (p, g) => (EN ? esc(p.en?.name || `${p.baptismal} ${p.name}`)
+    : `${esc(p.name)} ${esc(p.baptismal || '')}${g.id === 'vocations-religious' ? '' : `<small>${isSister(g) ? '수녀' : '신부'}</small>`}`);
+  const term = p => {
+    if (p.from && p.to) return `${fullDate(p.from)} – ${fullDate(p.to)}`;
+    if (p.from) return EN ? `Arrived ${fullDate(p.from)}` : `${fullDate(p.from)} 부임`;
+    return '';
+  };
+  const metaOf = p => {
+    const m = [];
+    const t = term(p); if (t) m.push(t);
+    if (p.ordained) m.push(EN ? `Ordained ${fullDate(p.ordained)}` : `수품 ${fullDate(p.ordained)}`);
+    if (p.institute) m.push(esc(pick(p, 'institute')));
+    if (p.entered) m.push(EN ? `Entered ${fullDate(p.entered)}` : `입회 ${fullDate(p.entered)}`);
+    if (p.finalVows) m.push(EN ? `Final vows ${fullDate(p.finalVows)}` : `종신서원 ${fullDate(p.finalVows)}`);
+    if (p.died) m.push(EN ? `Died ${fullDate(p.died)}` : `선종 ${fullDate(p.died)}`);
+    return m.map(x => `<span>${x}</span>`).join('');
+  };
+  const roll = g => {
+    if (!g || !(g.people || []).length) return '';
+    const ord = g.people.some(p => p.ord);
+    return `<div class="roll${ord ? '' : ' no-ord'} reveal"><h3>${esc(T(g.title, g.en))}<small>${EN ? `${g.people.length}` : `${g.people.length}분`}</small></h3>
+      <ol>${g.people.map(p => `<li class="cl">${ord ? `<span class="no" aria-hidden="true">${p.ord ? two(p.ord) : ''}</span>` : ''}<p class="cl-name">${ord && p.ord ? `<span class="sr-only">${EN ? `No. ${p.ord}: ` : `${p.ord}대 `}</span>` : ''}${nameOf(p, g)}</p><p class="cl-meta">${metaOf(p)}</p></li>`).join('')}</ol></div>`;
+  };
+  const card = g => (g?.people || []).map(p => `<article class="who reveal">
+      <p class="who-role">${esc(T(g.title, g.en))}</p>
+      <h3 class="who-name">${EN ? esc(p.en?.name) : `${esc(p.name)} ${esc(p.baptismal)}`}</h3>
+      <dl class="who-meta">
+        ${p.feast ? `<dt>${T('축일', 'Feast day')}</dt><dd>${feast(p.feast)}</dd>` : ''}
+        ${p.ordained ? `<dt>${T('서품', 'Ordained')}</dt><dd>${fullDate(p.ordained)}</dd>` : ''}
+        ${p.from ? `<dt>${T('부임', 'Arrived')}</dt><dd>${fullDate(p.from)}</dd>` : ''}
+      </dl>
+      ${p.motto ? `<blockquote class="who-motto"><p>${esc(pick(p, 'motto'))}</p>${p.mottoRef ? `<cite>${T('수품 성구', 'Ordination motto')} · ${esc(pick(p, 'mottoRef'))}</cite>` : ''}</blockquote>` : ''}
+    </article>`).join('');
+  const chapters = [
+    { id: 'now', ko: '지금 함께하는 신부님', en: 'Our Priests Today', body: `<div class="who-list">${card(G('pastor'))}${card(G('vicar'))}</div>` },
+    { id: 'priests', ko: '역대 신부님', en: 'Former Priests', body: roll(G('past-pastors')) + roll(G('past-vicars')) + roll(G('past-assistants')) },
+    { id: 'sisters', ko: '역대 수녀님', en: 'Former Sisters', body: roll(G('past-superiors')) + roll(G('past-pastoral-sisters')) },
+    { id: 'vocations', ko: '본당 출신 성직자·수도자', en: 'Vocations from Our Parish', note: ['우리 본당에서 자라 사제와 수도자의 길을 걷는 분들입니다.', 'Priests and religious who grew up in our parish.'], body: roll(G('vocations-priests')) + roll(G('vocations-religious')) },
+  ].filter(c => c.body.replace(/<[^>]+>/g, '').trim());
+  root.innerHTML = chapters.length ? `
+    <nav class="jump" aria-label="${T('바로가기', 'Jump to')}"><div class="wrap"><ul>${chapters.map(c => `<li><a href="#${c.id}">${T(c.ko, c.en)}</a></li>`).join('')}</ul></div></nav>
+    <div class="wrap">${chapters.map(c => `<section class="chapter" id="${c.id}" aria-labelledby="${c.id}-t">
+      <div class="ch-title"><h2 id="${c.id}-t">${T(c.ko, c.en)}</h2>${c.note ? `<p class="note">${T(...c.note)}</p>` : ''}</div>
+      <div>${c.body}</div>
+    </section>`).join('')}</div>` : `<div class="wrap"><p class="empty-note">${T('내용을 준비하고 있습니다.', 'This page is being prepared.')}</p></div>`;
 
-  if (!b) {
-    now.textContent = T('찾을 수 없음', UI.bulletin.notFound.short);
-    if (EN) document.title = UI.bulletin.notFound.pageTitle;
-    view.innerHTML = `<div class="empty reveal">
-      <p class="label">Bulletin</p>
-      <h1 class="page-title">${T('주보를 찾을 수 없습니다', UI.bulletin.notFound.title)}</h1>
-      <p class="lead">${T('주소가 바르지 않거나 아직 올라오지 않은 주보입니다. 목록에서 날짜를 골라 주세요.', UI.bulletin.notFound.bodyAlt)}</p>
-      <div class="actions"><a class="btn btn-solid" href="proto-9-bulletin.html">${T('주보 목록으로', UI.buttons.backToBulletins)} <span class="arrow" aria-hidden="true">→</span></a></div>
-    </div>`;
-  } else {
-    const label = EN ? UI.sections.news.bulletinFor.replace('{date}', md(b.date)) : `${md(b.date)} 주보`;
-    const title = pick(b, 'title');
-    now.textContent = label;
-    document.title = `${label} · ${title} · ${BRAND}`;
-    const older = bulletins[i + 1], newer = bulletins[i - 1];
-    const ext = (b.image.src.split('.').pop() || 'jpg').toUpperCase();
-    view.innerHTML = `<div class="bv">
-      <div class="bv-side">
-      <div class="bv-head reveal">
-        <p class="label">${T('Bulletin · 주보', 'Bulletin')}</p>
-        <p class="bv-kind"><time datetime="${esc(b.date)}">${fullDate(b.date)}</time></p>
-        <h1 class="bv-title">${esc(title)}</h1>
-        <p class="note">${EN ? UI.bulletin.posted.replace('{date}', md(b.posted)) : `${md(b.posted)}에 올렸습니다.`}</p>
-        ${EN ? '<p class="note bv-lang">The bulletin is published in Korean.</p>' : ''}
-        <div class="actions">
-          <a class="btn btn-solid" href="${esc(b.image.src)}" target="_blank" rel="noopener">${T('크게 보기', UI.buttons.viewFull)} <span class="arrow" aria-hidden="true">↗</span><span class="sr-only">${T('(새 창)', ' ' + UI.a11y.newWindow)}</span></a>
-          <a class="btn" href="${esc(b.image.src)}" download="${EN ? `seongsan-dong-bulletin-${esc(b.date)}` : `성산동성당 주보 ${esc(b.date)}`}.${ext.toLowerCase()}">${T('내려받기', UI.buttons.download)} <span class="btn-meta">${ext} ${esc(b.image.size || '')}</span></a>
-        </div>
-      </div>
-      <div class="bv-more reveal">
-        ${older || newer ? `<nav class="bv-nav" aria-label="${T('다른 주 주보', UI.bulletin.prevNext)}">${step(older, true)}${step(newer, false)}</nav>` : ''}
-        <a class="text-link" href="proto-9-bulletin.html">${T('주보 목록으로', UI.buttons.backToBulletins)} <span aria-hidden="true">→</span></a>
-      </div>
-      </div>
-      <figure class="bv-sheet reveal">
-        <img src="${esc(b.image.src)}" width="${b.image.w}" height="${b.image.h}" decoding="async" alt="${EN ? esc(UI.bulletin.pageAlt.replace('{date}', `${md(b.date)} (${title})`)) : `${esc(label)}, ${esc(title)}. 본당 공지와 행사 안내가 실린 주보 지면`}">
-        <figcaption>${T('글자가 작으면 ‘크게 보기’로 원본을 열어 확대해 보세요.', UI.bulletin.small)}</figcaption>
-      </figure>
-    </div>`;
+  // 장 바로가기: 지금 읽고 있는 장을 표시한다
+  const spyLinks = [...document.querySelectorAll('.jump a')];
+  if (spyLinks.length && 'IntersectionObserver' in window) {
+    const spy = new IntersectionObserver(entries => entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      spyLinks.forEach(a => (a.hash === `#${en.target.id}` ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current')));
+    }), { rootMargin: '-35% 0px -60% 0px' });
+    document.querySelectorAll('.chapter').forEach(s => spy.observe(s));
   }
-
-  // 다른 주보: 지금 보는 주보를 빼고 최근 네 개
-  const others = bulletins.filter(x => x !== b).slice(0, 4);
-  const more = document.getElementById('more');
-  if (others.length) {
-    more.innerHTML = `<div class="more-head reveal">
-        <p class="label">Archive</p>
-        <h2 id="more-title">${T('다른 주보', UI.bulletin.other)}</h2>
-        <a class="text-link" href="proto-9-bulletin.html">${T('주보 목록으로', UI.buttons.backToBulletins)} <span aria-hidden="true">→</span></a>
-      </div>
-      <ol class="b-grid">${others.map(bCard).join('')}</ol>`;
-  } else more.remove();
 
   // 모바일 메뉴: 전체 화면 시트, Esc로 닫고 버튼으로 초점을 돌려준다
   const header = document.getElementById('site-header');
@@ -512,6 +588,7 @@ document.documentElement.classList.add('js');
   });
 
   reveal();
+  jump();
 })();
 </script>
 </body>

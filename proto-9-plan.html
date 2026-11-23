@@ -322,6 +322,24 @@ html[lang="en"] .page-title { letter-spacing: -0.03em; }
   .nav-list .sub a[aria-current] { color: var(--ink); font-weight: 500; }
 }
 </style>
+<style id="foot-css">
+/* 바닥글: 왼쪽은 성당 이름과 주소, 오른쪽은 메뉴 묶음과 가톨릭 사이트. 관리자·회원 기능은 두지 않는다 */
+.foot { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 3rem clamp(3rem, 6vw, 6rem); }
+.foot-id .foot-info { margin-top: 1.75rem; }
+.foot-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem 1.75rem; }
+.foot-h { margin-bottom: 0.35rem; color: var(--ink-2); font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; }
+.foot-links li a { min-height: 2.25rem; line-height: 1.45; text-decoration: none; }
+.foot-links li a:hover { text-decoration: underline; }
+.foot-bottom { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.25rem 2rem; padding-top: 1.25rem; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 0.8125rem; }
+.foot-bottom .copy { grid-column: auto; padding: 0; border: 0; }
+.foot-legal { display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+.foot-legal a { display: inline-flex; align-items: center; min-height: 2.75rem; color: inherit; text-decoration: none; }
+.foot-legal a:hover { text-decoration: underline; }
+@media (max-width: 63.99rem) {
+  .foot { grid-template-columns: 1fr; }
+  .foot-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+</style>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -346,17 +364,24 @@ html[lang="en"] .page-title { letter-spacing: -0.03em; }
         <li class="has-sub"><a href="proto-9-stillness.html#community" aria-current="true"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Community&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Community&lt;/span&gt;">공동체</span> <small data-only="ko">Community</small></a>
           <ul class="sub">
             <li><a href="proto-9-plan.html" aria-current="page" data-en="Pastoral Plan">사목지침</a></li>
+            <li><a href="proto-9-org.html" data-en="Parish Organization">사목 조직</a></li>
             <li><a href="proto-9-committees.html" data-en="Committees">분과 소개</a></li>
-            <li><a href="proto-9-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
+            <li><a href="proto-9-groups.html" data-en="Ministries &amp;amp; Groups">단체 소개</a></li>
           </ul></li>
         <li><a href="proto-9-stillness.html#rites"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Sacraments &amp;amp; Liturgy&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Sacraments&lt;/span&gt;">성사와 전례</span> <small data-only="ko">Sacraments</small></a></li>
-        <li class="has-sub"><a href="proto-9-stillness.html#news"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;News&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;News&lt;/span&gt;">소식</span> <small data-only="ko">News</small></a>
+        <li class="has-sub"><a href="proto-9-stillness.html#about"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;About the Parish&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;About&lt;/span&gt;">본당 소개</span> <small data-only="ko">About</small></a>
           <ul class="sub">
-            <li><a href="proto-9-bulletin-view.html" data-en="This Week’s Bulletin">이번 주 주보</a></li>
-            <li><a href="proto-9-bulletin.html" data-en="Past Bulletins">지난 주보</a></li>
-            <li><a href="proto-9-news.html" data-en="All News">새 소식</a></li>
+            <li><a href="proto-9-history.html" data-en="History">본당 연혁</a></li>
+            <li><a href="proto-9-clergy.html" data-en="Clergy &amp;amp; Religious">사제와 수도자</a></li>
+            <li><a href="proto-9-saints.html" data-en="Patron Saints">주보 성인</a></li>
+            <li><a href="proto-9-tour.html" data-en="Church Tour">성당 둘러보기</a></li>
           </ul></li>
-        <li><a href="proto-9-stillness.html#welcome"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;New Here?&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;New Here?&lt;/span&gt;">처음 오신 분</span> <small data-only="ko">Welcome</small></a></li>
+        <li class="has-sub"><a href="proto-9-stillness.html#welcome"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;New Here?&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;New Here?&lt;/span&gt;">처음 오신 분</span> <small data-only="ko">Welcome</small></a>
+          <ul class="sub">
+            <li><a href="proto-9-stillness.html#welcome" data-en="Becoming Catholic">입교 안내</a></li>
+            <li><a href="proto-9-stillness.html#faq" data-en="FAQ">자주 묻는 질문</a></li>
+            <li><a href="proto-9-district.html" data-en="Find Your District">관할구역 찾기</a></li>
+          </ul></li>
         <li><a href="proto-9-stillness.html#visit"><span data-en="&lt;span class=&quot;nl-l&quot;&gt;Visit Us&lt;/span&gt;&lt;span class=&quot;nl-s&quot;&gt;Visit&lt;/span&gt;">오시는 길</span> <small data-only="ko">Visit</small></a></li>
       </ul>
       <div class="nav-foot">
@@ -380,7 +405,7 @@ html[lang="en"] .page-title { letter-spacing: -0.03em; }
         </div>
         <p class="lead" data-en="Our pastor’s pastoral plan for 2026, addressed to all parishioners.">주임신부님이 교우들에게 보낸 2026년 본당 사목 계획서입니다.</p>
       </div>
-      <nav class="subnav" aria-label="공동체 소개" data-en-aria-label="About our parish community"><ul><li><a href="proto-9-plan.html" aria-current="page" data-en="Pastoral Plan">사목지침</a></li><li><a href="proto-9-committees.html" data-en="Committees">분과 소개</a></li><li><a href="proto-9-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li></ul></nav>
+      <nav class="subnav" aria-label="공동체 소개" data-en-aria-label="About our parish community"><ul><li><a href="proto-9-plan.html" aria-current="page" data-en="Pastoral Plan">사목지침</a></li><li><a href="proto-9-org.html" data-en="Parish Organization">사목 조직</a></li><li><a href="proto-9-committees.html" data-en="Committees">분과 소개</a></li><li><a href="proto-9-groups.html" data-en="Ministries &amp;amp; Groups">단체 소개</a></li></ul></nav>
     </div>
   </section>
   <div class="wrap" id="plan"></div>
@@ -388,30 +413,63 @@ html[lang="en"] .page-title { letter-spacing: -0.03em; }
 
 <footer class="site-footer">
   <div class="wrap foot">
-    <div>
+    <div class="foot-id">
       <a class="brand" href="proto-9-stillness.html" aria-label="천주교 성산동성당 처음으로" data-en-aria-label="Seongsan-dong Catholic Church, home">
         <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
-      <span>
-        <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
-        <span class="wm-en" data-only="en">Seongsan-dong Catholic Church</span>
-        <span class="brand-sub">103 Martyr Saints of Korea</span>
-      </span>
+        <span>
+          <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
+          <span class="wm-en" data-only="en">Seongsan-dong Catholic Church</span>
+          <span class="brand-sub">103 Martyr Saints of Korea</span>
+        </span>
       </a>
+      <p class="foot-info" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul 03996, Republic of Korea&lt;br&gt;Tel. &lt;span class=&quot;nw&quot;&gt;02-6387-1784&lt;/span&gt;, 1785 (from abroad &lt;span class=&quot;nw&quot;&gt;+82-2-6387-1784&lt;/span&gt;)&lt;br&gt;Catholic Archdiocese of Seoul Foundation">03996 서울 마포구 성미산로2길 15<br>전화 02-6387-1784, 1785<br>(재)천주교서울대교구 유지재단 소속</p>
     </div>
-    <p class="foot-info" data-en="15, Seongmisan-ro 2-gil, Mapo-gu, Seoul 03996, Republic of Korea&lt;br&gt;Tel. &lt;span class=&quot;nw&quot;&gt;02-6387-1784&lt;/span&gt;, 1785 (from abroad &lt;span class=&quot;nw&quot;&gt;+82-2-6387-1784&lt;/span&gt;)&lt;br&gt;Catholic Archdiocese of Seoul Foundation">03996 서울 마포구 성미산로2길 15<br>전화 02-6387-1784, 1785<br>(재)천주교서울대교구 유지재단 소속</p>
-    <div class="foot-nav">
-      <ul class="foot-links">
-        <li><a href="proto-9-plan.html" data-en="Pastoral Plan">사목지침</a></li>
-        <li><a href="proto-9-committees.html" data-en="Committees">분과 소개</a></li>
-        <li><a href="proto-9-groups.html" data-en="Ministries &amp; Groups">단체 소개</a></li>
-      </ul>
-      <ul class="foot-links foot-legal">
+    <nav class="foot-nav" aria-label="사이트 안내" data-en-aria-label="Site links">
+      <div>
+        <p class="foot-h" data-en="About the Parish">본당 소개</p>
+        <ul class="foot-links">
+          <li><a href="proto-9-history.html" data-en="History">본당 연혁</a></li>
+          <li><a href="proto-9-clergy.html" data-en="Clergy &amp;amp; Religious">사제와 수도자</a></li>
+          <li><a href="proto-9-saints.html" data-en="Patron Saints">주보 성인</a></li>
+          <li><a href="proto-9-tour.html" data-en="Church Tour">성당 둘러보기</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h" data-en="Community">공동체</p>
+        <ul class="foot-links">
+          <li><a href="proto-9-plan.html" data-en="Pastoral Plan">사목지침</a></li>
+          <li><a href="proto-9-org.html" data-en="Parish Organization">사목 조직</a></li>
+          <li><a href="proto-9-committees.html" data-en="Committees">분과 소개</a></li>
+          <li><a href="proto-9-groups.html" data-en="Ministries &amp;amp; Groups">단체 소개</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h" data-en="New Here?">처음 오신 분</p>
+        <ul class="foot-links">
+          <li><a href="proto-9-stillness.html#welcome" data-en="Becoming Catholic">입교 안내</a></li>
+          <li><a href="proto-9-stillness.html#faq" data-en="FAQ">자주 묻는 질문</a></li>
+          <li><a href="proto-9-district.html" data-en="Find Your District">관할구역 찾기</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="foot-h" data-en="Catholic Links">가톨릭 사이트</p>
+        <ul class="foot-links">
+          <li><a href="https://www.vatican.va/" data-en="The Holy See">교황청</a></li>
+          <li><a href="https://aos.catholic.or.kr/" data-en="Archdiocese of Seoul">천주교 서울대교구</a></li>
+          <li><a href="https://maria.catholic.or.kr/" data-en="Goodnews">굿뉴스</a></li>
+          <li><a href="https://www.cpbc.co.kr/" data-en="CPBC">가톨릭평화방송</a></li>
+          <li><a href="https://www.catholictimes.org/" data-en="The Catholic Times">가톨릭신문</a></li>
+          <li><a href="https://school.catholic.or.kr/" data-en="Online Catechesis">가톨릭 인터넷 교리</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="foot-bottom">
+      <p class="copy" data-en="© 2026 Seongsan-dong Catholic Church">© 2026 천주교 성산동성당</p>
+      <ul class="foot-legal">
         <li><a href="#"><strong data-en="Privacy Policy">개인정보 처리방침</strong></a></li>
         <li><a href="#" data-en="Terms of Use">이용약관</a></li>
-        <li><a href="#" data-en="Ministry Resources Login">단체 자료실 로그인</a></li>
       </ul>
     </div>
-    <p class="copy" data-en="© 2026 Seongsan-dong Catholic Church">© 2026 천주교 성산동성당</p>
   </div>
 </footer>
 
@@ -434,7 +492,6 @@ document.documentElement.classList.add('js');
   const md = s => { const d = toDate(s); if (EN) return I18N.date(d, d.getFullYear() === thisYear ? 'md' : 'ymd'); return `${d.getFullYear() === thisYear ? '' : `${d.getFullYear()}년 `}${d.getMonth() + 1}월 ${d.getDate()}일`; };
   const fullDate = s => { const d = toDate(s); return EN ? I18N.date(d, 'ymdw') : `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일 ${DAY[d.getDay()]}`; };
   const param = k => new URLSearchParams(location.search).get(k);
-  const BOARD = window.BOARD || { bulletins: [], news: [] };
 
   // 천천히 드러나기: 나중에 그린 요소도 reveal(root)로 관찰한다
   const io = reduce || !('IntersectionObserver' in window) ? null : new IntersectionObserver(entries => entries.forEach(en => {
