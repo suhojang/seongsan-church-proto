@@ -1,5 +1,7 @@
 // 신부님·수녀님·본당 출신 성직자와 수도자 데이터 (www.103.or.kr 이미지 게시물을 글로 옮김, 2026-11-23)
-// 출처: 신부님 소개(pid=165), 수녀님 소개(pid=166), 본당 출신 성직·수도자 소개(pid=79). 사진과 이메일·웹 주소는 옮기지 않았다.
+// 출처: 신부님 소개(pid=165), 수녀님 소개(pid=166), 본당 출신 성직·수도자 소개(pid=79). 이메일·웹 주소는 옮기지 않았다.
+// photo = 사진(신부님 pid=165·수녀님 pid=166 이미지에서 잘라 낸 media/clergy/*.webp, 원본 크기 그대로 약 120px). 2026-11-23 사용자 요청으로 넣음.
+//   원본이 회색 빈 얼굴인 수녀님 5분(안보화·황정임·이필주·김남순·유영상)은 photo 를 두지 않았다. 본당 출신은 아직 없음.
 // 로컬 파일로 열리도록 fetch 대신 전역 변수로 둔다. 영문은 각 사람의 en 에 둔다(data/glossary.js 기준).
 // groups: 이미지에 나오는 순서대로. id, title(이미지에 인쇄된 칸 제목), en(영문 제목), page·pageEn(원래 게시물 제목), people.
 // 이미지에 현재 수녀님 칸은 없다(역대 원장수녀님·역대 전교수녀님만 있음). 본당 출신 칸 제목은 원문대로 ‘성직자’·‘수도자’다.
@@ -18,7 +20,7 @@ window.CLERGY = {
    "page": "신부님 소개",
    "pageEn": "Our Priests",
    "people": [
-    {"current": true, "name": "김이균", "baptismal": "파트리치오", "feast": "03-17", "from": "2024-08-27", "motto": "그러나 어둠이 빛을 이겨 본 적이 없다.", "mottoRef": "요한 1,5 · 공동번역", "en": {"name": "Fr. Patrick Kim", "baptismal": "Patrick", "motto": "And the darkness has not overcome it.", "mottoRef": "John 1:5, NABRE"}}
+    {"photo": {"src": "media/clergy/pastor.webp", "w": 121, "h": 142}, "current": true, "name": "김이균", "baptismal": "파트리치오", "feast": "03-17", "from": "2024-08-27", "motto": "그러나 어둠이 빛을 이겨 본 적이 없다.", "mottoRef": "요한 1,5 · 공동번역", "en": {"name": "Fr. Patrick Kim", "baptismal": "Patrick", "motto": "And the darkness has not overcome it.", "mottoRef": "John 1:5, NABRE"}}
    ]
   },
   {
@@ -28,7 +30,7 @@ window.CLERGY = {
    "page": "신부님 소개",
    "pageEn": "Our Priests",
    "people": [
-    {"current": true, "name": "류영우", "baptismal": "다윗", "feast": "12-29", "ordained": "2023-02-03", "from": "2025-02-18", "en": {"name": "Fr. David Ryu", "baptismal": "David"}}
+    {"photo": {"src": "media/clergy/vicar.webp", "w": 120, "h": 120}, "current": true, "name": "류영우", "baptismal": "다윗", "feast": "12-29", "ordained": "2023-02-03", "from": "2025-02-18", "en": {"name": "Fr. David Ryu", "baptismal": "David"}}
    ]
   },
   {
@@ -38,17 +40,17 @@ window.CLERGY = {
    "page": "신부님 소개",
    "pageEn": "Our Priests",
    "people": [
-    {"ord": 1, "name": "박성구", "baptismal": "요셉", "feast": "03-19", "from": "1981-09-01", "to": "1986-08-28", "died": "2019-11-18", "en": {"name": "Fr. Joseph Park", "baptismal": "Joseph"}},
-    {"ord": 2, "name": "김자문", "baptismal": "네레오", "feast": "05-12", "from": "1986-08-29", "to": "1992-10-07", "died": "2011-10-19", "en": {"name": "Fr. Nereus Kim", "baptismal": "Nereus"}},
-    {"ord": 3, "name": "김정직", "baptismal": "디오니시오", "feast": "10-09", "from": "1992-10-08", "to": "1996-10-10", "died": "2016-11-21", "en": {"name": "Fr. Denis Kim", "baptismal": "Denis"}},
-    {"ord": 4, "name": "김병일", "baptismal": "요셉", "feast": "03-19", "from": "1996-10-11", "to": "2001-10-04", "died": "2016-03-07", "en": {"name": "Fr. Joseph Kim", "baptismal": "Joseph"}},
-    {"ord": 5, "name": "김승구", "baptismal": "마르띠노", "feast": "11-11", "from": "2001-10-05", "to": "2006-09-05", "en": {"name": "Fr. Martin Kim", "baptismal": "Martin"}},
-    {"ord": 6, "name": "소윤섭", "baptismal": "요셉", "feast": "05-01", "from": "2006-09-05", "to": "2006-12-19", "en": {"name": "Fr. Joseph So", "baptismal": "Joseph"}},
-    {"ord": 7, "name": "최주호", "baptismal": "대건안드레아", "feast": "07-05", "from": "2006-12-20", "to": "2008-08-30", "died": "2008-08-30", "en": {"name": "Fr. Andrew Choi", "baptismal": "Andrew Kim Tae-gon"}},
-    {"ord": 8, "name": "김연범", "baptismal": "안토니오", "feast": "06-13", "from": "2008-08-31", "to": "2013-08-26", "en": {"name": "Fr. Anthony Kim", "baptismal": "Anthony"}},
-    {"ord": 9, "name": "이원규", "baptismal": "마태오", "feast": "09-21", "from": "2013-08-27", "to": "2017-02-14", "en": {"name": "Fr. Matthew Lee", "baptismal": "Matthew"}},
-    {"ord": 10, "name": "권철호", "baptismal": "다니엘", "feast": "07-21", "from": "2017-02-15", "to": "2022-02-07", "en": {"name": "Fr. Daniel Kwon", "baptismal": "Daniel"}},
-    {"ord": 11, "name": "정순오", "baptismal": "미카엘", "feast": "09-29", "from": "2022-02-07", "to": "2024-08-27", "en": {"name": "Fr. Michael Chung", "baptismal": "Michael"}}
+    {"photo": {"src": "media/clergy/past-pastors-01.webp", "w": 120, "h": 120}, "ord": 1, "name": "박성구", "baptismal": "요셉", "feast": "03-19", "from": "1981-09-01", "to": "1986-08-28", "died": "2019-11-18", "en": {"name": "Fr. Joseph Park", "baptismal": "Joseph"}},
+    {"photo": {"src": "media/clergy/past-pastors-02.webp", "w": 120, "h": 120}, "ord": 2, "name": "김자문", "baptismal": "네레오", "feast": "05-12", "from": "1986-08-29", "to": "1992-10-07", "died": "2011-10-19", "en": {"name": "Fr. Nereus Kim", "baptismal": "Nereus"}},
+    {"photo": {"src": "media/clergy/past-pastors-03.webp", "w": 120, "h": 124}, "ord": 3, "name": "김정직", "baptismal": "디오니시오", "feast": "10-09", "from": "1992-10-08", "to": "1996-10-10", "died": "2016-11-21", "en": {"name": "Fr. Denis Kim", "baptismal": "Denis"}},
+    {"photo": {"src": "media/clergy/past-pastors-04.webp", "w": 120, "h": 120}, "ord": 4, "name": "김병일", "baptismal": "요셉", "feast": "03-19", "from": "1996-10-11", "to": "2001-10-04", "died": "2016-03-07", "en": {"name": "Fr. Joseph Kim", "baptismal": "Joseph"}},
+    {"photo": {"src": "media/clergy/past-pastors-05.webp", "w": 120, "h": 120}, "ord": 5, "name": "김승구", "baptismal": "마르띠노", "feast": "11-11", "from": "2001-10-05", "to": "2006-09-05", "en": {"name": "Fr. Martin Kim", "baptismal": "Martin"}},
+    {"photo": {"src": "media/clergy/past-pastors-06.webp", "w": 120, "h": 120}, "ord": 6, "name": "소윤섭", "baptismal": "요셉", "feast": "05-01", "from": "2006-09-05", "to": "2006-12-19", "en": {"name": "Fr. Joseph So", "baptismal": "Joseph"}},
+    {"photo": {"src": "media/clergy/past-pastors-07.webp", "w": 120, "h": 120}, "ord": 7, "name": "최주호", "baptismal": "대건안드레아", "feast": "07-05", "from": "2006-12-20", "to": "2008-08-30", "died": "2008-08-30", "en": {"name": "Fr. Andrew Choi", "baptismal": "Andrew Kim Tae-gon"}},
+    {"photo": {"src": "media/clergy/past-pastors-08.webp", "w": 120, "h": 120}, "ord": 8, "name": "김연범", "baptismal": "안토니오", "feast": "06-13", "from": "2008-08-31", "to": "2013-08-26", "en": {"name": "Fr. Anthony Kim", "baptismal": "Anthony"}},
+    {"photo": {"src": "media/clergy/past-pastors-09.webp", "w": 120, "h": 120}, "ord": 9, "name": "이원규", "baptismal": "마태오", "feast": "09-21", "from": "2013-08-27", "to": "2017-02-14", "en": {"name": "Fr. Matthew Lee", "baptismal": "Matthew"}},
+    {"photo": {"src": "media/clergy/past-pastors-10.webp", "w": 121, "h": 127}, "ord": 10, "name": "권철호", "baptismal": "다니엘", "feast": "07-21", "from": "2017-02-15", "to": "2022-02-07", "en": {"name": "Fr. Daniel Kwon", "baptismal": "Daniel"}},
+    {"photo": {"src": "media/clergy/past-pastors-11.webp", "w": 122, "h": 143}, "ord": 11, "name": "정순오", "baptismal": "미카엘", "feast": "09-29", "from": "2022-02-07", "to": "2024-08-27", "en": {"name": "Fr. Michael Chung", "baptismal": "Michael"}}
    ]
   },
   {
@@ -58,9 +60,9 @@ window.CLERGY = {
    "page": "신부님 소개",
    "pageEn": "Our Priests",
    "people": [
-    {"ord": 1, "name": "장세훈", "baptismal": "임마누엘", "feast": "12-25", "ordained": "2014", "from": "2019-02-19", "to": "2021-02-16", "en": {"name": "Fr. Emmanuel Jang", "baptismal": "Emmanuel"}},
-    {"ord": 2, "name": "나창식", "baptismal": "안드레아", "feast": "11-30", "ordained": "2011", "from": "2021-02-16", "to": "2023-02-14", "en": {"name": "Fr. Andrew Na", "baptismal": "Andrew"}},
-    {"ord": 3, "name": "김종욱", "baptismal": "바오로", "feast": "06-29", "ordained": "2020", "from": "2023-02-14", "en": {"name": "Fr. Paul Kim", "baptismal": "Paul"}}
+    {"photo": {"src": "media/clergy/past-vicars-01.webp", "w": 120, "h": 120}, "ord": 1, "name": "장세훈", "baptismal": "임마누엘", "feast": "12-25", "ordained": "2014", "from": "2019-02-19", "to": "2021-02-16", "en": {"name": "Fr. Emmanuel Jang", "baptismal": "Emmanuel"}},
+    {"photo": {"src": "media/clergy/past-vicars-02.webp", "w": 120, "h": 120}, "ord": 2, "name": "나창식", "baptismal": "안드레아", "feast": "11-30", "ordained": "2011", "from": "2021-02-16", "to": "2023-02-14", "en": {"name": "Fr. Andrew Na", "baptismal": "Andrew"}},
+    {"photo": {"src": "media/clergy/past-vicars-03.webp", "w": 120, "h": 120}, "ord": 3, "name": "김종욱", "baptismal": "바오로", "feast": "06-29", "ordained": "2020", "from": "2023-02-14", "en": {"name": "Fr. Paul Kim", "baptismal": "Paul"}}
    ]
   },
   {
@@ -70,27 +72,27 @@ window.CLERGY = {
    "page": "신부님 소개",
    "pageEn": "Our Priests",
    "people": [
-    {"ord": 1, "name": "최원일", "baptismal": "미카엘", "feast": "09-29", "from": "1989-02-19", "to": "1990-02-22", "en": {"name": "Fr. Michael Choi", "baptismal": "Michael"}},
-    {"ord": 2, "name": "송락", "baptismal": "이냐시오", "from": "1990-02-22", "to": "1991-09-04", "en": {"name": "Fr. Ignatius Song", "baptismal": "Ignatius"}},
-    {"ord": 3, "name": "이명찬", "baptismal": "토마스", "feast": "07-03", "from": "1991-09-05", "to": "1992-10-07", "en": {"name": "Fr. Thomas Lee", "baptismal": "Thomas"}},
-    {"ord": 4, "name": "변우찬", "baptismal": "사도요한", "feast": "12-27", "from": "1992-10-08", "to": "1993-11-04", "en": {"name": "Fr. John Byun", "baptismal": "John"}},
-    {"ord": 5, "name": "윤일선", "baptismal": "타르치시오", "feast": "08-15", "from": "1993-11-05", "to": "1995-11-30", "en": {"name": "Fr. Tarcisius Yoon", "baptismal": "Tarcisius"}},
-    {"ord": 6, "name": "김지영", "baptismal": "사무엘", "feast": "08-20", "from": "1994-12-03", "to": "1996-11-28", "en": {"name": "Fr. Samuel Kim", "baptismal": "Samuel"}},
-    {"ord": 7, "name": "양해룡", "baptismal": "사도 요한", "feast": "12-27", "from": "1995-12-01", "to": "1997-11-28", "en": {"name": "Fr. John Yang", "baptismal": "John"}},
-    {"ord": 8, "name": "이용희", "baptismal": "사도 요한", "feast": "12-27", "from": "1996-11-30", "to": "1997-11-28", "en": {"name": "Fr. John Lee", "baptismal": "John"}},
-    {"ord": 9, "name": "김한석", "baptismal": "토마스", "feast": "07-03", "from": "1997-11-29", "to": "2000-02-28", "en": {"name": "Fr. Thomas Kim", "baptismal": "Thomas"}},
-    {"ord": 10, "name": "이승주", "baptismal": "대건 안드레아", "feast": "07-05", "from": "1997-11-29", "to": "1999-12-02", "en": {"name": "Fr. Andrew Lee", "baptismal": "Andrew Kim Tae-gon"}},
-    {"ord": 11, "name": "이범주", "baptismal": "사도 요한", "feast": "12-27", "from": "1999-12-03", "to": "2001-12-04", "en": {"name": "Fr. John Lee", "baptismal": "John"}},
-    {"ord": 12, "name": "강석", "baptismal": "스테파노", "feast": "12-26", "from": "2001-12-05", "to": "2002-03-04", "en": {"name": "Fr. Stephen Kang", "baptismal": "Stephen"}},
-    {"ord": 13, "name": "유청", "baptismal": "시몬", "feast": "10-28", "from": "2002-03-05", "to": "2004-09-23", "en": {"name": "Fr. Simon Yu", "baptismal": "Simon"}},
-    {"ord": 14, "name": "오창석", "baptismal": "요셉", "feast": "03-19", "from": "2004-09-24", "to": "2004-12-02", "en": {"name": "Fr. Joseph Oh", "baptismal": "Joseph"}},
-    {"ord": 15, "name": "최용진", "baptismal": "레미지오", "feast": "10-01", "from": "2004-12-03", "to": "2007-11-19", "en": {"name": "Fr. Remigius Choi", "baptismal": "Remigius"}},
-    {"ord": 16, "name": "나충열", "baptismal": "요셉", "feast": "03-19", "from": "2007-11-20", "to": "2008-12-08", "en": {"name": "Fr. Joseph Na", "baptismal": "Joseph"}},
-    {"ord": 17, "name": "윤종상", "baptismal": "가브리엘", "feast": "09-29", "from": "2008-12-09", "to": "2011-02-21", "en": {"name": "Fr. Gabriel Yoon", "baptismal": "Gabriel"}},
-    {"ord": 18, "name": "신동원", "baptismal": "요셉", "feast": "03-19", "from": "2011-02-22", "to": "2013-02-11", "en": {"name": "Fr. Joseph Shin", "baptismal": "Joseph"}},
-    {"ord": 19, "name": "김경영", "baptismal": "영주바오로", "feast": "09-20", "from": "2013-02-12", "to": "2015-02-16", "en": {"name": "Fr. Paul Kim", "baptismal": "Paul Hong Yong-ju"}},
-    {"ord": 20, "name": "박준병", "baptismal": "암브로시오", "feast": "12-07", "from": "2015-02-17", "to": "2017-02-14", "en": {"name": "Fr. Ambrose Park", "baptismal": "Ambrose"}},
-    {"ord": 21, "name": "최영섭", "baptismal": "후고", "feast": "04-01", "from": "2017-02-15", "to": "2019-02-10", "en": {"name": "Fr. Hugh Choi", "baptismal": "Hugh"}}
+    {"photo": {"src": "media/clergy/past-assistants-01.webp", "w": 120, "h": 120}, "ord": 1, "name": "최원일", "baptismal": "미카엘", "feast": "09-29", "from": "1989-02-19", "to": "1990-02-22", "en": {"name": "Fr. Michael Choi", "baptismal": "Michael"}},
+    {"photo": {"src": "media/clergy/past-assistants-02.webp", "w": 120, "h": 120}, "ord": 2, "name": "송락", "baptismal": "이냐시오", "from": "1990-02-22", "to": "1991-09-04", "en": {"name": "Fr. Ignatius Song", "baptismal": "Ignatius"}},
+    {"photo": {"src": "media/clergy/past-assistants-03.webp", "w": 120, "h": 120}, "ord": 3, "name": "이명찬", "baptismal": "토마스", "feast": "07-03", "from": "1991-09-05", "to": "1992-10-07", "en": {"name": "Fr. Thomas Lee", "baptismal": "Thomas"}},
+    {"photo": {"src": "media/clergy/past-assistants-04.webp", "w": 120, "h": 120}, "ord": 4, "name": "변우찬", "baptismal": "사도요한", "feast": "12-27", "from": "1992-10-08", "to": "1993-11-04", "en": {"name": "Fr. John Byun", "baptismal": "John"}},
+    {"photo": {"src": "media/clergy/past-assistants-05.webp", "w": 120, "h": 120}, "ord": 5, "name": "윤일선", "baptismal": "타르치시오", "feast": "08-15", "from": "1993-11-05", "to": "1995-11-30", "en": {"name": "Fr. Tarcisius Yoon", "baptismal": "Tarcisius"}},
+    {"photo": {"src": "media/clergy/past-assistants-06.webp", "w": 120, "h": 120}, "ord": 6, "name": "김지영", "baptismal": "사무엘", "feast": "08-20", "from": "1994-12-03", "to": "1996-11-28", "en": {"name": "Fr. Samuel Kim", "baptismal": "Samuel"}},
+    {"photo": {"src": "media/clergy/past-assistants-07.webp", "w": 120, "h": 120}, "ord": 7, "name": "양해룡", "baptismal": "사도 요한", "feast": "12-27", "from": "1995-12-01", "to": "1997-11-28", "en": {"name": "Fr. John Yang", "baptismal": "John"}},
+    {"photo": {"src": "media/clergy/past-assistants-08.webp", "w": 120, "h": 120}, "ord": 8, "name": "이용희", "baptismal": "사도 요한", "feast": "12-27", "from": "1996-11-30", "to": "1997-11-28", "en": {"name": "Fr. John Lee", "baptismal": "John"}},
+    {"photo": {"src": "media/clergy/past-assistants-09.webp", "w": 120, "h": 120}, "ord": 9, "name": "김한석", "baptismal": "토마스", "feast": "07-03", "from": "1997-11-29", "to": "2000-02-28", "en": {"name": "Fr. Thomas Kim", "baptismal": "Thomas"}},
+    {"photo": {"src": "media/clergy/past-assistants-10.webp", "w": 120, "h": 120}, "ord": 10, "name": "이승주", "baptismal": "대건 안드레아", "feast": "07-05", "from": "1997-11-29", "to": "1999-12-02", "en": {"name": "Fr. Andrew Lee", "baptismal": "Andrew Kim Tae-gon"}},
+    {"photo": {"src": "media/clergy/past-assistants-11.webp", "w": 120, "h": 120}, "ord": 11, "name": "이범주", "baptismal": "사도 요한", "feast": "12-27", "from": "1999-12-03", "to": "2001-12-04", "en": {"name": "Fr. John Lee", "baptismal": "John"}},
+    {"photo": {"src": "media/clergy/past-assistants-12.webp", "w": 120, "h": 120}, "ord": 12, "name": "강석", "baptismal": "스테파노", "feast": "12-26", "from": "2001-12-05", "to": "2002-03-04", "en": {"name": "Fr. Stephen Kang", "baptismal": "Stephen"}},
+    {"photo": {"src": "media/clergy/past-assistants-13.webp", "w": 120, "h": 120}, "ord": 13, "name": "유청", "baptismal": "시몬", "feast": "10-28", "from": "2002-03-05", "to": "2004-09-23", "en": {"name": "Fr. Simon Yu", "baptismal": "Simon"}},
+    {"photo": {"src": "media/clergy/past-assistants-14.webp", "w": 120, "h": 120}, "ord": 14, "name": "오창석", "baptismal": "요셉", "feast": "03-19", "from": "2004-09-24", "to": "2004-12-02", "en": {"name": "Fr. Joseph Oh", "baptismal": "Joseph"}},
+    {"photo": {"src": "media/clergy/past-assistants-15.webp", "w": 120, "h": 120}, "ord": 15, "name": "최용진", "baptismal": "레미지오", "feast": "10-01", "from": "2004-12-03", "to": "2007-11-19", "en": {"name": "Fr. Remigius Choi", "baptismal": "Remigius"}},
+    {"photo": {"src": "media/clergy/past-assistants-16.webp", "w": 120, "h": 120}, "ord": 16, "name": "나충열", "baptismal": "요셉", "feast": "03-19", "from": "2007-11-20", "to": "2008-12-08", "en": {"name": "Fr. Joseph Na", "baptismal": "Joseph"}},
+    {"photo": {"src": "media/clergy/past-assistants-17.webp", "w": 120, "h": 120}, "ord": 17, "name": "윤종상", "baptismal": "가브리엘", "feast": "09-29", "from": "2008-12-09", "to": "2011-02-21", "en": {"name": "Fr. Gabriel Yoon", "baptismal": "Gabriel"}},
+    {"photo": {"src": "media/clergy/past-assistants-18.webp", "w": 120, "h": 120}, "ord": 18, "name": "신동원", "baptismal": "요셉", "feast": "03-19", "from": "2011-02-22", "to": "2013-02-11", "en": {"name": "Fr. Joseph Shin", "baptismal": "Joseph"}},
+    {"photo": {"src": "media/clergy/past-assistants-19.webp", "w": 120, "h": 120}, "ord": 19, "name": "김경영", "baptismal": "영주바오로", "feast": "09-20", "from": "2013-02-12", "to": "2015-02-16", "en": {"name": "Fr. Paul Kim", "baptismal": "Paul Hong Yong-ju"}},
+    {"photo": {"src": "media/clergy/past-assistants-20.webp", "w": 120, "h": 120}, "ord": 20, "name": "박준병", "baptismal": "암브로시오", "feast": "12-07", "from": "2015-02-17", "to": "2017-02-14", "en": {"name": "Fr. Ambrose Park", "baptismal": "Ambrose"}},
+    {"photo": {"src": "media/clergy/past-assistants-21.webp", "w": 120, "h": 120}, "ord": 21, "name": "최영섭", "baptismal": "후고", "feast": "04-01", "from": "2017-02-15", "to": "2019-02-10", "en": {"name": "Fr. Hugh Choi", "baptismal": "Hugh"}}
    ]
   },
   {
@@ -100,20 +102,20 @@ window.CLERGY = {
    "page": "수녀님 소개",
    "pageEn": "Our Sisters",
    "people": [
-    {"name": "김경자", "baptismal": "베드로", "from": "1986-02-20", "to": "1989-02-09", "en": {"name": "Sr. Peter Kim", "baptismal": "Peter"}},
-    {"name": "길정순", "baptismal": "쥬리아", "from": "1989-02-10", "to": "1991-02-09", "en": {"name": "Sr. Julia Gil", "baptismal": "Julia"}},
-    {"name": "심진순", "baptismal": "가오로", "from": "1992-02-10", "to": "1995-02-09", "en": {"name": "Sr. Shim"}},
+    {"photo": {"src": "media/clergy/past-superiors-01.webp", "w": 120, "h": 120}, "name": "김경자", "baptismal": "베드로", "from": "1986-02-20", "to": "1989-02-09", "en": {"name": "Sr. Peter Kim", "baptismal": "Peter"}},
+    {"photo": {"src": "media/clergy/past-superiors-02.webp", "w": 120, "h": 120}, "name": "길정순", "baptismal": "쥬리아", "from": "1989-02-10", "to": "1991-02-09", "en": {"name": "Sr. Julia Gil", "baptismal": "Julia"}},
+    {"photo": {"src": "media/clergy/past-superiors-03.webp", "w": 120, "h": 120}, "name": "심진순", "baptismal": "가오로", "from": "1992-02-10", "to": "1995-02-09", "en": {"name": "Sr. Shim"}},
     {"name": "안보화", "baptismal": "세바스티아노", "from": "1995-02-10", "to": "1998-02-09", "en": {"name": "Sr. Sebastian Ahn", "baptismal": "Sebastian"}},
-    {"name": "김춘희", "baptismal": "안드레아 글라라", "from": "1998-02-10", "to": "2000-02-10", "en": {"name": "Sr. Andrea Clare Kim", "baptismal": "Andrea Clare"}},
-    {"name": "김수자", "baptismal": "글라라", "from": "2000-02-11", "to": "2003-01-28", "en": {"name": "Sr. Clare Kim", "baptismal": "Clare"}},
-    {"name": "김현립", "baptismal": "젬마", "from": "2003-01-28", "to": "2006-02-08", "en": {"name": "Sr. Gemma Kim", "baptismal": "Gemma"}},
-    {"name": "김남현", "baptismal": "레오나", "from": "2006-02-08", "to": "2009-01-28", "en": {"name": "Sr. Leona Kim", "baptismal": "Leona"}},
-    {"name": "김옥희", "baptismal": "데레사", "from": "2009-01-28", "to": "2012-02-03", "en": {"name": "Sr. Teresa Kim", "baptismal": "Teresa"}},
-    {"name": "임성심", "baptismal": "세실리아", "from": "2012-02-04", "to": "2015-01-30", "en": {"name": "Sr. Cecilia Lim", "baptismal": "Cecilia"}},
-    {"name": "최선화", "baptismal": "사루비아", "from": "2015-01-31", "to": "2018-01-30", "en": {"name": "Sr. Salvia Choi", "baptismal": "Salvia"}},
-    {"name": "진임희", "baptismal": "아녜스", "from": "2018-01-30", "to": "2021-01-28", "en": {"name": "Sr. Agnes Jin", "baptismal": "Agnes"}},
-    {"name": "양천혜", "baptismal": "수산나", "from": "2021-01-28", "to": "2023-01-31", "en": {"name": "Sr. Susanna Yang", "baptismal": "Susanna"}},
-    {"name": "황우민", "baptismal": "비비나", "from": "2023-02-01", "to": "2025-08-28", "en": {"name": "Sr. Vivina Hwang", "baptismal": "Vivina"}}
+    {"photo": {"src": "media/clergy/past-superiors-05.webp", "w": 120, "h": 120}, "name": "김춘희", "baptismal": "안드레아 글라라", "from": "1998-02-10", "to": "2000-02-10", "en": {"name": "Sr. Andrea Clare Kim", "baptismal": "Andrea Clare"}},
+    {"photo": {"src": "media/clergy/past-superiors-06.webp", "w": 120, "h": 120}, "name": "김수자", "baptismal": "글라라", "from": "2000-02-11", "to": "2003-01-28", "en": {"name": "Sr. Clare Kim", "baptismal": "Clare"}},
+    {"photo": {"src": "media/clergy/past-superiors-07.webp", "w": 120, "h": 120}, "name": "김현립", "baptismal": "젬마", "from": "2003-01-28", "to": "2006-02-08", "en": {"name": "Sr. Gemma Kim", "baptismal": "Gemma"}},
+    {"photo": {"src": "media/clergy/past-superiors-08.webp", "w": 120, "h": 120}, "name": "김남현", "baptismal": "레오나", "from": "2006-02-08", "to": "2009-01-28", "en": {"name": "Sr. Leona Kim", "baptismal": "Leona"}},
+    {"photo": {"src": "media/clergy/past-superiors-09.webp", "w": 120, "h": 120}, "name": "김옥희", "baptismal": "데레사", "from": "2009-01-28", "to": "2012-02-03", "en": {"name": "Sr. Teresa Kim", "baptismal": "Teresa"}},
+    {"photo": {"src": "media/clergy/past-superiors-10.webp", "w": 120, "h": 120}, "name": "임성심", "baptismal": "세실리아", "from": "2012-02-04", "to": "2015-01-30", "en": {"name": "Sr. Cecilia Lim", "baptismal": "Cecilia"}},
+    {"photo": {"src": "media/clergy/past-superiors-11.webp", "w": 120, "h": 120}, "name": "최선화", "baptismal": "사루비아", "from": "2015-01-31", "to": "2018-01-30", "en": {"name": "Sr. Salvia Choi", "baptismal": "Salvia"}},
+    {"photo": {"src": "media/clergy/past-superiors-12.webp", "w": 120, "h": 120}, "name": "진임희", "baptismal": "아녜스", "from": "2018-01-30", "to": "2021-01-28", "en": {"name": "Sr. Agnes Jin", "baptismal": "Agnes"}},
+    {"photo": {"src": "media/clergy/past-superiors-13.webp", "w": 120, "h": 120}, "name": "양천혜", "baptismal": "수산나", "from": "2021-01-28", "to": "2023-01-31", "en": {"name": "Sr. Susanna Yang", "baptismal": "Susanna"}},
+    {"photo": {"src": "media/clergy/past-superiors-14.webp", "w": 120, "h": 120}, "name": "황우민", "baptismal": "비비나", "from": "2023-02-01", "to": "2025-08-28", "en": {"name": "Sr. Vivina Hwang", "baptismal": "Vivina"}}
    ]
   },
   {
@@ -123,37 +125,37 @@ window.CLERGY = {
    "page": "수녀님 소개",
    "pageEn": "Our Sisters",
    "people": [
-    {"name": "윤옥순", "baptismal": "바르바라", "from": "1982-02-20", "to": "1984-02-05", "en": {"name": "Sr. Barbara Yoon", "baptismal": "Barbara"}},
-    {"name": "김정옥", "baptismal": "베드로", "from": "1984-02-06", "to": "1986-02-19", "en": {"name": "Sr. Peter Kim", "baptismal": "Peter"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-01.webp", "w": 120, "h": 120}, "name": "윤옥순", "baptismal": "바르바라", "from": "1982-02-20", "to": "1984-02-05", "en": {"name": "Sr. Barbara Yoon", "baptismal": "Barbara"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-02.webp", "w": 120, "h": 120}, "name": "김정옥", "baptismal": "베드로", "from": "1984-02-06", "to": "1986-02-19", "en": {"name": "Sr. Peter Kim", "baptismal": "Peter"}},
     {"name": "황정임", "baptismal": "젬마", "from": "1984-02-20", "to": "1986-02-19", "en": {"name": "Sr. Gemma Hwang", "baptismal": "Gemma"}},
-    {"name": "송해남", "baptismal": "젬마", "from": "1986-02-20", "to": "1988-02-09", "en": {"name": "Sr. Gemma Song", "baptismal": "Gemma"}},
-    {"name": "최은숙", "baptismal": "레지나", "from": "1987-02-10", "to": "1989-02-09", "en": {"name": "Sr. Regina Choi", "baptismal": "Regina"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-04.webp", "w": 120, "h": 120}, "name": "송해남", "baptismal": "젬마", "from": "1986-02-20", "to": "1988-02-09", "en": {"name": "Sr. Gemma Song", "baptismal": "Gemma"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-05.webp", "w": 120, "h": 120}, "name": "최은숙", "baptismal": "레지나", "from": "1987-02-10", "to": "1989-02-09", "en": {"name": "Sr. Regina Choi", "baptismal": "Regina"}},
     {"name": "이필주", "baptismal": "젬마", "from": "1988-02-10", "to": "1990-02-05", "en": {"name": "Sr. Gemma Lee", "baptismal": "Gemma"}},
-    {"name": "정춘영", "baptismal": "로사", "from": "1989-02-10", "to": "1991-02-09", "en": {"name": "Sr. Rose Chung", "baptismal": "Rose"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-07.webp", "w": 120, "h": 120}, "name": "정춘영", "baptismal": "로사", "from": "1989-02-10", "to": "1991-02-09", "en": {"name": "Sr. Rose Chung", "baptismal": "Rose"}},
     {"name": "김남순", "baptismal": "아녜스", "from": "1990-02-10", "to": "1991-02-09", "en": {"name": "Sr. Agnes Kim", "baptismal": "Agnes"}},
-    {"name": "유순식", "baptismal": "데레사", "from": "1991-03-24", "to": "1992-02-09", "en": {"name": "Sr. Teresa Yu", "baptismal": "Teresa"}},
-    {"name": "최명분", "baptismal": "요안나", "from": "1991-02-10", "to": "1994-02-13", "en": {"name": "Sr. Joanna Choi", "baptismal": "Joanna"}},
-    {"name": "신창옥", "baptismal": "헬레나", "from": "1992-02-10", "to": "1994-02-10", "en": {"name": "Sr. Helena Shin", "baptismal": "Helena"}},
-    {"name": "이국희", "baptismal": "데레사", "from": "1994-02-15", "to": "1997-02-10", "en": {"name": "Sr. Teresa Lee", "baptismal": "Teresa"}},
-    {"name": "이상미", "baptismal": "아녜스", "from": "1994-02-16", "to": "1995-06-10", "en": {"name": "Sr. Agnes Lee", "baptismal": "Agnes"}},
-    {"name": "김은주", "baptismal": "루갈다", "from": "1996-02-10", "to": "1998-02-09", "en": {"name": "Sr. Lutgarde Kim", "baptismal": "Lutgarde"}},
-    {"name": "임부용", "baptismal": "데레사", "from": "1997-02-10", "to": "2000-02-10", "en": {"name": "Sr. Teresa Lim", "baptismal": "Teresa"}},
-    {"name": "정오녀", "baptismal": "카타리나", "from": "1998-02-10", "to": "2000-02-10", "en": {"name": "Sr. Catherine Chung", "baptismal": "Catherine"}},
-    {"name": "이순이", "baptismal": "베로니카", "from": "2000-02-11", "to": "2001-02-10", "en": {"name": "Sr. Veronica Lee", "baptismal": "Veronica"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-09.webp", "w": 120, "h": 120}, "name": "유순식", "baptismal": "데레사", "from": "1991-03-24", "to": "1992-02-09", "en": {"name": "Sr. Teresa Yu", "baptismal": "Teresa"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-10.webp", "w": 120, "h": 120}, "name": "최명분", "baptismal": "요안나", "from": "1991-02-10", "to": "1994-02-13", "en": {"name": "Sr. Joanna Choi", "baptismal": "Joanna"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-11.webp", "w": 120, "h": 120}, "name": "신창옥", "baptismal": "헬레나", "from": "1992-02-10", "to": "1994-02-10", "en": {"name": "Sr. Helena Shin", "baptismal": "Helena"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-12.webp", "w": 120, "h": 120}, "name": "이국희", "baptismal": "데레사", "from": "1994-02-15", "to": "1997-02-10", "en": {"name": "Sr. Teresa Lee", "baptismal": "Teresa"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-13.webp", "w": 120, "h": 120}, "name": "이상미", "baptismal": "아녜스", "from": "1994-02-16", "to": "1995-06-10", "en": {"name": "Sr. Agnes Lee", "baptismal": "Agnes"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-14.webp", "w": 120, "h": 120}, "name": "김은주", "baptismal": "루갈다", "from": "1996-02-10", "to": "1998-02-09", "en": {"name": "Sr. Lutgarde Kim", "baptismal": "Lutgarde"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-15.webp", "w": 120, "h": 120}, "name": "임부용", "baptismal": "데레사", "from": "1997-02-10", "to": "2000-02-10", "en": {"name": "Sr. Teresa Lim", "baptismal": "Teresa"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-16.webp", "w": 120, "h": 120}, "name": "정오녀", "baptismal": "카타리나", "from": "1998-02-10", "to": "2000-02-10", "en": {"name": "Sr. Catherine Chung", "baptismal": "Catherine"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-17.webp", "w": 120, "h": 120}, "name": "이순이", "baptismal": "베로니카", "from": "2000-02-11", "to": "2001-02-10", "en": {"name": "Sr. Veronica Lee", "baptismal": "Veronica"}},
     {"name": "유영상", "baptismal": "글라라", "from": "2000-02-11", "to": "2002-02-10", "en": {"name": "Sr. Clare Yu", "baptismal": "Clare"}},
-    {"name": "피영옥", "baptismal": "세실리아", "from": "2001-02-11", "to": "2003-01-28", "en": {"name": "Sr. Cecilia Pi", "baptismal": "Cecilia"}},
-    {"name": "이혜경", "baptismal": "루시아", "from": "2002-02-11", "to": "2004-02-27", "en": {"name": "Sr. Lucy Lee", "baptismal": "Lucy"}},
-    {"name": "박희자", "baptismal": "요안나", "from": "2004-02-10", "to": "2006-02-07", "en": {"name": "Sr. Joanna Park", "baptismal": "Joanna"}},
-    {"name": "이주희", "baptismal": "제노베파", "from": "2006-02-08", "to": "2009-01-28", "en": {"name": "Sr. Genevieve Lee", "baptismal": "Genevieve"}},
-    {"name": "한주혜", "baptismal": "베로니카", "from": "2009-01-29", "to": "2010-08-23", "en": {"name": "Sr. Veronica Han", "baptismal": "Veronica"}},
-    {"name": "김경순", "baptismal": "가타리나", "from": "2010-08-23", "to": "2011-01-26", "en": {"name": "Sr. Catherine Kim", "baptismal": "Catherine"}},
-    {"name": "서건순", "baptismal": "골롬바", "from": "2011-01-26", "to": "2013-01-30", "en": {"name": "Sr. Columba Seo", "baptismal": "Columba"}},
-    {"name": "강정은", "baptismal": "프란치스카", "from": "2013-01-31", "to": "2015-01-30", "en": {"name": "Sr. Frances Kang", "baptismal": "Frances"}},
-    {"name": "강율리아", "baptismal": "율리아", "from": "2015-01-31", "to": "2017-01-31", "en": {"name": "Sr. Julia Kang", "baptismal": "Julia"}},
-    {"name": "이석란", "baptismal": "심포로사", "from": "2017-02-01", "to": "2018-04", "en": {"name": "Sr. Symphorosa Lee", "baptismal": "Symphorosa"}},
-    {"name": "장은주", "baptismal": "미카엘라", "from": "2019-01-31", "to": "2022-01-27", "en": {"name": "Sr. Michaela Jang", "baptismal": "Michaela"}},
-    {"name": "전영희", "baptismal": "데레사", "from": "2022-01-28", "to": "2023-01-31", "en": {"name": "Sr. Teresa Jeon", "baptismal": "Teresa"}},
-    {"name": "강혜숙", "baptismal": "아녜스", "from": "2023-02-01", "to": "2025-08-28", "en": {"name": "Sr. Agnes Kang", "baptismal": "Agnes"}}
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-19.webp", "w": 120, "h": 120}, "name": "피영옥", "baptismal": "세실리아", "from": "2001-02-11", "to": "2003-01-28", "en": {"name": "Sr. Cecilia Pi", "baptismal": "Cecilia"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-20.webp", "w": 120, "h": 120}, "name": "이혜경", "baptismal": "루시아", "from": "2002-02-11", "to": "2004-02-27", "en": {"name": "Sr. Lucy Lee", "baptismal": "Lucy"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-21.webp", "w": 120, "h": 120}, "name": "박희자", "baptismal": "요안나", "from": "2004-02-10", "to": "2006-02-07", "en": {"name": "Sr. Joanna Park", "baptismal": "Joanna"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-22.webp", "w": 120, "h": 120}, "name": "이주희", "baptismal": "제노베파", "from": "2006-02-08", "to": "2009-01-28", "en": {"name": "Sr. Genevieve Lee", "baptismal": "Genevieve"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-23.webp", "w": 120, "h": 120}, "name": "한주혜", "baptismal": "베로니카", "from": "2009-01-29", "to": "2010-08-23", "en": {"name": "Sr. Veronica Han", "baptismal": "Veronica"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-24.webp", "w": 120, "h": 120}, "name": "김경순", "baptismal": "가타리나", "from": "2010-08-23", "to": "2011-01-26", "en": {"name": "Sr. Catherine Kim", "baptismal": "Catherine"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-25.webp", "w": 120, "h": 120}, "name": "서건순", "baptismal": "골롬바", "from": "2011-01-26", "to": "2013-01-30", "en": {"name": "Sr. Columba Seo", "baptismal": "Columba"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-26.webp", "w": 120, "h": 120}, "name": "강정은", "baptismal": "프란치스카", "from": "2013-01-31", "to": "2015-01-30", "en": {"name": "Sr. Frances Kang", "baptismal": "Frances"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-27.webp", "w": 111, "h": 116}, "name": "강율리아", "baptismal": "율리아", "from": "2015-01-31", "to": "2017-01-31", "en": {"name": "Sr. Julia Kang", "baptismal": "Julia"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-28.webp", "w": 120, "h": 119}, "name": "이석란", "baptismal": "심포로사", "from": "2017-02-01", "to": "2018-04", "en": {"name": "Sr. Symphorosa Lee", "baptismal": "Symphorosa"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-29.webp", "w": 119, "h": 140}, "name": "장은주", "baptismal": "미카엘라", "from": "2019-01-31", "to": "2022-01-27", "en": {"name": "Sr. Michaela Jang", "baptismal": "Michaela"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-30.webp", "w": 120, "h": 132}, "name": "전영희", "baptismal": "데레사", "from": "2022-01-28", "to": "2023-01-31", "en": {"name": "Sr. Teresa Jeon", "baptismal": "Teresa"}},
+    {"photo": {"src": "media/clergy/past-pastoral-sisters-31.webp", "w": 120, "h": 144}, "name": "강혜숙", "baptismal": "아녜스", "from": "2023-02-01", "to": "2025-08-28", "en": {"name": "Sr. Agnes Kang", "baptismal": "Agnes"}}
    ]
   },
   {
