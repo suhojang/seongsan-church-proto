@@ -1,7 +1,7 @@
 // 계절 효과 — 모든 시안 공용. </body> 바로 앞에서 불러온다(defer).
 // 서울 시각의 달로 계절을 고른다: 겨울(12·1·2월) 눈, 봄(3월 매화·4월 벚꽃·5월 옅은 꽃잎), 여름(6~8월) 햇살 알갱이,
 // 가을(9월 은행잎·10월 단풍·11월 갈색 잎).
-// 과하지 않게: 화면 가장자리에서만 또렷하고 본문 가운데로 갈수록 거의 사라진다. 개수는 화면 넓이에 맞춰 적게 둔다.
+// 화면 전체에 내리되 가장자리에서 가장 또렷하고 본문 가운데는 조금 옅게(70%) 둔다. 개수는 화면 넓이에 맞춘다.
 // 화면 위에 얹지만 클릭을 막지 않고(pointer-events: none), 머리말(100)·맨 위로 버튼(90) 아래(80)에 둔다.
 // 움직임 줄이기 설정이면 돌리지 않고, 탭이 가려지면 멈춘다.
 // 미리보기: 주소에 ?season=winter|spring|summer|autumn 또는 ?month=1~12 (이 탭에서 다른 페이지로 가도 유지, ?season=auto 로 해제)
@@ -32,14 +32,14 @@
 
   // ---- 달마다 모양·색·개수(1440×900 화면 기준) ----
   var MONTHS = {
-    12: { kind: 'snow', n: 40 }, 1: { kind: 'snow', n: 44 }, 2: { kind: 'snow', n: 30 },
-    3: { kind: 'petal', n: 18, colors: ['#F4E2E2', '#EDCFD3', '#E6C0C6'] },                 // 매화: 희고 연분홍
-    4: { kind: 'petal', n: 24, colors: ['#F2B9C6', '#EBA3B5', '#F5C7D2', '#E79AAE'] },      // 벚꽃
-    5: { kind: 'petal', n: 14, colors: ['#EEDCCB', '#E9D3D8', '#E4D6C4'] },                 // 늦봄: 옅은 꽃잎
-    6: { kind: 'light', n: 14 }, 7: { kind: 'light', n: 16 }, 8: { kind: 'light', n: 14 },
-    9: { kind: 'leaf', n: 13, colors: ['#E2BC4B', '#D8B13D', '#C9B45A', '#B9AF5B'] },       // 은행잎
-    10: { kind: 'leaf', n: 16, colors: ['#C9553D', '#D9822B', '#B8432F', '#E0A03A'] },      // 단풍
-    11: { kind: 'leaf', n: 14, colors: ['#A9773F', '#8C6239', '#B58A4E', '#9A5B36'] }       // 늦가을 갈색 잎
+    12: { kind: 'snow', n: 150 }, 1: { kind: 'snow', n: 170 }, 2: { kind: 'snow', n: 130 },
+    3: { kind: 'petal', n: 70, colors: ['#F0D4D8', '#E8C2C9', '#E2B3BC'] },                 // 매화: 희고 연분홍
+    4: { kind: 'petal', n: 90, colors: ['#F2B0C0', '#E996AB', '#F4BFCC', '#E28BA3'] },      // 벚꽃
+    5: { kind: 'petal', n: 60, colors: ['#E8CDB6', '#E3C1CA', '#DCC6AE'] },                 // 늦봄: 옅은 꽃잎
+    6: { kind: 'light', n: 55 }, 7: { kind: 'light', n: 60 }, 8: { kind: 'light', n: 55 },
+    9: { kind: 'leaf', n: 52, colors: ['#E2BC4B', '#D8B13D', '#C9B45A', '#B9AF5B'] },       // 은행잎
+    10: { kind: 'leaf', n: 62, colors: ['#C9553D', '#D9822B', '#B8432F', '#E0A03A'] },      // 단풍
+    11: { kind: 'leaf', n: 56, colors: ['#A9773F', '#8C6239', '#B58A4E', '#9A5B36'] }       // 늦가을 갈색 잎
   };
   var conf = MONTHS[month];
   if (!conf) return;
@@ -68,10 +68,11 @@
   function snowSprite() {
     return sprite(16, function (g) {
       var r = g.createRadialGradient(8, 8, 0, 8, 8, 8);
-      // 밝은 바탕에서도 보이도록 흰 눈 대신 아주 옅은 청회색의 부드러운 점
-      r.addColorStop(0, 'rgba(214,224,238,1)');
-      r.addColorStop(0.5, 'rgba(178,194,216,0.9)');
-      r.addColorStop(1, 'rgba(168,186,210,0)');
+      // 밝은 바탕에서 흰 눈은 보이지 않으므로, 속이 꽉 찬 옅은 청회색의 부드러운 점으로 그린다
+      r.addColorStop(0, 'rgba(184,200,226,1)');
+      r.addColorStop(0.5, 'rgba(164,183,214,1)');
+      r.addColorStop(0.82, 'rgba(156,176,208,0.5)');
+      r.addColorStop(1, 'rgba(156,176,208,0)');
       g.fillStyle = r; g.beginPath(); g.arc(8, 8, 8, 0, Math.PI * 2); g.fill();
     });
   }
@@ -107,8 +108,8 @@
   function lightSprite() {
     return sprite(32, function (g) {
       var r = g.createRadialGradient(16, 16, 0, 16, 16, 16);
-      r.addColorStop(0, 'rgba(236,198,112,0.55)');
-      r.addColorStop(0.55, 'rgba(232,190,104,0.28)');
+      r.addColorStop(0, 'rgba(232,184,80,1)');
+      r.addColorStop(0.5, 'rgba(228,180,84,0.6)');
       r.addColorStop(1, 'rgba(232,190,104,0)');
       g.fillStyle = r; g.beginPath(); g.arc(16, 16, 16, 0, Math.PI * 2); g.fill();
     });
@@ -128,19 +129,19 @@
     p.x = rnd(0, W);
     p.ph = rnd(0, Math.PI * 2);
     p.rot = rnd(0, Math.PI * 2);
-    if (k === 'snow') { p.s = rnd(2.6, 7); p.vy = 0.18 + p.s * 0.07; p.vx = rnd(-0.08, 0.08); p.sw = rnd(0.25, 0.7); p.a = rnd(0.7, 1); }
-    if (k === 'petal') { p.s = rnd(8, 13); p.vy = rnd(0.35, 0.7); p.vx = rnd(0.25, 0.6); p.sw = rnd(0.4, 1.0); p.vr = rnd(-0.02, 0.02); p.a = rnd(0.8, 1); }
-    if (k === 'leaf') { p.s = rnd(10, 16); p.vy = rnd(0.45, 0.85); p.vx = rnd(-0.15, 0.25); p.sw = rnd(0.6, 1.4); p.vr = rnd(-0.025, 0.025); p.a = rnd(0.65, 0.9); }
-    if (k === 'light') { p.s = rnd(10, 26); p.vy = -rnd(0.08, 0.22); p.vx = rnd(-0.08, 0.08); p.sw = rnd(0.2, 0.5); p.a = rnd(0.4, 0.85); }
+    if (k === 'snow') { p.s = rnd(3.5, 10); p.vy = 0.2 + p.s * 0.07; p.vx = rnd(-0.08, 0.08); p.sw = rnd(0.25, 0.7); p.a = rnd(0.9, 1); }
+    if (k === 'petal') { p.s = rnd(12, 19); p.vy = rnd(0.35, 0.7); p.vx = rnd(0.25, 0.6); p.sw = rnd(0.4, 1.0); p.vr = rnd(-0.02, 0.02); p.a = rnd(0.9, 1); }
+    if (k === 'leaf') { p.s = rnd(14, 22); p.vy = rnd(0.45, 0.85); p.vx = rnd(-0.15, 0.25); p.sw = rnd(0.6, 1.4); p.vr = rnd(-0.025, 0.025); p.a = rnd(0.9, 1); }
+    if (k === 'light') { p.s = rnd(14, 34); p.vy = -rnd(0.1, 0.26); p.vx = rnd(-0.08, 0.08); p.sw = rnd(0.2, 0.5); p.a = rnd(0.7, 1); }
     if (k === 'light') p.y = fresh ? rnd(0, H) : H + p.s;
     else p.y = fresh ? rnd(-H * 0.1, H) : -p.s * 2;
     return p;
   }
-  // 가장자리에서 또렷하고 가운데로 갈수록 옅게
+  // 가장자리에서 가장 또렷하고 가운데(본문)는 조금 옅게
   function edge(x) {
     var d = Math.abs(x - W / 2) / (W / 2);
     var narrow = W < 640;
-    var lo = narrow ? 0.62 : 0.42, hi = narrow ? 0.98 : 0.86, base = narrow ? 0.18 : 0.1;
+    var lo = narrow ? 0.25 : 0.15, hi = narrow ? 0.85 : 0.65, base = narrow ? 0.75 : 0.7;
     var t = Math.min(1, Math.max(0, (d - lo) / (hi - lo)));
     return base + (1 - base) * t * t * (3 - 2 * t);
   }
@@ -150,8 +151,8 @@
     W = window.innerWidth; H = window.innerHeight;
     cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    var area = Math.min(1.6, Math.max(0.35, (W * H) / (1440 * 900)));
-    var want = Math.round(conf.n * area * (W < 640 ? 0.8 : 1));
+    var area = Math.min(1.6, Math.max(0.45, (W * H) / (1440 * 900)));
+    var want = Math.round(conf.n * area);
     while (parts.length < want) parts.push(make({}, true));
     parts.length = want;
   }
