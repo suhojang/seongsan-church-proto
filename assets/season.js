@@ -32,14 +32,14 @@
 
   // ---- 달마다 모양·색·개수(1440×900 화면 기준) ----
   var MONTHS = {
-    12: { kind: 'snow', n: 150 }, 1: { kind: 'snow', n: 170 }, 2: { kind: 'snow', n: 130 },
-    3: { kind: 'petal', n: 70, colors: ['#F0D4D8', '#E8C2C9', '#E2B3BC'] },                 // 매화: 희고 연분홍
-    4: { kind: 'petal', n: 90, colors: ['#F2B0C0', '#E996AB', '#F4BFCC', '#E28BA3'] },      // 벚꽃
-    5: { kind: 'petal', n: 60, colors: ['#E8CDB6', '#E3C1CA', '#DCC6AE'] },                 // 늦봄: 옅은 꽃잎
-    6: { kind: 'light', n: 55 }, 7: { kind: 'light', n: 60 }, 8: { kind: 'light', n: 55 },
-    9: { kind: 'leaf', n: 52, colors: ['#E2BC4B', '#D8B13D', '#C9B45A', '#B9AF5B'] },       // 은행잎
-    10: { kind: 'leaf', n: 62, colors: ['#C9553D', '#D9822B', '#B8432F', '#E0A03A'] },      // 단풍
-    11: { kind: 'leaf', n: 56, colors: ['#A9773F', '#8C6239', '#B58A4E', '#9A5B36'] }       // 늦가을 갈색 잎
+    12: { kind: 'snow', n: 90 }, 1: { kind: 'snow', n: 100 }, 2: { kind: 'snow', n: 75 },
+    3: { kind: 'petal', n: 40, colors: ['#F0D4D8', '#E8C2C9', '#E2B3BC'] },                 // 매화: 희고 연분홍
+    4: { kind: 'petal', n: 50, colors: ['#F2B0C0', '#E996AB', '#F4BFCC', '#E28BA3'] },      // 벚꽃
+    5: { kind: 'petal', n: 34, colors: ['#E8CDB6', '#E3C1CA', '#DCC6AE'] },                 // 늦봄: 옅은 꽃잎
+    6: { kind: 'light', n: 32 }, 7: { kind: 'light', n: 34 }, 8: { kind: 'light', n: 32 },
+    9: { kind: 'leaf', n: 30, colors: ['#E2BC4B', '#D8B13D', '#C9B45A', '#B9AF5B'] },       // 은행잎
+    10: { kind: 'leaf', n: 36, colors: ['#C9553D', '#D9822B', '#B8432F', '#E0A03A'] },      // 단풍
+    11: { kind: 'leaf', n: 32, colors: ['#A9773F', '#8C6239', '#B58A4E', '#9A5B36'] }       // 늦가을 갈색 잎
   };
   var conf = MONTHS[month];
   if (!conf) return;
@@ -182,7 +182,8 @@
     W = window.innerWidth; H = window.innerHeight;
     cv.width = Math.round(W * DPR); cv.height = Math.round(H * DPR);
     ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-    var area = Math.min(1.6, Math.max(0.45, (W * H) / (1440 * 900)));
+    // 화면 넓이에 비례(휴대폰도 PC와 비슷한 촘촘함이 되게 최소 0.3)
+    var area = Math.min(1.6, Math.max(0.3, (W * H) / (1440 * 900)));
     var want = Math.round(conf.n * area);
     while (parts.length < want) parts.push(make({}, true));
     parts.length = want;
