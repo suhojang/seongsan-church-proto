@@ -65,15 +65,41 @@
     draw(g, size);
     return c;
   }
+  // 눈은 두 겹으로 그린다: 바깥 흰 테두리는 어두운 사진 위에서, 안쪽 청회색은 흰 바탕 위에서 보인다.
   function snowSprite() {
     return sprite(16, function (g) {
-      var r = g.createRadialGradient(8, 8, 0, 8, 8, 8);
-      // 밝은 바탕에서 흰 눈은 보이지 않으므로, 속이 꽉 찬 옅은 청회색의 부드러운 점으로 그린다
-      r.addColorStop(0, 'rgba(184,200,226,1)');
-      r.addColorStop(0.5, 'rgba(164,183,214,1)');
-      r.addColorStop(0.82, 'rgba(156,176,208,0.5)');
-      r.addColorStop(1, 'rgba(156,176,208,0)');
-      g.fillStyle = r; g.beginPath(); g.arc(8, 8, 8, 0, Math.PI * 2); g.fill();
+      var h = g.createRadialGradient(8, 8, 3.5, 8, 8, 8);
+      h.addColorStop(0, 'rgba(255,255,255,0.95)'); h.addColorStop(1, 'rgba(255,255,255,0)');
+      g.fillStyle = h; g.beginPath(); g.arc(8, 8, 8, 0, Math.PI * 2); g.fill();
+      var r = g.createRadialGradient(8, 8, 0, 8, 8, 5.5);
+      r.addColorStop(0, 'rgba(146,170,208,1)');
+      r.addColorStop(0.6, 'rgba(128,154,198,0.95)');
+      r.addColorStop(1, 'rgba(128,154,198,0)');
+      g.fillStyle = r; g.beginPath(); g.arc(8, 8, 5.5, 0, Math.PI * 2); g.fill();
+    });
+  }
+  // 여섯 갈래 눈송이: 모양만으로 눈인 줄 알 수 있게
+  function crystalSprite() {
+    return sprite(32, function (g) {
+      g.translate(16, 16);
+      g.lineCap = 'round';
+      function arms() {
+        g.beginPath();
+        for (var i = 0; i < 6; i++) {
+          var a = i * Math.PI / 3, c = Math.cos(a), sn = Math.sin(a);
+          g.moveTo(0, 0); g.lineTo(c * 13, sn * 13);
+          var br = [[0.48, 5], [0.76, 3.4]];
+          for (var j = 0; j < br.length; j++) {
+            var bx = c * 13 * br[j][0], by = sn * 13 * br[j][0];
+            for (var d = -1; d <= 1; d += 2) {
+              var ba = a + d * Math.PI / 3;
+              g.moveTo(bx, by); g.lineTo(bx + Math.cos(ba) * br[j][1], by + Math.sin(ba) * br[j][1]);
+            }
+          }
+        }
+      }
+      arms(); g.strokeStyle = 'rgba(255,255,255,0.95)'; g.lineWidth = 4.6; g.stroke();
+      arms(); g.strokeStyle = 'rgba(112,141,188,1)'; g.lineWidth = 2.2; g.stroke();
     });
   }
   function petalSprite(color) {
@@ -115,6 +141,7 @@
     });
   }
   var SPR = [];
+  var CRYSTAL = conf.kind === 'snow' ? crystalSprite() : null;
   if (conf.kind === 'snow') SPR = [snowSprite()];
   if (conf.kind === 'light') SPR = [lightSprite()];
   if (conf.kind === 'petal') SPR = conf.colors.map(petalSprite);
@@ -129,7 +156,11 @@
     p.x = rnd(0, W);
     p.ph = rnd(0, Math.PI * 2);
     p.rot = rnd(0, Math.PI * 2);
-    if (k === 'snow') { p.s = rnd(3.5, 10); p.vy = 0.2 + p.s * 0.07; p.vx = rnd(-0.08, 0.08); p.sw = rnd(0.25, 0.7); p.a = rnd(0.9, 1); }
+    p.vr = 0; p.flip = k === 'petal' || k === 'leaf';
+    if (k === 'snow') {
+      p.s = rnd(3.5, 9); p.vy = 0.2 + p.s * 0.07; p.vx = rnd(-0.08, 0.08); p.sw = rnd(0.25, 0.7); p.a = rnd(0.9, 1);
+      if (Math.random() < 0.3) { p.img = CRYSTAL; p.s = rnd(8, 14); p.vy = rnd(0.45, 0.8); p.vr = rnd(-0.012, 0.012); }
+    }
     if (k === 'petal') { p.s = rnd(12, 19); p.vy = rnd(0.35, 0.7); p.vx = rnd(0.25, 0.6); p.sw = rnd(0.4, 1.0); p.vr = rnd(-0.02, 0.02); p.a = rnd(0.9, 1); }
     if (k === 'leaf') { p.s = rnd(14, 22); p.vy = rnd(0.45, 0.85); p.vx = rnd(-0.15, 0.25); p.sw = rnd(0.6, 1.4); p.vr = rnd(-0.025, 0.025); p.a = rnd(0.9, 1); }
     if (k === 'light') { p.s = rnd(14, 34); p.vy = -rnd(0.1, 0.26); p.vx = rnd(-0.08, 0.08); p.sw = rnd(0.2, 0.5); p.a = rnd(0.7, 1); }
@@ -167,21 +198,21 @@
       var p = parts[i];
       p.x += (p.vx + Math.sin(t * 0.012 * p.sw + p.ph) * 0.35 * p.sw) * dt;
       p.y += p.vy * dt;
-      if (p.vr) p.rot += p.vr * dt;
+      p.rot += p.vr * dt;
       var off = p.s * 2;
       if (p.y > H + off || p.y < -off * 3 || p.x < -off * 2 || p.x > W + off * 2) { make(p, false); continue; }
       var a = p.a * edge(p.x);
       if (conf.kind === 'light') a *= 0.65 + 0.35 * Math.sin(t * 0.02 + p.ph);   // 은은하게 반짝임
       if (a < 0.02) continue;
       ctx.globalAlpha = a;
-      if (conf.kind === 'snow' || conf.kind === 'light') {
+      if (!p.vr && !p.flip) {
         ctx.drawImage(p.img, p.x - p.s, p.y - p.s, p.s * 2, p.s * 2);
       } else {
-        // 꽃잎·잎: 돌면서 뒤집히는 느낌(세로 폭이 줄었다 늘었다)
+        // 눈송이는 천천히 돌고, 꽃잎·잎은 돌면서 뒤집힌다(세로 폭이 줄었다 늘었다)
         ctx.save();
         ctx.translate(p.x, p.y);
         ctx.rotate(p.rot);
-        ctx.scale(1, 0.35 + 0.65 * Math.abs(Math.cos(t * 0.03 * p.sw + p.ph)));
+        if (p.flip) ctx.scale(1, 0.35 + 0.65 * Math.abs(Math.cos(t * 0.03 * p.sw + p.ph)));
         ctx.drawImage(p.img, -p.s, -p.s, p.s * 2, p.s * 2);
         ctx.restore();
       }
