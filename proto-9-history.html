@@ -178,7 +178,7 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
   .site-header { position: absolute; }
 }
 
-/* 언어 전환: 데스크톱은 메뉴 오른쪽, 모바일은 한국어일 때 헤더에 EN만, 메뉴 시트에는 두 언어 */
+/* 언어 전환: 데스크톱은 메뉴 오른쪽, 모바일은 헤더에 바꿀 언어 하나만(한국어 화면엔 EN, 영어 화면엔 KO), 메뉴 시트에는 두 언어 */
 .hd-lang { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.16em; line-height: 1; }
 .hd-lang a { display: inline-flex; align-items: center; min-height: 2.75rem; color: inherit; opacity: 0.5; text-decoration: none; transition: opacity 0.3s; }
 .hd-lang a:hover, .hd-lang a[aria-current] { opacity: 1; }
@@ -191,16 +191,26 @@ h3 { font-size: 1.125rem; font-weight: 600; line-height: 1.5; letter-spacing: -0
 }
 @media (max-width: 63.99rem) {
   .hd-lang { margin-left: auto; }
-  .hd-lang a[data-lang-switch="ko"], .hd-lang span { display: none; }
-  html[lang="en"] .hd-lang { display: none; }
+  .hd-lang span, html:not([lang="en"]) .hd-lang a[data-lang-switch="ko"], html[lang="en"] .hd-lang a[data-lang-switch="en"] { display: none; }
   .menu-btn { margin-left: 1.1rem; }
-  html[lang="en"] .menu-btn { margin-left: auto; }
 }
 
 /* 영문 로고: 심볼은 그대로, 한글 로고타입 대신 같은 자리에 영문 이름 */
 .wm-en { display: block; font-size: 0.9375rem; font-weight: 600; line-height: 1.15; letter-spacing: -0.005em; white-space: nowrap; }
 @media (min-width: 64rem) { .wm-en { font-size: 1.125rem; } }
 .site-footer .wm-en { font-size: 1.25rem; }
+/* 모바일 영문 헤더: 긴 영문 이름 옆에 KO와 메뉴 버튼이 함께 들어가도록 이름을 두 줄(Seongsan-dong / Catholic Church)로 쌓는다 */
+@media (max-width: 63.99rem) {
+  .site-header .hd-lang { padding-left: 0.75rem; }
+  .site-header .wm-en .wm-l2 { display: block; }
+  html[lang="en"] .site-header .brand-sub { letter-spacing: 0.12em; }
+  html[lang="en"] .site-header .menu-btn { margin-left: 0.9rem; }
+}
+@media (max-width: 24rem) {
+  .site-header .brand { gap: 0.6rem; }
+  .site-header .brand-sub, html[lang="en"] .site-header .brand-sub { letter-spacing: 0.08em; white-space: normal; }
+  .site-header .menu-btn { margin-left: 0.9rem; }
+}
 
 /* 메뉴: 넓은 화면은 긴 이름, 좁은 데스크톱은 짧은 이름 */
 .nl-s { display: none; }
@@ -341,7 +351,7 @@ html[lang="en"] .page-title { letter-spacing: -0.03em; }
       <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
       <span>
         <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
-        <span class="wm-en" data-only="en">Seongsan-dong Catholic Church</span>
+        <span class="wm-en" data-only="en">Seongsan-dong <span class="wm-l2">Catholic Church</span></span>
         <span class="brand-sub">103 Martyr Saints of Korea</span>
       </span>
     </a>
@@ -405,7 +415,7 @@ html[lang="en"] .page-title { letter-spacing: -0.03em; }
         <svg class="sym" aria-hidden="true"><use href="#logo-symbol"/></svg>
         <span>
           <svg class="wm" aria-hidden="true" data-only="ko"><use href="#logo-wordmark"/></svg>
-          <span class="wm-en" data-only="en">Seongsan-dong Catholic Church</span>
+          <span class="wm-en" data-only="en">Seongsan-dong <span class="wm-l2">Catholic Church</span></span>
           <span class="brand-sub">103 Martyr Saints of Korea</span>
         </span>
       </a>
